@@ -1,0 +1,16 @@
+//form styling
+sendDateForm.id = "sendDateForm";
+sendDateForm.className = "sendDateForm";
+sendDateFormDiv.class = "switch-field"
+sendDateFormInput.type = "checkbox";
+sendDateFormInput.value = "wekelijks";
+sendDateFormInput.id= "sendDateSwitch";
+document.getElementById ("sendDateSwitch").addEventListener ("click", switchFunction, false);
+sendDateFormLabel.className = "switch";
+sendDateFormSpan.className = "slider round";
+sendDateFormText.id = "sendDateText";
+sendDateFormText.display = "inline";
+sendDateFormText.width = "auto";
+sendDateFormText.top = "0px";
+sendDateFormText.color = "#CCCCCC";
+sendDateFormText.margin = "7px 5px 5px 10px";

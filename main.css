@@ -1,0 +1,248 @@
+.tox .tox-dialog-wrap { left: 20% !important;}
+a {
+  text-decoration: none;
+  font-size: 16px !important;
+  font-family: Arial, sans-serif;
+  color: #18608B;
+}
+
+.messagePaneNest p {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666666;
+
+}
+.messagePaneNest span {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666666;
+
+}
+.messagePaneNest a {
+    font-family: Arial, sans-serif;
+    color: #18608B;
+    text-decoration: none;
+}
+
+.draggeble {
+  font-size: 12px;
+  color: #2d2d2d;
+  padding: 5px;
+  background-color: #FFF;
+};
+
+.headline {
+  draggable: false
+}
+
+/*Styling Vacatures*/
+.vacature .imgVacature {
+  width: 80% !important;
+  height: auto !important;
+}
+
+.vacature .titleVacature {
+  font-Size: 10px !important;
+}
+
+.vacature .DescriptionVacature{
+  font-size: 8px !important;
+}
+
+.vacature .metaVacature {
+  font-size: 8px !important;
+}
+
+/*Styling Artikel Klein*/
+
+.kleinArtikel .imgKleinArtikel {
+  width: 80% !important;
+  height: 80% !important;
+}
+
+.kleinArtikel .titleKleinArtikel {
+  font-size: 10px !important;
+  line-height: 13px !important;
+}
+
+.kleinArtikel .DescriptionKleinArtikel {
+  font-size: 8px !important;
+  line-height: 13px !important;
+}
+
+.kleinArtikel .KleinArtikelCTA {
+  font-size: 8px !important;
+}
+
+.kleinArtikel .tableDivider1 {
+  height: 90px !important;
+  width: 30% !important;
+}
+
+.kleinArtikel .tableDivider2 {
+  max-height: 90px !important;
+  line-height: 1;
+
+}
+.imgKleinArtikel {
+  display: block !important;
+}
+
+.imgKleinArtikela {
+  display: none !important;
+}
+
+/*Styling Artikel Groot*/
+
+.grootArtikel {
+  border: 1px solid #2d2d2d;
+}
+
+.grootArtikelAuthor {
+  font-size: 7pt;
+}
+
+.grootArtikelDescription {
+  font-size: 7pt;
+}
+
+.grootArtikelTitle {
+  font-size: 9pt;
+  line-height: 22px !important;
+}
+
+.ButtonImg {
+
+}
+
+.ButtonImgPressd {
+  border-bottom: 5px solid #1483C6;
+  color: #474747 !important;
+}
+
+
+/*Switch form*/
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative !important;
+  display: inline-block !important;
+  width: 60px !important;
+  height: 34px !important;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* The slider */
+.switch-field .slider { margin-bottom: 0 !important;}
+
+.slider {
+  position: absolute !important;
+  cursor: pointer !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-color: #ccc !important;
+  -webkit-transition: .4s !important;
+  transition: .4s !important;
+}
+
+#dagWeekText {
+  color: #CCCCCC !important;
+  margin: 10px 0px 0px 10px !important;
+}
+
+.slider:before {
+  position: absolute !important;
+  content: "" !important;
+  height: 26px !important;
+  width: 26px !important;
+  left: 4px !important;
+  bottom: 4px !important;
+  background-color: white !important;
+  -webkit-transition: .4s !important;
+  transition: .4s !important;
+}
+
+input:checked + .slider {
+  background-color: #148acb !important;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #148acb !important;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px) !important;
+  -ms-transform: translateX(26px) !important;
+  transform: translateX(26px) !important;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px !important;
+}
+
+.slider.round:before {
+  border-radius: 50% !important;
+}
+
+#versiondiv { 
+  padding: 5px;
+  font-size: 12px;
+  color: rgba(0,0,0,.6);
+}
+#versiondiv.versiondiv-update a {
+  color: #fff;
+  background: red;
+  font-weight: bold;
+  display: inline-block; 
+  padding: 5px 8px;
+}
+
+#artikelenKleinContainerContent .titleKleinArtikel { font-size: 14px !important; line-height: 110% !important; font-weight: bold; }
+
+.categoryClass { padding-top: 20px; background: rgba(0,0,0,.1);}
+.categoryClass span { display: inline-block; padding: 4px 4px 2px; line-height: 15px;text-transform: uppercase; font-size: 11px; }
+.categoryClassDag { border:1px solid rgba(0,0,0,.5); background: #000; color: #fff; font-weight: bold; padding-left: 7px; padding-right: 7px; }
+.categoryClassElement { border:1px solid rgba(0,0,0,.5); background: rgba(255,255,255,.5);  }
+.categoryClassCustomer { background: #6843A3; color: #fff; }
+.categoryClassMarketing { background: #196EA3; color: #fff; }
+.categoryClassCommunicatie, 
+.categoryClassCommunicatie­management { background: #019000; color: #fff; }
+
+.categoryClass span.w100 { width: 100%; padding: 0; line-height: 1px; display: block;  }
+.categoryClass span.postPubDate,
+.categoryClass span.postPostID,
+.categoryClass span.postStatus,
+.categoryClass span.postScore {  border:1px solid rgba(0,0,0,.5); background: rgba(255,255,255,1); }
+
+#headingArtikelGroot { padding: 10px; border-bottom: 1px solid #000; font-weight: bold; font-size: 16px; }
+#switchListForm { padding: 5px; border-bottom: 1px solid #000; }
+#switchListForm #switchListSwitchText p { display: inline-block; font-weight: bold; margin: 0; padding: 0 10px; font-size: 16px; }
+
+#dagWeekForm .slider.round:before { content:"D" !important; font-weight: bold; font-size: 16px; color: #333; text-align: center; line-height: 30px; }
+#dagWeekForm input:checked + .slider.round:before { content:"W" !important; color: #333; }
+#dagWeekForm  #dagWeekText { display: none;}
+
+.kleinArtikel { border-bottom: 1px solid rgba(0,0,0,.2);}
+
+.divSearchKader {
+  width: 100%;
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid rgba(0,0,0,.2);
+  height: 65px;
+}
+.divSearchKader label { width: 100%; float: left; }
+.divSearchKader input { width: 73%; float: left; padding: 0 4px; line-height: 28px; }
+.divSearchKader div.button { width: 25%; float: right; cursor: pointer; background: #148acb; border: 1px solid #2e6da4; color: #fff; text-align: center;  line-height: 28px;}
+.divSearchKader div.button:hover { background: #2e6da4; }

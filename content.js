@@ -624,7 +624,7 @@ function functionVacatureItems(item, index) {
 
 // Check version extension
 "use strict";
-fetch("https://raw.githubusercontent.com/ThomasSonneveld/Act-On-External-Content/master/version.txt")
+fetch("https://raw.githubusercontent.com/Frankwatching/Act-On-External-Content/master/version.txt?token=GHSAT0AAAAAABYYC4TH4XPCTLV2L7ZEHNWEZEUA57Q")
   .then(response => response.text())
     .then((out) => {
         var text = `Lokale versie: ${versionid}<br>
@@ -634,7 +634,7 @@ fetch("https://raw.githubusercontent.com/ThomasSonneveld/Act-On-External-Content
         if(versionid < out) {
           versiediv.className = 'versiondiv-update';
           text = `Lokale versie: ${versionid}<br>`;
-          text = text + '<a href="https://github.com/ThomasSonneveld/Act-On-External-Content" target="_blank">Nu updaten naar: ' + out + '</a>';
+         // text = text + '<a href="https://github.com/ThomasSonneveld/Act-On-External-Content" target="_blank">Nu updaten naar: ' + out + '</a>';
         }
         versiediv.innerHTML = text;
 

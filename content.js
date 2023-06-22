@@ -508,7 +508,7 @@ function artikelenKleinItems(item, index) {
 
 // ## LOAD VACATURES
 "use strict";
-fetch("https://www.frankwatching.com/feed/?post_type=vacature")
+fetch("https://cms.frankwatching.com/feed?post_type=vacature")
 .then(response => response.text())
 .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
 .then(data => {

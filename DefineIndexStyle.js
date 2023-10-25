@@ -56,12 +56,12 @@ inOutSelect.style.color = '#FFF';
 inOutSelect.style.display = "block";
 inOutSelect.style.zIndex = "3001";
 
-choises.style.width = "100%";
-choises.style.height = '49px';
-choises.style.minWidth = canvsMinWidth;
-choises.className = "choises";
-choises.cssFloat = "left";
-choises.style.display = "inline";
+choices.style.width = "100%";
+choices.style.height = '49px';
+choices.style.minWidth = canvsMinWidth;
+choices.className = "choices";
+choices.cssFloat = "left";
+choices.style.display = "inline";
 
 headlinesButton.style.width = "20%"
 headlinesButton.style.height = '49px';
@@ -86,7 +86,7 @@ headlinesButtonImg.style.top= "0px";
 headlinesButtonImg.style.height= "29px"
 
 
-artikelGrootButton.style.width = "20%"
+artikelGrootButton.style.width = "15%"
 artikelGrootButton.style.height = '49px';
 artikelGrootButton.style.backgroundColor = "#fafafa";
 artikelGrootButton.style.color = "#000";
@@ -108,7 +108,31 @@ artikelGrootButtonImg.style.fontWeight= "bold";
 artikelGrootButtonImg.style.top= "0px";
 artikelGrootButtonImg.style.height= "29px"
 
-agendaAcademyButton.style.width = "20%";
+
+
+artikelKleinButton.style.width = "15%"
+artikelKleinButton.style.height = '49px';
+artikelKleinButton.style.backgroundColor = "#fafafa";
+artikelKleinButton.style.color = "#000";
+artikelKleinButton.style.display = "block";
+artikelKleinButton.style.cssFloat="left"
+artikelKleinButton.id="artikelKleinButton"
+artikelKleinButtonImg.textContent = "Items";
+artikelKleinButtonImg.style.textAlign = "center";
+artikelKleinButtonImg.style.display = "block";
+artikelKleinButtonImg.className = "ButtonImg";
+artikelKleinButtonImg.style.width = "100%";
+artikelKleinButtonImg.style.marginLeft="auto"
+artikelKleinButtonImg.style.marginRight="auto"
+artikelKleinButtonImg.style.verticalAlign = "center";
+artikelKleinButtonImg.style.color = "#cccccc";
+artikelKleinButtonImg.style.fontFamily = "'Roboto', Helvetiva, Arial";
+artikelKleinButtonImg.style.fontSize= "14px";
+artikelKleinButtonImg.style.fontWeight= "bold";
+artikelKleinButtonImg.style.top= "0px";
+artikelKleinButtonImg.style.height= "29px"
+
+agendaAcademyButton.style.width = "15%";
 agendaAcademyButton.style.height = '49px';
 agendaAcademyButton.style.backgroundColor = "#fafafa";
 agendaAcademyButton.style.color = "#000";
@@ -131,36 +155,14 @@ agendaAcademyButtonImg.style.top= "0px";
 agendaAcademyButtonImg.style.height= "29px"
 
 
-artikelKleinButton.style.width = "20%"
-artikelKleinButton.style.height = '49px';
-artikelKleinButton.style.backgroundColor = "#fafafa";
-artikelKleinButton.style.color = "#000";
-artikelKleinButton.style.display = "block";
-artikelKleinButton.style.cssFloat="left"
-artikelKleinButton.id="artikelKleinButton"
-artikelKleinButtonImg.textContent = "Items";
-artikelKleinButtonImg.style.textAlign = "center";
-artikelKleinButtonImg.style.display = "block";
-artikelKleinButtonImg.className = "ButtonImg";
-artikelKleinButtonImg.style.width = "100%";
-artikelKleinButtonImg.style.marginLeft="auto"
-artikelKleinButtonImg.style.marginRight="auto"
-artikelKleinButtonImg.style.verticalAlign = "center";
-artikelKleinButtonImg.style.color = "#cccccc";
-artikelKleinButtonImg.style.fontFamily = "'Roboto', Helvetiva, Arial";
-artikelKleinButtonImg.style.fontSize= "14px";
-artikelKleinButtonImg.style.fontWeight= "bold";
-artikelKleinButtonImg.style.top= "0px";
-artikelKleinButtonImg.style.height= "29px"
-
-vacatureButton.style.width = "20%"
+vacatureButton.style.width = "15%"
 vacatureButton.style.height = '49px';
 vacatureButton.style.backgroundColor = "#fafafa";
 vacatureButton.style.color = "#000";
 vacatureButton.style.display = "block";
 vacatureButton.style.cssFloat="left"
 vacatureButton.id = "vacatureButton"
-vacatureButtonImg.textContent = "Vacatures";
+vacatureButtonImg.textContent = "Jobs";
 vacatureButtonImg.style.textAlign = "center";
 vacatureButtonImg.style.display = "block";
 vacatureButtonImg.className = "ButtonImg";
@@ -174,6 +176,29 @@ vacatureButtonImg.style.fontSize= "14px";
 vacatureButtonImg.style.fontWeight= "bold";
 vacatureButtonImg.style.top= "0px";
 vacatureButtonImg.style.height= "29px"
+
+
+marketingButton.style.width = "15%"
+marketingButton.style.height = '49px';
+marketingButton.style.backgroundColor = "#fafafa";
+marketingButton.style.color = "#000";
+marketingButton.style.display = "block";
+marketingButton.style.cssFloat="left"
+marketingButton.id = "marketingButton"
+marketingButtonImg.textContent = "CAMS";
+marketingButtonImg.style.textAlign = "center";
+marketingButtonImg.style.display = "block";
+marketingButtonImg.className = "ButtonImg";
+marketingButtonImg.style.width = "100%";
+marketingButtonImg.style.marginLeft="auto";
+marketingButtonImg.style.marginRight="auto";
+marketingButtonImg.style.verticalAlign = "center";
+marketingButtonImg.style.color = "#cccccc";
+marketingButtonImg.style.fontFamily = "'Roboto', Helvetiva, Arial";
+marketingButtonImg.style.fontSize= "14px";
+marketingButtonImg.style.fontWeight= "bold";
+marketingButtonImg.style.top= "0px";
+marketingButtonImg.style.height= "29px"
 
 contentIndex.id = 'contentIndex';
 contentIndex.style.position = 'fixed';

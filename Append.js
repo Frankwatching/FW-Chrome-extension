@@ -64,15 +64,21 @@ artikelenKleinContainer.appendChild( artikelenKleinContainerContent );
 contentIndex.appendChild(vacatureContainer);
 vacatureContainer.appendChild(vacatureContainerContent);
 
+//Marketing
+contentIndex.appendChild(marketingContainer);
+marketingContainer.appendChild(marketingContainerContent);
+
 //Menu
-contentFeed.appendChild( choises );
-choises.appendChild( headlinesButton );
+contentFeed.appendChild( choices );
+choices.appendChild( headlinesButton );
 headlinesButton.appendChild( headlinesButtonImg );
-choises.appendChild( artikelGrootButton );
+choices.appendChild( artikelGrootButton );
 artikelGrootButton.appendChild( artikelGrootButtonImg );
-choises.appendChild( agendaAcademyButton );
+choices.appendChild( agendaAcademyButton );
 agendaAcademyButton.appendChild( agendaAcademyButtonImg );
-choises.appendChild( artikelKleinButton );
+choices.appendChild( artikelKleinButton );
 artikelKleinButton.appendChild( artikelKleinButtonImg );
-choises.appendChild( vacatureButton );
+choices.appendChild( vacatureButton );
 vacatureButton.appendChild( vacatureButtonImg );
+choices.appendChild( marketingButton );
+marketingButton.appendChild( marketingButtonImg );

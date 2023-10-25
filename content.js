@@ -63,12 +63,14 @@ document.getElementById('headlinesButton').onclick = function (event2) {
   artikelenKleinContainer.style.display = "none";
   agendaOverlay.style.display = "none";
   vacatureContainer.style.display = "none";
+  marketingContainer.style.display = "none";
 
   headlinesButtonImg.className = "ButtonImgPressd";
   artikelGrootButtonImg.className = "ButtonImg";
   agendaAcademyButtonImg.className = "ButtonImg";
   artikelKleinButtonImg.className = "ButtonImg";
   vacatureButtonImg.className = "ButtonImg";
+  marketingButtonImg.className = "ButtonImg";
 }
 
 document.getElementById("artikelGrootButton").onclick = function (event3) {
@@ -79,12 +81,14 @@ document.getElementById("artikelGrootButton").onclick = function (event3) {
   artikelenKleinContainer.style.display = "none";
   agendaOverlay.style.display = "none";
   vacatureContainer.style.display = "none";
+  marketingContainer.style.display = "none";
 
   headlinesButtonImg.className = "ButtonImg";
   artikelGrootButtonImg.className = "ButtonImgPressd";
   agendaAcademyButtonImg.className = "ButtonImg";
   artikelKleinButtonImg.className = "ButtonImg";
   vacatureButtonImg.className = "ButtonImg";
+  marketingButtonImg.className = "ButtonImg";
 }
 
 document.getElementById('agendaAcademyButton').onclick = function (event4) {
@@ -95,12 +99,15 @@ document.getElementById('agendaAcademyButton').onclick = function (event4) {
   artikelenKleinContainer.style.display = "none";
   agendaOverlay.style.display = "block";
   vacatureContainer.style.display = "none";
+  marketingContainer.style.display = "none";
 
   headlinesButtonImg.className = "ButtonImg";
   artikelGrootButtonImg.className = "ButtonImg";
   agendaAcademyButtonImg.className = "ButtonImgPressd";
   artikelKleinButtonImg.className = "ButtonImg";
   vacatureButtonImg.className = "ButtonImg";
+  marketingButtonImg.className = "ButtonImg";
+  
 }
 
 document.getElementById('artikelKleinButton').onclick = function (event5) {
@@ -111,12 +118,14 @@ document.getElementById('artikelKleinButton').onclick = function (event5) {
   artikelenKleinContainer.style.display = "block";
   agendaOverlay.style.display = "none";
   vacatureContainer.style.display = "none";
+  marketingContainer.style.display = "none";
 
   headlinesButtonImg.className = "ButtonImg";
   artikelGrootButtonImg.className = "ButtonImg";
   agendaAcademyButtonImg.className = "ButtonImg";
   artikelKleinButtonImg.className = "ButtonImgPressd";
   vacatureButtonImg.className = "ButtonImg";
+  marketingButtonImg.className = "ButtonImg";
 }
 
 document.getElementById('vacatureButton').onclick = function (event6) {
@@ -127,12 +136,32 @@ document.getElementById('vacatureButton').onclick = function (event6) {
   artikelenKleinContainer.style.display = "none";
   agendaOverlay.style.display = "none";
   vacatureContainer.style.display = "block";
+  marketingContainer.style.display = "none";
 
   headlinesButtonImg.className = "ButtonImg";
   artikelGrootButtonImg.className = "ButtonImg";
   agendaAcademyButtonImg.className = "ButtonImg";
   artikelKleinButtonImg.className = "ButtonImg";
   vacatureButtonImg.className = "ButtonImgPressd";
+  marketingButtonImg.className = "ButtonImg";
+}
+
+document.getElementById('marketingButton').onclick = function (event7) {
+  headlinesContainer.style.display = "none";
+  headlinesOverlay.style.display = "none";
+  artikelenGrootContainer.style.display = "none";
+  agendaAcademyContainer.style.display = "none";
+  artikelenKleinContainer.style.display = "none";
+  agendaOverlay.style.display = "none";
+  vacatureContainer.style.display = "none";
+  marketingContainer.style.display = "block";
+
+  headlinesButtonImg.className = "ButtonImg";
+  artikelGrootButtonImg.className = "ButtonImg";
+  agendaAcademyButtonImg.className = "ButtonImg";
+  artikelKleinButtonImg.className = "ButtonImg";
+  vacatureButtonImg.className = "ButtonImg";
+  marketingButtonImg.className = "ButtonImgPressd";
 }
 
 // ## LOAD HEADLINES - 8 uur artikel
@@ -759,6 +788,106 @@ function functionVacatureItems(item, index) {
    vacatureContainerContent.appendChild(div);
 
    document.getElementById('vacature' + postid).ondragstart = function (event) {
+       event
+         .dataTransfer
+         .setData('text/html', event.target.innerHTML);
+     }
+}
+
+// ## LOAD MARKETING
+"use strict";
+fetch("https://www.frankwatching.com/feed/?post_type=organisation_news") //business channel feed
+.then(response => response.text())
+.then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+.then(data => {
+
+  const items = data.querySelectorAll("item");
+
+  var existMCC = document.getElementById("marketingContainerContent");
+  if(existMCC){
+    existMCC.innerHTML = ``;
+  }
+
+  setTimeout(function() {
+    items.forEach(functionMarketingItems);
+ }, 100);
+
+});
+
+
+function functionMarketingItems(item, index) {
+
+  var postid = item.querySelector("guid").innerHTML;
+  postid = postid.substring(postid.indexOf("p=") + 2);
+
+  var pubdate = item.querySelector("pubDate").innerHTML;
+  var pubdateArray = pubdate.split("+");
+
+  var description = item.querySelector("description").innerHTML;
+  description = description.replace("<![CDATA[", "").replace("]]>", "");
+
+  var marketing_link = item.querySelector("link").innerHTML + `?utm_source=al-marketing-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7marketing%7c`;
+  var promotion_img = item.querySelector("enclosure").getAttribute("url");
+
+  const div = document.createElement('div');
+   div.className = 'dragrow marketing';
+   div.id = 'marketing'+postid;
+   div.draggable = 'true';
+
+
+    div.innerHTML = `
+
+    <table class="table1a">
+    <tbody>
+      <tr>
+        <td class="tableDivider1a">
+          <a id="imgKleinArtikel${postid}Link" href="${marketing_link}">
+            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="height: auto; width: 100%; display: block;" src="${promotion_img}" />
+            </a>
+          </td>
+      </tr>
+    </tbody>
+    </table>
+    <table>
+    <tbody>
+      <tr>
+        <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+          <div class="tdDiv">
+            <a id="imgKlein${postid}Link" href="${marketing_link}">
+              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="display: none; height: 150px; width: 150px;" src="${promotion_img}" />
+            </a>
+          </div>
+        </td>
+        <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+          <table class="tableC">
+            <tbody>
+              <tr>
+                <td class="artikelKleinTDcA">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td id="marketingTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="marketingLink${postid}title" class="titlemarketing" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${marketing_link}">${item.querySelector("title").innerHTML}</a></td>
+                            </tr>
+                            <tr>
+                                <td id="marketingTD${postid}bC" style="display: block; font-size: 16px; line-height: 22px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="marketingTDbC"><a id="marketingLink${postid}description" class="Descriptionmarketing" style="display: block; font-size: 16px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${marketing_link}">${description}</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+    
+
+    `;
+
+   marketingContainerContent.appendChild(div);
+
+   document.getElementById('marketing' + postid).ondragstart = function (event) {
        event
          .dataTransfer
          .setData('text/html', event.target.innerHTML);

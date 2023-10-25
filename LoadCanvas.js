@@ -32,6 +32,11 @@ vacatureContainer.id = 'vacatureContainer';
 var vacatureContainerContent = document.createElement( 'div' );
 vacatureContainerContent.id = 'vacatureContainerContent';
 
+var marketingContainer = document.createElement( 'div' );
+marketingContainer.id = 'marketingContainer';
+var marketingContainerContent = document.createElement( 'div' );
+marketingContainerContent.id = 'marketingContainerContent';
+
 //headlines
 var headlinesOverlay = document.createElement ( "div" );
 var phl1 = document.createElement ( 'p' );
@@ -84,7 +89,7 @@ var headlines7Td3 = document.createElement( 'td' );
 
 var agendaOverlay = document.createElement ( "div" );
 
-var choises = document.createElement ('div');
+var choices = document.createElement ('div');
 var headlinesButton = document.createElement ('div');
 var headlinesButtonImg = document.createElement ('p');
 var artikelGrootButton = document.createElement ('div');
@@ -95,6 +100,8 @@ var artikelKleinButton = document.createElement ('div');
 var artikelKleinButtonImg = document.createElement ('p');
 var vacatureButton = document.createElement ('div');
 var vacatureButtonImg = document.createElement ('p');
+var marketingButton = document.createElement ('div');
+var marketingButtonImg = document.createElement ('p');
 
 var dagWeekForm = document.createElement('form');
 var dagWeekFormDiv = document.createElement('div');

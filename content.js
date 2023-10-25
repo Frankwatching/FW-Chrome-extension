@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.0.3";
+let versionid = "3.1";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -266,12 +266,51 @@ fetch("https://www.frankwatching.com/feed/academy/upcoming/")
   var existAAC = document.getElementById("agendaAcademyContainer");
   if(existAAC){
     // console.log('List agenda items empty');
-    existAAC.innerHTML = `<table id="academyTable" width="100%" style="line-height: 22px; margin: 0px;"><tbody></tbody></table>`;
+    existAAC.innerHTML = `
+
+    <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="width: 100%; margin: auto;" class="stack-column-center"
+      <tbody>
+        <tr>
+          <td dir="ltr" width="100%" style="padding: 0px; background-color: #ffffff;">
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+              <tbody>
+                <tr><!-- Column : BEGIN -->
+                  <td class="stack-column-center" style="text-align: left;" width="50%">
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="padding: 15px;">
+                      <tbody>
+                        <tr>
+                          <td dir="ltr" valign="top">
+                          
+                          <h3 style="font-style: normal;font-weight: 700;font-size:22px;line-height: 1.3;color: #333333;">📅 <span style="color: #018A00">Frank</span>watching Agenda</h3>
+                          </td>
+
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <!-- Column : END --> <!-- Column : BEGIN -->
+                  <td class="stack-column-center" style="text-align: right;" width="50%">
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                      <tbody>
+                        <tr>
+                          <a href="https://www.frankwatching.com/academy" style="text-align: right;font-style: normal;font-weight: 400;font-size: 14px;line-height: 17px;color: #0E5C8C;">Meer trainingen en online cursussen</a>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <!-- Column : END --></tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <!-- Logo Left, Text Right : end --></tbody>
+    </table>
+    <div id="academyTable" style="padding: 10px;"></div>`;
 
   }
 
   setTimeout(function() {
-    for (var i = 0, len = 35; i < len; i++) {
+    for (var i = 0, len = 4; i < len; i++) {
       agendaItems(items[i]);
     }
 
@@ -279,33 +318,101 @@ fetch("https://www.frankwatching.com/feed/academy/upcoming/")
 
 });
 
+
 function agendaItems(item, index) {
-
   var table = document.getElementById("academyTable");
-
   var json = xml2json(item);
-
-  var title = (json["title"]);
-  var link = (json["link"]);
-  var postid = (json["productid"]);
-  var campaign = (json["postmeta:campaign"]);
-  var location = (json["postmeta:location"]);
-  var durration = (json["postmeta:durration"]);
-  var dateMonth = (json["postmeta:dateMonth"]);
-  var dateDay = (json["postmeta:dateDay"]);
+  var title = json["title"];
+  var link = json["link"];
+  var postid = json["productid"];
+  var campaign = json["postmeta:campaign"];
+  var location = json["postmeta:location"];
+  var durration = json["postmeta:durration"];
+  var dateMonth = json["postmeta:dateMonth"];
+  var dateDay = json["postmeta:dateDay"];
 
   var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
 
-  var row = table.insertRow(-1);
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  cell1.innerHTML = `▸`;
-  cell1.style.fontSize = "12px";
-  cell1.style.fontSize = "#18608b";
-  cell1.style.verticalAlign = "top";
-  cell2.innerHTML = `<p style="margin: 0px;"><a id="agendaAcademy${postid}" class="agendaItem" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;"><span class="agendaAcademyTitle" style="color: rgb(24, 96, 139);">${title}</span><span style="font-size: 12px; color: rgb(158, 158, 158);"> ${dateDay} ${dateMonth} | ${location} | ${durration}</span></a></p>`;
+  var cell2 = document.createElement("div"); // Create a div element for cell2
+  cell2.innerHTML = `
+    <table id="contentAcademyAgenda" style="width: 200px; background: #e4e4e4; border-collapse: collapse; width: 50%;" align="left">
+      <tbody>
+      <tr>
+        <td style="width: 41px; padding: 3px;">
+          <table>
+            <tbody>
+              <tr>
+                <td align="center" style="background: red; color: white; font-size: small; text-align: center;">${dateMonth}</td>
+              </tr>
+              <tr>
+              <td align="center" style="background: white; color: black; font-weight: bold;text-align: center;">${dateDay}</td>
+              </tr>
+            </tbody>
+          </table>      
+        </td>
+      <td style="">
 
+        <table id="contentAcademy">
+          <tbody>
+          <tr>
+            <td>
+              <a id="agendaAcademy${postid}" class="agendaItem" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
+                <span class="agendaAcademyTitle" style="color: rgb(24, 96, 139);text-overflow: ellipsis;">${title}</span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a id="agendaAcademy${postid}" class="agendaItem" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
+                <span style="font-size: 12px; color: rgb(158, 158, 158);">${location} | ${durration}
+                </span>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+      </tr>
+      </tbody>
+    </table>
+  `;
+
+  // Append cell2 to the table
+  table.appendChild(cell2);
 }
+
+
+// function agendaItems(item, index) {
+
+//   var table = document.getElementById("academyTable");
+
+//   var json = xml2json(item);
+
+//   var title = (json["title"]);
+//   var link = (json["link"]);
+//   var postid = (json["productid"]);
+//   var campaign = (json["postmeta:campaign"]);
+//   var location = (json["postmeta:location"]);
+//   var durration = (json["postmeta:durration"]);
+//   var dateMonth = (json["postmeta:dateMonth"]);
+//   var dateDay = (json["postmeta:dateDay"]);
+
+//   var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
+
+//   var row = table.insertRow(-1);
+//   var cell1 = row.insertCell(0);
+//   var cell2 = row.insertCell(1);
+//   cell1.innerHTML = `▸`;
+//   cell1.style.fontSize = "12px";
+//   cell1.style.fontSize = "#18608b";
+//   cell1.style.verticalAlign = "top";
+//   cell2.innerHTML = `
+  
+  
+ 
+ //  `;
+
+// }
 
    /* add category */
    var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
@@ -405,14 +512,18 @@ function artikelenGrootItems(item, index) {
   div.innerHTML = `
   <table id="artikelGroot${postid}T">
  <tbody id="artikelGroot${postid}Tb">
-  <tr id="artikelGroot${postid}TrA">
-   <td id="artikelGroot${postid}TdA"><a class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 22px; font-size: 14pt; padding: 0px 0px 10px 0px;" href="${item_link}">${item.querySelector("title").innerHTML}</a></td>
-  </tr>
   <tr id="artikelGroot${postid}TrB">
-   <td id="artikelGroot${postid}TdB"><a style="padding: 0px;" id="ct11_1" href="${item_link}"><img id="grootArtikelImg1" class="grootArtikelImg" style="display: block; width: 100%; padding-bottom: 10px; height: auto;" src="${item_img_groot}" width="600" height="180"></a></td>
+   <td id="artikelGroot${postid}TdB">
+      <a style="padding: 0px;" id="ct11_1" href="${item_link}">
+        <img id="grootArtikelImg1" class="grootArtikelImg" style="display: block; width: 100%;padding-bottom: 10px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
+      </a>
+    </td>
+  </tr>
+  <tr id="artikelGroot${postid}TrA">
+   <td id="artikelGroot${postid}TdA"><a class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 32px; font-size: 24pt; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">${item.querySelector("title").innerHTML}</a></td>
   </tr>
   <tr id="artikelGroot${postid}TrC">
-   <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;"><a class="grootArtikelDescription" style="color: #666666; font-size: 16px; display: inline; padding: 0px 0px 0px 0px;" id="ct11_2" href="${item_link}"><span style="font-size: 12pt; color: #333333;">${item.querySelector("description").innerHTML}</span></a><a class="GrootArtikelCTA" style="display: inline; font-size: 16px; text-decoration: none; color: #18608b;"  href="${item_link}"> Lees meer ▸</a></td>
+   <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;"><a class="grootArtikelDescription" style="color: #333333; font-size: 16px; display: inline; padding: 0px 0px 0px 0px;" id="ct11_2" href="${item_link}"><span style="font-size: 14pt; color: #333333;">${item.querySelector("description").innerHTML}</span></a><a class="GrootArtikelCTA" style="display: inline; font-size: 16px; text-decoration: none; color: #18608b;"  href="${item_link}"> Lees meer ▸</a></td>
   </tr>
  </tbody>
 </table>`;
@@ -466,8 +577,10 @@ function artikelenKleinItems(item, index) {
    div.id = 'kleinArtikel'+postid;
    div.draggable = 'true';
 
+   
 
-  div.innerHTML =  `<table class="table1a">
+  div.innerHTML =  `
+  <table class="table1a">
   <tbody>
     <tr>
       <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="height: auto; width: 100%; display: block;" src="${item_img_groot}" /></a></td>
@@ -494,7 +607,8 @@ function artikelenKleinItems(item, index) {
       </td>
     </tr>
   </tbody>
-  </table>`;
+  </table>
+  `;
 
    artikelenKleinContainerContent.appendChild(div);
 
@@ -586,31 +700,61 @@ function functionVacatureItems(item, index) {
     daginzet = '';
   }
 
-   div.innerHTML = `
-   <table id="vacatureTable${postid}" style="margin: 0px 0px 20px;">
-       <tbody>
-           <tr>
-               <td class="vacTableDivider1" width="30%" height="150px" style="vertical-align: top;"><a></a><a id="vacatureImgLink${postid}" class="vacatureImgLink" href="${vac_link}"><img id="imgVacatureArtikel${postid}" class="imgVacature" style="display: block; height: auto; width: 150px;" src="${enclosure_img}" /></a></td>
-               <td class="vacTableDivider2" height="150px" width="auto" style="vertical-align: top;">
-                   <table>
-                       <tbody>
+    div.innerHTML = `
 
-                           ${daginzet}
-                           <tr>
-                               <td id="vacatureTD${postid}bA" class="vacatureTDbA"><a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: Arial; color: #019000;" class="metaVacature"><span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: bold; font-family: Arial; color: #019000;">${vac_org_naam}</span><span id="vacatureMeta${postid}b" class="metaVacature" style="font-size: 12px; font-weight: bold; font-family: Arial; color: #666666;"> • ${vac_standplaats} • ${vac_uur}</span></a></td>
-                           </tr>
-                           <tr>
-                               <td id="vacatureTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="vacatureLink${postid}title" class="titleVacature" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${vac_link}">${item.querySelector("title").innerHTML}</a></td>
-                           </tr>
-                           <tr>
-                               <td id="vacatureTD${postid}bC" style="display: block; font-size: 16px; line-height: 22px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="vacatureTDbC"><a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 16px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${vac_link}">${description}</a></td>
-                           </tr>
-                       </tbody>
-                   </table>
-               </td>
-           </tr>
-       </tbody>
-   </table> `;
+    <table class="table1a">
+    <tbody>
+      <tr>
+        <td class="tableDivider1a">
+          <a id="imgKleinArtikel${postid}Link" href="${vac_link}">
+            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="height: auto; width: 100%; display: block;" src="${enclosure_img}" />
+            </a>
+          </td>
+      </tr>
+    </tbody>
+    </table>
+    <table>
+    <tbody>
+      <tr>
+        <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+          <div class="tdDiv">
+            <a id="imgKlein${postid}Link" href="${vac_link}">
+              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="display: none; height: 150px; width: 150px;" src="${enclosure_img}" />
+            </a>
+          </div>
+        </td>
+        <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+          <table class="tableC">
+            <tbody>
+              <tr>
+                <td class="artikelKleinTDcA">
+                    <table>
+                        <tbody>
+
+                            ${daginzet}
+                            <tr>
+                                <td id="vacatureTD${postid}bA" class="vacatureTDbA"><a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: Arial; color: #019000;" class="metaVacature"><span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: bold; font-family: Arial; color: #019000;">${vac_org_naam}</span><span id="vacatureMeta${postid}b" class="metaVacature" style="font-size: 12px; font-weight: bold; font-family: Arial; color: #666666;"> • ${vac_standplaats} • ${vac_uur}</span></a></td>
+                            </tr>
+                            <tr>
+                                <td id="vacatureTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="vacatureLink${postid}title" class="titleVacature" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${vac_link}">${item.querySelector("title").innerHTML}</a></td>
+                            </tr>
+                            <tr>
+                                <td id="vacatureTD${postid}bC" style="display: block; font-size: 16px; line-height: 22px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="vacatureTDbC"><a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 16px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${vac_link}">${description}</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+    
+
+    `;
+
    vacatureContainerContent.appendChild(divCat);
    vacatureContainerContent.appendChild(div);
 

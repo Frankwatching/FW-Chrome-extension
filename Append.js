@@ -60,7 +60,11 @@ artikelenGrootContainer.appendChild(artikelenGrootContainerContent);
 contentIndex.appendChild( artikelenKleinContainer );
 artikelenKleinContainer.appendChild( artikelenKleinContainerContent );
 
-//Vacatures
+//Vacatures groot
+contentIndex.appendChild(vacatureGrootContainer);
+vacatureGrootContainer.appendChild(vacatureGrootContainerContent);
+
+//Vacatures klein
 contentIndex.appendChild(vacatureContainer);
 vacatureContainer.appendChild(vacatureContainerContent);
 
@@ -68,17 +72,25 @@ vacatureContainer.appendChild(vacatureContainerContent);
 contentIndex.appendChild(marketingContainer);
 marketingContainer.appendChild(marketingContainerContent);
 
+//Business Channel
+contentIndex.appendChild(channelContainer);
+channelContainer.appendChild(channelContainerContent);
+
 //Menu
 contentFeed.appendChild( choices );
 choices.appendChild( headlinesButton );
 headlinesButton.appendChild( headlinesButtonImg );
 choices.appendChild( artikelGrootButton );
 artikelGrootButton.appendChild( artikelGrootButtonImg );
-choices.appendChild( agendaAcademyButton );
-agendaAcademyButton.appendChild( agendaAcademyButtonImg );
 choices.appendChild( artikelKleinButton );
 artikelKleinButton.appendChild( artikelKleinButtonImg );
+choices.appendChild( agendaAcademyButton );
+agendaAcademyButton.appendChild( agendaAcademyButtonImg );
+choices.appendChild( vacatureGrootButton );
+vacatureGrootButton.appendChild( vacatureGrootButtonImg );
 choices.appendChild( vacatureButton );
 vacatureButton.appendChild( vacatureButtonImg );
 choices.appendChild( marketingButton );
 marketingButton.appendChild( marketingButtonImg );
+choices.appendChild( channelButton );
+channelButton.appendChild( channelButtonImg );

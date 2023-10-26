@@ -62,15 +62,19 @@ document.getElementById('headlinesButton').onclick = function (event2) {
   agendaAcademyContainer.style.display = "none";
   artikelenKleinContainer.style.display = "none";
   agendaOverlay.style.display = "none";
+  vacatureGrootContainer.style.display = "none";
   vacatureContainer.style.display = "none";
   marketingContainer.style.display = "none";
+  channelContainer.style.display = "none";
 
   headlinesButtonImg.className = "ButtonImgPressd";
   artikelGrootButtonImg.className = "ButtonImg";
   agendaAcademyButtonImg.className = "ButtonImg";
   artikelKleinButtonImg.className = "ButtonImg";
+  vacatureGrootButtonImg.className = "ButtonImg";
   vacatureButtonImg.className = "ButtonImg";
   marketingButtonImg.className = "ButtonImg";
+  channelButtonImg.className = "ButtonImg";
 }
 
 document.getElementById("artikelGrootButton").onclick = function (event3) {
@@ -80,15 +84,19 @@ document.getElementById("artikelGrootButton").onclick = function (event3) {
   agendaAcademyContainer.style.display = "none";
   artikelenKleinContainer.style.display = "none";
   agendaOverlay.style.display = "none";
+  vacatureGrootContainer.style.display = "none";
   vacatureContainer.style.display = "none";
   marketingContainer.style.display = "none";
+  channelContainer.style.display = "none";
 
   headlinesButtonImg.className = "ButtonImg";
   artikelGrootButtonImg.className = "ButtonImgPressd";
   agendaAcademyButtonImg.className = "ButtonImg";
   artikelKleinButtonImg.className = "ButtonImg";
+  vacatureGrootButtonImg.className = "ButtonImg";
   vacatureButtonImg.className = "ButtonImg";
   marketingButtonImg.className = "ButtonImg";
+  channelButtonImg.className = "ButtonImg";
 }
 
 document.getElementById('agendaAcademyButton').onclick = function (event4) {
@@ -98,8 +106,11 @@ document.getElementById('agendaAcademyButton').onclick = function (event4) {
   agendaAcademyContainer.style.display = "block";
   artikelenKleinContainer.style.display = "none";
   agendaOverlay.style.display = "block";
+  vacatureGrootContainer.style.display = "none";
+  vacatureGrootButtonImg.className = "ButtonImg";
   vacatureContainer.style.display = "none";
   marketingContainer.style.display = "none";
+  channelContainer.style.display = "none";
 
   headlinesButtonImg.className = "ButtonImg";
   artikelGrootButtonImg.className = "ButtonImg";
@@ -107,6 +118,7 @@ document.getElementById('agendaAcademyButton').onclick = function (event4) {
   artikelKleinButtonImg.className = "ButtonImg";
   vacatureButtonImg.className = "ButtonImg";
   marketingButtonImg.className = "ButtonImg";
+  channelButtonImg.className = "ButtonImg";
   
 }
 
@@ -117,15 +129,19 @@ document.getElementById('artikelKleinButton').onclick = function (event5) {
   agendaAcademyContainer.style.display = "none";
   artikelenKleinContainer.style.display = "block";
   agendaOverlay.style.display = "none";
+  vacatureGrootContainer.style.display = "none";
   vacatureContainer.style.display = "none";
   marketingContainer.style.display = "none";
+  channelContainer.style.display = "none";
 
   headlinesButtonImg.className = "ButtonImg";
   artikelGrootButtonImg.className = "ButtonImg";
   agendaAcademyButtonImg.className = "ButtonImg";
   artikelKleinButtonImg.className = "ButtonImgPressd";
+  vacatureGrootButtonImg.className = "ButtonImg";
   vacatureButtonImg.className = "ButtonImg";
   marketingButtonImg.className = "ButtonImg";
+  channelButtonImg.className = "ButtonImg";
 }
 
 document.getElementById('vacatureButton').onclick = function (event6) {
@@ -135,15 +151,19 @@ document.getElementById('vacatureButton').onclick = function (event6) {
   agendaAcademyContainer.style.display = "none";
   artikelenKleinContainer.style.display = "none";
   agendaOverlay.style.display = "none";
+  vacatureGrootContainer.style.display = "none";
   vacatureContainer.style.display = "block";
   marketingContainer.style.display = "none";
+  channelContainer.style.display = "none";
 
   headlinesButtonImg.className = "ButtonImg";
   artikelGrootButtonImg.className = "ButtonImg";
   agendaAcademyButtonImg.className = "ButtonImg";
   artikelKleinButtonImg.className = "ButtonImg";
+  vacatureGrootButtonImg.className = "ButtonImg";
   vacatureButtonImg.className = "ButtonImgPressd";
   marketingButtonImg.className = "ButtonImg";
+  channelButtonImg.className = "ButtonImg";
 }
 
 document.getElementById('marketingButton').onclick = function (event7) {
@@ -153,15 +173,66 @@ document.getElementById('marketingButton').onclick = function (event7) {
   agendaAcademyContainer.style.display = "none";
   artikelenKleinContainer.style.display = "none";
   agendaOverlay.style.display = "none";
+  vacatureGrootContainer.style.display = "none";
   vacatureContainer.style.display = "none";
   marketingContainer.style.display = "block";
+  channelContainer.style.display = "none";
 
   headlinesButtonImg.className = "ButtonImg";
   artikelGrootButtonImg.className = "ButtonImg";
   agendaAcademyButtonImg.className = "ButtonImg";
   artikelKleinButtonImg.className = "ButtonImg";
+  vacatureGrootButtonImg.className = "ButtonImg";
   vacatureButtonImg.className = "ButtonImg";
   marketingButtonImg.className = "ButtonImgPressd";
+  channelButtonImg.className = "ButtonImg";
+
+}
+
+
+document.getElementById('channelButton').onclick = function (event7) {
+  headlinesContainer.style.display = "none";
+  headlinesOverlay.style.display = "none";
+  artikelenGrootContainer.style.display = "none";
+  agendaAcademyContainer.style.display = "none";
+  artikelenKleinContainer.style.display = "none";
+  agendaOverlay.style.display = "none";
+  vacatureGrootContainer.style.display = "none";
+  vacatureContainer.style.display = "none";
+  marketingContainer.style.display = "none";
+  channelContainer.style.display = "block";
+
+  headlinesButtonImg.className = "ButtonImg";
+  artikelGrootButtonImg.className = "ButtonImg";
+  agendaAcademyButtonImg.className = "ButtonImg";
+  artikelKleinButtonImg.className = "ButtonImg";
+  vacatureGrootButtonImg.className = "ButtonImg";
+  vacatureButtonImg.className = "ButtonImg";
+  marketingButtonImg.className = "ButtonImg";
+  channelButtonImg.className = "ButtonImgPressd";
+}
+
+
+document.getElementById('vacatureGrootButton').onclick = function (event7) {
+  headlinesContainer.style.display = "none";
+  headlinesOverlay.style.display = "none";
+  artikelenGrootContainer.style.display = "none";
+  agendaAcademyContainer.style.display = "none";
+  artikelenKleinContainer.style.display = "none";
+  agendaOverlay.style.display = "none";
+  vacatureGrootContainer.style.display = "block";
+  vacatureContainer.style.display = "none";
+  marketingContainer.style.display = "none";
+  channelContainer.style.display = "none";
+
+  headlinesButtonImg.className = "ButtonImg";
+  artikelGrootButtonImg.className = "ButtonImg";
+  agendaAcademyButtonImg.className = "ButtonImg";
+  artikelKleinButtonImg.className = "ButtonImg";
+  vacatureGrootButtonImg.className = "ButtonImgPressd";
+  vacatureButtonImg.className = "ButtonImg";
+  marketingButtonImg.className = "ButtonImg";
+  channelButtonImg.className = "ButtonImg";
 }
 
 // ## LOAD HEADLINES - 8 uur artikel
@@ -297,7 +368,7 @@ fetch("https://www.frankwatching.com/feed/academy/upcoming/")
     // console.log('List agenda items empty');
     existAAC.innerHTML = `
 
-    <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="width: 100%; margin: auto;" class="stack-column-center"
+    <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="width: 100%; margin: auto; margin-bottom:30px;" class="stack-column-center"
       <tbody>
         <tr>
           <td dir="ltr" width="100%" style="padding: 0px; background-color: #ffffff;">
@@ -539,7 +610,7 @@ function artikelenGrootItems(item, index) {
   div.draggable = 'true';
 
   div.innerHTML = `
-  <table id="artikelGroot${postid}T">
+  <table id="artikelGroot${postid}T" style="margin: 0 15px 0 0px !important; display: block;">
  <tbody id="artikelGroot${postid}Tb">
   <tr id="artikelGroot${postid}TrB">
    <td id="artikelGroot${postid}TdB">
@@ -549,10 +620,21 @@ function artikelenGrootItems(item, index) {
     </td>
   </tr>
   <tr id="artikelGroot${postid}TrA">
-   <td id="artikelGroot${postid}TdA"><a class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 32px; font-size: 24pt; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">${item.querySelector("title").innerHTML}</a></td>
+   <td id="artikelGroot${postid}TdA">
+    <a class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+      ${item.querySelector("title").innerHTML}
+    </a>
+   </td>
   </tr>
   <tr id="artikelGroot${postid}TrC">
-   <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;"><a class="grootArtikelDescription" style="color: #333333; font-size: 16px; display: inline; padding: 0px 0px 0px 0px;" id="ct11_2" href="${item_link}"><span style="font-size: 14pt; color: #333333;">${item.querySelector("description").innerHTML}</span></a><a class="GrootArtikelCTA" style="display: inline; font-size: 16px; text-decoration: none; color: #18608b;"  href="${item_link}"> Lees meer ▸</a></td>
+   <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
+      <a class="grootArtikelDescription" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;" id="ct11_2" href="${item_link}">
+        <span style="font-size: 16px; color: #333333;font-weight: 400;">
+          ${item.querySelector("description").innerHTML}
+        </span>
+      </a>
+      <a class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;"  href="${item_link}"> Lees meer ▸</a>
+    </td>
   </tr>
  </tbody>
 </table>`;
@@ -626,10 +708,10 @@ function artikelenKleinItems(item, index) {
         <table class="tableC">
           <tbody>
             <tr>
-              <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 22px; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: regular; font-family: Arial;" href="${item_link}">${item.querySelector("title").innerHTML}</a></td>
+              <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: regular; font-family: Arial;" href="${item_link}">${item.querySelector("title").innerHTML}</a></td>
             </tr>
             <tr>
-              <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 22px; font-weight: regular; font-family: Arial;" href="${item_link}">${item.querySelector("description").innerHTML}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
+              <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: Arial;" href="${item_link}">${item.querySelector("description").innerHTML}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
             </tr>
           </tbody>
         </table>
@@ -658,19 +740,28 @@ fetch("https://cms.frankwatching.com/feed?post_type=vacature")
 
   const items = data.querySelectorAll("item");
 
+  var existVgCC = document.getElementById("vacatureGrootContainerContent");
+  if(existVgCC){
+    existVgCC.innerHTML = ``;
+  }
+
+
   var existVCC = document.getElementById("vacatureContainerContent");
   if(existVCC){
     existVCC.innerHTML = ``;
   }
 
+
+
   setTimeout(function() {
-    items.forEach(functionVacatureItems);
+    items.forEach(functionVacatureKleinItems);
+    items.forEach(functionVacatureGrootItems);
  }, 100);
 
 });
 
 
-function functionVacatureItems(item, index) {
+function functionVacatureKleinItems(item, index) {
 
   var postid = item.querySelector("guid").innerHTML;
   postid = postid.substring(postid.indexOf("p=") + 2);
@@ -705,8 +796,6 @@ function functionVacatureItems(item, index) {
   var vac_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
   var vac_categorie = vac_categorie + '<span class="postPubDate">'+pubdateArray[0]+'</span>';
   var vac_categorie = vac_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
-
-
 
   var vac_categories = item.querySelectorAll("category");
   vac_categories_nodes = Array.prototype.slice.call(vac_categories,0);
@@ -768,7 +857,7 @@ function functionVacatureItems(item, index) {
                                 <td id="vacatureTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="vacatureLink${postid}title" class="titleVacature" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${vac_link}">${item.querySelector("title").innerHTML}</a></td>
                             </tr>
                             <tr>
-                                <td id="vacatureTD${postid}bC" style="display: block; font-size: 16px; line-height: 22px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="vacatureTDbC"><a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 16px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${vac_link}">${description}</a></td>
+                                <td id="vacatureTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="vacatureTDbC"><a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 16px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${vac_link}">${description}</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -794,9 +883,118 @@ function functionVacatureItems(item, index) {
      }
 }
 
+
+function functionVacatureGrootItems(item, index) {
+
+  var postid = item.querySelector("guid").innerHTML;
+  postid = postid.substring(postid.indexOf("p=") + 2);
+
+  var pubdate = item.querySelector("pubDate").innerHTML;
+  var pubdateArray = pubdate.split("+");
+
+  var description = item.querySelector("description").innerHTML;
+  description = description.replace("<![CDATA[", "").replace("]]>", "");
+
+  var vac_org_naam = item.querySelector("*|vac_org_naam").innerHTML;
+  vac_org_naam = htmlDecode(vac_org_naam.replace("<![CDATA[", "").replace("]]>", ""));
+
+  var vac_uur = item.querySelector("*|vac_uur").innerHTML;
+  vac_uur = vac_uur.replace("<![CDATA[", "").replace("]]>", "");
+
+  if( ! vac_uur.includes("uur") ) {
+   vac_uur = vac_uur + " uur";
+  }
+
+  var vac_standplaats = item.querySelector("*|vac_standplaats").innerHTML;
+  vac_standplaats = vac_standplaats.replace("<![CDATA[", "").replace("]]>", "");
+
+  var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+  if(dagWeek != 'dagelijks') {
+    var vac_link = item.querySelector("link").innerHTML + `?utm_source=nb-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+  }
+
+  var enclosure_img = item.querySelector("enclosure").getAttribute("url");
+
+  /* add category */
+  var vac_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
+  var vac_categorie = vac_categorie + '<span class="postPubDate">'+pubdateArray[0]+'</span>';
+  var vac_categorie = vac_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
+
+  var vac_categories = item.querySelectorAll("category");
+  vac_categories_nodes = Array.prototype.slice.call(vac_categories,0);
+  vac_categories_nodes.forEach(function(element) {
+    let formName = element;
+    vac_categorie = vac_categorie + '<span class="categoryClassElement categoryClass'+formName.textContent+'">' + formName.textContent + '</span>';
+  });
+
+  const divCat = document.createElement('div');
+  divCat.className = 'categoryClass';
+  divCat.innerHTML = vac_categorie;
+
+  const div = document.createElement('div');
+   div.className = 'dragrow vacature';
+   div.id = 'vacature'+postid;
+   div.draggable = 'true';
+
+  var daginzet = '<tr><td id="vacatureTD' + postid + 'bMob" class="vacaturetd_mobile" style="display: none;"><a  style="display: none;" id="vacatureImgLink' + postid + '" class="vacatureImgLink_mob" href="'+vac_link+'"><img id="imgVacatureArtikel'+postid+'mob" class="imgVacature_mobile" style="display: none;" src="'+enclosure_img+'" /></a></td></tr> ';
+   if(dagWeek != 'dagelijks') {
+    daginzet = '';
+  }
+
+    div.innerHTML = `
+
+    <table id="artikelGroot${postid}T" style="margin: 0 15px 0 0px !important; display: block;">
+    <tbody id="artikelGroot${postid}Tb">
+     <tr id="artikelGroot${postid}TrB">
+      <td id="artikelGroot${postid}TdB">
+         <a style="padding: 0px;" id="ct11_1" href="${vac_link}">
+           <img id="grootArtikelImg1" class="grootArtikelImg" style="display: block; width: 100%;padding-bottom: 10px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${enclosure_img}" >
+         </a>
+       </td>
+     </tr>
+     <tr id="artikelGroot${postid}TrA">
+      <td id="artikelGroot${postid}TdA">
+       <a class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${vac_link}">
+         ${item.querySelector("title").innerHTML}
+       </a>
+      </td>
+     </tr>
+     <tr id="artikelGroot${postid}TrC">
+      <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
+          <table>
+              <tbody>
+
+                  ${daginzet}
+                  <tr>
+                      <td id="vacatureTD${postid}bA" class="vacatureTDbA"><a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: Arial; color: #019000;" class="metaVacature"><span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: bold; font-family: Arial; color: #019000;">${vac_org_naam}</span><span id="vacatureMeta${postid}b" class="metaVacature" style="font-size: 12px; font-weight: bold; font-family: Arial; color: #666666;"> • ${vac_standplaats} • ${vac_uur}</span></a></td>
+                  </tr>
+                  <tr>
+                      <td id="vacatureTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="vacatureLink${postid}title" class="titleVacature" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${vac_link}">${item.querySelector("title").innerHTML}</a></td>
+                  </tr>
+                  <tr>
+                      <td id="vacatureTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="vacatureTDbC"><a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 16px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${vac_link}">${description}</a></td>
+                  </tr>
+              </tbody>
+          </table>
+       </td>
+     </tr>
+    </tbody>
+   </table>
+    `;
+
+   vacatureGrootContainerContent.appendChild(divCat);
+   vacatureGrootContainerContent.appendChild(div);
+
+   document.getElementById('vacature' + postid).ondragstart = function (event) {
+       event
+         .dataTransfer
+         .setData('text/html', event.target.innerHTML);
+     }
+}
+
 // ## LOAD MARKETING
 "use strict";
-fetch("https://www.frankwatching.com/feed/?post_type=organisation_news") //business channel feed
+fetch("https://www.frankwatching.com/feed/?post_type=organisation") //business channel feed
 .then(response => response.text())
 .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
 .then(data => {
@@ -828,6 +1026,24 @@ function functionMarketingItems(item, index) {
 
   var marketing_link = item.querySelector("link").innerHTML + `?utm_source=al-marketing-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7marketing%7c`;
   var promotion_img = item.querySelector("enclosure").getAttribute("url");
+
+  /* add category */
+  var marketing_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
+  var marketing_categorie = marketing_categorie + '<span class="postPubDate">'+pubdateArray[0]+'</span>';
+  var marketing_categorie = marketing_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
+
+  var marketing_categories = item.querySelectorAll("category");
+  marketing_categories_nodes = Array.prototype.slice.call(marketing_categories,0);
+  marketing_categories_nodes.forEach(function(element) {
+    let formName = element;
+    marketing_categorie = marketing_categorie + '<span class="categoryClassElement categoryClass'+formName.textContent+'">' + formName.textContent + '</span>';
+  });
+
+  const divCat = document.createElement('div');
+  divCat.className = 'categoryClass';
+  divCat.innerHTML = marketing_categorie;
+
+
 
   const div = document.createElement('div');
    div.className = 'dragrow marketing';
@@ -869,7 +1085,7 @@ function functionMarketingItems(item, index) {
                                 <td id="marketingTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="marketingLink${postid}title" class="titlemarketing" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${marketing_link}">${item.querySelector("title").innerHTML}</a></td>
                             </tr>
                             <tr>
-                                <td id="marketingTD${postid}bC" style="display: block; font-size: 16px; line-height: 22px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="marketingTDbC"><a id="marketingLink${postid}description" class="Descriptionmarketing" style="display: block; font-size: 16px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${marketing_link}">${description}</a></td>
+                                <td id="marketingTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="marketingTDbC"><a id="marketingLink${postid}description" class="Descriptionmarketing" style="display: block; font-size: 16px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${marketing_link}">${description}</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -884,7 +1100,7 @@ function functionMarketingItems(item, index) {
     
 
     `;
-
+   marketingContainerContent.appendChild(divCat);
    marketingContainerContent.appendChild(div);
 
    document.getElementById('marketing' + postid).ondragstart = function (event) {
@@ -893,6 +1109,125 @@ function functionMarketingItems(item, index) {
          .setData('text/html', event.target.innerHTML);
      }
 }
+
+
+// ## LOAD BUSINESS CHANNEL
+"use strict";
+fetch("https://www.frankwatching.com/feed/?post_type=organisation_news") //business channel feed
+.then(response => response.text())
+.then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+.then(data => {
+
+  const items = data.querySelectorAll("item");
+
+  var existMCC = document.getElementById("channelContainerContent");
+  if(existMCC){
+    existMCC.innerHTML = ``;
+  }
+
+  setTimeout(function() {
+    items.forEach(functionChannelItems);
+ }, 100);
+
+});
+
+
+function functionChannelItems(item, index) {
+
+  var postid = item.querySelector("guid").innerHTML;
+  postid = postid.substring(postid.indexOf("p=") + 2);
+
+  var pubdate = item.querySelector("pubDate").innerHTML;
+  var pubdateArray = pubdate.split("+");
+
+  var description = item.querySelector("company").innerHTML;
+  description = description.replace("<![CDATA[", "").replace("]]>", "");
+
+  var article_link = item.querySelector("link").innerHTML + `?utm_source=al-channel-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7channel%7c`;
+  var article_img = item.querySelector("enclosure").getAttribute("url");
+
+
+    /* add category */
+    var article_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
+    var article_categorie = article_categorie + '<span class="postPubDate">'+pubdateArray[0]+'</span>';
+    var article_categorie = article_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
+  
+    var article_categories = item.querySelectorAll("category");
+    article_categories_nodes = Array.prototype.slice.call(article_categories,0);
+    article_categories_nodes.forEach(function(element) {
+      let formName = element;
+      article_categorie = article_categorie + '<span class="categoryClassElement categoryClass'+formName.textContent+'">' + formName.textContent + '</span>';
+    });
+  
+    const divCat = document.createElement('div');
+    divCat.className = 'categoryClass';
+    divCat.innerHTML = article_categorie;
+
+  const div = document.createElement('div');
+   div.className = 'dragrow channel';
+   div.id = 'channel'+postid;
+   div.draggable = 'true';
+
+
+    div.innerHTML = `
+
+    <table class="table1a">
+    <tbody>
+      <tr>
+        <td class="tableDivider1a">
+          <a id="imgKleinArtikel${postid}Link" href="${article_link}">
+            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="height: auto; width: 100%; display: block;" src="${article_img}" />
+            </a>
+          </td>
+      </tr>
+    </tbody>
+    </table>
+    <table>
+    <tbody>
+      <tr>
+        <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+          <div class="tdDiv">
+            <a id="imgKlein${postid}Link" href="${article_link}">
+              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="display: none; height: 150px; width: 150px;" src="${article_img}" />
+            </a>
+          </div>
+        </td>
+        <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+          <table class="tableC">
+            <tbody>
+              <tr>
+                <td class="artikelKleinTDcA">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td id="channelTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="channelLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${article_link}">${item.querySelector("title").innerHTML}</a></td>
+                            </tr>
+                            <tr>
+                                <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="channelTDbC"><a id="channelLink${postid}description" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${article_link}">${description}</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+    
+
+    `;
+   channelContainerContent.appendChild(divCat);
+   channelContainerContent.appendChild(div);
+
+   document.getElementById('marketing' + postid).ondragstart = function (event) {
+       event
+         .dataTransfer
+         .setData('text/html', event.target.innerHTML);
+     }
+}
+
 
 
 // Check version extension

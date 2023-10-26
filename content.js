@@ -850,16 +850,32 @@ function functionVacatureKleinItems(item, index) {
                     <table>
                         <tbody>
 
-                            ${daginzet}
-                            <tr>
-                                <td id="vacatureTD${postid}bA" class="vacatureTDbA"><a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: Arial; color: #019000;" class="metaVacature"><span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: bold; font-family: Arial; color: #019000;">${vac_org_naam}</span><span id="vacatureMeta${postid}b" class="metaVacature" style="font-size: 12px; font-weight: bold; font-family: Arial; color: #666666;"> • ${vac_standplaats} • ${vac_uur}</span></a></td>
-                            </tr>
-                            <tr>
-                                <td id="vacatureTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="vacatureLink${postid}title" class="titleVacature" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${vac_link}">${item.querySelector("title").innerHTML}</a></td>
-                            </tr>
-                            <tr>
-                                <td id="vacatureTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="vacatureTDbC"><a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 16px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${vac_link}">${description}</a></td>
-                            </tr>
+                        ${daginzet}
+                        <tr>
+                            <td id="vacatureTD${postid}bA" class="vacatureTDbA">
+                              <a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018000;" class="metaVacature">
+                                <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018000; border-radius: 4px; border: 1px solid #018000; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
+                              </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="vacatureTD${postid}bB">
+                              <a id="vacatureLink${postid}title" class="titleVacature" style="display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto',Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px;margin: 10px 0px 0px 0px" href="${vac_link}">
+                                ${item.querySelector("title").innerHTML}
+                              </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="vacatureTD${postid}bC" style="display: block; font-size: 14px; line-height: 1.3; font-weight: regular; font-family: 'Roboto',Arial; color: #666666; text-decoration: none;" class="vacatureTDbC">
+                              <a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 14px; font-weight: regular; font-family: 'Roboto',Arial; color: #666666; text-decoration: none; padding: 0px;" href="${vac_link}">
+                                ${description}
+                              </a>
+                              <a id="vacatureLink${postid}Link" class="DescriptionVacature" style="display: inline; font-size: 14px; font-weight: regular; font-family: 'Roboto', Arial; color: #1a1a1a; text-decoration: none; padding: 0x 0px 0px 0px;" href="${vac_link}">
+                                Bekijk de vacature >
+                              </a>
+                              
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </td>
@@ -949,16 +965,9 @@ function functionVacatureGrootItems(item, index) {
      <tr id="artikelGroot${postid}TrB">
       <td id="artikelGroot${postid}TdB">
          <a style="padding: 0px;" id="ct11_1" href="${vac_link}">
-           <img id="grootArtikelImg1" class="grootArtikelImg" style="display: block; width: 100%;padding-bottom: 10px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${enclosure_img}" >
+           <img id="grootArtikelImg1" class="grootArtikelImg" style="display: block; width: 100%;padding-bottom: 10px; height: auto; min-height: 55px;max-height: 145px; object-fit: contain;" src="${enclosure_img}" >
          </a>
        </td>
-     </tr>
-     <tr id="artikelGroot${postid}TrA">
-      <td id="artikelGroot${postid}TdA">
-       <a class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${vac_link}">
-         ${item.querySelector("title").innerHTML}
-       </a>
-      </td>
      </tr>
      <tr id="artikelGroot${postid}TrC">
       <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
@@ -967,13 +976,29 @@ function functionVacatureGrootItems(item, index) {
 
                   ${daginzet}
                   <tr>
-                      <td id="vacatureTD${postid}bA" class="vacatureTDbA"><a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: Arial; color: #019000;" class="metaVacature"><span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: bold; font-family: Arial; color: #019000;">${vac_org_naam}</span><span id="vacatureMeta${postid}b" class="metaVacature" style="font-size: 12px; font-weight: bold; font-family: Arial; color: #666666;"> • ${vac_standplaats} • ${vac_uur}</span></a></td>
+                      <td id="vacatureTD${postid}bA" class="vacatureTDbA">
+                        <a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018000;" class="metaVacature">
+                          <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018000; border-radius: 4px; border: 1px solid #018000; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
+                        </a>
+                      </td>
                   </tr>
                   <tr>
-                      <td id="vacatureTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="vacatureLink${postid}title" class="titleVacature" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${vac_link}">${item.querySelector("title").innerHTML}</a></td>
+                      <td id="vacatureTD${postid}bB">
+                        <a id="vacatureLink${postid}title" class="titleVacature" style="display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto',Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px;margin: 10px 0px 0px 0px" href="${vac_link}">
+                          ${item.querySelector("title").innerHTML}
+                        </a>
+                      </td>
                   </tr>
                   <tr>
-                      <td id="vacatureTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="vacatureTDbC"><a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 16px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${vac_link}">${description}</a></td>
+                      <td id="vacatureTD${postid}bC" style="display: block; font-size: 14px; line-height: 1.3; font-weight: regular; font-family: 'Roboto',Arial; color: #666666; text-decoration: none;" class="vacatureTDbC">
+                        <a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 14px; font-weight: regular; font-family: 'Roboto',Arial; color: #666666; text-decoration: none; padding: 0px;" href="${vac_link}">
+                          ${description}
+                        </a>
+                        <a id="vacatureLink${postid}Link" class="DescriptionVacature" style="display: inline; font-size: 14px; font-weight: regular; font-family: 'Roboto', Arial; color: #1a1a1a; text-decoration: none; padding: 0x 0px 0px 0px;" href="${vac_link}">
+                          Bekijk de vacature >
+                        </a>
+                        
+                      </td>
                   </tr>
               </tbody>
           </table>
@@ -1056,11 +1081,11 @@ function functionMarketingItems(item, index) {
 
 
     div.innerHTML = `
-          <a id="marketing-${postid}-Link" href="${marketing_link}">
-            <div style="border: 1px solid green; border-radius: 4px; padding: 7px 10px; width: 100%; margin: 30px 0;">
-              <p style="color: #018000; text-align: center; padding: 5px 10px; margin: 0">${promotion_announcement}</p>
-            </div> 
-          </a>
+            <a id="marketing-${postid}-Link" href="${marketing_link}">
+              <div style="border: 1px solid green; border-radius: 4px; padding: 7px 10px; width: 100%; margin: 30px 0;">
+                <p style="color: #018000; text-align: center; padding: 5px 10px; margin: 0">${promotion_announcement}</p>
+              </div> 
+            </a>
     `;
    marketingContainerContent.appendChild(divCat);
    marketingContainerContent.appendChild(div);

@@ -565,6 +565,7 @@ fetch(newsrss)
     div.id = 'headingArtikelGroot';
     div.innerHTML =  `Gesorteerd op populariteit`;
     existGCC.appendChild(div);
+    //existKCC.appendChild(div);
   }
 
   setTimeout(function() {
@@ -994,7 +995,7 @@ function functionVacatureGrootItems(item, index) {
 
 // ## LOAD MARKETING
 "use strict";
-fetch("https://www.frankwatching.com/feed/?post_type=organisation") //business channel feed
+fetch("https://wp.frankwatching.com/feed?post_type=promotion") //cams feed nieuwe wordpress backend
 .then(response => response.text())
 .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
 .then(data => {
@@ -1021,18 +1022,21 @@ function functionMarketingItems(item, index) {
   var pubdate = item.querySelector("pubDate").innerHTML;
   var pubdateArray = pubdate.split("+");
 
-  var description = item.querySelector("description").innerHTML;
-  description = description.replace("<![CDATA[", "").replace("]]>", "");
+  var promotion_announcement = item.querySelector("promotion_announcement").innerHTML;
+  promotion_announcement = promotion_announcement.replace("<![CDATA[", "").replace("]]>", "");
 
-  var marketing_link = item.querySelector("link").innerHTML + `?utm_source=al-marketing-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7marketing%7c`;
-  var promotion_img = item.querySelector("enclosure").getAttribute("url");
+  //var description = item.querySelector("description").innerHTML;
+  //description = description.replace("<![CDATA[", "").replace("]]>", "");
+
+  var marketing_link = item.querySelector("link").innerHTML + `?utm_source=al-marketing-&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7marketing%7c`;
+  //var promotion_img = item.querySelector("promotion_image").getAttribute("url");
 
   /* add category */
-  var marketing_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
+ // var marketing_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
   var marketing_categorie = marketing_categorie + '<span class="postPubDate">'+pubdateArray[0]+'</span>';
   var marketing_categorie = marketing_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
 
-  var marketing_categories = item.querySelectorAll("category");
+  var marketing_categories = item.querySelectorAll("promotion_type");
   marketing_categories_nodes = Array.prototype.slice.call(marketing_categories,0);
   marketing_categories_nodes.forEach(function(element) {
     let formName = element;
@@ -1052,53 +1056,11 @@ function functionMarketingItems(item, index) {
 
 
     div.innerHTML = `
-
-    <table class="table1a">
-    <tbody>
-      <tr>
-        <td class="tableDivider1a">
-          <a id="imgKleinArtikel${postid}Link" href="${marketing_link}">
-            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="height: auto; width: 100%; display: block;" src="${promotion_img}" />
-            </a>
-          </td>
-      </tr>
-    </tbody>
-    </table>
-    <table>
-    <tbody>
-      <tr>
-        <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-          <div class="tdDiv">
-            <a id="imgKlein${postid}Link" href="${marketing_link}">
-              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="display: none; height: 150px; width: 150px;" src="${promotion_img}" />
-            </a>
-          </div>
-        </td>
-        <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
-          <table class="tableC">
-            <tbody>
-              <tr>
-                <td class="artikelKleinTDcA">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td id="marketingTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="marketingLink${postid}title" class="titlemarketing" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${marketing_link}">${item.querySelector("title").innerHTML}</a></td>
-                            </tr>
-                            <tr>
-                                <td id="marketingTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="marketingTDbC"><a id="marketingLink${postid}description" class="Descriptionmarketing" style="display: block; font-size: 16px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${marketing_link}">${description}</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-      </tr>
-    </tbody>
-    </table>
-    
-
+          <a id="marketing-${postid}-Link" href="${marketing_link}">
+            <div style="border: 1px solid green; border-radius: 4px; padding: 7px 10px; width: 100%; margin: 30px 0;">
+              <p style="color: #018000; text-align: center; padding: 5px 10px; margin: 0">${promotion_announcement}</p>
+            </div> 
+          </a>
     `;
    marketingContainerContent.appendChild(divCat);
    marketingContainerContent.appendChild(div);

@@ -368,43 +368,7 @@ fetch("https://www.frankwatching.com/feed/academy/upcoming/")
     // console.log('List agenda items empty');
     existAAC.innerHTML = `
 
-    <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="width: 100%; margin: auto; margin-bottom:30px;" class="stack-column-center"
-      <tbody>
-        <tr>
-          <td dir="ltr" width="100%" style="padding: 0px; background-color: #ffffff;">
-            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-              <tbody>
-                <tr><!-- Column : BEGIN -->
-                  <td class="stack-column-center" style="text-align: left;" width="50%">
-                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="padding: 15px;">
-                      <tbody>
-                        <tr>
-                          <td dir="ltr" valign="top">
-                          
-                          <h3 style="font-style: normal;font-weight: 700;font-size:22px;line-height: 1.3;color: #333333;">📅 <span style="color: #018A00">Frank</span>watching Agenda</h3>
-                          </td>
-
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                  <!-- Column : END --> <!-- Column : BEGIN -->
-                  <td class="stack-column-center" style="text-align: right;" width="50%">
-                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-                      <tbody>
-                        <tr>
-                          <a href="https://www.frankwatching.com/academy" style="text-align: right;font-style: normal;font-weight: 400;font-size: 14px;line-height: 17px;color: #0E5C8C;">Meer trainingen en online cursussen</a>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                  <!-- Column : END --></tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-        <!-- Logo Left, Text Right : end --></tbody>
-    </table>
+   
     <div id="academyTable" style="padding: 10px;"></div>`;
 
   }
@@ -435,14 +399,15 @@ function agendaItems(item, index) {
 
   var cell2 = document.createElement("div"); // Create a div element for cell2
   cell2.innerHTML = `
-    <table id="contentAcademyAgenda" style="width: 200px; background: #e4e4e4; border-collapse: collapse; width: 50%;" align="left">
+    <table id="contentAcademyAgenda" style="width: 200px; background: #F2F2F2; border-collapse: collapse; width: 50%;padding: 8px 10px;
+    display: table-cell;" align="left">
       <tbody>
       <tr>
-        <td style="width: 41px; padding: 3px;">
-          <table>
+        <td style="width: 42px; display: block;">
+          <table width="40px">
             <tbody>
               <tr>
-                <td align="center" style="background: red; color: white; font-size: small; text-align: center;">${dateMonth}</td>
+                <td align="center" style="background: #C91C18; color: white; font-size: small; text-align: center;">${dateMonth}</td>
               </tr>
               <tr>
               <td align="center" style="background: white; color: black; font-weight: bold;text-align: center;">${dateDay}</td>
@@ -452,19 +417,19 @@ function agendaItems(item, index) {
         </td>
       <td style="">
 
-        <table id="contentAcademy">
+        <table id="contentAcademy" style="margin-left: 10px !important;">
           <tbody>
           <tr>
             <td>
               <a id="agendaAcademy${postid}" class="agendaItem" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-                <span class="agendaAcademyTitle" style="color: rgb(24, 96, 139);text-overflow: ellipsis;">${title}</span>
+                <span class="agendaAcademyTitle" style="font-size: 14px; color: #0E5C8C;text-overflow: ellipsis; font-weight: bold;text-wrap: nowrap;">${title}</span>
               </a>
             </td>
           </tr>
           <tr>
             <td>
               <a id="agendaAcademy${postid}" class="agendaItem" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-                <span style="font-size: 12px; color: rgb(158, 158, 158);">${location} | ${durration}
+                <span style="font-size: 14px; color: rgb(158, 158, 158);">${location} | ${durration}
                 </span>
               </a>
             </td>
@@ -853,8 +818,8 @@ function functionVacatureKleinItems(item, index) {
                         ${daginzet}
                         <tr>
                             <td id="vacatureTD${postid}bA" class="vacatureTDbA">
-                              <a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018000;" class="metaVacature">
-                                <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018000; border-radius: 4px; border: 1px solid #018000; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
+                              <a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaVacature">
+                                <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
                               </a>
                             </td>
                         </tr>
@@ -868,10 +833,7 @@ function functionVacatureKleinItems(item, index) {
                         <tr>
                             <td id="vacatureTD${postid}bC" style="display: block; font-size: 14px; line-height: 1.3; font-weight: regular; font-family: 'Roboto',Arial; color: #666666; text-decoration: none;" class="vacatureTDbC">
                               <a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 14px; font-weight: regular; font-family: 'Roboto',Arial; color: #666666; text-decoration: none; padding: 0px;" href="${vac_link}">
-                                ${description}
-                              </a>
-                              <a id="vacatureLink${postid}Link" class="DescriptionVacature" style="display: inline; font-size: 14px; font-weight: regular; font-family: 'Roboto', Arial; color: #1a1a1a; text-decoration: none; padding: 0x 0px 0px 0px;" href="${vac_link}">
-                                Bekijk de vacature >
+                                ${description} Bekijk de vacature ▸
                               </a>
                               
                             </td>
@@ -886,7 +848,6 @@ function functionVacatureKleinItems(item, index) {
       </tr>
     </tbody>
     </table>
-    
 
     `;
 
@@ -977,8 +938,8 @@ function functionVacatureGrootItems(item, index) {
                   ${daginzet}
                   <tr>
                       <td id="vacatureTD${postid}bA" class="vacatureTDbA">
-                        <a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018000;" class="metaVacature">
-                          <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018000; border-radius: 4px; border: 1px solid #018000; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
+                        <a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaVacature">
+                          <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
                         </a>
                       </td>
                   </tr>
@@ -1082,8 +1043,8 @@ function functionMarketingItems(item, index) {
 
     div.innerHTML = `
             <a id="marketing-${postid}-Link" href="${marketing_link}">
-              <div style="border: 1px solid green; border-radius: 4px; padding: 7px 10px; width: 100%; margin: 30px 0;">
-                <p style="color: #018000; text-align: center; padding: 5px 10px; margin: 0">${promotion_announcement}</p>
+              <div style="border: 1px solid green; border-radius: 4px; width: 100%; margin: 30px 0;">
+                <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0">${promotion_announcement}</p>
               </div> 
             </a>
     `;

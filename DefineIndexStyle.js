@@ -328,8 +328,8 @@ headlinesOverlay.style.zIndex = "19300";
   shl2b.id = "sheadline2b";
   shl2b.style.display = "inline";
   shl2b.style.alignContent= "right";
-  shl2b.style.border="1px solid #018000"
-  shl2b.style.color="#018000"
+  shl2b.style.border="1px solid #018A00"
+  shl2b.style.color="#018A00"
   shl2b.style.cssFloat="right"
   shl2b.style.fontSize="9px"
 
@@ -372,8 +372,8 @@ headlinesOverlay.style.zIndex = "19300";
   shl5b.id = "sheadline5b";
   shl5b.style.display = "inline";
   shl5b.style.alignContent= "right";
-  shl5b.style.border="1px solid #018000"
-  shl5b.style.color="#018000"
+  shl5b.style.border="1px solid #018A00"
+  shl5b.style.color="#018A00"
   shl5b.style.cssFloat="right"
   shl5b.style.fontSize="9px"
 

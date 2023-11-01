@@ -563,8 +563,6 @@ function functionVacatureItems(item, index) {
   var vac_categorie = vac_categorie + '<span class="postPubDate">'+pubdateArray[0]+'</span>';
   var vac_categorie = vac_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
 
-
-
   var vac_categories = item.querySelectorAll("category");
   vac_categories_nodes = Array.prototype.slice.call(vac_categories,0);
   vac_categories_nodes.forEach(function(element) {
@@ -586,31 +584,73 @@ function functionVacatureItems(item, index) {
     daginzet = '';
   }
 
-   div.innerHTML = `
-   <table id="vacatureTable${postid}" style="margin: 0px 0px 20px;">
-       <tbody>
-           <tr>
-               <td class="vacTableDivider1" width="30%" height="150px" style="vertical-align: top;"><a></a><a id="vacatureImgLink${postid}" class="vacatureImgLink" href="${vac_link}"><img id="imgVacatureArtikel${postid}" class="imgVacature" style="display: block; height: auto; width: 150px;" src="${enclosure_img}" /></a></td>
-               <td class="vacTableDivider2" height="150px" width="auto" style="vertical-align: top;">
-                   <table>
-                       <tbody>
+    div.innerHTML = `
 
-                           ${daginzet}
-                           <tr>
-                               <td id="vacatureTD${postid}bA" class="vacatureTDbA"><a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: Arial; color: #019000;" class="metaVacature"><span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: bold; font-family: Arial; color: #019000;">${vac_org_naam}</span><span id="vacatureMeta${postid}b" class="metaVacature" style="font-size: 12px; font-weight: bold; font-family: Arial; color: #666666;"> • ${vac_standplaats} • ${vac_uur}</span></a></td>
-                           </tr>
-                           <tr>
-                               <td id="vacatureTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="vacatureLink${postid}title" class="titleVacature" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${vac_link}">${item.querySelector("title").innerHTML}</a></td>
-                           </tr>
-                           <tr>
-                               <td id="vacatureTD${postid}bC" style="display: block; font-size: 16px; line-height: 22px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="vacatureTDbC"><a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 16px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${vac_link}">${description}</a></td>
-                           </tr>
-                       </tbody>
-                   </table>
-               </td>
-           </tr>
-       </tbody>
-   </table> `;
+    <table class="table1a">
+    <tbody>
+      <tr>
+        <td class="tableDivider1a">
+          <a id="imgKleinArtikel${postid}Link" href="${vac_link}">
+            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="height: auto; width: 100%; display: block; max-width: 150px !important; margin: 15px 0; " src="${enclosure_img}" />
+            </a>
+          </td>
+      </tr>
+    </tbody>
+    </table>
+    <table>
+    <tbody>
+      <tr>
+        <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+          <div class="tdDiv">
+            <a id="imgKlein${postid}Link" href="${vac_link}">
+              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="display: none; height: 150px; width: 150px;" src="${enclosure_img}" />
+            </a>
+          </div>
+        </td>
+        <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+          <table class="tableC">
+            <tbody>
+              <tr>
+                <td class="artikelKleinTDcA">
+                    <table>
+                        <tbody>
+
+                        ${daginzet}
+                        <tr>
+                            <td id="vacatureTD${postid}bA" class="vacatureTDbA">
+                              <a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaVacature">
+                                <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
+                              </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="vacatureTD${postid}bB">
+                              <a id="vacatureLink${postid}title" class="titleVacature" style="display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto',Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px;margin: 10px 0px 0px 0px" href="${vac_link}">
+                                ${item.querySelector("title").innerHTML}
+                              </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="vacatureTD${postid}bC" style="display: block; font-size: 14px; line-height: 1.3; font-weight: regular; font-family: 'Roboto',Arial; color: #666666; text-decoration: none;" class="vacatureTDbC">
+                              <a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 14px; font-weight: regular; font-family: 'Roboto',Arial; color: #666666; text-decoration: none; padding: 0px;" href="${vac_link}">
+                                ${description} Bekijk de vacature ▸
+                              </a>
+                              
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+    `;
+
    vacatureContainerContent.appendChild(divCat);
    vacatureContainerContent.appendChild(div);
 

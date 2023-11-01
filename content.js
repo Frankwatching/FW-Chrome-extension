@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.0.3";
+let versionid = "3.0.4";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -591,7 +591,7 @@ function functionVacatureItems(item, index) {
       <tr>
         <td class="tableDivider1a">
           <a id="imgKleinArtikel${postid}Link" href="${vac_link}">
-            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="height: auto; width: 100%; display: block; max-width: 150px !important; margin: 15px 0; " src="${enclosure_img}" />
+            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="height: auto; width: 100%; display: block; max-width: 200px !important; margin: 15px 0; " src="${enclosure_img}" />
             </a>
           </td>
       </tr>

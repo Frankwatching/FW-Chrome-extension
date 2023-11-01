@@ -579,7 +579,7 @@ function functionVacatureItems(item, index) {
    div.id = 'vacature'+postid;
    div.draggable = 'true';
 
-  var daginzet = '<tr><td id="vacatureTD' + postid + 'bMob" class="vacaturetd_mobile" style="display: none;"><a  style="display: none;" id="vacatureImgLink' + postid + '" class="vacatureImgLink_mob" href="'+vac_link+'"><img id="imgVacatureArtikel'+postid+'mob" class="imgVacature_mobile" style="display: none;" src="'+enclosure_img+'" /></a></td></tr> ';
+  var daginzet = '<tr><td id="vacatureTD' + postid + 'bMob" class="vacaturetd_mobile" style="display: none;"><a style="display: none;" id="vacatureImgLink' + postid + '" class="vacatureImgLink_mob" href="'+vac_link+'"><img id="imgVacatureArtikel'+postid+'mob" class="imgVacature_mobile" style="display: none;" src="'+enclosure_img+'" /></a></td></tr> ';
    if(dagWeek != 'dagelijks') {
     daginzet = '';
   }
@@ -603,7 +603,7 @@ function functionVacatureItems(item, index) {
         <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
           <div class="tdDiv">
             <a id="imgKlein${postid}Link" href="${vac_link}">
-              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="display: none; height: 150px; width: 150px;" src="${enclosure_img}" />
+              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="display: none; width: 100%; height: auto; max-width: 175px; margin: auto;" src="${enclosure_img}" />
             </a>
           </div>
         </td>
@@ -631,9 +631,9 @@ function functionVacatureItems(item, index) {
                             </td>
                         </tr>
                         <tr>
-                            <td id="vacatureTD${postid}bC" style="display: block; font-size: 14px; line-height: 1.3; font-weight: regular; font-family: 'Roboto',Arial; color: #666666; text-decoration: none;" class="vacatureTDbC">
-                              <a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 14px; font-weight: regular; font-family: 'Roboto',Arial; color: #666666; text-decoration: none; padding: 0px;" href="${vac_link}">
-                                ${description} Bekijk de vacature ▸
+                            <td id="vacatureTD${postid}bC" style="display: block; font-size: 14px; line-height: 1.3; font-weight: regular; font-family: 'Roboto',Arial; color: #333333; text-decoration: none;" class="vacatureTDbC">
+                              <a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 14px; font-weight: regular; font-family: 'Roboto',Arial; color: #333333; text-decoration: none; padding: 0px;" href="${vac_link}">
+                                ${description} <span style="color: #0E5C8C;    font-size: 16px; ">Bekijk vacature ▸</span>
                               </a>
                               
                             </td>

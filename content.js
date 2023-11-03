@@ -791,7 +791,7 @@ function functionVacatureKleinItems(item, index) {
       <tr>
         <td class="tableDivider1a">
           <a id="imgKleinArtikel${postid}Link" href="${vac_link}">
-            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="height: auto; width: 100%; display: block;" src="${enclosure_img}" />
+            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="height: auto; width: 100%; display: block; max-width: 200px !important; margin: 15px 0; " src="${enclosure_img}" />
             </a>
           </td>
       </tr>
@@ -803,7 +803,7 @@ function functionVacatureKleinItems(item, index) {
         <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
           <div class="tdDiv">
             <a id="imgKlein${postid}Link" href="${vac_link}">
-              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="display: none; height: 150px; width: 150px;" src="${enclosure_img}" />
+              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="display: none; width: 100%; height: auto; max-width: 175px; margin: auto;" src="${enclosure_img}" />
             </a>
           </div>
         </td>
@@ -831,9 +831,9 @@ function functionVacatureKleinItems(item, index) {
                             </td>
                         </tr>
                         <tr>
-                            <td id="vacatureTD${postid}bC" style="display: block; font-size: 14px; line-height: 1.3; font-weight: regular; font-family: 'Roboto',Arial; color: #666666; text-decoration: none;" class="vacatureTDbC">
-                              <a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 14px; font-weight: regular; font-family: 'Roboto',Arial; color: #666666; text-decoration: none; padding: 0px;" href="${vac_link}">
-                                ${description} Bekijk de vacature ▸
+                            <td id="vacatureTD${postid}bC" style="display: block; font-size: 14px; line-height: 1.3; font-weight: regular; font-family: 'Roboto',Arial; color: #333333; text-decoration: none;" class="vacatureTDbC">
+                              <a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 14px; font-weight: regular; font-family: 'Roboto',Arial; color: #333333; text-decoration: none; padding: 0px;" href="${vac_link}">
+                                ${description} <span style="color: #0E5C8C;    font-size: 16px; ">Bekijk vacature ▸</span>
                               </a>
                               
                             </td>

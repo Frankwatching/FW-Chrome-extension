@@ -53,6 +53,15 @@ sendDate = document.getElementById("sendDateSelector").value;
 sendDate = sendDate.replace("-","");
 sendDate = sendDate.replace("-","");
 
+
+// ## DATA SOURCES
+
+jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature';
+agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/';
+marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion';
+bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news';
+
+
 // ## buttons
 
 document.getElementById('headlinesButton').onclick = function (event2) {
@@ -354,9 +363,11 @@ document.getElementById('headlinesOverlay').ondragstart = function (event) {
 }
 
 
+
+
 // ## LOAD AGENDA
 "use strict";
-fetch("https://www.frankwatching.com/feed/academy/upcoming/")
+fetch(agendarss)
 .then(response => response.text())
 .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
 .then(data => {
@@ -502,6 +513,10 @@ if ( listSort === 'popularity') {
 
 if ( searchID ) {
   newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?postid='+ searchID;
+  jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature&postid='+ searchID;
+  agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?postid='+ searchID;
+  marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&postid='+ searchID;
+  bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news&postid='+ searchID;
 }
 
 console.log('RSS:' + newsrss);
@@ -699,7 +714,7 @@ function artikelenKleinItems(item, index) {
 
 // ## LOAD VACATURES
 "use strict";
-fetch("https://cms.frankwatching.com/feed?post_type=vacature")
+fetch(jobrss)
 .then(response => response.text())
 .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
 .then(data => {
@@ -847,7 +862,7 @@ function functionVacatureKleinItems(item, index) {
         </td>
       </tr>
     </tbody>
-    </table>
+    </table>  
 
     `;
 
@@ -981,7 +996,7 @@ function functionVacatureGrootItems(item, index) {
 
 // ## LOAD MARKETING
 "use strict";
-fetch("https://wp.frankwatching.com/feed?post_type=promotion") //cams feed nieuwe wordpress backend
+fetch(marketingrss) //cams feed nieuwe wordpress backend
 .then(response => response.text())
 .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
 .then(data => {
@@ -1061,7 +1076,7 @@ function functionMarketingItems(item, index) {
 
 // ## LOAD BUSINESS CHANNEL
 "use strict";
-fetch("https://www.frankwatching.com/feed/?post_type=organisation_news") //business channel feed
+fetch(bcrss) //business channel feed
 .then(response => response.text())
 .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
 .then(data => {

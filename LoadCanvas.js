@@ -181,7 +181,7 @@ var switchListFormText = document.createElement('span');
 
 let listSort = "normal";
 
-artikelenKleinContainer.appendChild( switchListFormSelect );
+contentIndex.appendChild( switchListFormSelect );
 switchListFormSelect.appendChild( switchListForm );
 switchListForm.appendChild( switchListFormDiv );
 switchListFormDiv.appendChild( switchListFormLabel );

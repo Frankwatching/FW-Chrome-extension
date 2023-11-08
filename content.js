@@ -54,13 +54,6 @@ sendDate = sendDate.replace("-","");
 sendDate = sendDate.replace("-","");
 
 
-// ## DATA SOURCES
-
-jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature';
-agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/';
-marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion';
-bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news';
-
 
 // ## buttons
 
@@ -244,6 +237,35 @@ document.getElementById('vacatureGrootButton').onclick = function (event7) {
   channelButtonImg.className = "ButtonImg";
 }
 
+
+// ## DATA SOURCES
+
+jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature';
+agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/';
+marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion';
+bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news';
+newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?poststatus=future-publish';
+
+if ( listSort === 'popularity') {
+  newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?popularity';
+}
+
+if ( searchID ) {
+  newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?postid='+ searchID;
+  console.log('news RSS:' + newsrss);
+  jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature&postid='+ searchID;
+  console.log('jobs RSS:' + jobrss);
+  agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?postid='+ searchID;
+  console.log('agenda RSS:' + agendarss);
+  marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&postid='+ searchID;
+  console.log('marketing RSS:' + marketingrss);
+  bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news&postid='+ searchID;
+  console.log('bc RSS:' + bcrss);
+}
+
+console.log('RSS:' + newsrss);
+
+
 // ## LOAD HEADLINES - 8 uur artikel
 var futureHeadlineText = 'Voorbeeld';
 var futureHeadlineLink = 'https://voorbeeld.frankwatching.com/?';
@@ -367,31 +389,39 @@ document.getElementById('headlinesOverlay').ondragstart = function (event) {
 
 // ## LOAD AGENDA
 "use strict";
-fetch(agendarss)
-.then(response => response.text())
-.then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-.then(data => {
 
-  const items = data.querySelectorAll("item");
-
-  var existAAC = document.getElementById("agendaAcademyContainer");
-  if(existAAC){
-    // console.log('List agenda items empty');
-    existAAC.innerHTML = `
-
-   
-    <div id="academyTable" style="padding: 10px;"></div>`;
-
-  }
-
-  setTimeout(function() {
-    for (var i = 0, len = 4; i < len; i++) {
-      agendaItems(items[i]);
+async function loadAgenda() {
+  try {
+    const response = await fetch(agendarss); // Fetch the RSS feed
+    if (!response.ok) {
+      throw new Error(`Failed to fetch the RSS feed. Status: ${response.status}`);
     }
 
- }, 100);
+    const xmlText = await response.text();
+    const parser = new DOMParser();
+    const data = parser.parseFromString(xmlText, "text/xml");
 
-});
+    const items = data.querySelectorAll("item");
+
+    const agendaAcademyContainer = document.getElementById("agendaAcademyContainer");
+    if (agendaAcademyContainer) {
+      agendaAcademyContainer.innerHTML = `
+        <div id="academyTable" style="padding: 10px;"></div>
+      `;
+    }
+
+    await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
+
+    for (let i = 0; i < 4 && i < items.length; i++) {
+      agendaItems(items[i]);
+    }
+  } catch (error) {
+    console.error("Error loading agenda items:", error);
+  }
+}
+
+loadAgenda();
+
 
 
 function agendaItems(item, index) {
@@ -505,55 +535,49 @@ document.getElementById('agendaOverlay').ondragstart = function (event) {
      // console.log('dragstart');
 }
 
-newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?poststatus=future-publish';
-
-if ( listSort === 'popularity') {
-  newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?popularity';
-}
-
-if ( searchID ) {
-  newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?postid='+ searchID;
-  jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature&postid='+ searchID;
-  agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?postid='+ searchID;
-  marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&postid='+ searchID;
-  bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news&postid='+ searchID;
-}
-
-console.log('RSS:' + newsrss);
-
 // ## LOAD ARTIKELEN
 "use strict";
-fetch(newsrss)
-.then(response => response.text())
-.then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-.then(data => {
 
-  const items = data.querySelectorAll("item");
+async function loadNews() {
+  try {
+    const response = await fetch(newsrss); // Fetch the RSS feed
+    if (!response.ok) {
+      throw new Error(`Failed to fetch the RSS feed. Status: ${response.status}`);
+    }
 
-  var existGCC = document.getElementById("artikelenGrootContainerContent");
-  if(existGCC){
-    existGCC.innerHTML = ``;
-  }
+    const xmlText = await response.text();
+    const parser = new DOMParser();
+    const data = parser.parseFromString(xmlText, "text/xml");
 
-  var existKCC = document.getElementById("artikelenKleinContainerContent");
-  if(existKCC){
-    existKCC.innerHTML = ``;
-  }
+    const items = data.querySelectorAll("item");
 
-  if ( listSort === 'popularity') {
-    const div = document.createElement('div');
-    div.id = 'headingArtikelGroot';
-    div.innerHTML =  `Gesorteerd op populariteit`;
-    existGCC.appendChild(div);
-    //existKCC.appendChild(div);
-  }
+    const artikelenGrootContainerContent = document.getElementById("artikelenGrootContainerContent");
+    if (artikelenGrootContainerContent) {
+      artikelenGrootContainerContent.innerHTML = "";
+    }
 
-  setTimeout(function() {
+    const artikelenKleinContainerContent = document.getElementById("artikelenKleinContainerContent");
+    if (artikelenKleinContainerContent) {
+      artikelenKleinContainerContent.innerHTML = "";
+    }
+
+    if (listSort === 'popularity') {
+      const div = document.createElement('div');
+      div.id = 'headingArtikelGroot';
+      div.innerHTML =  `Gesorteerd op populariteit`;
+      artikelenGrootContainerContent.appendChild(div);
+    }
+
+    await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
+
     items.forEach(artikelenGrootItems);
     items.forEach(artikelenKleinItems);
- }, 100);
+  } catch (error) {
+    console.error("Error loading news articles:", error);
+  }
+}
 
-});
+loadNews();
 
 function artikelenGrootItems(item, index) {
 
@@ -596,7 +620,7 @@ function artikelenGrootItems(item, index) {
   <tr id="artikelGroot${postid}TrB">
    <td id="artikelGroot${postid}TdB">
       <a style="padding: 0px;" id="ct11_1" href="${item_link}">
-        <img id="grootArtikelImg1" class="grootArtikelImg" style="display: block; width: 100%;padding-bottom: 10px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
+        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 8px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
       </a>
     </td>
   </tr>
@@ -675,7 +699,7 @@ function artikelenKleinItems(item, index) {
   <table class="table1a">
   <tbody>
     <tr>
-      <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="height: auto; width: 100%; display: block;" src="${item_img_groot}" /></a></td>
+      <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 8px;height: auto; width: 100%; display: block;" src="${item_img_groot}" /></a></td>
     </tr>
   </tbody>
   </table>
@@ -683,7 +707,7 @@ function artikelenKleinItems(item, index) {
   <tbody>
     <tr>
       <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-        <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="display: none; height: 150px; width: 150px;" src="${item_img_klein}" /></a></div>
+        <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 8px;display: none; height: 150px; width: 150px;" src="${item_img_klein}" /></a></div>
       </td>
       <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
         <table class="tableC">
@@ -714,32 +738,40 @@ function artikelenKleinItems(item, index) {
 
 // ## LOAD VACATURES
 "use strict";
-fetch(jobrss)
-.then(response => response.text())
-.then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-.then(data => {
 
-  const items = data.querySelectorAll("item");
+async function loadVacatures() {
+  try {
+    const response = await fetch(jobrss); // Fetch the RSS feed
+    if (!response.ok) {
+      throw new Error(`Failed to fetch the RSS feed. Status: ${response.status}`);
+    }
 
-  var existVgCC = document.getElementById("vacatureGrootContainerContent");
-  if(existVgCC){
-    existVgCC.innerHTML = ``;
-  }
+    const xmlText = await response.text();
+    const parser = new DOMParser();
+    const data = parser.parseFromString(xmlText, "text/xml");
 
+    const items = data.querySelectorAll("item");
 
-  var existVCC = document.getElementById("vacatureContainerContent");
-  if(existVCC){
-    existVCC.innerHTML = ``;
-  }
+    const vacatureGrootContainerContent = document.getElementById("vacatureGrootContainerContent");
+    if (vacatureGrootContainerContent) {
+      vacatureGrootContainerContent.innerHTML = "";
+    }
 
+    const vacatureContainerContent = document.getElementById("vacatureContainerContent");
+    if (vacatureContainerContent) {
+      vacatureContainerContent.innerHTML = "";
+    }
 
+    await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
 
-  setTimeout(function() {
     items.forEach(functionVacatureKleinItems);
     items.forEach(functionVacatureGrootItems);
- }, 100);
+  } catch (error) {
+    console.error("Error loading vacancies:", error);
+  }
+}
 
-});
+loadVacatures();
 
 
 function functionVacatureKleinItems(item, index) {
@@ -834,7 +866,7 @@ function functionVacatureKleinItems(item, index) {
                         <tr>
                             <td id="vacatureTD${postid}bA" class="vacatureTDbA">
                               <a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaVacature">
-                                <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
+                                <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 8px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
                               </a>
                             </td>
                         </tr>
@@ -941,7 +973,7 @@ function functionVacatureGrootItems(item, index) {
      <tr id="artikelGroot${postid}TrB">
       <td id="artikelGroot${postid}TdB">
          <a style="padding: 0px;" id="ct11_1" href="${vac_link}">
-           <img id="grootArtikelImg1" class="grootArtikelImg" style="display: block; width: 100%;padding-bottom: 10px; height: auto; min-height: 55px;max-height: 145px; object-fit: contain;" src="${enclosure_img}" >
+           <img id="grootArtikelImg1" class="grootArtikelImg" style="display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 55px;max-height: 145px; object-fit: contain;" src="${enclosure_img}" >
          </a>
        </td>
      </tr>
@@ -954,7 +986,7 @@ function functionVacatureGrootItems(item, index) {
                   <tr>
                       <td id="vacatureTD${postid}bA" class="vacatureTDbA">
                         <a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaVacature">
-                          <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
+                          <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 8px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
                         </a>
                       </td>
                   </tr>
@@ -996,103 +1028,105 @@ function functionVacatureGrootItems(item, index) {
 
 // ## LOAD MARKETING
 "use strict";
-fetch(marketingrss) //cams feed nieuwe wordpress backend
-.then(response => response.text())
-.then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-.then(data => {
 
-  const items = data.querySelectorAll("item");
+async function loadMarketing() {
+  try {
+    const response = await fetch(marketingrss); // Fetch the RSS feed
+    if (!response.ok) {
+      throw new Error(`Failed to fetch the RSS feed. Status: ${response.status}`);
+    }
 
-  var existMCC = document.getElementById("marketingContainerContent");
-  if(existMCC){
-    existMCC.innerHTML = ``;
+    const xmlText = await response.text();
+    const parser = new DOMParser();
+    const data = parser.parseFromString(xmlText, "text/xml");
+
+    const items = data.querySelectorAll("item");
+
+    const marketingContainerContent = document.getElementById("marketingContainerContent");
+    if (marketingContainerContent) {
+      marketingContainerContent.innerHTML = "";
+    }
+
+    await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
+
+    items.forEach(item => functionMarketingItems(item));
+  } catch (error) {
+    console.error("Error loading marketing:", error);
   }
+}
 
-  setTimeout(function() {
-    items.forEach(functionMarketingItems);
- }, 100);
+loadMarketing();
 
-});
 
 
 function functionMarketingItems(item, index) {
-
   var postid = item.querySelector("guid").innerHTML;
   postid = postid.substring(postid.indexOf("p=") + 2);
 
   var pubdate = item.querySelector("pubDate").innerHTML;
   var pubdateArray = pubdate.split("+");
 
-  var promotion_announcement = item.querySelector("promotion_announcement").innerHTML;
+  var promotion_announcementElement = item.querySelector("promotion_announcement");
+  var promotion_announcement = promotion_announcementElement ? promotion_announcementElement.innerHTML : '';
+
   promotion_announcement = promotion_announcement.replace("<![CDATA[", "").replace("]]>", "");
 
-  //var description = item.querySelector("description").innerHTML;
-  //description = description.replace("<![CDATA[", "").replace("]]>", "");
-
   var marketing_link = item.querySelector("link").innerHTML + `?utm_source=al-marketing-&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7marketing%7c`;
-  //var promotion_img = item.querySelector("promotion_image").getAttribute("url");
 
-  /* add category */
- // var marketing_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
-  var marketing_categorie = marketing_categorie + '<span class="postPubDate">'+pubdateArray[0]+'</span>';
-  var marketing_categorie = marketing_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
-
-  var marketing_categories = item.querySelectorAll("promotion_type");
-  marketing_categories_nodes = Array.prototype.slice.call(marketing_categories,0);
-  marketing_categories_nodes.forEach(function(element) {
-    let formName = element;
-    marketing_categorie = marketing_categorie + '<span class="categoryClassElement categoryClass'+formName.textContent+'">' + formName.textContent + '</span>';
-  });
-
-  const divCat = document.createElement('div');
-  divCat.className = 'categoryClass';
-  divCat.innerHTML = marketing_categorie;
-
-
+  // The rest of your code...
 
   const div = document.createElement('div');
-   div.className = 'dragrow marketing';
-   div.id = 'marketing'+postid;
-   div.draggable = 'true';
+  div.className = 'dragrow marketing';
+  div.id = 'marketing' + postid;
+  div.draggable = 'true';
 
+  div.innerHTML = `
+    <a id="marketing-${postid}-Link" href="${marketing_link}">
+      <div style="border: 1px solid green; border-radius: 8px; width: 100%; margin: 30px 0;">
+        <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0">${promotion_announcement}</p>
+      </div>
+    </a>
+  `;
+  marketingContainerContent.appendChild(divCat);
+  marketingContainerContent.appendChild(div);
 
-    div.innerHTML = `
-            <a id="marketing-${postid}-Link" href="${marketing_link}">
-              <div style="border: 1px solid green; border-radius: 4px; width: 100%; margin: 30px 0;">
-                <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0">${promotion_announcement}</p>
-              </div> 
-            </a>
-    `;
-   marketingContainerContent.appendChild(divCat);
-   marketingContainerContent.appendChild(div);
-
-   document.getElementById('marketing' + postid).ondragstart = function (event) {
-       event
-         .dataTransfer
-         .setData('text/html', event.target.innerHTML);
-     }
+  document.getElementById('marketing' + postid).ondragstart = function (event) {
+    event
+      .dataTransfer
+      .setData('text/html', event.target.innerHTML);
+  }
 }
-
 
 // ## LOAD BUSINESS CHANNEL
 "use strict";
-fetch(bcrss) //business channel feed
-.then(response => response.text())
-.then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-.then(data => {
+async function loadChannel() {
+  try {
+    const response = await fetch(bcrss); // Fetch the RSS feed
+    if (!response.ok) {
+      throw new Error(`Failed to fetch the RSS feed. Status: ${response.status}`);
+    }
 
-  const items = data.querySelectorAll("item");
+    const xmlText = await response.text();
+    const parser = new DOMParser();
+    const data = parser.parseFromString(xmlText, "text/xml");
 
-  var existMCC = document.getElementById("channelContainerContent");
-  if(existMCC){
-    existMCC.innerHTML = ``;
+    const items = data.querySelectorAll("item");
+
+    const ChannelContainerContent = document.getElementById("channelContainerContent");
+    if (ChannelContainerContent) {
+      ChannelContainerContent.innerHTML = "";
+    }
+
+    await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
+
+    items.forEach(item => functionChannelItems(item));
+  } catch (error) {
+    console.error("Error loading Channel:", error);
   }
+}
 
-  setTimeout(function() {
-    items.forEach(functionChannelItems);
- }, 100);
+loadChannel();
 
-});
 
 
 function functionChannelItems(item, index) {
@@ -1109,6 +1143,13 @@ function functionChannelItems(item, index) {
   var article_link = item.querySelector("link").innerHTML + `?utm_source=al-channel-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7channel%7c`;
   var article_img = item.querySelector("enclosure").getAttribute("url");
 
+  var description = item.querySelector("description").innerHTML;
+  description = description.replace("<![CDATA[", "").replace("]]>", "");
+  
+  // Clip description to a maximum of 100 characters
+  if (description.length > 100) {
+    description = description.substring(0, 100) + '... <span style="font-size: 14px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" >Lees meer</span> ▸';
+  }
 
     /* add category */
     var article_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
@@ -1139,7 +1180,7 @@ function functionChannelItems(item, index) {
       <tr>
         <td class="tableDivider1a">
           <a id="imgKleinArtikel${postid}Link" href="${article_link}">
-            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="height: auto; width: 100%; display: block;" src="${article_img}" />
+            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 8px;height: auto; width: 100%; display: block;" src="${article_img}" />
             </a>
           </td>
       </tr>
@@ -1151,7 +1192,7 @@ function functionChannelItems(item, index) {
         <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
           <div class="tdDiv">
             <a id="imgKlein${postid}Link" href="${article_link}">
-              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="display: none; height: 150px; width: 150px;" src="${article_img}" />
+              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 8px;display: none; height: 150px; width: 150px;" src="${article_img}" />
             </a>
           </div>
         </td>
@@ -1184,7 +1225,7 @@ function functionChannelItems(item, index) {
    channelContainerContent.appendChild(divCat);
    channelContainerContent.appendChild(div);
 
-   document.getElementById('marketing' + postid).ondragstart = function (event) {
+   document.getElementById('channel' + postid).ondragstart = function (event) {
        event
          .dataTransfer
          .setData('text/html', event.target.innerHTML);

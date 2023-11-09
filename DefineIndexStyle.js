@@ -64,6 +64,7 @@ choices.cssFloat = "left";
 choices.style.display = "inline";
 
 headlinesButton.style.width = "13%"
+headlinesButton.style.cursor = "pointer";
 headlinesButton.style.height = '49px';
 headlinesButton.style.backgroundColor = "#fafafa";
 headlinesButton.style.color = "#000";
@@ -86,7 +87,8 @@ headlinesButtonImg.style.top= "0px";
 headlinesButtonImg.style.height= "29px"
 
 
-artikelGrootButton.style.width = "12%"
+artikelGrootButton.style.width = "12%";
+artikelGrootButton.style.cursor = "pointer";
 artikelGrootButton.style.height = '49px';
 artikelGrootButton.style.backgroundColor = "#fafafa";
 artikelGrootButton.style.color = "#000";
@@ -108,7 +110,8 @@ artikelGrootButtonImg.style.fontWeight= "bold";
 artikelGrootButtonImg.style.top= "0px";
 artikelGrootButtonImg.style.height= "29px"
 
-artikelKleinButton.style.width = "12%"
+artikelKleinButton.style.width = "12%";
+artikelKleinButton.style.cursor = "pointer";
 artikelKleinButton.style.height = '49px';
 artikelKleinButton.style.backgroundColor = "#fafafa";
 artikelKleinButton.style.color = "#000";
@@ -131,6 +134,7 @@ artikelKleinButtonImg.style.top= "0px";
 artikelKleinButtonImg.style.height= "29px"
 
 agendaAcademyButton.style.width = "13%";
+agendaAcademyButton.style.cursor = "pointer";
 agendaAcademyButton.style.height = '49px';
 agendaAcademyButton.style.backgroundColor = "#fafafa";
 agendaAcademyButton.style.color = "#000";
@@ -153,7 +157,8 @@ agendaAcademyButtonImg.style.top= "0px";
 agendaAcademyButtonImg.style.height= "29px"
 
 
-vacatureGrootButton.style.width = "12%"
+vacatureGrootButton.style.width = "12%";
+vacatureGrootButton.style.cursor = "pointer";
 vacatureGrootButton.style.height = '49px';
 vacatureGrootButton.style.backgroundColor = "#fafafa";
 vacatureGrootButton.style.color = "#000";
@@ -175,7 +180,8 @@ vacatureGrootButtonImg.style.fontWeight= "bold";
 vacatureGrootButtonImg.style.top= "0px";
 vacatureGrootButtonImg.style.height= "29px";
 
-vacatureButton.style.width = "12%"
+vacatureButton.style.width = "12%";
+vacatureButton.style.cursor = "pointer";
 vacatureButton.style.height = '49px';
 vacatureButton.style.backgroundColor = "#fafafa";
 vacatureButton.style.color = "#000";
@@ -198,7 +204,8 @@ vacatureButtonImg.style.top= "0px";
 vacatureButtonImg.style.height= "29px";
 
 
-marketingButton.style.width = "13%"
+marketingButton.style.width = "13%";
+marketingButton.style.cursor = "pointer";
 marketingButton.style.height = '49px';
 marketingButton.style.backgroundColor = "#fafafa";
 marketingButton.style.color = "#000";
@@ -220,7 +227,8 @@ marketingButtonImg.style.fontWeight= "bold";
 marketingButtonImg.style.top= "0px";
 marketingButtonImg.style.height= "29px";
 
-channelButton.style.width = "12%"
+channelButton.style.width = "12%";
+channelButton.style.cursor = "pointer";
 channelButton.style.height = '49px';
 channelButton.style.backgroundColor = "#fafafa";
 channelButton.style.color = "#000";
@@ -240,7 +248,7 @@ channelButtonImg.style.fontFamily = "'Roboto', Helvetiva, Arial";
 channelButtonImg.style.fontSize= "14px";
 channelButtonImg.style.fontWeight= "bold";
 channelButtonImg.style.top= "0px";
-channelButtonImg.style.height= "29px"
+channelButtonImg.style.height= "29px";
 
 contentIndex.id = 'contentIndex';
 contentIndex.style.position = 'fixed';
@@ -477,7 +485,6 @@ function switchFunction()
 };
 
 inOutForm.id = "inOutForm";
-
 inOutForm.style.bottom = "0px !important";
 inOutForm.style.left = "20% !important;";
 inOutForm.style.height = "20px !important;";

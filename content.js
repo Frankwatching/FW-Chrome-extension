@@ -56,10 +56,10 @@ sendDate = sendDate.replace("-","");
 
 
 // ## buttons
-
-document.getElementById('headlinesButton').onclick = function (event2) {
-  headlinesContainer.style.display = "block";
-  headlinesOverlay.style.display = "block";
+function handleButtonClick(container, buttonImg, overlay) {
+  // Hide all containers and overlays
+  headlinesContainer.style.display = "none";
+  headlinesOverlay.style.display = "none";
   artikelenGrootContainer.style.display = "none";
   agendaAcademyContainer.style.display = "none";
   artikelenKleinContainer.style.display = "none";
@@ -69,7 +69,16 @@ document.getElementById('headlinesButton').onclick = function (event2) {
   marketingContainer.style.display = "none";
   channelContainer.style.display = "none";
 
-  headlinesButtonImg.className = "ButtonImgPressd";
+  // Show the selected container
+  container.style.display = "block";
+
+  // Show the selected overlay if it exists
+  if (overlay) {
+    overlay.style.display = "block";
+  }
+
+  // Reset the class names for all buttons
+  headlinesButtonImg.className = "ButtonImg";
   artikelGrootButtonImg.className = "ButtonImg";
   agendaAcademyButtonImg.className = "ButtonImg";
   artikelKleinButtonImg.className = "ButtonImg";
@@ -77,164 +86,42 @@ document.getElementById('headlinesButton').onclick = function (event2) {
   vacatureButtonImg.className = "ButtonImg";
   marketingButtonImg.className = "ButtonImg";
   channelButtonImg.className = "ButtonImg";
+
+  // Set the class name for the pressed button
+  buttonImg.className = "ButtonImgPressd";
+}
+document.getElementById('headlinesButton').onclick = function (event2) {
+  handleButtonClick(headlinesContainer, headlinesButtonImg, headlinesOverlay);
 }
 
 document.getElementById("artikelGrootButton").onclick = function (event3) {
-  headlinesContainer.style.display = "none";
-  headlinesOverlay.style.display = "none";
-  artikelenGrootContainer.style.display = "block";
-  agendaAcademyContainer.style.display = "none";
-  artikelenKleinContainer.style.display = "none";
-  agendaOverlay.style.display = "none";
-  vacatureGrootContainer.style.display = "none";
-  vacatureContainer.style.display = "none";
-  marketingContainer.style.display = "none";
-  channelContainer.style.display = "none";
-
-  headlinesButtonImg.className = "ButtonImg";
-  artikelGrootButtonImg.className = "ButtonImgPressd";
-  agendaAcademyButtonImg.className = "ButtonImg";
-  artikelKleinButtonImg.className = "ButtonImg";
-  vacatureGrootButtonImg.className = "ButtonImg";
-  vacatureButtonImg.className = "ButtonImg";
-  marketingButtonImg.className = "ButtonImg";
-  channelButtonImg.className = "ButtonImg";
+  handleButtonClick(artikelenGrootContainer, artikelGrootButtonImg, null);
 }
 
 document.getElementById('agendaAcademyButton').onclick = function (event4) {
-  headlinesContainer.style.display = "none";
-  headlinesOverlay.style.display = "none";
-  artikelenGrootContainer.style.display = "none";
-  agendaAcademyContainer.style.display = "block";
-  artikelenKleinContainer.style.display = "none";
-  agendaOverlay.style.display = "block";
-  vacatureGrootContainer.style.display = "none";
-  vacatureGrootButtonImg.className = "ButtonImg";
-  vacatureContainer.style.display = "none";
-  marketingContainer.style.display = "none";
-  channelContainer.style.display = "none";
-
-  headlinesButtonImg.className = "ButtonImg";
-  artikelGrootButtonImg.className = "ButtonImg";
-  agendaAcademyButtonImg.className = "ButtonImgPressd";
-  artikelKleinButtonImg.className = "ButtonImg";
-  vacatureButtonImg.className = "ButtonImg";
-  marketingButtonImg.className = "ButtonImg";
-  channelButtonImg.className = "ButtonImg";
-  
+  handleButtonClick(agendaAcademyContainer, agendaAcademyButtonImg, agendaOverlay);
 }
 
-document.getElementById('artikelKleinButton').onclick = function (event5) {
-  headlinesContainer.style.display = "none";
-  headlinesOverlay.style.display = "none";
-  artikelenGrootContainer.style.display = "none";
-  agendaAcademyContainer.style.display = "none";
-  artikelenKleinContainer.style.display = "block";
-  agendaOverlay.style.display = "none";
-  vacatureGrootContainer.style.display = "none";
-  vacatureContainer.style.display = "none";
-  marketingContainer.style.display = "none";
-  channelContainer.style.display = "none";
 
-  headlinesButtonImg.className = "ButtonImg";
-  artikelGrootButtonImg.className = "ButtonImg";
-  agendaAcademyButtonImg.className = "ButtonImg";
-  artikelKleinButtonImg.className = "ButtonImgPressd";
-  vacatureGrootButtonImg.className = "ButtonImg";
-  vacatureButtonImg.className = "ButtonImg";
-  marketingButtonImg.className = "ButtonImg";
-  channelButtonImg.className = "ButtonImg";
+document.getElementById('artikelKleinButton').onclick = function (event5) {
+  handleButtonClick(artikelenKleinContainer, artikelKleinButtonImg, null);
 }
 
 document.getElementById('vacatureButton').onclick = function (event6) {
-  headlinesContainer.style.display = "none";
-  headlinesOverlay.style.display = "none";
-  artikelenGrootContainer.style.display = "none";
-  agendaAcademyContainer.style.display = "none";
-  artikelenKleinContainer.style.display = "none";
-  agendaOverlay.style.display = "none";
-  vacatureGrootContainer.style.display = "none";
-  vacatureContainer.style.display = "block";
-  marketingContainer.style.display = "none";
-  channelContainer.style.display = "none";
-
-  headlinesButtonImg.className = "ButtonImg";
-  artikelGrootButtonImg.className = "ButtonImg";
-  agendaAcademyButtonImg.className = "ButtonImg";
-  artikelKleinButtonImg.className = "ButtonImg";
-  vacatureGrootButtonImg.className = "ButtonImg";
-  vacatureButtonImg.className = "ButtonImgPressd";
-  marketingButtonImg.className = "ButtonImg";
-  channelButtonImg.className = "ButtonImg";
+  handleButtonClick(vacatureContainer, vacatureButtonImg, null);
 }
-
-document.getElementById('marketingButton').onclick = function (event7) {
-  headlinesContainer.style.display = "none";
-  headlinesOverlay.style.display = "none";
-  artikelenGrootContainer.style.display = "none";
-  agendaAcademyContainer.style.display = "none";
-  artikelenKleinContainer.style.display = "none";
-  agendaOverlay.style.display = "none";
-  vacatureGrootContainer.style.display = "none";
-  vacatureContainer.style.display = "none";
-  marketingContainer.style.display = "block";
-  channelContainer.style.display = "none";
-
-  headlinesButtonImg.className = "ButtonImg";
-  artikelGrootButtonImg.className = "ButtonImg";
-  agendaAcademyButtonImg.className = "ButtonImg";
-  artikelKleinButtonImg.className = "ButtonImg";
-  vacatureGrootButtonImg.className = "ButtonImg";
-  vacatureButtonImg.className = "ButtonImg";
-  marketingButtonImg.className = "ButtonImgPressd";
-  channelButtonImg.className = "ButtonImg";
-
-}
-
-
-document.getElementById('channelButton').onclick = function (event7) {
-  headlinesContainer.style.display = "none";
-  headlinesOverlay.style.display = "none";
-  artikelenGrootContainer.style.display = "none";
-  agendaAcademyContainer.style.display = "none";
-  artikelenKleinContainer.style.display = "none";
-  agendaOverlay.style.display = "none";
-  vacatureGrootContainer.style.display = "none";
-  vacatureContainer.style.display = "none";
-  marketingContainer.style.display = "none";
-  channelContainer.style.display = "block";
-
-  headlinesButtonImg.className = "ButtonImg";
-  artikelGrootButtonImg.className = "ButtonImg";
-  agendaAcademyButtonImg.className = "ButtonImg";
-  artikelKleinButtonImg.className = "ButtonImg";
-  vacatureGrootButtonImg.className = "ButtonImg";
-  vacatureButtonImg.className = "ButtonImg";
-  marketingButtonImg.className = "ButtonImg";
-  channelButtonImg.className = "ButtonImgPressd";
-}
-
 
 document.getElementById('vacatureGrootButton').onclick = function (event7) {
-  headlinesContainer.style.display = "none";
-  headlinesOverlay.style.display = "none";
-  artikelenGrootContainer.style.display = "none";
-  agendaAcademyContainer.style.display = "none";
-  artikelenKleinContainer.style.display = "none";
-  agendaOverlay.style.display = "none";
-  vacatureGrootContainer.style.display = "block";
-  vacatureContainer.style.display = "none";
-  marketingContainer.style.display = "none";
-  channelContainer.style.display = "none";
+  handleButtonClick(vacatureGrootContainer, vacatureGrootButtonImg, null);
+}
 
-  headlinesButtonImg.className = "ButtonImg";
-  artikelGrootButtonImg.className = "ButtonImg";
-  agendaAcademyButtonImg.className = "ButtonImg";
-  artikelKleinButtonImg.className = "ButtonImg";
-  vacatureGrootButtonImg.className = "ButtonImgPressd";
-  vacatureButtonImg.className = "ButtonImg";
-  marketingButtonImg.className = "ButtonImg";
-  channelButtonImg.className = "ButtonImg";
+
+document.getElementById('marketingButton').onclick = function (event8) {
+  handleButtonClick(marketingContainer, marketingButtonImg, null);
+}
+
+document.getElementById('channelButton').onclick = function (event9) {
+  handleButtonClick(channelContainer, channelButtonImg, null);
 }
 
 
@@ -620,7 +507,7 @@ function artikelenGrootItems(item, index) {
   <tr id="artikelGroot${postid}TrB">
    <td id="artikelGroot${postid}TdB">
       <a style="padding: 0px;" id="ct11_1" href="${item_link}">
-        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 8px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
+        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
       </a>
     </td>
   </tr>
@@ -699,7 +586,7 @@ function artikelenKleinItems(item, index) {
   <table class="table1a">
   <tbody>
     <tr>
-      <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 8px;height: auto; width: 100%; display: block;" src="${item_img_groot}" /></a></td>
+      <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;height: auto; width: 100%; display: block;" src="${item_img_groot}" /></a></td>
     </tr>
   </tbody>
   </table>
@@ -707,7 +594,7 @@ function artikelenKleinItems(item, index) {
   <tbody>
     <tr>
       <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-        <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 8px;display: none; height: 150px; width: 150px;" src="${item_img_klein}" /></a></div>
+        <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;display: none; height: 150px; width: 150px;" src="${item_img_klein}" /></a></div>
       </td>
       <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
         <table class="tableC">
@@ -866,7 +753,7 @@ function functionVacatureKleinItems(item, index) {
                         <tr>
                             <td id="vacatureTD${postid}bA" class="vacatureTDbA">
                               <a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaVacature">
-                                <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 8px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
+                                <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
                               </a>
                             </td>
                         </tr>
@@ -986,7 +873,7 @@ function functionVacatureGrootItems(item, index) {
                   <tr>
                       <td id="vacatureTD${postid}bA" class="vacatureTDbA">
                         <a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaVacature">
-                          <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 8px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
+                          <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
                         </a>
                       </td>
                   </tr>
@@ -1028,7 +915,6 @@ function functionVacatureGrootItems(item, index) {
 
 // ## LOAD MARKETING
 "use strict";
-
 async function loadMarketing() {
   try {
     const response = await fetch(marketingrss); // Fetch the RSS feed
@@ -1060,41 +946,34 @@ loadMarketing();
 
 
 function functionMarketingItems(item, index) {
-  var postid = item.querySelector("guid").innerHTML;
-  postid = postid.substring(postid.indexOf("p=") + 2);
+  const postid = item.querySelector("guid").innerHTML.replace("<![CDATA[", "").replace("]]>", "").split("p=")[1];
 
-  var pubdate = item.querySelector("pubDate").innerHTML;
-  var pubdateArray = pubdate.split("+");
+  const pubdate = item.querySelector("pubDate").innerHTML.split("+")[0];
 
-  var promotion_announcementElement = item.querySelector("promotion_announcement");
-  var promotion_announcement = promotion_announcementElement ? promotion_announcementElement.innerHTML : '';
+  const promotion_announcementElement = item.querySelector("promotion_announcement");
+  const promotion_announcement = promotion_announcementElement ? promotion_announcementElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
 
-  promotion_announcement = promotion_announcement.replace("<![CDATA[", "").replace("]]>", "");
-
-  var marketing_link = item.querySelector("link").innerHTML + `?utm_source=al-marketing-&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7marketing%7c`;
-
-  // The rest of your code...
+  const marketing_link = `${item.querySelector("link").innerHTML}?utm_source=al-marketing-&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7marketing%7c`;
 
   const div = document.createElement('div');
   div.className = 'dragrow marketing';
-  div.id = 'marketing' + postid;
-  div.draggable = 'true';
+  div.id = `marketing-${postid}`;
+  div.draggable = true;
 
   div.innerHTML = `
     <a id="marketing-${postid}-Link" href="${marketing_link}">
-      <div style="border: 1px solid green; border-radius: 8px; width: 100%; margin: 30px 0;">
+      <div style="border: 1px solid green; border-radius: 4px; width: 100%; margin: 30px 0;">
         <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0">${promotion_announcement}</p>
       </div>
     </a>
   `;
-  marketingContainerContent.appendChild(divCat);
+
+  marketingContainerContent.appendChild(div);
   marketingContainerContent.appendChild(div);
 
-  document.getElementById('marketing' + postid).ondragstart = function (event) {
-    event
-      .dataTransfer
-      .setData('text/html', event.target.innerHTML);
-  }
+  div.addEventListener('dragstart', (event) => {
+    event.dataTransfer.setData('text/html', event.target.innerHTML);
+  });
 }
 
 // ## LOAD BUSINESS CHANNEL
@@ -1180,7 +1059,7 @@ function functionChannelItems(item, index) {
       <tr>
         <td class="tableDivider1a">
           <a id="imgKleinArtikel${postid}Link" href="${article_link}">
-            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 8px;height: auto; width: 100%; display: block;" src="${article_img}" />
+            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;height: auto; width: 100%; display: block;" src="${article_img}" />
             </a>
           </td>
       </tr>
@@ -1192,7 +1071,7 @@ function functionChannelItems(item, index) {
         <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
           <div class="tdDiv">
             <a id="imgKlein${postid}Link" href="${article_link}">
-              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 8px;display: none; height: 150px; width: 150px;" src="${article_img}" />
+              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;display: none; height: 150px; width: 150px;" src="${article_img}" />
             </a>
           </div>
         </td>

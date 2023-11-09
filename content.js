@@ -99,7 +99,7 @@ document.getElementById("artikelGrootButton").onclick = function (event3) {
 }
 
 document.getElementById('agendaAcademyButton').onclick = function (event4) {
-  handleButtonClick(agendaAcademyContainer, agendaAcademyButtonImg, agendaOverlay);
+ handleButtonClick(agendaAcademyContainer, agendaAcademyButtonImg, agendaOverlay);
 }
 
 
@@ -274,44 +274,36 @@ document.getElementById('headlinesOverlay').ondragstart = function (event) {
 
 
 
+
 // ## LOAD AGENDA
 "use strict";
+fetch("https://www.frankwatching.com/feed/academy/upcoming/")
+.then(response => response.text())
+.then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+.then(data => {
 
-async function loadAgenda() {
-  try {
-    const response = await fetch(agendarss); // Fetch the RSS feed
-    if (!response.ok) {
-      throw new Error(`Failed to fetch the RSS feed. Status: ${response.status}`);
-    }
+  const items = data.querySelectorAll("item");
 
-    const xmlText = await response.text();
-    const parser = new DOMParser();
-    const data = parser.parseFromString(xmlText, "text/xml");
+  var existAAC = document.getElementById("agendaAcademyContainer");
+  if(existAAC){
+    // console.log('List agenda items empty');
+    existAAC.innerHTML = ``;
 
-    const items = data.querySelectorAll("item");
+  }
 
-    const agendaAcademyContainer = document.getElementById("agendaAcademyContainer");
-    if (agendaAcademyContainer) {
-      agendaAcademyContainer.innerHTML = `
-        <div id="academyTable" style="padding: 10px;"></div>
-      `;
-    }
-
-    await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
-
-    for (let i = 0; i < 4 && i < items.length; i++) {
+  setTimeout(function() {
+    for (var i = 0, len = 4; i < len; i++) {
       agendaItems(items[i]);
     }
-  } catch (error) {
-    console.error("Error loading agenda items:", error);
-  }
-}
 
-loadAgenda();
+ }, 100);
+
+});
 
 
 
 function agendaItems(item, index) {
+
   var table = document.getElementById("academyTable");
   var json = xml2json(item);
   var title = json["title"];
@@ -325,9 +317,35 @@ function agendaItems(item, index) {
 
   var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
 
-  var cell2 = document.createElement("div"); // Create a div element for cell2
-  cell2.innerHTML = `
-    <table id="contentAcademyAgenda" style="width: 200px; background: #F2F2F2; border-collapse: collapse; width: 50%;padding: 8px 10px;
+  //var pubdate = item.querySelector("pubdate").innerHTML;
+  //var poststatus = item.querySelector("poststatus").innerHTML;
+  //var popularityscore = item.querySelector("popularityscore").innerHTML;
+
+  /* add category */
+  // var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
+  // var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
+  // var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
+  // var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
+  // var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
+
+  //var item_categories = item.querySelector("categoriesName").innerHTML;
+  // var item_categories_array = removeDuplicates(item_categories.split("|"));
+  // item_categories_array.forEach(function(element) {
+  //   item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+element+'">' + element + '</span>';
+  // });
+
+//  const divCat = document.createElement('div');
+ // divCat.className = 'categoryClass';
+  //divCat.innerHTML = item_categorie;
+  //agendaAcademyContainer.appendChild(divCat);
+
+  const div = document.createElement('div');
+  div.className = 'itemAgenda';
+  div.id = 'agendaItem'+postid;
+  div.draggable = 'true';
+
+  div.innerHTML = `
+  <table id="contentAcademyAgenda${postid}" style="width: 200px; background: #F2F2F2; border-collapse: collapse; width: 50%;padding: 8px 10px;
     display: table-cell;" align="left">
       <tbody>
       <tr>
@@ -370,57 +388,16 @@ function agendaItems(item, index) {
     </table>
   `;
 
-  // Append cell2 to the table
-  table.appendChild(cell2);
+  agendaAcademyContainer.appendChild(div);
+
+   document.getElementById('agendaItem' + postid).ondragstart = function (event) {
+       event
+         .dataTransfer
+         .setData('text/html', event.target.innerHTML);
+     }
+
 }
 
-
-// function agendaItems(item, index) {
-
-//   var table = document.getElementById("academyTable");
-
-//   var json = xml2json(item);
-
-//   var title = (json["title"]);
-//   var link = (json["link"]);
-//   var postid = (json["productid"]);
-//   var campaign = (json["postmeta:campaign"]);
-//   var location = (json["postmeta:location"]);
-//   var durration = (json["postmeta:durration"]);
-//   var dateMonth = (json["postmeta:dateMonth"]);
-//   var dateDay = (json["postmeta:dateDay"]);
-
-//   var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
-
-//   var row = table.insertRow(-1);
-//   var cell1 = row.insertCell(0);
-//   var cell2 = row.insertCell(1);
-//   cell1.innerHTML = `▸`;
-//   cell1.style.fontSize = "12px";
-//   cell1.style.fontSize = "#18608b";
-//   cell1.style.verticalAlign = "top";
-//   cell2.innerHTML = `
-  
-  
- 
- //  `;
-
-// }
-
-   /* add category */
-   var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
-
-   const divCat = document.createElement('div');
-   divCat.className = 'categoryClass';
-   divCat.innerHTML = item_categorie;
-   agendaAcademyContainer.appendChild(divCat);
-
-document.getElementById('agendaOverlay').ondragstart = function (event) {
-    event
-      .dataTransfer
-      .setData('text/html', agendaAcademyContainer.innerHTML);
-     // console.log('dragstart');
-}
 
 // ## LOAD ARTIKELEN
 "use strict";

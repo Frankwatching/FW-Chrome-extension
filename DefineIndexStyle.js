@@ -261,17 +261,17 @@ contentIndex.style.overflowY = 'scroll';
 
 agendaAcademyContainer.style.position = "absolute";
 agendaAcademyContainer.id = "agendaAcademyContainer";
-agendaAcademyContainer.draggable = "true";
+agendaAcademyContainer.draggable = "false";
 agendaAcademyContainer.style.display = "none";
 
 agendaOverlay.style.position = "absolute";
 agendaOverlay.style.height = "100%"
 agendaOverlay.style.width = "100%"
 agendaOverlay.id = "agendaOverlay";
-agendaOverlay.draggable = "true";
-agendaOverlay.ondragstart='onDragStart(event);'
+//agendaOverlay.draggable = "true";
+//agendaOverlay.ondragstart='onDragStart(event);'
 agendaOverlay.style.display = "none";
-agendaOverlay.style.zIndex = "19300";
+agendaOverlay.style.zIndex = "-1";
 
 artikelenKleinContainer.style.position = "absolute";
 artikelenKleinContainer.style.display = "none";

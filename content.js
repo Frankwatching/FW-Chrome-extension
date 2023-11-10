@@ -345,11 +345,10 @@ function agendaItems(item, index) {
   div.draggable = 'true';
 
   div.innerHTML = `
-  <table id="contentAcademyAgenda${postid}" style="width: 200px; background: #F2F2F2; border-collapse: collapse; width: 50%;padding: 8px 10px;
-    display: table-cell;" align="left">
+  <table id="contentAcademyAgenda${postid}" style="width: 100%; background: #F2F2F2; border-collapse: collapse; width: 100%;padding: 8px 10px;" align="left">
       <tbody>
       <tr>
-        <td style="width: 42px; display: block;">
+        <td style="width: 42px;">
           <table width="40px">
             <tbody>
               <tr>

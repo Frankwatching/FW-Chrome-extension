@@ -226,7 +226,7 @@ input:checked + .slider:before {
 .categoryClass span.postScore {  border:1px solid rgba(0,0,0,.5); background: rgba(255,255,255,1); }
 
 #headingArtikelGroot { padding: 10px; border-bottom: 1px solid #000; font-weight: bold; font-size: 16px; }
-#switchListForm { padding: 5px; border-bottom: 1px solid #000; }
+#switchListForm { padding: 5px; height: auto; border-top: 1px solid #ccc;  border-bottom: 1px solid #ccc; }
 #switchListForm #switchListSwitchText p { display: inline-block; font-weight: bold; margin: 0; padding: 0 10px; font-size: 16px; }
 
 #dagWeekForm .slider.round:before { content:"D" !important; font-weight: bold; font-size: 16px; color: #333; text-align: center; line-height: 30px; }
@@ -237,10 +237,10 @@ input:checked + .slider:before {
 
 .divSearchKader {
   width: 100%;
-  padding-top: 10px;
-  margin-top: 10px;
-  border-top: 1px solid rgba(0,0,0,.2);
-  height: 65px;
+  height: auto;
+  border: 1px solid #ccc;
+    display: inline-block;
+    padding: 5px;
 }
 .divSearchKader label { width: 100%; float: left; padding: 5px;  }
 .divSearchKader input { width: 73%; float: left; padding: 0 4px; line-height: 28px; }

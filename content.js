@@ -150,6 +150,11 @@ if ( searchID ) {
   console.log('bc RSS:' + bcrss);
 }
 
+if ( searchTitle ) {
+  newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?posttitle='+ searchTitle;
+}
+
+
 console.log('RSS:' + newsrss);
 
 
@@ -926,30 +931,139 @@ function functionMarketingItems(item, index) {
 
   const pubdate = item.querySelector("pubDate").innerHTML.split("+")[0];
 
+  // Titel promotion post type
+  const promo_title = item.querySelector("title").innerHTML;
+
+  // Titel promotie
+  const promotion_titleElement = item.querySelector("promotion_title");
+  const promotion_title = promotion_titleElement ? promotion_titleElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
+
+  // Campagnebalk titel  
   const promotion_announcementElement = item.querySelector("promotion_announcement");
   const promotion_announcement = promotion_announcementElement ? promotion_announcementElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
 
+  // Promo titel  
+  const promotion_urlElement = item.querySelector("promotion_url");
+  const promotion_url = promotion_urlElement ? promotion_urlElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
+
+
+  // Promo image id  
+  const promotion_imageElement = item.querySelector("promotion_image");
+  const promotion_image = promotion_imageElement ? promotion_imageElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
+
+
+  // Replace 'your-wordpress-url' with the URL of your WordPress site
+  const wordpressUrl = 'https://wp.frankwatching.com';
+  // Replace '123' with the attachment ID you want to get the URL for
+  const attachmentId = promotion_image;
+
+  let imageUrl = ''; // Declare imageUrl in a broader scope and initialize it
+
+  const promotion_typeElement = item.querySelector("promotion_type");
+  const promotion_type = promotion_typeElement ? promotion_typeElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
+
   const marketing_link = `${item.querySelector("link").innerHTML}?utm_source=al-marketing-&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7marketing%7c`;
 
+  // Check if promo has and attachmentId for eg image
+if (attachmentId) {
+  fetch(`${wordpressUrl}/wp-json/wp/v2/media/${attachmentId}`)
+  .then(response => response.json())
+  .then(data => {
+    console.log('Data from API:', data);
+
+    if (data && data.media_details && data.media_details.sizes)  {
+        
+      imageUrl = data.media_details.sizes.full.source_url;
+
+      console.log('Image URL:', imageUrl);
+
+      // Now that imageUrl is available, you can use it in your HTML content
+      const div = document.createElement('div');
+      div.className = 'dragrow marketing';
+      div.id = `marketing-${postid}`;
+      div.draggable = true;
+
+      let innerHtmlContent;
+
+     if (promotion_type === 'promoblock_square') {
+        console.log('Rendering promoblock_square:', promo_title);
+        innerHtmlContent = `
+            <!-- promoblock_square content -->
+            <a id="marketing-${postid}-Link" href="${promotion_url}">
+                <div class="${promotion_type}" style="border: 1px solid grey; border-radius: 4px; width: 100%; margin: 30px 0;">
+                <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0">${promo_title}</p>
+                <img src="${imageUrl}" class="imageKlein" style="width: 100%; max-width: 175px; height: auto;" />
+                </div>
+              </a>
+            `;
+      } else {
+        innerHtmlContent = `
+            <!-- Default HTML content -->
+            <a id="marketing-${postid}-Link" href="${promotion_url}">
+              <div class="${promotion_type}" style="border: 1px solid grey; border-radius: 4px; width: 100%; margin: 30px 0;">
+                <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0">${promo_title}</p>
+              </div>
+            </a>
+          `;
+      }
+
+      div.innerHTML = `
+        <div>
+          ${innerHtmlContent}
+        </div> 
+      `;
+
+      marketingContainerContent.appendChild(div);
+    } else {
+      console.error('Error retrieving attachment information.');
+    }
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
+} else { // toon alle promoties zonder IMAGE ID en URL
+
+  // Now that imageUrl is available, you can use it in your HTML content
   const div = document.createElement('div');
   div.className = 'dragrow marketing';
   div.id = `marketing-${postid}`;
   div.draggable = true;
 
+  let innerHtmlContent;
+
+  if (promotion_type === 'campagneblak') {
+    console.log('Rendering campagnebalk:', promotion_announcement);
+    innerHtmlContent = `
+      <!-- campagnebalk content -->
+      <a id="marketing-${postid}-Link" href="${marketing_link}">
+        <div class="${promotion_type}" style="border: 1px solid green; border-radius: 4px; width: 100%; margin: 30px 0;">
+          <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0">${promotion_announcement}</p>
+        </div>
+      </a>
+    `;
+  } else {
+    innerHtmlContent = `
+        <!-- Default HTML content -->
+        <a id="marketing-${postid}-Link" href="${promotion_url}">
+          <div class="${promotion_type}" style="border: 1px solid grey; border-radius: 4px; width: 100%; margin: 30px 0;">
+            <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0">${promo_title}</p>
+          </div>
+        </a>
+      `;
+  }
+
   div.innerHTML = `
-    <a id="marketing-${postid}-Link" href="${marketing_link}">
-      <div style="border: 1px solid green; border-radius: 4px; width: 100%; margin: 30px 0;">
-        <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0">${promotion_announcement}</p>
-      </div>
-    </a>
+    <div>
+      ${innerHtmlContent}
+    </div> 
   `;
 
   marketingContainerContent.appendChild(div);
-  marketingContainerContent.appendChild(div);
 
-  div.addEventListener('dragstart', (event) => {
-    event.dataTransfer.setData('text/html', event.target.innerHTML);
-  });
+}
+
+
 }
 
 // ## LOAD BUSINESS CHANNEL

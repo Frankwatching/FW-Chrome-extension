@@ -564,13 +564,21 @@ function switchListFunction()
 
 
 let searchID = '';
+let searchTitle = '';
 const divSearch = document.createElement('div');
 divSearch.className = 'divSearchKader';
 divSearch.id = 'divSearchKader';
-divSearch.innerHTML = `<label for="divSearchKaderInput">Zoek op postid:</label><input type="text" placeholder="Zoek op postid..." id="divSearchKaderInput"><div class="button">Zoek</div>`;
+divSearch.innerHTML = `
+<label for="divSearchKaderInput">Zoek op postid:</label>
+<input type="text" placeholder="Zoek op postid..." id="divSearchKaderInput">
+<label for="divSearchKaderInputTitle">Zoek op titel:</label>
+<input type="text" placeholder="Zoek op titel..." id="divSearchKaderInputTitle">
+<div class="button">Zoek</div>
+`;
 switchListForm.appendChild(divSearch);
 
 document.getElementById ("divSearchKaderInput").addEventListener ("change", inputSearch, false);
+document.getElementById ("divSearchKaderInputTitle").addEventListener ("change", inputSearch, false);
 
 function inputSearch()
 {
@@ -579,5 +587,6 @@ function inputSearch()
 //   getAllContent();
 console.log('This Value is', this.value);
   searchID = this.value;
+  searchTitle = this.value;
   getAllContent();
 };

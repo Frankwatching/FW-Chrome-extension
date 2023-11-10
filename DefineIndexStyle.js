@@ -258,6 +258,7 @@ contentIndex.style.bottom = '51px';
 contentIndex.style.backgroundColor = '#f5f5f5';
 contentIndex.style.display = 'block';
 contentIndex.style.overflowY = 'scroll';
+contentIndex.style.maxWidth = '18%';
 
 agendaAcademyContainer.style.position = "absolute";
 agendaAcademyContainer.id = "agendaAcademyContainer";

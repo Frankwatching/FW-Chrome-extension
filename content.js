@@ -929,7 +929,9 @@ loadMarketing();
 function functionMarketingItems(item, index) {
   const postid = item.querySelector("guid").innerHTML.replace("<![CDATA[", "").replace("]]>", "").split("p=")[1];
 
-  const pubdate = item.querySelector("pubDate").innerHTML.split("+")[0];
+//  const pubdate = item.querySelector("pubDate").innerHTML.split("+")[0];
+  const pubdate = item.querySelector("pubDate").innerHTML;
+  const pubdateArray = pubdate.split("+");
 
   // Titel promotion post type
   const promo_title = item.querySelector("title").innerHTML;
@@ -964,6 +966,27 @@ function functionMarketingItems(item, index) {
 
   const marketing_link = `${item.querySelector("link").innerHTML}?utm_source=al-marketing-&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7marketing%7c`;
 
+  /* add category */
+  var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
+  var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
+  var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
+  var item_categorie = item_categorie + '<span class="categoryClassMarketing">&#9783 '+promotion_type+'</span>';
+  var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+promo_title+'</span>';
+
+    
+  var article_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
+  var article_categorie = article_categorie + '<span class="postPubDate">'+pubdateArray[0]+'</span>';
+  var article_categorie = article_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
+
+  var article_categories = item.querySelectorAll(promotion_type);
+  article_categories_nodes = Array.prototype.slice.call(article_categories,0);
+  article_categories_nodes.forEach(function(element) {
+    let formName = element;
+    article_categorie = article_categorie + '<span class="categoryClassElement categoryClass'+formName.textContent+'">' + formName.textContent + '</span>';
+  });
+  
+
+
   // Check if promo has and attachmentId for eg image
 if (attachmentId) {
   fetch(`${wordpressUrl}/wp-json/wp/v2/media/${attachmentId}`)
@@ -975,7 +998,14 @@ if (attachmentId) {
         
       imageUrl = data.media_details.sizes.full.source_url;
 
+      //maak Categorie div aan
+      const divCat = document.createElement('div');
+      divCat.className = 'categoryClass';
+      divCat.innerHTML = item_categorie;
+      marketingContainerContent.appendChild(divCat);
+      
       console.log('Image URL:', imageUrl);
+      
 
       // Now that imageUrl is available, you can use it in your HTML content
       const div = document.createElement('div');
@@ -990,8 +1020,7 @@ if (attachmentId) {
         innerHtmlContent = `
             <!-- promoblock_square content -->
             <a id="marketing-${postid}-Link" href="${promotion_url}">
-                <div class="${promotion_type}" style="border: 1px solid grey; border-radius: 4px; width: 100%; margin: 30px 0;">
-                <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0">${promo_title}</p>
+                <div class="${promotion_type}" style="border: 1px solid #cccccc; border-radius: 4px; width: 100%;">
                 <img src="${imageUrl}" class="imageKlein" style="width: 100%; max-width: 175px; height: auto;" />
                 </div>
               </a>
@@ -1000,8 +1029,8 @@ if (attachmentId) {
         innerHtmlContent = `
             <!-- Default HTML content -->
             <a id="marketing-${postid}-Link" href="${promotion_url}">
-              <div class="${promotion_type}" style="border: 1px solid grey; border-radius: 4px; width: 100%; margin: 30px 0;">
-                <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0">${promo_title}</p>
+              <div class="${promotion_type}" style="border: 1px solid #cccccc; border-radius: 4px; width: 100%;">
+                <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0; line-height: 1.3">${promo_title}</p>
               </div>
             </a>
           `;
@@ -1024,6 +1053,13 @@ if (attachmentId) {
 
 } else { // toon alle promoties zonder IMAGE ID en URL
 
+
+  //maak Categorie div aan
+  const divCat = document.createElement('div');
+  divCat.className = 'categoryClass';
+  divCat.innerHTML = item_categorie;
+  marketingContainerContent.appendChild(divCat);
+
   // Now that imageUrl is available, you can use it in your HTML content
   const div = document.createElement('div');
   div.className = 'dragrow marketing';
@@ -1037,8 +1073,8 @@ if (attachmentId) {
     innerHtmlContent = `
       <!-- campagnebalk content -->
       <a id="marketing-${postid}-Link" href="${marketing_link}">
-        <div class="${promotion_type}" style="border: 1px solid green; border-radius: 4px; width: 100%; margin: 30px 0;">
-          <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0">${promotion_announcement}</p>
+        <div class="${promotion_type}" style="border: 1px solid green; border-radius: 4px; width: 100%;">
+          <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0; line-height: 1.3">${promotion_announcement}</p>
         </div>
       </a>
     `;
@@ -1046,8 +1082,8 @@ if (attachmentId) {
     innerHtmlContent = `
         <!-- Default HTML content -->
         <a id="marketing-${postid}-Link" href="${promotion_url}">
-          <div class="${promotion_type}" style="border: 1px solid grey; border-radius: 4px; width: 100%; margin: 30px 0;">
-            <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0">${promo_title}</p>
+          <div class="${promotion_type}" style="border: 1px solid grey; border-radius: 4px; width: 100%;">
+            <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0; line-height: 1.3">${promo_title}</p>
           </div>
         </a>
       `;

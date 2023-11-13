@@ -606,7 +606,6 @@ function artikelenKleinItems(item, index) {
 
 // ## LOAD VACATURES
 "use strict";
-
 async function loadVacatures() {
   try {
     const response = await fetch(jobrss); // Fetch the RSS feed
@@ -948,6 +947,10 @@ function functionMarketingItems(item, index) {
   const promotion_urlElement = item.querySelector("promotion_url");
   const promotion_url = promotion_urlElement ? promotion_urlElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
 
+    // Promotion_textarea  
+    const promotion_introElement = item.querySelector("promotion_textarea");
+    const promotion_intro = promotion_introElement ? promotion_introElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
+
 
   // Promo image id  
   const promotion_imageElement = item.querySelector("promotion_image");
@@ -964,7 +967,7 @@ function functionMarketingItems(item, index) {
   const promotion_typeElement = item.querySelector("promotion_type");
   const promotion_type = promotion_typeElement ? promotion_typeElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
 
-  const marketing_link = `${item.querySelector("link").innerHTML}?utm_source=al-marketing-&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7marketing%7c`;
+  const marketing_link = `${item.querySelector("promotion_url").innerHTML}?utm_source=al-marketing-&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7marketing%7c`;
 
   /* add category */
   var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
@@ -1025,6 +1028,43 @@ if (attachmentId) {
                 </div>
               </a>
             `;
+      } else if (promotion_type === 'wnb_ak_adv') {  
+        console.log('Rendering wnb_ak_adv:', promo_title);
+        innerHtmlContent = `
+        <!--  HTML voor wnb_ak_adv : WNB aK advertorial -->
+         <a id="marketing-${postid}-Link" href="${promotion_url}">
+           <table class="table1a">
+            <tbody>
+              <tr>
+                <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${promotion_url}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;height: auto; width: 100%; max-width: 200px; display: block;" src="${imageUrl}" /></a></td>
+              </tr>
+            </tbody>
+          </table>
+          <table>
+            <tbody>
+              <tr>
+                <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+                  <div class="tdDiv"><a id="imgKlein${postid}Link" href="${promotion_url}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;display: none; height: 150px; width: 150px;" src="${imageUrl}" /></a></div>
+                </td>
+                <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+                  <table class="tableC">
+                    <tbody>
+                      <tr>
+                        <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: bold; font-family: Arial;" href="${promotion_url}"><span style="padding: 5px 10px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; vertical-align: top;">ADV
+                        </span><br>${promotion_title}</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: Arial;" href="${promotion_url}">${promotion_intro}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${promotion_url}"> Lees meer ▸</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          </a>
+        `;     
       } else {
         innerHtmlContent = `
             <!-- Default HTML content -->

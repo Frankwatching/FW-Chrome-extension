@@ -129,9 +129,10 @@ document.getElementById('channelButton').onclick = function (event9) {
 
 jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature';
 agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/';
-marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion';
+marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&timestamp=' + Date.now();
 bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news';
 newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?poststatus=future-publish';
+
 
 if ( listSort === 'popularity') {
   newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?popularity';
@@ -1071,11 +1072,50 @@ if (attachmentId) {
           </table>
           </a>
         `;     
+
+      } else if (promotion_type === 'wnb_ag_tvdw') {
+        console.log('Rendering wnb_ag_tvdw:', promo_title);
+        innerHtmlContent = `
+        <!--  HTML voor  wnb_ag_tvdw -->
+        <a id="marketing-${postid}-Link" href="${promotion_url}">
+        <table id="artikelGroot${postid}T" style="margin: 0 15px 0 0px !important; display: block;">
+        <tbody id="artikelGroot${postid}Tb">
+         <tr id="artikelGroot${postid}TrB">
+          <td id="artikelGroot${postid}TdB">
+             <a style="padding: 0px;" id="ct11_1" href="${promotion_url}">
+               <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${imageUrl}" >
+             </a>
+           </td>
+         </tr>
+         <tr id="artikelGroot${postid}TrA">
+          <td id="artikelGroot${postid}TdA">
+          <div style="display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; vertical-align: top;">THEMA VAN DE WEEK</div>
+           <a class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${promotion_url}">
+             ${promotion_title}
+           </a>
+          </td>
+         </tr>
+         <tr id="artikelGroot${postid}TrC">
+          <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
+
+              <a class="grootArtikelDescription" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;" id="ct11_2" href="${promotion_url}">
+              <span style="font-size: 16px; color: #333333;font-weight: 400;">
+                ${promotion_intro}
+              </span>
+            </a>
+            <a class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;"  href="${promotion_url}"> Lees meer ▸</a>
+
+           </td>
+         </tr>
+        </tbody>
+       </table>
+        </a>
+        `;  
       
       } else if (promotion_type === 'wnb_ag_cta') {  
         console.log('Rendering wnb_ag_cta:', promo_title);
         innerHtmlContent = `
-        <!--  HTML voor wnb_ag_cta : WNB aK advertorial -->
+        <!--  HTML voor wnb_ag_cta -->
         <a id="marketing-${postid}-Link" href="${promotion_url}">
         <table id="artikelGroot${postid}T" style="margin: 0 15px 0 0px !important; display: block;">
         <tbody id="artikelGroot${postid}Tb">

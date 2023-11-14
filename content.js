@@ -1211,8 +1211,9 @@ if (attachmentId) {
         </div>
       </a>
     `;
-  } else if (promotion_type === 'wnb_headlines_tvdw') {
+  } else if (promotion_type === 'wnb_headlines_tvdw' || promotion_type === 'wnb_meer_tvdw') {
       console.log('Rendering wnb_headlines_tvdw:', promo_title);
+      console.log('Rendering wnb_meer_tvdw:', promo_title);
       
 
       fetch(`${wordpressUrl}/wp-json/wp/v2/promotion/${postid}`)

@@ -366,9 +366,9 @@ function agendaItems(item, index) {
             </tbody>
           </table>      
         </td>
-      <td style="">
+      <td style="background: #F2F2F2;">
 
-        <table id="contentAcademy" style="margin-left: 10px !important;">
+        <table id="contentAcademy" style="margin-left: 10px !important;background: #F2F2F2;">
           <tbody>
           <tr>
             <td>
@@ -958,12 +958,21 @@ function functionMarketingItems(item, index) {
   const promotion_image = promotion_imageElement ? promotion_imageElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
 
 
-    // Promo CTA tekst 
-    const promotion_cta_textElement = item.querySelector("promotion_cta_text");
-    const promotion_cta_text = promotion_cta_textElement ? promotion_cta_textElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
+  // Promo CTA tekst 
+  const promotion_cta_textElement = item.querySelector("promotion_cta_text");
+  const promotion_cta_text = promotion_cta_textElement ? promotion_cta_textElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
+
+
+
+// Promo koppeling_post: serialized string
+  const promotion_koppeling_postElement = item.querySelector("koppeling_post");
+const promotion_koppeling_post = promotion_koppeling_postElement ? promotion_koppeling_postElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
   
 
-    
+
+console.log('Dit is de output:'+promotion_koppeling_post);
+
+
   // Replace 'your-wordpress-url' with the URL of your WordPress site
   const wordpressUrl = 'https://wp.frankwatching.com';
   // Replace '123' with the attachment ID you want to get the URL for
@@ -1202,7 +1211,86 @@ if (attachmentId) {
         </div>
       </a>
     `;
-  } else {
+  } else if (promotion_type === 'wnb_headlines_tvdw') {
+      console.log('Rendering wnb_headlines_tvdw:', promo_title);
+      
+
+      fetch(`${wordpressUrl}/wp-json/wp/v2/promotion/${postid}`)
+      .then(response => response.json())
+      .then(data => {
+        //console.log('Fetched data:', data); // Check the fetched data
+    
+        const fieldValue = data.acf.promotion_variant;
+        //console.log('Field Value:', fieldValue); // Check the fieldValue
+    
+        let deserializedValue = fieldValue; // Assume the data is not a string
+  
+        //console.log('Deserialized Value:', deserializedValue); // Check the deserializedValue
+    
+        let innerHtmlContent = ' <table  id="marketing-${postid}-Link" class=""  href="${item.url}" width="100%" style="line-height: 22px;"><tbody>'; // Initialize the HTML content with the opening <ul> tag
+    
+        // Process deserializedValue for HTML output...
+        
+        if (Array.isArray(deserializedValue)) {
+
+          deserializedValue.forEach((item, index) => {
+            if (typeof item === 'object' && item !== null) {
+              // Check if the assumed properties 'title' and 'url' exist in the object
+              if ('title' in item && 'url' in item) {
+                //do stuff
+              } else {
+                // If the assumed properties don't exist, output the object as a string
+                innerHtmlContent += `
+                
+                <tr>
+                  <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+                  <td>
+                    <p id="pheadline1" class="headline" style="display: block; margin: 0px; color: #18608b;"><a id="headline1" class="headline" href="${item.link_post.url}" style="display: block; margin: 0px; color: #18608b;">${item.link_post.title}</a>
+                   
+                    </p>
+                  </td>
+                  <td style="width: 30px;">&nbsp;</td>
+                  </tr>
+                
+                
+                `;
+              }
+            } else {
+                //do stuff
+              }
+          });
+          innerHtmlContent += '</tbody></table>'; // Close the <ul> tag at the end
+        } else {
+          console.error('Deserialized value is not an array');
+        }
+        
+
+        // Output the HTML content to an element with ID 'listContainer'
+        document.getElementById('marketing-' + postid + '-Link').innerHTML = innerHtmlContent;
+      })
+      .catch(error => console.error('Error fetching ACF field:', error));
+
+
+   
+      innerHtmlContent = `
+      <!-- wnb_headlines_tvdw content -->
+      <a id="marketing-${postid}-Link" href="${item.url}">
+      <table  id="marketing-${postid}-Link" class=""  href="${item.url}" width="100%" style="line-height: 22px;">
+      <tbody>
+      <tr>
+      <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+      <td>
+      <p id="pheadline1" class="headline" style="display: block; margin: 0px; color: #18608b;"><a id="headline1" class="headline" href="#" style="display: block; margin: 0px; color: #18608b;">bezig met laden...</a></p>
+      </td>
+      <td style="width: 30px;">&nbsp;</td>
+      </tr>
+      </tbody>
+      </table>
+      </a>
+    `;  
+
+  
+ } else {
     innerHtmlContent = `
         <!-- Default HTML content -->
         <a id="marketing-${postid}-Link" href="${promotion_url}">

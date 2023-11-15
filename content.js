@@ -140,23 +140,24 @@ if ( listSort === 'popularity') {
 
 if ( searchID ) {
   newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?postid='+ searchID;
-  console.log('news RSS:' + newsrss);
-  jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature&postid='+ searchID;
-  console.log('jobs RSS:' + jobrss);
+  //console.log('news RSS:' + newsrss);
+  //jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature&postid='+ searchID;
+  //console.log('jobs RSS:' + jobrss);
   agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?postid='+ searchID;
-  console.log('agenda RSS:' + agendarss);
-  marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&postid='+ searchID;
-  console.log('marketing RSS:' + marketingrss);
-  bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news&postid='+ searchID;
-  console.log('bc RSS:' + bcrss);
+  //console.log('agenda RSS:' + agendarss);
+  //marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&postid='+ searchID;
+  //console.log('marketing RSS:' + marketingrss);
+  //bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news&postid='+ searchID;
+  //console.log('bc RSS:' + bcrss);
 }
 
 if ( searchTitle ) {
-  newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?posttitle='+ searchTitle;
+  newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?posttitle='+ searchTitle; // not working because s= parameters results in redirect to searchresultspage
 }
 
 
-console.log('RSS:' + newsrss);
+//console.log('news RSS:' + newsrss);
+//console.log('agenda RSS:' + agendarss);
 
 
 // ## LOAD HEADLINES - 8 uur artikel
@@ -283,7 +284,7 @@ document.getElementById('headlinesOverlay').ondragstart = function (event) {
 
 // ## LOAD AGENDA
 "use strict";
-fetch("https://www.frankwatching.com/feed/academy/upcoming/")
+fetch(agendarss)
 .then(response => response.text())
 .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
 .then(data => {
@@ -298,7 +299,7 @@ fetch("https://www.frankwatching.com/feed/academy/upcoming/")
   }
 
   setTimeout(function() {
-    for (var i = 0, len = 4; i < len; i++) {
+    for (var i = 0, len = 30; i < len; i++) {
       agendaItems(items[i]);
     }
 
@@ -328,11 +329,11 @@ function agendaItems(item, index) {
   //var popularityscore = item.querySelector("popularityscore").innerHTML;
 
   /* add category */
-  // var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
-  // var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
-  // var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
-  // var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
-  // var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
+  var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
+  //var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
+  var item_categorie = item_categorie + '<span class="postPubDate">'+dateDay+'-'+dateMonth+'</span>';
+  var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
+  //var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
 
   //var item_categories = item.querySelector("categoriesName").innerHTML;
   // var item_categories_array = removeDuplicates(item_categories.split("|"));
@@ -340,10 +341,9 @@ function agendaItems(item, index) {
   //   item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+element+'">' + element + '</span>';
   // });
 
-//  const divCat = document.createElement('div');
- // divCat.className = 'categoryClass';
-  //divCat.innerHTML = item_categorie;
-  //agendaAcademyContainer.appendChild(divCat);
+  const divCat = document.createElement('div');
+  divCat.className = 'categoryClass';
+  divCat.innerHTML = item_categorie;
 
   const div = document.createElement('div');
   div.className = 'itemAgenda';
@@ -393,6 +393,7 @@ function agendaItems(item, index) {
     </table>
   `;
 
+  agendaAcademyContainer.appendChild(divCat);
   agendaAcademyContainer.appendChild(div);
 
    document.getElementById('agendaItem' + postid).ondragstart = function (event) {
@@ -970,7 +971,7 @@ const promotion_koppeling_post = promotion_koppeling_postElement ? promotion_kop
   
 
 
-console.log('Dit is de output:'+promotion_koppeling_post);
+//console.log('Dit is de output:'+promotion_koppeling_post);
 
 
   // Replace 'your-wordpress-url' with the URL of your WordPress site
@@ -1011,7 +1012,7 @@ if (attachmentId) {
   fetch(`${wordpressUrl}/wp-json/wp/v2/media/${attachmentId}`)
   .then(response => response.json())
   .then(data => {
-    console.log('Data from API:', data);
+    //console.log('Data from API:', data);
 
     if (data && data.media_details && data.media_details.sizes)  {
         
@@ -1023,7 +1024,7 @@ if (attachmentId) {
       divCat.innerHTML = item_categorie;
       marketingContainerContent.appendChild(divCat);
       
-      console.log('Image URL:', imageUrl);
+      //console.log('Image URL:', imageUrl);
       
 
       // Now that imageUrl is available, you can use it in your HTML content
@@ -1035,7 +1036,7 @@ if (attachmentId) {
       let innerHtmlContent; 
 
      if (promotion_type === 'promoblock_square') {
-        console.log('Rendering promoblock_square:', promo_title);
+        //console.log('Rendering promoblock_square:', promo_title);
         innerHtmlContent = `
             <!-- promoblock_square content -->
             <a id="marketing-${postid}-Link" href="${promotion_url}">
@@ -1045,7 +1046,7 @@ if (attachmentId) {
               </a>
             `;
       } else if (promotion_type === 'wnb_ak_adv') {  
-        console.log('Rendering wnb_ak_adv:', promo_title);
+        //console.log('Rendering wnb_ak_adv:', promo_title);
         innerHtmlContent = `
         <!--  HTML voor wnb_ak_adv : WNB aK advertorial -->
          <a id="marketing-${postid}-Link" href="${promotion_url}">
@@ -1083,7 +1084,7 @@ if (attachmentId) {
         `;     
 
       } else if (promotion_type === 'wnb_ag_tvdw') {
-        console.log('Rendering wnb_ag_tvdw:', promo_title);
+        //console.log('Rendering wnb_ag_tvdw:', promo_title);
         innerHtmlContent = `
         <!--  HTML voor  wnb_ag_tvdw -->
         <a id="marketing-${postid}-Link" href="${promotion_url}">
@@ -1122,7 +1123,7 @@ if (attachmentId) {
         `;  
       
       } else if (promotion_type === 'wnb_ag_cta') {  
-        console.log('Rendering wnb_ag_cta:', promo_title);
+        //console.log('Rendering wnb_ag_cta:', promo_title);
         innerHtmlContent = `
         <!--  HTML voor wnb_ag_cta -->
         <a id="marketing-${postid}-Link" href="${promotion_url}">
@@ -1202,7 +1203,7 @@ if (attachmentId) {
   let innerHtmlContent;
 
   if (promotion_type === 'campagneblak') {
-    console.log('Rendering campagnebalk:', promotion_announcement);
+    //console.log('Rendering campagnebalk:', promotion_announcement);
     innerHtmlContent = `
       <!-- campagnebalk content -->
       <a id="marketing-${postid}-Link" href="${marketing_link}">
@@ -1212,8 +1213,8 @@ if (attachmentId) {
       </a>
     `;
   } else if (promotion_type === 'wnb_headlines_tvdw' || promotion_type === 'wnb_meer_tvdw') {
-      console.log('Rendering wnb_headlines_tvdw:', promo_title);
-      console.log('Rendering wnb_meer_tvdw:', promo_title);
+      //console.log('Rendering wnb_headlines_tvdw:', promo_title);
+      //console.log('Rendering wnb_meer_tvdw:', promo_title);
       
 
       fetch(`${wordpressUrl}/wp-json/wp/v2/promotion/${postid}`)

@@ -145,7 +145,7 @@ if ( searchID ) {
   //console.log('jobs RSS:' + jobrss);
   agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?postid='+ searchID;
   //console.log('agenda RSS:' + agendarss);
-  //marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&postid='+ searchID;
+ // marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&postid='+ searchID;
   //console.log('marketing RSS:' + marketingrss);
   //bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news&postid='+ searchID;
   //console.log('bc RSS:' + bcrss);
@@ -970,7 +970,6 @@ function functionMarketingItems(item, index) {
 const promotion_koppeling_post = promotion_koppeling_postElement ? promotion_koppeling_postElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
   
 
-
 //console.log('Dit is de output:'+promotion_koppeling_post);
 
 
@@ -983,8 +982,9 @@ const promotion_koppeling_post = promotion_koppeling_postElement ? promotion_kop
 
   const promotion_typeElement = item.querySelector("promotion_type");
   const promotion_type = promotion_typeElement ? promotion_typeElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
+  const utm_parameters = `?utm_source=al-marketing-&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7marketing%7c`;
 
-  const marketing_link = `${item.querySelector("promotion_url").innerHTML}?utm_source=al-marketing-&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7marketing%7c`;
+  const marketing_link = promotion_url+utm_parameters;
 
   /* add category */
   var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
@@ -1039,7 +1039,7 @@ if (attachmentId) {
         //console.log('Rendering promoblock_square:', promo_title);
         innerHtmlContent = `
             <!-- promoblock_square content -->
-            <a id="marketing-${postid}-Link" href="${promotion_url}">
+            <a id="marketing-${postid}-Link" href="${marketing_link}">
                 <div class="${promotion_type}" style="border: 1px solid #cccccc; border-radius: 4px; width: 100%;">
                 <img src="${imageUrl}" class="imageKlein" style="width: 100%; max-width: 175px; height: auto;" />
                 </div>
@@ -1049,11 +1049,11 @@ if (attachmentId) {
         //console.log('Rendering wnb_ak_adv:', promo_title);
         innerHtmlContent = `
         <!--  HTML voor wnb_ak_adv : WNB aK advertorial -->
-         <a id="marketing-${postid}-Link" href="${promotion_url}">
+         <a id="marketing-${postid}-Link" href="${marketing_link}">
            <table class="table1a">
             <tbody>
               <tr>
-                <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${promotion_url}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;height: auto; width: 100%; max-width: 200px; display: block;" src="${imageUrl}" /></a></td>
+                <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${marketing_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;height: auto; width: 100%; max-width: 200px; display: block;" src="${imageUrl}" /></a></td>
               </tr>
             </tbody>
           </table>
@@ -1061,18 +1061,18 @@ if (attachmentId) {
             <tbody>
               <tr>
                 <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-                  <div class="tdDiv"><a id="imgKlein${postid}Link" href="${promotion_url}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;display: none; height: 150px; width: 150px;" src="${imageUrl}" /></a></div>
+                  <div class="tdDiv"><a id="imgKlein${postid}Link" href="${marketing_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;display: none; height: 150px; width: 150px;" src="${imageUrl}" /></a></div>
                 </td>
                 <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
                   <table class="tableC">
                     <tbody>
                       <tr>
-                        <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: bold; font-family: Arial;" href="${promotion_url}"><span style="padding: 5px 10px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; vertical-align: top;">ADV
+                        <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: bold; font-family: Arial;" href="${marketing_link}"><span style="padding: 5px 10px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; vertical-align: top;">ADV
                         </span><br>${promotion_title}</a>
                         </td>
                       </tr>
                       <tr>
-                        <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: Arial;" href="${promotion_url}">${promotion_intro}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${promotion_url}"> Lees meer ▸</a></td>
+                        <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: Arial;" href="${marketing_link}">${promotion_intro}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${marketing_link}"> Lees meer ▸</a></td>
                       </tr>
                     </tbody>
                   </table>
@@ -1087,12 +1087,12 @@ if (attachmentId) {
         //console.log('Rendering wnb_ag_tvdw:', promo_title);
         innerHtmlContent = `
         <!--  HTML voor  wnb_ag_tvdw -->
-        <a id="marketing-${postid}-Link" href="${promotion_url}">
+        <a id="marketing-${postid}-Link" href="${marketing_link}">
         <table id="artikelGroot${postid}T" style="margin: 0 15px 0 0px !important; display: block;">
         <tbody id="artikelGroot${postid}Tb">
          <tr id="artikelGroot${postid}TrB">
           <td id="artikelGroot${postid}TdB">
-             <a style="padding: 0px;" id="ct11_1" href="${promotion_url}">
+             <a style="padding: 0px;" id="ct11_1" href="${marketing_link}">
                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${imageUrl}" >
              </a>
            </td>
@@ -1100,7 +1100,7 @@ if (attachmentId) {
          <tr id="artikelGroot${postid}TrA">
           <td id="artikelGroot${postid}TdA">
           <div style="display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; vertical-align: top;">THEMA VAN DE WEEK</div>
-           <a class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${promotion_url}">
+           <a class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${marketing_link}">
              ${promotion_title}
            </a>
           </td>
@@ -1108,12 +1108,12 @@ if (attachmentId) {
          <tr id="artikelGroot${postid}TrC">
           <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
 
-              <a class="grootArtikelDescription" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;" id="ct11_2" href="${promotion_url}">
+              <a class="grootArtikelDescription" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;" id="ct11_2" href="${marketing_link}">
               <span style="font-size: 16px; color: #333333;font-weight: 400;">
                 ${promotion_intro}
               </span>
             </a>
-            <a class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;"  href="${promotion_url}"> Lees meer ▸</a>
+            <a class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;"  href="${marketing_link}"> Lees meer ▸</a>
 
            </td>
          </tr>
@@ -1126,19 +1126,19 @@ if (attachmentId) {
         //console.log('Rendering wnb_ag_cta:', promo_title);
         innerHtmlContent = `
         <!--  HTML voor wnb_ag_cta -->
-        <a id="marketing-${postid}-Link" href="${promotion_url}">
+        <a id="marketing-${postid}-Link" href="${marketing_link}">
         <table id="artikelGroot${postid}T" style="margin: 0 15px 0 0px !important; display: block;">
         <tbody id="artikelGroot${postid}Tb">
          <tr id="artikelGroot${postid}TrB">
           <td id="artikelGroot${postid}TdB">
-             <a style="padding: 0px;" id="ct11_1" href="${promotion_url}">
+             <a style="padding: 0px;" id="ct11_1" href="${marketing_link}">
                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${imageUrl}" >
              </a>
            </td>
          </tr>
          <tr id="artikelGroot${postid}TrA">
           <td id="artikelGroot${postid}TdA">
-           <a class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${promotion_url}">
+           <a class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${marketing_link}">
              ${promotion_title}
            </a>
           </td>
@@ -1146,13 +1146,13 @@ if (attachmentId) {
          <tr id="artikelGroot${postid}TrC">
           <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
             ${promotion_intro ? `
-              <a class="grootArtikelDescription" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;" id="ct11_2" href="${promotion_url}">
+              <a class="grootArtikelDescription" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;" id="ct11_2" href="${marketing_link}">
                 <span style="font-size: 16px; color: #333333;font-weight: 400;">
                   ${promotion_intro}
                 </span>
               </a>` : ''
             }
-             <a class="GrootArtikelCTA" style="text-decoration: none;background: #FF9901;box-shadow: 0px 2px 0px #CC7A01;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #331F00; padding: 15px 30px; margin: 0px 0;             display: inline-block; "  href="${promotion_url}"> ${promotion_cta_text}</a>
+             <a class="GrootArtikelCTA" style="text-decoration: none;background: #FF9901;box-shadow: 0px 2px 0px #CC7A01;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #331F00; padding: 15px 30px; margin: 0px 0;             display: inline-block; "  href="${marketing_link}"> ${promotion_cta_text}</a>
            </td>
          </tr>
         </tbody>
@@ -1162,7 +1162,7 @@ if (attachmentId) {
       } else {
         innerHtmlContent = `
             <!-- Default HTML content -->
-            <a id="marketing-${postid}-Link" href="${promotion_url}">
+            <a id="marketing-${postid}-Link" href="${marketing_link}">
               <div class="${promotion_type}" style="border: 1px solid #cccccc; border-radius: 4px; width: 100%;">
                 <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0; line-height: 1.3">${promo_title}</p>
               </div>
@@ -1233,33 +1233,37 @@ if (attachmentId) {
     
         // Process deserializedValue for HTML output...
         
+        
         if (Array.isArray(deserializedValue)) {
 
           deserializedValue.forEach((item, index) => {
             if (typeof item === 'object' && item !== null) {
-              // Check if the assumed properties 'title' and 'url' exist in the object
-              if ('title' in item && 'url' in item) {
-                //do stuff
-              } else {
-                // If the assumed properties don't exist, output the object as a string
-                innerHtmlContent += `
+            //   // Check if the assumed properties 'title' and 'url' exist in the object
+               if ('title' in item && 'url' in item) {
+                 //do stuff
+               } else {
+                 // If the assumed properties don't exist, output the object as a string
+                 innerHtmlContent += `
                 
-                <tr>
-                  <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
-                  <td>
-                    <p id="pheadline1" class="headline" style="display: block; margin: 0px; color: #18608b;"><a id="headline1" class="headline" href="${item.link_post.url}" style="display: block; margin: 0px; color: #18608b;">${item.link_post.title}</a>
+                 <tr>
+                   <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+                   <td>
+                     <p id="pheadline1" class="headline" style="display: block; margin: 0px; color: #18608b;"><a id="headline1" class="headline" href="${item.link_post.url}${utm_parameters}" style="display: block; margin: 0px; color: #18608b;">${item.link_post.title}</a>
                    
-                    </p>
-                  </td>
-                  <td style="width: 30px;">&nbsp;</td>
-                  </tr>
+                     </p>
+                   </td>
+                   <td style="width: 30px;">&nbsp;</td>
+                   </tr>
                 
                 
-                `;
-              }
-            } else {
-                //do stuff
-              }
+                 `;
+               }
+             } else {
+                 //do stuff
+               }
+
+            
+            
           });
           innerHtmlContent += '</tbody></table>'; // Close the <ul> tag at the end
         } else {

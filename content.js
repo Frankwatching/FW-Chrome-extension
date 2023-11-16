@@ -63,7 +63,10 @@ function handleButtonClick(container, buttonImg, overlay) {
   artikelenGrootContainer.style.display = "none";
   agendaAcademyContainer.style.display = "none";
   artikelenKleinContainer.style.display = "none";
+  artikelHeadlineContainer.style.display = "none";
   agendaOverlay.style.display = "none";
+  productItemKleinContainer.style.display = "none";
+  productItemGrootContainer.style.display = "none";
   vacatureGrootContainer.style.display = "none";
   vacatureContainer.style.display = "none";
   marketingContainer.style.display = "none";
@@ -82,6 +85,9 @@ function handleButtonClick(container, buttonImg, overlay) {
   artikelGrootButtonImg.className = "ButtonImg";
   agendaAcademyButtonImg.className = "ButtonImg";
   artikelKleinButtonImg.className = "ButtonImg";
+  artikelHeadlineButtonImg.className = "ButtonImg";
+  productItemKleinButtonImg.className = "ButtonImg";
+  productItemGrootButtonImg.className = "ButtonImg";
   vacatureGrootButtonImg.className = "ButtonImg";
   vacatureButtonImg.className = "ButtonImg";
   marketingButtonImg.className = "ButtonImg";
@@ -107,22 +113,35 @@ document.getElementById('artikelKleinButton').onclick = function (event5) {
   handleButtonClick(artikelenKleinContainer, artikelKleinButtonImg, null);
 }
 
-document.getElementById('vacatureButton').onclick = function (event6) {
+document.getElementById('artikelHeadlineButton').onclick = function (event6) {
+  handleButtonClick(artikelHeadlineContainer, artikelHeadlineButtonImg, null);
+}
+
+document.getElementById('vacatureButton').onclick = function (event7) {
   handleButtonClick(vacatureContainer, vacatureButtonImg, null);
 }
 
-document.getElementById('vacatureGrootButton').onclick = function (event7) {
+document.getElementById('vacatureGrootButton').onclick = function (event8) {
   handleButtonClick(vacatureGrootContainer, vacatureGrootButtonImg, null);
 }
 
 
-document.getElementById('marketingButton').onclick = function (event8) {
+document.getElementById('marketingButton').onclick = function (event9) {
   handleButtonClick(marketingContainer, marketingButtonImg, null);
 }
 
-document.getElementById('channelButton').onclick = function (event9) {
+document.getElementById('channelButton').onclick = function (event10) {
   handleButtonClick(channelContainer, channelButtonImg, null);
 }
+
+document.getElementById('productItemKleinButton').onclick = function (event11) {
+  handleButtonClick(productItemKleinContainer, productItemKleinButtonImg, null);
+}
+
+document.getElementById('productItemGrootButton').onclick = function (event12) {
+  handleButtonClick(productItemGrootContainer, productItemGrootButtonImg, null);
+}
+
 
 
 // ## DATA SOURCES
@@ -301,6 +320,8 @@ fetch(agendarss)
   setTimeout(function() {
     for (var i = 0, len = 30; i < len; i++) {
       agendaItems(items[i]);
+      productItemKlein(items[i]);
+      productItemGroot(items[i]);
     }
 
  }, 100);
@@ -404,6 +425,119 @@ function agendaItems(item, index) {
 
 }
 
+function productItemKlein(item, index) {
+
+  var table = document.getElementById("academyTable");
+  var json = xml2json(item);
+  var title = json["title"];
+  var link = json["link"];
+  var postid = json["productid"];
+  var campaign = json["postmeta:campaign"];
+  var location = json["postmeta:location"];
+  var durration = json["postmeta:durration"];
+  var dateMonth = json["postmeta:dateMonth"];
+  var dateDay = json["postmeta:dateDay"];
+
+  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
+
+  //var pubdate = item.querySelector("pubdate").innerHTML;
+  //var poststatus = item.querySelector("poststatus").innerHTML;
+  //var popularityscore = item.querySelector("popularityscore").innerHTML;
+
+  /* add category */
+  var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
+  //var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
+  var item_categorie = item_categorie + '<span class="postPubDate">'+dateDay+'-'+dateMonth+'</span>';
+  var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
+  //var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
+
+  //var item_categories = item.querySelector("categoriesName").innerHTML;
+  // var item_categories_array = removeDuplicates(item_categories.split("|"));
+  // item_categories_array.forEach(function(element) {
+  //   item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+element+'">' + element + '</span>';
+  // });
+
+  const divCat = document.createElement('div');
+  divCat.className = 'categoryClass';
+  divCat.innerHTML = item_categorie;
+
+  const div = document.createElement('div');
+  div.className = 'itemProduct';
+  div.id = 'productItemKlein'+postid;
+  div.draggable = 'true';
+
+  div.innerHTML = `
+    itemKlein
+  `;
+
+  productItemKleinContainer.appendChild(divCat);
+  productItemKleinContainer.appendChild(div);
+
+   document.getElementById('productItemKlein' + postid).ondragstart = function (event) {
+       event
+         .dataTransfer
+         .setData('text/html', event.target.innerHTML);
+     }
+
+}
+
+
+function productItemGroot(item, index) {
+
+  var table = document.getElementById("academyTable");
+  var json = xml2json(item);
+  var title = json["title"];
+  var link = json["link"];
+  var postid = json["productid"];
+  var campaign = json["postmeta:campaign"];
+  var location = json["postmeta:location"];
+  var durration = json["postmeta:durration"];
+  var dateMonth = json["postmeta:dateMonth"];
+  var dateDay = json["postmeta:dateDay"];
+
+  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
+
+  //var pubdate = item.querySelector("pubdate").innerHTML;
+  //var poststatus = item.querySelector("poststatus").innerHTML;
+  //var popularityscore = item.querySelector("popularityscore").innerHTML;
+
+  /* add category */
+  var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
+  //var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
+  var item_categorie = item_categorie + '<span class="postPubDate">'+dateDay+'-'+dateMonth+'</span>';
+  var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
+  //var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
+
+  //var item_categories = item.querySelector("categoriesName").innerHTML;
+  // var item_categories_array = removeDuplicates(item_categories.split("|"));
+  // item_categories_array.forEach(function(element) {
+  //   item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+element+'">' + element + '</span>';
+  // });
+
+  const divCat = document.createElement('div');
+  divCat.className = 'categoryClass';
+  divCat.innerHTML = item_categorie;
+
+  const div = document.createElement('div');
+  div.className = 'itemProduct';
+  div.id = 'productItemGroot'+postid;
+  div.draggable = 'true';
+
+  div.innerHTML = `
+    itemGroot
+  `;
+
+  productItemGrootContainer.appendChild(divCat);
+  productItemGrootContainer.appendChild(div);
+
+   document.getElementById('productItemGroot' + postid).ondragstart = function (event) {
+       event
+         .dataTransfer
+         .setData('text/html', event.target.innerHTML);
+     }
+
+}
+
 
 // ## LOAD ARTIKELEN
 "use strict";
@@ -431,6 +565,11 @@ async function loadNews() {
       artikelenKleinContainerContent.innerHTML = "";
     }
 
+    const artikelHeadlineContainerContent = document.getElementById("artikelHeadlineContainerContent");
+    if (artikelHeadlineContainerContent) {
+      artikelHeadlineContainerContent.innerHTML = "";
+    }
+
     if (listSort === 'popularity') {
       const div = document.createElement('div');
       div.id = 'headingArtikelGroot';
@@ -442,6 +581,7 @@ async function loadNews() {
 
     items.forEach(artikelenGrootItems);
     items.forEach(artikelenKleinItems);
+    items.forEach(artikelHeadlineItems);
   } catch (error) {
     console.error("Error loading news articles:", error);
   }
@@ -599,6 +739,74 @@ function artikelenKleinItems(item, index) {
    artikelenKleinContainerContent.appendChild(div);
 
    document.getElementById('kleinArtikel' + postid).ondragstart = function (event) {
+       event
+         .dataTransfer
+         .setData('text/html', event.target.innerHTML);
+     }
+
+}
+
+
+function artikelHeadlineItems(item, index) {
+
+  var postid = item.querySelector("postid").innerHTML;
+
+  var item_link = item.querySelector("link").innerHTML + `&utm_source=nb-blog-${dagWeek}&utm_medium=emailHeadline&utm_campaign=artikel&utm_content=%7c${sendDate}%7cartikel%7c`;
+
+  var item_img_groot = item.querySelector("*|afbeelding").innerHTML;
+  item_img_groot = item_img_groot.replace("<![CDATA[", "").replace("]]>", "");
+
+  var item_img_klein = item.querySelector("*|foto").innerHTML;
+  item_img_klein = item_img_klein.replace("<![CDATA[", "").replace("]]>", "");
+  var item_title = item.querySelector("title").innerHTML;
+  var pubdate = item.querySelector("pubdate").innerHTML;
+  var poststatus = item.querySelector("poststatus").innerHTML;
+  var popularityscore = item.querySelector("popularityscore").innerHTML;
+
+   /* add category */
+   var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
+   var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
+   var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
+   var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
+   var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
+
+   var item_categories = item.querySelector("categoriesName").innerHTML;
+   var item_categories_array = removeDuplicates(item_categories.split("|"));
+   item_categories_array.forEach(function(element) {
+     item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+element+'">' + element + '</span>';
+   });
+
+   const divCat = document.createElement('div');
+   divCat.className = 'categoryClass';
+   divCat.innerHTML = item_categorie;
+   artikelHeadlineContainerContent.appendChild(divCat);
+
+   const div = document.createElement('div');
+   div.className = 'headline';
+   div.id = 'headline'+postid;
+   div.draggable = 'true';
+
+   
+
+  div.innerHTML =  `
+  <table class="table1a">
+  <tbody>
+  <tr>
+  <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+  <td>
+    <p id="pheadline1" class="headline" style="display: block; margin: 0px; color: #18608b;"><a id="headline1" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; line-height: 1.3">${item_title}</a>
+  
+    </p>
+  </td>
+  <td style="width: 30px;">&nbsp;</td>
+  </tr>
+  </tbody>
+  </table>
+  `;
+
+   artikelHeadlineContainerContent.appendChild(div);
+
+   document.getElementById('headline' + postid).ondragstart = function (event) {
        event
          .dataTransfer
          .setData('text/html', event.target.innerHTML);

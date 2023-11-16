@@ -25,7 +25,24 @@ artikelenGrootContainer.id = 'artikelenGrootContainer';
 var artikelenGrootContainerContent = document.createElement( 'div' );
 artikelenGrootContainerContent.id = 'artikelenGrootContainerContent';
 
+
+var artikelHeadlineContainer = document.createElement( 'div' );
+artikelHeadlineContainer.id = 'artikelHeadlineContainer';
+var artikelHeadlineContainerContent = document.createElement( 'div' );
+artikelHeadlineContainerContent.id = 'artikelHeadlineContainerContent';
+
 var agendaAcademyContainer = document.createElement( 'div' );
+
+var productItemKleinContainer = document.createElement( 'div' );
+productItemKleinContainer.id = 'productItemKleinContainer';
+var productItemKleinContainerContent = document.createElement( 'div' );
+productItemKleinContainerContent.id = 'productItemKleinContainerContent';
+
+
+var productItemGrootContainer = document.createElement( 'div' );
+productItemGrootContainer.id = 'productItemGrootContainer';
+var productItemGrootContainerContent = document.createElement( 'div' );
+productItemGrootContainerContent.id = 'productItemGrootContainerContent';
 
 
 var vacatureGrootContainer = document.createElement( 'div' );
@@ -109,6 +126,15 @@ var agendaAcademyButton = document.createElement ('div');
 var agendaAcademyButtonImg = document.createElement ('p');
 var artikelKleinButton = document.createElement ('div');
 var artikelKleinButtonImg = document.createElement ('p');
+var artikelHeadlineButton = document.createElement ('div');
+var artikelHeadlineButtonImg = document.createElement ('p');
+
+var productItemKleinButton = document.createElement ('div');
+var productItemKleinButtonImg = document.createElement ('p');
+
+var productItemGrootButton = document.createElement ('div');
+var productItemGrootButtonImg = document.createElement ('p');
+
 var vacatureGrootButton = document.createElement ('div');
 var vacatureGrootButtonImg = document.createElement ('p');
 var vacatureButton = document.createElement ('div');

@@ -60,6 +60,18 @@ artikelenGrootContainer.appendChild(artikelenGrootContainerContent);
 contentIndex.appendChild( artikelenKleinContainer );
 artikelenKleinContainer.appendChild( artikelenKleinContainerContent );
 
+//artikelHeadline
+contentIndex.appendChild( artikelHeadlineContainer );
+artikelHeadlineContainer.appendChild( artikelHeadlineContainerContent );
+
+//productItemKlein
+contentIndex.appendChild( productItemKleinContainer );
+productItemKleinContainer.appendChild( productItemKleinContainerContent );
+
+//productItemGroot
+contentIndex.appendChild( productItemGrootContainer );
+productItemGrootContainer.appendChild( productItemGrootContainerContent );
+
 //Vacatures groot
 contentIndex.appendChild(vacatureGrootContainer);
 vacatureGrootContainer.appendChild(vacatureGrootContainerContent);
@@ -84,8 +96,14 @@ choices.appendChild( artikelGrootButton );
 artikelGrootButton.appendChild( artikelGrootButtonImg );
 choices.appendChild( artikelKleinButton );
 artikelKleinButton.appendChild( artikelKleinButtonImg );
+choices.appendChild( artikelHeadlineButton );
+artikelHeadlineButton.appendChild( artikelHeadlineButtonImg );
 choices.appendChild( agendaAcademyButton );
 agendaAcademyButton.appendChild( agendaAcademyButtonImg );
+choices.appendChild( productItemKleinButton );
+productItemKleinButton.appendChild( productItemKleinButtonImg );
+choices.appendChild( productItemGrootButton );
+productItemGrootButton.appendChild( productItemGrootButtonImg );
 choices.appendChild( vacatureGrootButton );
 vacatureGrootButton.appendChild( vacatureGrootButtonImg );
 choices.appendChild( vacatureButton );

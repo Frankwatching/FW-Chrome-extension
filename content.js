@@ -147,7 +147,7 @@ document.getElementById('productItemGrootButton').onclick = function (event12) {
 // ## DATA SOURCES
 
 jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature';
-agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/';
+agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?poststatus=&timestamp=' + Date.now();
 marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&timestamp=' + Date.now();
 bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news';
 newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?poststatus=future-publish';
@@ -429,16 +429,19 @@ function productItemKlein(item, index) {
 
   var table = document.getElementById("academyTable");
   var json = xml2json(item);
-  var title = json["title"];
   var link = json["link"];
-  var postid = json["productid"];
   var campaign = json["postmeta:campaign"];
   var location = json["postmeta:location"];
   var durration = json["postmeta:durration"];
   var dateMonth = json["postmeta:dateMonth"];
   var dateDay = json["postmeta:dateDay"];
-
+  var postid = json["productid"];
+  var item_title = json["title"];
+  var item_description = json["description"];
   var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
+
+  var item_img_klein = json["image_small"];
+  var item_img_groot = json["image_large"];
 
   //var pubdate = item.querySelector("pubdate").innerHTML;
   //var poststatus = item.querySelector("poststatus").innerHTML;
@@ -467,7 +470,34 @@ function productItemKlein(item, index) {
   div.draggable = 'true';
 
   div.innerHTML = `
-    itemKlein
+  <table class="table1a">
+  <tbody>
+    <tr>
+      <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;height: auto; width: 100%; display: block;" src="${item_img_groot}" /></a></td>
+    </tr>
+  </tbody>
+  </table>
+  <table>
+  <tbody>
+    <tr>
+      <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+        <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;display: none; height: 150px; width: 150px;" src="${item_img_klein}" /></a></div>
+      </td>
+      <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+        <table class="tableC">
+          <tbody>
+            <tr>
+              <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
+            </tr>
+            <tr>
+              <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: Arial;" href="${item_link}">${item_description}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+  </table>
   `;
 
   productItemKleinContainer.appendChild(divCat);
@@ -486,7 +516,6 @@ function productItemGroot(item, index) {
 
   var table = document.getElementById("academyTable");
   var json = xml2json(item);
-  var title = json["title"];
   var link = json["link"];
   var postid = json["productid"];
   var campaign = json["postmeta:campaign"];
@@ -496,6 +525,9 @@ function productItemGroot(item, index) {
   var dateDay = json["postmeta:dateDay"];
 
   var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
+  var item_title = json["title"];
+  var item_description = json["description"];
+  var item_img_groot = json["image_large"];
 
   //var pubdate = item.querySelector("pubdate").innerHTML;
   //var poststatus = item.querySelector("poststatus").innerHTML;
@@ -524,7 +556,34 @@ function productItemGroot(item, index) {
   div.draggable = 'true';
 
   div.innerHTML = `
-    itemGroot
+  <table id="artikelGroot${postid}T" style="margin: 0 15px 0 0px !important; display: block;">
+  <tbody id="artikelGroot${postid}Tb">
+   <tr id="artikelGroot${postid}TrB">
+    <td id="artikelGroot${postid}TdB">
+       <a style="padding: 0px;" id="ct11_1" href="${item_link}">
+         <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
+       </a>
+     </td>
+   </tr>
+   <tr id="artikelGroot${postid}TrA">
+    <td id="artikelGroot${postid}TdA">
+     <a class="grootArtikelTitle" style="font-family: 'Roboto', Arial; color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+       ${item_title}
+     </a>
+    </td>
+   </tr>
+   <tr id="artikelGroot${postid}TrC">
+    <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
+       <a class="grootArtikelDescription" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;" id="ct11_2" href="${item_link}">
+         <span style="font-size: 16px; color: #333333;font-weight: 400;">
+           ${item_description}
+         </span>
+       </a>
+       <a class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;"  href="${item_link}"> Lees meer ▸</a>
+     </td>
+   </tr>
+  </tbody>
+ </table>
   `;
 
   productItemGrootContainer.appendChild(divCat);

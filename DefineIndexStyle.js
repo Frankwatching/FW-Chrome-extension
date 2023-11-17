@@ -61,7 +61,7 @@ choices.style.height = '49px';
 choices.style.minWidth = canvsMinWidth;
 choices.className = "choices";
 choices.cssFloat = "left";
-choices.style.display = "inline";
+choices.style.display = "flex";
 
 headlinesButton.style.width = "13%"
 headlinesButton.style.cursor = "pointer";

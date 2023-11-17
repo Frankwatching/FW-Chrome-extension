@@ -147,7 +147,7 @@ document.getElementById('productItemGrootButton').onclick = function (event12) {
 // ## DATA SOURCES
 
 jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature';
-agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?poststatus=&timestamp=' + Date.now();
+agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/';
 marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&timestamp=' + Date.now();
 bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news';
 newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?poststatus=future-publish';
@@ -318,7 +318,7 @@ fetch(agendarss)
   }
 
   setTimeout(function() {
-    for (var i = 0, len = 30; i < len; i++) {
+    for (var i = 0, len = 10; i < len; i++) {
       agendaItems(items[i]);
       productItemKlein(items[i]);
       productItemGroot(items[i]);
@@ -1334,7 +1334,7 @@ if (attachmentId) {
                   <table class="tableC">
                     <tbody>
                       <tr>
-                        <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: bold; font-family: Arial;" href="${marketing_link}"><span style="padding: 5px 10px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; vertical-align: top;">ADV
+                        <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: bold; font-family: Arial;" href="${marketing_link}"><span style="padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; display: inline-block; vertical-align: top;">ADV
                         </span><br>${promotion_title}</a>
                         </td>
                       </tr>
@@ -1519,7 +1519,7 @@ if (attachmentId) {
                    
                      </p>
                    </td>
-                   <td style="width: 30px;">&nbsp;</td>
+                   <td style="width: 30px;"><span style="padding: 2px 5px; background: #ffffff; color: #018000; font-size: 9px; line-height: 1.3; font-weight: normal; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; vertical-align: top;">ADV</span></td>
                    </tr>
                 
                 

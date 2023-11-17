@@ -389,7 +389,7 @@ function agendaItems(item, index) {
         </td>
       <td style="background: #F2F2F2;">
 
-        <table id="contentAcademy" style="margin-left: 10px !important;background: #F2F2F2;">
+        <table id="contentAcademy" style="margin-left: 10px !important;">
           <tbody>
           <tr>
             <td>

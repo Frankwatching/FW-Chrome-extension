@@ -387,7 +387,7 @@ function agendaItems(item, index) {
             </tbody>
           </table>      
         </td>
-      <td style="background: #F2F2F2;">
+      <td style="">
 
         <table id="contentAcademy" style="margin-left: 10px !important;">
           <tbody>

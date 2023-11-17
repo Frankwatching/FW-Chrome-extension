@@ -372,7 +372,7 @@ function agendaItems(item, index) {
   div.draggable = 'true';
 
   div.innerHTML = `
-  <table id="contentAcademyAgenda${postid}" style="width: 100%; background: #F2F2F2; border-collapse: collapse; width: 100%;padding: 8px 10px;" align="left">
+  <table id="contentAcademyAgenda${postid}" style="display: inline-block; width: 100%; background: #F2F2F2; border-collapse: collapse; width: 100%;padding: 8px 10px;" align="left">
       <tbody>
       <tr>
         <td style="width: 42px;">
@@ -394,14 +394,14 @@ function agendaItems(item, index) {
           <tr>
             <td>
               <a id="agendaAcademy${postid}" class="agendaItem" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-                <span class="agendaAcademyTitle" style="font-size: 14px; color: #0E5C8C;text-overflow: ellipsis; font-weight: bold;text-wrap: nowrap;">${title}</span>
+                <span class="agendaAcademyTitle" style="font-size: 14px; color: #0E5C8C;font-weight: bold; text-overflow: ellipsis; white-space: nowrap;overflow: hidden;width: 220px; display: block;">${title}</span>
               </a>
             </td>
           </tr>
           <tr>
             <td>
               <a id="agendaAcademy${postid}" class="agendaItem" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-                <span style="font-size: 14px; color: rgb(158, 158, 158);">${location} | ${durration}
+                <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);text-overflow: ellipsis; white-space: nowrap;overflow: hidden; width: 220px; display: block;">${location} | ${durration}
                 </span>
               </a>
             </td>

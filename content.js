@@ -848,14 +848,12 @@ function artikelHeadlineItems(item, index) {
    
 
   div.innerHTML =  `
-  <table class="table1a">
+  <table id="headlineItem${postid}" width="100%">
   <tbody>
   <tr>
   <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
   <td>
-    <p id="pheadline1" class="headline" style="display: block; margin: 0px; color: #18608b;"><a id="headline1" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; line-height: 1.3">${item_title}</a>
-  
-    </p>
+    <a id="headline1" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title}</a>
   </td>
   <td style="width: 30px;">&nbsp;</td>
   </tr>
@@ -1496,7 +1494,7 @@ if (attachmentId) {
   
         //console.log('Deserialized Value:', deserializedValue); // Check the deserializedValue
     
-        let innerHtmlContent = ' <table  id="marketing-${postid}-Link" class=""  href="${item.url}" width="100%" style="line-height: 22px;"><tbody>'; // Initialize the HTML content with the opening <ul> tag
+        let innerHtmlContent = `<table id="marketing-${postid}-Link" width="100%"><tbody>`;// Initialize the HTML content with the opening <ul> tag
     
         // Process deserializedValue for HTML output...
         
@@ -1515,9 +1513,7 @@ if (attachmentId) {
                  <tr>
                    <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
                    <td>
-                     <p id="pheadline1" class="headline" style="display: block; margin: 0px; color: #18608b;"><a id="headline1" class="headline" href="${item.link_post.url}${utm_parameters}" style="display: block; margin: 0px; color: #18608b;">${item.link_post.title}</a>
-                   
-                     </p>
+                     <a id="headline1" class="headline" href="${item.link_post.url}${utm_parameters}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item.link_post.title}</a>
                    </td>
                    <td style="width: 30px;"><span style="padding: 2px 5px; background: #ffffff; color: #018000; font-size: 9px; line-height: 1.3; font-weight: normal; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; vertical-align: top;">ADV</span></td>
                    </tr>

@@ -480,7 +480,7 @@ headlinesOverlay.style.zIndex = "19300";
   phl7.style.color = "#18608B"
 
   headlineTable.width="100%";
-  headlineTable.style.lineHeight= "22px";
+  headlineTable.style.lineHeight= "1.3";
 
   headlines1Td1.textContent = "▸ ";
   headlines1Td1.style.fontSize = "12px";

@@ -2,26 +2,26 @@
 a {
   text-decoration: none;
   font-size: 16px !important;
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   color: #18608B;
 }
 
 .messagePaneNest p {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     color: #666666;
 
 }
 .messagePaneNest span {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     color: #666666;
 
 }
 .messagePaneNest a {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     color: #18608B;
     text-decoration: none;
 }
@@ -64,12 +64,12 @@ a {
 
 .kleinArtikel .titleKleinArtikel {
   font-size: 10px !important;
-  line-height: 13px !important;
+  line-height: 1.3 !important;
 }
 
 .kleinArtikel .DescriptionKleinArtikel {
   font-size: 8px !important;
-  line-height: 13px !important;
+  line-height: 1.3 !important;
 }
 
 .kleinArtikel .KleinArtikelCTA {
@@ -83,7 +83,7 @@ a {
 
 .kleinArtikel .tableDivider2 {
   max-height: 90px !important;
-  line-height: 1;
+  line-height: 1.3;
 
 }
 .imgKleinArtikel {
@@ -110,12 +110,9 @@ a {
 
 .grootArtikelTitle {
   font-size: 9pt;
-  line-height: 22px !important;
+  line-height: 1.3 !important;
 }
 
-.ButtonImg {
-
-}
 
 .ButtonImgPressd {
   border-bottom: 5px solid #1483C6;

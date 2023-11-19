@@ -490,7 +490,7 @@ function productItemKlein(item, index) {
               <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
             </tr>
             <tr>
-              <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: Arial;" href="${item_link}">${item_description}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
+              <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
             </tr>
           </tbody>
         </table>
@@ -556,7 +556,7 @@ function productItemGroot(item, index) {
   div.draggable = 'true';
 
   div.innerHTML = `
-  <table id="artikelGroot${postid}T" style="margin: 0 15px 0 0px !important; display: block;">
+  <table id="artikelGroot${postid}T" style="display: block;">
   <tbody id="artikelGroot${postid}Tb">
    <tr id="artikelGroot${postid}TrB">
     <td id="artikelGroot${postid}TdB">
@@ -684,7 +684,7 @@ function artikelenGrootItems(item, index) {
   div.draggable = 'true';
 
   div.innerHTML = `
-  <table id="artikelGroot${postid}T" style="margin: 0 15px 0 0px !important; display: block;">
+  <table id="artikelGroot${postid}T" style=" display: block;">
  <tbody id="artikelGroot${postid}Tb">
   <tr id="artikelGroot${postid}TrB">
    <td id="artikelGroot${postid}TdB">
@@ -782,10 +782,10 @@ function artikelenKleinItems(item, index) {
         <table class="tableC">
           <tbody>
             <tr>
-              <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: regular; font-family: Arial;" href="${item_link}">${item.querySelector("title").innerHTML}</a></td>
+              <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item.querySelector("title").innerHTML}</a></td>
             </tr>
             <tr>
-              <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: Arial;" href="${item_link}">${item.querySelector("description").innerHTML}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
+              <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item.querySelector("description").innerHTML}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
             </tr>
           </tbody>
         </table>
@@ -853,7 +853,7 @@ function artikelHeadlineItems(item, index) {
   <tr>
   <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
   <td>
-    <a id="headline1" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title}</a>
+    <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title}</a>
   </td>
   <td style="width: 30px;">&nbsp;</td>
   </tr>
@@ -1102,7 +1102,7 @@ function functionVacatureGrootItems(item, index) {
 
     div.innerHTML = `
 
-    <table id="artikelGroot${postid}T" style="margin: 0 15px 0 0px !important; display: block;">
+    <table id="artikelGroot${postid}T" style="display: block;">
     <tbody id="artikelGroot${postid}Tb">
      <tr id="artikelGroot${postid}TrB">
       <td id="artikelGroot${postid}TdB">
@@ -1332,12 +1332,12 @@ if (attachmentId) {
                   <table class="tableC">
                     <tbody>
                       <tr>
-                        <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: bold; font-family: Arial;" href="${marketing_link}"><span style="padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; display: inline-block; vertical-align: top;">ADV
+                        <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: bold; font-family: 'Roboto', Arial;" href="${marketing_link}"><span style="padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; display: inline-block; vertical-align: top;">ADV
                         </span><br>${promotion_title}</a>
                         </td>
                       </tr>
                       <tr>
-                        <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: Arial;" href="${marketing_link}">${promotion_intro}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${marketing_link}"> Lees meer ▸</a></td>
+                        <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${marketing_link}">${promotion_intro}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${marketing_link}"> Lees meer ▸</a></td>
                       </tr>
                     </tbody>
                   </table>
@@ -1353,7 +1353,7 @@ if (attachmentId) {
         innerHtmlContent = `
         <!--  HTML voor  wnb_ag_tvdw -->
         <a id="marketing-${postid}-Link" href="${marketing_link}">
-        <table id="artikelGroot${postid}T" style="margin: 0 15px 0 0px !important; display: block;">
+        <table id="artikelGroot${postid}T" style="display: block;">
         <tbody id="artikelGroot${postid}Tb">
          <tr id="artikelGroot${postid}TrB">
           <td id="artikelGroot${postid}TdB">
@@ -1392,7 +1392,7 @@ if (attachmentId) {
         innerHtmlContent = `
         <!--  HTML voor wnb_ag_cta -->
         <a id="marketing-${postid}-Link" href="${marketing_link}">
-        <table id="artikelGroot${postid}T" style="margin: 0 15px 0 0px !important; display: block;">
+        <table id="artikelGroot${postid}T" style="display: block;">
         <tbody id="artikelGroot${postid}Tb">
          <tr id="artikelGroot${postid}TrB">
           <td id="artikelGroot${postid}TdB">
@@ -1473,7 +1473,8 @@ if (attachmentId) {
       <!-- campagnebalk content -->
       <a id="marketing-${postid}-Link" href="${marketing_link}">
         <div class="${promotion_type}" style="border: 1px solid green; border-radius: 4px; width: 100%;">
-          <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0; line-height: 1.3">${promotion_announcement}</p>
+          <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0; line-height: 1.3">${promotion_announcement} <img src="https://a43352.actonservice.com/cdnr/forpci6/acton/attachment/43352/f-4d611174-6de4-44b3-9887-e3295d000b57/2/-/-/-/-/image.png?v=undefined" width="12" style="margin-left: 15px;" />
+          </p>
         </div>
       </a>
     `;
@@ -1544,12 +1545,12 @@ if (attachmentId) {
       innerHtmlContent = `
       <!-- wnb_headlines_tvdw content -->
       <a id="marketing-${postid}-Link" href="${item.url}">
-      <table  id="marketing-${postid}-Link" class=""  href="${item.url}" width="100%" style="line-height: 22px;">
+      <table id="marketing-${postid}-Link" href="${item.url}" width="100%"">
       <tbody>
       <tr>
       <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
       <td>
-      <p id="pheadline1" class="headline" style="display: block; margin: 0px; color: #18608b;"><a id="headline1" class="headline" href="#" style="display: block; margin: 0px; color: #18608b;">bezig met laden...</a></p>
+      <a id="headlineItem${postid}m" class="headline" href="#" style="display: block; margin: 0px; color: #18608b;font-size: 16px;line-height: 1.3">bezig met laden...</a>
       </td>
       <td style="width: 30px;">&nbsp;</td>
       </tr>
@@ -1690,10 +1691,10 @@ function functionChannelItems(item, index) {
                     <table>
                         <tbody>
                             <tr>
-                                <td id="channelTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="channelLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: Arial; line-height: 1; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${article_link}">${item.querySelector("title").innerHTML}</a></td>
+                                <td id="channelTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="channelLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${article_link}">${item.querySelector("title").innerHTML}</a></td>
                             </tr>
                             <tr>
-                                <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="channelTDbC"><a id="channelLink${postid}description" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${article_link}">${description}</a></td>
+                                <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="channelTDbC"><a id="channelLink${postid}description" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${article_link}">${description}</a></td>
                             </tr>
                         </tbody>
                     </table>

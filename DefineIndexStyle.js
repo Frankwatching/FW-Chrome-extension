@@ -634,7 +634,7 @@ function switchListFunction()
 
 
 let searchID = '';
-let searchTitle = '';
+//let searchTitle = '';
 const divSearch = document.createElement('div');
 divSearch.className = 'divSearchKader';
 divSearch.id = 'divSearchKader';

@@ -160,19 +160,19 @@ if ( listSort === 'popularity') {
 if ( searchID ) {
   newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?postid='+ searchID;
   //console.log('news RSS:' + newsrss);
-  //jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature&postid='+ searchID;
-  //console.log('jobs RSS:' + jobrss);
+  jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature&post_id='+ searchID;
+  console.log('jobs RSS:' + jobrss);
   agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?postid='+ searchID;
   //console.log('agenda RSS:' + agendarss);
- // marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&postid='+ searchID;
+  //marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&postid='+ searchID;
   //console.log('marketing RSS:' + marketingrss);
   //bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news&postid='+ searchID;
   //console.log('bc RSS:' + bcrss);
 }
 
-if ( searchTitle ) {
-  newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?posttitle='+ searchTitle; // not working because s= parameters results in redirect to searchresultspage
-}
+//if ( searchTitle ) {
+  //newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?posttitle='+ searchTitle; // not working because s= parameters results in redirect to searchresultspage
+//}
 
 
 //console.log('news RSS:' + newsrss);

@@ -25,7 +25,6 @@ artikelenGrootContainer.id = 'artikelenGrootContainer';
 var artikelenGrootContainerContent = document.createElement( 'div' );
 artikelenGrootContainerContent.id = 'artikelenGrootContainerContent';
 
-
 var artikelHeadlineContainer = document.createElement( 'div' );
 artikelHeadlineContainer.id = 'artikelHeadlineContainer';
 var artikelHeadlineContainerContent = document.createElement( 'div' );
@@ -38,22 +37,31 @@ productItemKleinContainer.id = 'productItemKleinContainer';
 var productItemKleinContainerContent = document.createElement( 'div' );
 productItemKleinContainerContent.id = 'productItemKleinContainerContent';
 
-
 var productItemGrootContainer = document.createElement( 'div' );
 productItemGrootContainer.id = 'productItemGrootContainer';
 var productItemGrootContainerContent = document.createElement( 'div' );
 productItemGrootContainerContent.id = 'productItemGrootContainerContent';
 
+var downloadItemKleinContainer = document.createElement( 'div' );
+downloadItemKleinContainer.id = 'downloadItemKleinContainer';
+var downloadItemKleinContainerContent = document.createElement( 'div' );
+downloadItemKleinContainerContent.id = 'downloadItemKleinContainerContent';
 
-var vacatureGrootContainer = document.createElement( 'div' );
-vacatureGrootContainer.id = 'vacatureGrootContainer';
-var vacatureGrootContainerContent = document.createElement( 'div' );
-vacatureGrootContainerContent.id = 'vacatureGrootContainerContent';
+var downloadItemGrootContainer = document.createElement( 'div' );
+downloadItemGrootContainer.id = 'downloadItemGrootContainer';
+var downloadItemGrootContainerContent = document.createElement( 'div' );
+downloadItemGrootContainerContent.id = 'downloadItemGrootContainerContent';
+
 
 var vacatureContainer = document.createElement( 'div' );
 vacatureContainer.id = 'vacatureContainer';
 var vacatureContainerContent = document.createElement( 'div' );
 vacatureContainerContent.id = 'vacatureContainerContent';
+
+var vacatureGrootContainer = document.createElement( 'div' );
+vacatureGrootContainer.id = 'vacatureGrootContainer';
+var vacatureGrootContainerContent = document.createElement( 'div' );
+vacatureGrootContainerContent.id = 'vacatureGrootContainerContent';
 
 var marketingContainer = document.createElement( 'div' );
 marketingContainer.id = 'marketingContainer';
@@ -120,27 +128,37 @@ var agendaOverlay = document.createElement ( "div" );
 var choices = document.createElement ('div');
 var headlinesButton = document.createElement ('div');
 var headlinesButtonImg = document.createElement ('p');
-var artikelGrootButton = document.createElement ('div');
-var artikelGrootButtonImg = document.createElement ('p');
-var agendaAcademyButton = document.createElement ('div');
-var agendaAcademyButtonImg = document.createElement ('p');
+
 var artikelKleinButton = document.createElement ('div');
 var artikelKleinButtonImg = document.createElement ('p');
+var artikelGrootButton = document.createElement ('div');
+var artikelGrootButtonImg = document.createElement ('p');
+
+var agendaAcademyButton = document.createElement ('div');
+var agendaAcademyButtonImg = document.createElement ('p');
+
 var artikelHeadlineButton = document.createElement ('div');
 var artikelHeadlineButtonImg = document.createElement ('p');
 
 var productItemKleinButton = document.createElement ('div');
 var productItemKleinButtonImg = document.createElement ('p');
-
 var productItemGrootButton = document.createElement ('div');
 var productItemGrootButtonImg = document.createElement ('p');
 
-var vacatureGrootButton = document.createElement ('div');
-var vacatureGrootButtonImg = document.createElement ('p');
+var downloadItemKleinButton = document.createElement ('div');
+var downloadItemKleinButtonImg = document.createElement ('p');
+var downloadItemGrootButton = document.createElement ('div');
+var downloadItemGrootButtonImg = document.createElement ('p');
+
 var vacatureButton = document.createElement ('div');
 var vacatureButtonImg = document.createElement ('p');
+
+var vacatureGrootButton = document.createElement ('div');
+var vacatureGrootButtonImg = document.createElement ('p');
+
 var marketingButton = document.createElement ('div');
 var marketingButtonImg = document.createElement ('p');
+
 var channelButton = document.createElement ('div');
 var channelButtonImg = document.createElement ('p');
 

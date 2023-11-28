@@ -80,6 +80,14 @@ vacatureGrootContainer.appendChild(vacatureGrootContainerContent);
 contentIndex.appendChild(vacatureContainer);
 vacatureContainer.appendChild(vacatureContainerContent);
 
+//downloadItemKlein
+contentIndex.appendChild( downloadItemKleinContainer );
+downloadItemKleinContainer.appendChild( downloadItemKleinContainerContent );
+
+//downloadItemGroot
+contentIndex.appendChild( downloadItemGrootContainer );
+downloadItemGrootContainer.appendChild( downloadItemGrootContainerContent );
+
 //Marketing
 contentIndex.appendChild(marketingContainer);
 marketingContainer.appendChild(marketingContainerContent);
@@ -88,27 +96,43 @@ marketingContainer.appendChild(marketingContainerContent);
 contentIndex.appendChild(channelContainer);
 channelContainer.appendChild(channelContainerContent);
 
-//Menu
+//Menu, let op volgorde
 contentFeed.appendChild( choices );
+
 choices.appendChild( headlinesButton );
 headlinesButton.appendChild( headlinesButtonImg );
-choices.appendChild( artikelGrootButton );
-artikelGrootButton.appendChild( artikelGrootButtonImg );
-choices.appendChild( artikelKleinButton );
-artikelKleinButton.appendChild( artikelKleinButtonImg );
+
 choices.appendChild( artikelHeadlineButton );
+artikelGrootButton.appendChild( artikelGrootButtonImg );
+
+choices.appendChild( artikelKleinButton );
 artikelHeadlineButton.appendChild( artikelHeadlineButtonImg );
-choices.appendChild( agendaAcademyButton );
-agendaAcademyButton.appendChild( agendaAcademyButtonImg );
+
+choices.appendChild( artikelGrootButton );
+artikelKleinButton.appendChild( artikelKleinButtonImg );
+
+
 choices.appendChild( productItemKleinButton );
 productItemKleinButton.appendChild( productItemKleinButtonImg );
+
 choices.appendChild( productItemGrootButton );
 productItemGrootButton.appendChild( productItemGrootButtonImg );
-choices.appendChild( vacatureGrootButton );
-vacatureGrootButton.appendChild( vacatureGrootButtonImg );
+
+choices.appendChild( agendaAcademyButton );
+agendaAcademyButton.appendChild( agendaAcademyButtonImg );
+
+choices.appendChild( downloadItemKleinButton );
+downloadItemKleinButton.appendChild( downloadItemKleinButtonImg );
+choices.appendChild( downloadItemGrootButton );
+downloadItemGrootButton.appendChild( downloadItemGrootButtonImg );
+
 choices.appendChild( vacatureButton );
 vacatureButton.appendChild( vacatureButtonImg );
+choices.appendChild( vacatureGrootButton );
+vacatureGrootButton.appendChild( vacatureGrootButtonImg );
+
 choices.appendChild( marketingButton );
 marketingButton.appendChild( marketingButtonImg );
+
 choices.appendChild( channelButton );
 channelButton.appendChild( channelButtonImg );

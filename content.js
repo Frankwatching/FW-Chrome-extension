@@ -60,15 +60,17 @@ function handleButtonClick(container, buttonImg, overlay) {
   // Hide all containers and overlays
   headlinesContainer.style.display = "none";
   headlinesOverlay.style.display = "none";
-  artikelenGrootContainer.style.display = "none";
   agendaAcademyContainer.style.display = "none";
   artikelenKleinContainer.style.display = "none";
+  artikelenGrootContainer.style.display = "none";
   artikelHeadlineContainer.style.display = "none";
-  agendaOverlay.style.display = "none";
   productItemKleinContainer.style.display = "none";
   productItemGrootContainer.style.display = "none";
-  vacatureGrootContainer.style.display = "none";
+  agendaOverlay.style.display = "none";
+  downloadItemKleinContainer.style.display = "none";
+  downloadItemGrootContainer.style.display = "none";
   vacatureContainer.style.display = "none";
+  vacatureGrootContainer.style.display = "none";
   marketingContainer.style.display = "none";
   channelContainer.style.display = "none";
 
@@ -82,12 +84,14 @@ function handleButtonClick(container, buttonImg, overlay) {
 
   // Reset the class names for all buttons
   headlinesButtonImg.className = "ButtonImg";
-  artikelGrootButtonImg.className = "ButtonImg";
-  agendaAcademyButtonImg.className = "ButtonImg";
   artikelKleinButtonImg.className = "ButtonImg";
+  artikelGrootButtonImg.className = "ButtonImg";
   artikelHeadlineButtonImg.className = "ButtonImg";
   productItemKleinButtonImg.className = "ButtonImg";
   productItemGrootButtonImg.className = "ButtonImg";
+  agendaAcademyButtonImg.className = "ButtonImg";
+  downloadItemKleinButtonImg.className = "ButtonImg";
+  downloadItemGrootButtonImg.className = "ButtonImg";
   vacatureGrootButtonImg.className = "ButtonImg";
   vacatureButtonImg.className = "ButtonImg";
   marketingButtonImg.className = "ButtonImg";
@@ -142,16 +146,23 @@ document.getElementById('productItemGrootButton').onclick = function (event12) {
   handleButtonClick(productItemGrootContainer, productItemGrootButtonImg, null);
 }
 
+document.getElementById('downloadItemKleinButton').onclick = function (event13) {
+  handleButtonClick(downloadItemKleinContainer, downloadItemKleinButtonImg, null);
+}
+
+document.getElementById('downloadItemGrootButton').onclick = function (event14) {
+  handleButtonClick(downloadItemGrootContainer, downloadItemGrootButtonImg, null);
+}
 
 
 // ## DATA SOURCES
-
 jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature';
 agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/';
 marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&timestamp=' + Date.now();
 bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news';
+kennisbankrss = 'https://www.frankwatching.com/feed/?post_type=downloads';
+gfentries = 'https://www.frankwatching.com/wp-json/gf/v2/forms/128/entries'
 newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?poststatus=future-publish';
-
 
 if ( listSort === 'popularity') {
   newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?popularity';
@@ -161,13 +172,15 @@ if ( searchID ) {
   newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?postid='+ searchID;
   //console.log('news RSS:' + newsrss);
   jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature&post_id='+ searchID;
-  console.log('jobs RSS:' + jobrss);
+  //console.log('jobs RSS:' + jobrss);
   agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?postid='+ searchID;
   //console.log('agenda RSS:' + agendarss);
-  //marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&postid='+ searchID;
+  marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&post_id='+ searchID;
   //console.log('marketing RSS:' + marketingrss);
   //bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news&postid='+ searchID;
   //console.log('bc RSS:' + bcrss);
+  kennisbankrss = 'https://www.frankwatching.com/feed?post_type=downloads&post_id='+ searchID;
+  //console.log('kennisbank RSS:' + kennisbankrss);
 }
 
 //if ( searchTitle ) {
@@ -1092,7 +1105,7 @@ function functionVacatureGrootItems(item, index) {
 
   const div = document.createElement('div');
    div.className = 'dragrow vacature';
-   div.id = 'vacature'+postid;
+   div.id = 'vacatureItemGr'+postid;
    div.draggable = 'true';
 
   var daginzet = '<tr><td id="vacatureTD' + postid + 'bMob" class="vacaturetd_mobile" style="display: none;"><a  style="display: none;" id="vacatureImgLink' + postid + '" class="vacatureImgLink_mob" href="'+vac_link+'"><img id="imgVacatureArtikel'+postid+'mob" class="imgVacature_mobile" style="display: none;" src="'+enclosure_img+'" /></a></td></tr> ';
@@ -1153,7 +1166,7 @@ function functionVacatureGrootItems(item, index) {
    vacatureGrootContainerContent.appendChild(divCat);
    vacatureGrootContainerContent.appendChild(div);
 
-   document.getElementById('vacature' + postid).ondragstart = function (event) {
+   document.getElementById('vacatureItemGr' + postid).ondragstart = function (event) {
        event
          .dataTransfer
          .setData('text/html', event.target.innerHTML);
@@ -1587,7 +1600,7 @@ if (attachmentId) {
 // ## LOAD BUSINESS CHANNEL
 "use strict";
 async function loadChannel() {
-  try {
+ try {
     const response = await fetch(bcrss); // Fetch the RSS feed
     if (!response.ok) {
       throw new Error(`Failed to fetch the RSS feed. Status: ${response.status}`);
@@ -1718,6 +1731,249 @@ function functionChannelItems(item, index) {
          .setData('text/html', event.target.innerHTML);
      }
 }
+
+
+
+
+
+"use strict";
+async function loadKennisbank() {
+  try {
+    const response = await fetch(kennisbankrss); // Fetch the RSS feed
+    if (!response.ok) {
+      throw new Error(`Failed to fetch the RSS feed. Status: ${response.status}`);
+    }
+
+    const xmlText = await response.text();
+    const parser = new DOMParser();
+    const data = parser.parseFromString(xmlText, "text/xml");
+
+    const items = data.querySelectorAll("item");
+
+    const downloadItemGrootContainerContent = document.getElementById("downloadItemGrootContainerContent");
+    if (downloadItemGrootContainerContent) {
+      downloadItemGrootContainerContent.innerHTML = "";
+    }
+
+    const downloadItemKleinContainerContent = document.getElementById("downloadItemKleinContainerContent");
+    if (downloadItemKleinContainerContent) {
+      downloadItemKleinContainerContent.innerHTML = "";
+    }
+
+    await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
+
+    items.forEach(functiondownloadKleinItems);
+    items.forEach(functiondownloadGrootItems);
+  } catch (error) {
+    console.error("Error loading vacancies:", error);
+  }
+}
+
+loadKennisbank();
+
+
+
+function functiondownloadKleinItems(item, index) {
+
+  var postid = item.querySelector("guid").innerHTML;
+  postid = postid.substring(postid.indexOf("p=") + 2);
+
+  var pubdate = item.querySelector("pubDate").innerHTML;
+  var pubdateArray = pubdate.split("+");
+
+  var description = item.querySelector("description").innerHTML;
+  description = description.replace("<![CDATA[", "").replace("]]>", "");
+
+    // Clip description to a maximum of 100 characters
+    if (description.length > 80) {
+      description = description.substring(0, 80) + '... <span style="font-size: 14px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" >Lees meer</span> ▸';
+    }
+
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=al-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7ckennisbank%7c`;
+  if(dagWeek != 'dagelijks') {
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7ckennisbank%7c`;
+  }
+
+  var enclosure_img = item.querySelector("enclosure").getAttribute("url");
+
+  /* add category */
+  var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
+  var item_categorie = item_categorie + '<span class="postPubDate">'+pubdateArray[0]+'</span>';
+  var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
+
+  var item_categories = item.querySelectorAll("category");
+  item_categories_nodes = Array.prototype.slice.call(item_categories,0);
+  item_categories_nodes.forEach(function(element) {
+    let formName = element;
+    item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+formName.textContent+'">' + formName.textContent + '</span>';
+  });
+
+  const divCat = document.createElement('div');
+  divCat.className = 'categoryClass';
+  divCat.innerHTML = item_categorie;
+
+  const div = document.createElement('div');
+   div.className = 'dragrow download';
+   div.id = 'download'+postid;
+   div.draggable = 'true';
+
+  var daginzet = '<tr><td id="downloadTD' + postid + 'bMob" class="downloadtd_mobile" style="display: none;"><a  style="display: none;" id="downloadImgLink' + postid + '" class="downloadImgLink_mob" href="'+item_link+'"><img id="imgdownloadArtikel'+postid+'mob" class="imgdownload_mobile" style="display: none;" src="'+enclosure_img+'" /></a></td></tr> ';
+   if(dagWeek != 'dagelijks') {
+    daginzet = '';
+  }
+
+    div.innerHTML = `
+
+    <table class="table1a">
+    <tbody>
+      <tr>
+        <td class="tableDivider1a">
+          <a id="imgKleinArtikel${postid}Link" href="${item_link}">
+            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;height: auto; width: 100%; display: block;" src="${enclosure_img}" />
+            </a>
+          </td>
+      </tr>
+    </tbody>
+    </table>
+    <table>
+    <tbody>
+      <tr>
+        <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+          <div class="tdDiv">
+            <a id="imgKlein${postid}Link" href="${item_link}">
+              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;display: none; height: 150px; width: 150px;" src="${enclosure_img}" />
+            </a>
+          </div>
+        </td>
+        <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+          <table class="tableC">
+            <tbody>
+              <tr>
+                <td class="artikelKleinTDcA">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td id="channelTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="channelLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${item_link}">${item.querySelector("title").innerHTML}</a></td>
+                            </tr>
+                            <tr>
+                                <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="channelTDbC"><a id="channelLink${postid}description" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${item_link}">${description}</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+    `;
+
+   downloadItemKleinContainerContent.appendChild(divCat);
+   downloadItemKleinContainerContent.appendChild(div);
+
+   document.getElementById('download' + postid).ondragstart = function (event) {
+       event
+         .dataTransfer
+         .setData('text/html', event.target.innerHTML);
+     }
+}
+
+
+
+function functiondownloadGrootItems(item, index) {
+
+  var postid = item.querySelector("guid").innerHTML;
+  postid = postid.substring(postid.indexOf("p=") + 2);
+
+  var pubdate = item.querySelector("pubDate").innerHTML;
+  var pubdateArray = pubdate.split("+");
+
+  var description = item.querySelector("description").innerHTML;
+  description = description.replace("<![CDATA[", "").replace("]]>", "");
+
+    // Clip description to a maximum of 100 characters
+    if (description.length > 80) {
+      description = description.substring(0, 80) + '... <span style="font-size: 14px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" >Lees meer</span> ▸';
+    }
+  
+  var item_title = item.querySelector("title").innerHTML;
+
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=al-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7ckennisbank%7c`;
+  if(dagWeek != 'dagelijks') {
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7ckennisbank%7c`;
+  }
+
+  var enclosure_img = item.querySelector("enclosure").getAttribute("url");
+
+  /* add category */
+  var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
+  var item_categorie = item_categorie + '<span class="postPubDate">'+pubdateArray[0]+'</span>';
+  var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
+
+  var item_categories = item.querySelectorAll("category");
+  item_categories_nodes = Array.prototype.slice.call(item_categories,0);
+  item_categories_nodes.forEach(function(element) {
+    let formName = element;
+    item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+formName.textContent+'">' + formName.textContent + '</span>';
+  });
+
+  const divCat = document.createElement('div');
+  divCat.className = 'categoryClass';
+  divCat.innerHTML = item_categorie;
+
+  const div = document.createElement('div');
+   div.className = 'dragrow download';
+   div.id = 'downloadItemGr'+postid;
+   div.draggable = 'true';
+
+  var daginzet = '<tr><td id="downloadTD' + postid + 'bMob" class="downloadtd_mobile" style="display: none;"><a  style="display: none;" id="downloadImgLink' + postid + '" class="downloadImgLink_mob" href="'+item_link+'"><img id="imgdownloadArtikel'+postid+'mob" class="imgdownload_mobile" style="display: none;" src="'+enclosure_img+'" /></a></td></tr> ';
+   if(dagWeek != 'dagelijks') {
+    daginzet = '';
+  }
+
+    div.innerHTML = `
+    <table id="artikelGroot${postid}T" style="display: block;">
+    <tbody id="artikelGroot${postid}Tb">
+     <tr id="artikelGroot${postid}TrB">
+      <td id="artikelGroot${postid}TdB">
+         <a style="padding: 0px;" id="ct11_1" href="${item_link}">
+           <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${enclosure_img}" >
+         </a>
+       </td>
+     </tr>
+     <tr id="artikelGroot${postid}TrA">
+      <td id="artikelGroot${postid}TdA">
+       <a class="grootArtikelTitle" style="font-family: 'Roboto', Arial; color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+         ${item_title}
+       </a>
+      </td>
+     </tr>
+     <tr id="artikelGroot${postid}TrC">
+      <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
+         <a class="grootArtikelDescription" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;" id="ct11_2" href="${item_link}">
+           <span style="font-size: 16px; color: #333333;font-weight: 400;">
+             ${description}
+           </span>
+         </a>
+       </td>
+     </tr>
+    </tbody>
+    </table>
+
+    `;
+
+   downloadItemGrootContainerContent.appendChild(divCat);
+   downloadItemGrootContainerContent.appendChild(div);
+
+   document.getElementById('downloadItemGr' + postid).ondragstart = function (event) {
+       event
+         .dataTransfer
+         .setData('text/html', event.target.innerHTML);
+     }
+}
+
 
 
 

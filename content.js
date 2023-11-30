@@ -82,77 +82,8 @@ function handleButtonClick(container, buttonImg, overlay) {
     overlay.style.display = "block";
   }
 
-  // Reset the class names for all buttons
-  headlinesButtonImg.className = "ButtonImg";
-  artikelKleinButtonImg.className = "ButtonImg";
-  artikelGrootButtonImg.className = "ButtonImg";
-  artikelHeadlineButtonImg.className = "ButtonImg";
-  productItemKleinButtonImg.className = "ButtonImg";
-  productItemGrootButtonImg.className = "ButtonImg";
-  agendaAcademyButtonImg.className = "ButtonImg";
-  downloadItemKleinButtonImg.className = "ButtonImg";
-  downloadItemGrootButtonImg.className = "ButtonImg";
-  vacatureGrootButtonImg.className = "ButtonImg";
-  vacatureButtonImg.className = "ButtonImg";
-  marketingButtonImg.className = "ButtonImg";
-  channelButtonImg.className = "ButtonImg";
-
-  // Set the class name for the pressed button
-  buttonImg.className = "ButtonImgPressd";
-}
-document.getElementById('headlinesButton').onclick = function (event2) {
-  handleButtonClick(headlinesContainer, headlinesButtonImg, headlinesOverlay);
 }
 
-document.getElementById("artikelGrootButton").onclick = function (event3) {
-  handleButtonClick(artikelenGrootContainer, artikelGrootButtonImg, null);
-}
-
-document.getElementById('agendaAcademyButton').onclick = function (event4) {
- handleButtonClick(agendaAcademyContainer, agendaAcademyButtonImg, agendaOverlay);
-}
-
-
-document.getElementById('artikelKleinButton').onclick = function (event5) {
-  handleButtonClick(artikelenKleinContainer, artikelKleinButtonImg, null);
-}
-
-document.getElementById('artikelHeadlineButton').onclick = function (event6) {
-  handleButtonClick(artikelHeadlineContainer, artikelHeadlineButtonImg, null);
-}
-
-document.getElementById('vacatureButton').onclick = function (event7) {
-  handleButtonClick(vacatureContainer, vacatureButtonImg, null);
-}
-
-document.getElementById('vacatureGrootButton').onclick = function (event8) {
-  handleButtonClick(vacatureGrootContainer, vacatureGrootButtonImg, null);
-}
-
-
-document.getElementById('marketingButton').onclick = function (event9) {
-  handleButtonClick(marketingContainer, marketingButtonImg, null);
-}
-
-document.getElementById('channelButton').onclick = function (event10) {
-  handleButtonClick(channelContainer, channelButtonImg, null);
-}
-
-document.getElementById('productItemKleinButton').onclick = function (event11) {
-  handleButtonClick(productItemKleinContainer, productItemKleinButtonImg, null);
-}
-
-document.getElementById('productItemGrootButton').onclick = function (event12) {
-  handleButtonClick(productItemGrootContainer, productItemGrootButtonImg, null);
-}
-
-document.getElementById('downloadItemKleinButton').onclick = function (event13) {
-  handleButtonClick(downloadItemKleinContainer, downloadItemKleinButtonImg, null);
-}
-
-document.getElementById('downloadItemGrootButton').onclick = function (event14) {
-  handleButtonClick(downloadItemGrootContainer, downloadItemGrootButtonImg, null);
-}
 
 
 // ## DATA SOURCES
@@ -160,7 +91,7 @@ jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature';
 agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/';
 marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&timestamp=' + Date.now();
 bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news';
-kennisbankrss = 'https://www.frankwatching.com/feed/?post_type=downloads';
+kennisbankrss = 'https://www.frankwatching.com/feed/?post_type=download';
 gfentries = 'https://www.frankwatching.com/wp-json/gf/v2/forms/128/entries'
 newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?poststatus=future-publish';
 
@@ -179,7 +110,7 @@ if ( searchID ) {
   //console.log('marketing RSS:' + marketingrss);
   //bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news&postid='+ searchID;
   //console.log('bc RSS:' + bcrss);
-  kennisbankrss = 'https://www.frankwatching.com/feed?post_type=downloads&post_id='+ searchID;
+  kennisbankrss = 'https://www.frankwatching.com/feed?post_type=download&post_id='+ searchID;
   //console.log('kennisbank RSS:' + kennisbankrss);
 }
 
@@ -303,7 +234,7 @@ document.getElementById('headline1').ondragstart = function(event){
   event.preventDefault();
 };
 
-document.getElementById('headlinesOverlay').ondragstart = function (event) {
+document.getElementById('headlinesContainer').ondragstart = function (event) {
   event
     .dataTransfer
     .setData('text/html', headlinesContainer.innerHTML);
@@ -356,7 +287,7 @@ function agendaItems(item, index) {
   var dateMonth = json["postmeta:dateMonth"];
   var dateDay = json["postmeta:dateDay"];
 
-  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
+  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cartikel%7c`;
 
   //var pubdate = item.querySelector("pubdate").innerHTML;
   //var poststatus = item.querySelector("poststatus").innerHTML;
@@ -385,7 +316,7 @@ function agendaItems(item, index) {
   div.draggable = 'true';
 
   div.innerHTML = `
-  <table id="contentAcademyAgenda${postid}" style="display: inline-block; width: 100%; background: #F2F2F2; border-collapse: collapse; width: 100%;padding: 8px 10px;" align="left">
+  <table id="contentAcademyAgenda${postid}" style="display: inline-block; width: 100%; background: #fff; border-collapse: collapse; width: 100%;padding: 8px 10px;" align="left">
       <tbody>
       <tr>
         <td style="width: 42px;">
@@ -395,7 +326,7 @@ function agendaItems(item, index) {
                 <td align="center" style="background: #C91C18; color: white; font-size: small; text-align: center;">${dateMonth}</td>
               </tr>
               <tr>
-              <td align="center" style="background: white; color: black; font-weight: bold;text-align: center;">${dateDay}</td>
+              <td align="center" style="background: #f2f2f2; color: black; font-weight: bold;text-align: center;">${dateDay}</td>
               </tr>
             </tbody>
           </table>      
@@ -407,14 +338,14 @@ function agendaItems(item, index) {
           <tr>
             <td>
               <a id="agendaAcademy${postid}" class="agendaItem" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-                <span class="agendaAcademyTitle" style="font-size: 14px; color: #0E5C8C;font-weight: bold; text-overflow: ellipsis; white-space: nowrap;overflow: hidden;width: 220px; display: block;">${title}</span>
+                <span class="agendaAcademyTitle" style="font-size: 14px; line-height: 1.3; color: #0E5C8C;font-weight: bold; display: block;">${title}</span>
               </a>
             </td>
           </tr>
           <tr>
             <td>
               <a id="agendaAcademy${postid}" class="agendaItem" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-                <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);text-overflow: ellipsis; white-space: nowrap;overflow: hidden; width: 220px; display: block;">${location} | ${durration}
+                <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);display: block;">${location} | ${durration}
                 </span>
               </a>
             </td>
@@ -451,7 +382,7 @@ function productItemKlein(item, index) {
   var postid = json["productid"];
   var item_title = json["title"];
   var item_description = json["description"];
-  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
+  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cartikel%7c`;
 
   var item_img_klein = json["image_small"];
   var item_img_groot = json["image_large"];
@@ -537,7 +468,7 @@ function productItemGroot(item, index) {
   var dateMonth = json["postmeta:dateMonth"];
   var dateDay = json["postmeta:dateDay"];
 
-  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
+  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cartikel%7c`;
   var item_title = json["title"];
   var item_description = json["description"];
   var item_img_groot = json["image_large"];
@@ -945,9 +876,12 @@ function functionVacatureKleinItems(item, index) {
   var vac_standplaats = item.querySelector("*|vac_standplaats").innerHTML;
   vac_standplaats = vac_standplaats.replace("<![CDATA[", "").replace("]]>", "");
 
-  var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+  //dagelijks
+  var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
+
+  //wekelijks
   if(dagWeek != 'dagelijks') {
-    var vac_link = item.querySelector("link").innerHTML + `?utm_source=nb-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+    var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -1080,9 +1014,9 @@ function functionVacatureGrootItems(item, index) {
   var vac_standplaats = item.querySelector("*|vac_standplaats").innerHTML;
   vac_standplaats = vac_standplaats.replace("<![CDATA[", "").replace("]]>", "");
 
-  var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+  var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
   if(dagWeek != 'dagelijks') {
-    var vac_link = item.querySelector("link").innerHTML + `?utm_source=nb-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+    var vac_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -1240,8 +1174,38 @@ function functionMarketingItems(item, index) {
   // Promo CTA tekst 
   const promotion_cta_textElement = item.querySelector("promotion_cta_text");
   const promotion_cta_text = promotion_cta_textElement ? promotion_cta_textElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
+  
+  // Promo CTA tekst 
+  const promotion_startdateElement = item.querySelector("promotion_startdate");
+  const promotion_startdate = promotion_startdateElement ? promotion_startdateElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : ''; //20240208
 
+  const promotion_startdateYear = promotion_startdate.substring(0, 4); // Extract year (first 4 characters)
+  const promotion_startdateMonth = promotion_startdate.substring(4, 6); // Extract month (characters at index 4 and 5)
+  const promotion_startdateDay = promotion_startdate.substring(6, 8); // Extract day (characters at index 6 and 7)
+ 
+  function getMonthAbbreviation(promotion_startdateMonth) {
+        const months = {
+            '01': 'JAN',
+            '02': 'FEB',
+            '03': 'MAR',
+            '04': 'APR',
+            '05': 'MAY',
+            '06': 'JUN',
+            '07': 'JUL',
+            '08': 'AUG',
+            '09': 'SEP',
+            '10': 'OCT',
+            '11': 'NOV',
+            '12': 'DEC'
+        };
 
+        return months[promotion_startdateMonth] || '';
+    }
+
+    // Assuming startdateMonth contains the numeric month value ('02' for February)
+
+    const promotion_startdate_monthAbbreviation = getMonthAbbreviation(promotion_startdateMonth);
+    
 
 // Promo koppeling_post: serialized string
   const promotion_koppeling_postElement = item.querySelector("koppeling_post");
@@ -1260,7 +1224,7 @@ const promotion_koppeling_post = promotion_koppeling_postElement ? promotion_kop
 
   const promotion_typeElement = item.querySelector("promotion_type");
   const promotion_type = promotion_typeElement ? promotion_typeElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
-  const utm_parameters = `?utm_source=al-marketing-&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7marketing%7c`;
+  const utm_parameters = `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
 
   const marketing_link = promotion_url+utm_parameters;
 
@@ -1491,6 +1455,53 @@ if (attachmentId) {
         </div>
       </a>
     `;
+  } else if (promotion_type === 'wnb_agenda_events') {
+    console.log('Rendering wnb_agenda_events:', promo_title);
+    innerHtmlContent = `
+    <a id="marketing-${postid}-Link" href="${marketing_link}">
+      <table id="marketing-${postid}-Link" class="${promotion_type}" style="display: inline-block; width: 100%; background: #fff; border-collapse: collapse; width: 100%;padding: 8px 10px;" align="left">
+      <tbody>
+      <tr>
+        <td style="width: 42px;">
+          <table width="40px">
+            <tbody>
+              <tr>
+                <td align="center" style="background: #C91C18; color: white; font-size: small; text-align: center;">${promotion_startdate_monthAbbreviation}</td>
+              </tr>
+              <tr>
+              <td align="center" style="background: #f2f2f2; color: black; font-weight: bold;text-align: center;">${promotion_startdateDay}</td>
+              </tr>
+            </tbody>
+          </table>      
+        </td>
+      <td style="">
+
+        <table id="contentAcademy" style="margin-left: 10px !important;">
+          <tbody>
+          <tr>
+            <td>
+              <a id="agendaAcademy${postid}" class="agendaItem" href="${marketing_link}" style="display: inline; margin: 0px; text-decoration: none;">
+                <span class="agendaAcademyTitle" style="font-size: 14px; line-height: 1.3; color: #0E5C8C;font-weight: bold; display: block;">${promotion_title}</span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a id="agendaAcademy${postid}" class="agendaItem" href="${marketing_link}" style="display: inline; margin: 0px; text-decoration: none;">
+                <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);display: block;">${promotion_cta_text}
+                </span>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+      </tr>
+      </tbody>
+    </table>
+    </a>
+    `;
+  
   } else if (promotion_type === 'wnb_headlines_tvdw' || promotion_type === 'wnb_meer_tvdw') {
       //console.log('Rendering wnb_headlines_tvdw:', promo_title);
       //console.log('Rendering wnb_meer_tvdw:', promo_title);
@@ -1640,7 +1651,7 @@ function functionChannelItems(item, index) {
   var description = item.querySelector("company").innerHTML;
   description = description.replace("<![CDATA[", "").replace("]]>", "");
 
-  var article_link = item.querySelector("link").innerHTML + `?utm_source=al-channel-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7channel%7c`;
+  var article_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
   var article_img = item.querySelector("enclosure").getAttribute("url");
 
   var description = item.querySelector("description").innerHTML;
@@ -1789,9 +1800,9 @@ function functiondownloadKleinItems(item, index) {
       description = description.substring(0, 80) + '... <span style="font-size: 14px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" >Lees meer</span> ▸';
     }
 
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=al-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7ckennisbank%7c`;
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
   if(dagWeek != 'dagelijks') {
-    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7ckennisbank%7c`;
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -1900,9 +1911,9 @@ function functiondownloadGrootItems(item, index) {
   
   var item_title = item.querySelector("title").innerHTML;
 
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=al-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7ckennisbank%7c`;
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
   if(dagWeek != 'dagelijks') {
-    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7ckennisbank%7c`;
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -1982,13 +1993,13 @@ function functiondownloadGrootItems(item, index) {
 fetch("https://raw.githubusercontent.com/Frankwatching/Act-On-External-Content/master/version.txt")
   .then(response => response.text())
     .then((out) => {
-        var text = `Lokale versie: ${versionid}<br>
-                    Online versie: ${out}<br>`;
+        var text = `Lokale versie: ${versionid}&nbsp;
+                    Online versie: ${out}`;
         const versiediv = document.createElement('div');
         versiediv.id = 'versiondiv';
         if(versionid < out) {
           versiediv.className = 'versiondiv-update';
-          text = `Lokale versie: ${versionid}<br>`;
+          text = `Lokale versie: ${versionid}&nbsp;`;
           text = text + '<a href="https://github.com/Frankwatching/Act-On-External-Content" target="_blank">Nu updaten naar: ' + out + '</a>';
         }
         versiediv.innerHTML = text;

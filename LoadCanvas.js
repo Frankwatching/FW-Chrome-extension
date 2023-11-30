@@ -52,7 +52,6 @@ downloadItemGrootContainer.id = 'downloadItemGrootContainer';
 var downloadItemGrootContainerContent = document.createElement( 'div' );
 downloadItemGrootContainerContent.id = 'downloadItemGrootContainerContent';
 
-
 var vacatureContainer = document.createElement( 'div' );
 vacatureContainer.id = 'vacatureContainer';
 var vacatureContainerContent = document.createElement( 'div' );
@@ -126,42 +125,6 @@ var headlines7Td3 = document.createElement( 'td' );
 var agendaOverlay = document.createElement ( "div" );
 
 var choices = document.createElement ('div');
-var headlinesButton = document.createElement ('div');
-var headlinesButtonImg = document.createElement ('p');
-
-var artikelKleinButton = document.createElement ('div');
-var artikelKleinButtonImg = document.createElement ('p');
-var artikelGrootButton = document.createElement ('div');
-var artikelGrootButtonImg = document.createElement ('p');
-
-var agendaAcademyButton = document.createElement ('div');
-var agendaAcademyButtonImg = document.createElement ('p');
-
-var artikelHeadlineButton = document.createElement ('div');
-var artikelHeadlineButtonImg = document.createElement ('p');
-
-var productItemKleinButton = document.createElement ('div');
-var productItemKleinButtonImg = document.createElement ('p');
-var productItemGrootButton = document.createElement ('div');
-var productItemGrootButtonImg = document.createElement ('p');
-
-var downloadItemKleinButton = document.createElement ('div');
-var downloadItemKleinButtonImg = document.createElement ('p');
-var downloadItemGrootButton = document.createElement ('div');
-var downloadItemGrootButtonImg = document.createElement ('p');
-
-var vacatureButton = document.createElement ('div');
-var vacatureButtonImg = document.createElement ('p');
-
-var vacatureGrootButton = document.createElement ('div');
-var vacatureGrootButtonImg = document.createElement ('p');
-
-var marketingButton = document.createElement ('div');
-var marketingButtonImg = document.createElement ('p');
-
-var channelButton = document.createElement ('div');
-var channelButtonImg = document.createElement ('p');
-
 
 var dagWeekForm = document.createElement('form');
 var dagWeekFormDiv = document.createElement('div');
@@ -232,3 +195,11 @@ switchListFormDiv.appendChild( switchListFormLabel );
 switchListFormDiv.appendChild( switchListFormText );
 switchListFormLabel.appendChild( switchListFormInput );
 switchListFormLabel.appendChild( switchListFormSpan );
+
+
+//switchListFormDiv.appendChild(dagWeekForm);
+//switchListFormDiv.appendChild( dagWeekForm );
+
+//switchListFormDiv.appendChild(sendDateSelect);
+//switchListFormDiv.appendChild( sendDateSelect );
+

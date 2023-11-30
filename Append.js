@@ -99,40 +99,100 @@ channelContainer.appendChild(channelContainerContent);
 //Menu, let op volgorde
 contentFeed.appendChild( choices );
 
-choices.appendChild( headlinesButton );
-headlinesButton.appendChild( headlinesButtonImg );
+// Create img element
+const imgElement = document.createElement('img');
+imgElement.src = 'https://www.frankwatching.com/app/uploads/2023/01/FW-logo.png'; // Add your image URL here
+imgElement.style.width = 'auto'; 
+imgElement.style.height = '30px'; 
+imgElement.style.margin = '5px 5px'; 
 
-choices.appendChild( artikelHeadlineButton );
-artikelGrootButton.appendChild( artikelGrootButtonImg );
-
-choices.appendChild( artikelKleinButton );
-artikelHeadlineButton.appendChild( artikelHeadlineButtonImg );
-
-choices.appendChild( artikelGrootButton );
-artikelKleinButton.appendChild( artikelKleinButtonImg );
+// Create select element
+const selectMenu = document.createElement('select');
+selectMenu.id = 'selectMenu';
 
 
-choices.appendChild( productItemKleinButton );
-productItemKleinButton.appendChild( productItemKleinButtonImg );
+// Define options
+const options = [
+  { value: 'hideall', text: 'Selecteer content voor nieuwsbrief' },
+  { value: 'headlinesContainer', text: 'Blog Headlines' },
+  { value: 'artikelHeadlineContainer', text: 'Blog Headline' },
+  { value: 'artikelenKleinContainer', text: 'Blog Klein' },
+  { value: 'artikelenGrootContainer', text: 'Blog Groot' },
+  { value: 'productItemKleinContainer', text: 'Academy Klein' },
+  { value: 'productItemGrootContainer', text: 'Academy Groot' },  
+  { value: 'agendaAcademyContainer', text: 'Academy Agenda' },
+  { value: 'downloadItemKleinContainer', text: 'Kennisbank Klein' },
+  { value: 'downloadItemGrootContainer', text: 'Kennisbank Groot' },   
+  { value: 'vacatureContainer', text: 'Jobs Klein' },
+  { value: 'vacatureGrootContainer', text: 'Jobs Groot' },   
+  { value: 'marketingContainer', text: 'Cams 2.0' },
+  { value: 'channelContainer', text: 'BusinessChannel Klein' },  
+    // Add other options as needed
+];
 
-choices.appendChild( productItemGrootButton );
-productItemGrootButton.appendChild( productItemGrootButtonImg );
+// Add options to select element
+options.forEach(option => {
+  const optionElement = document.createElement('option');
+  optionElement.value = option.value;
+  optionElement.textContent = option.text;
+  selectMenu.appendChild(optionElement);
 
-choices.appendChild( agendaAcademyButton );
-agendaAcademyButton.appendChild( agendaAcademyButtonImg );
+});
+choices.appendChild(imgElement);
 
-choices.appendChild( downloadItemKleinButton );
-downloadItemKleinButton.appendChild( downloadItemKleinButtonImg );
-choices.appendChild( downloadItemGrootButton );
-downloadItemGrootButton.appendChild( downloadItemGrootButtonImg );
 
-choices.appendChild( vacatureButton );
-vacatureButton.appendChild( vacatureButtonImg );
-choices.appendChild( vacatureGrootButton );
-vacatureGrootButton.appendChild( vacatureGrootButtonImg );
 
-choices.appendChild( marketingButton );
-marketingButton.appendChild( marketingButtonImg );
+function handleSelectChange(containerId) {
+    // Hide all containers and overlays
+    headlinesContainer.style.display = "none";
+    headlinesOverlay.style.display = "none";
+    agendaAcademyContainer.style.display = "none";
+    artikelenKleinContainer.style.display = "none";
+    artikelenGrootContainer.style.display = "none";
+    artikelHeadlineContainer.style.display = "none";
+    productItemKleinContainer.style.display = "none";
+    productItemGrootContainer.style.display = "none";
+    agendaOverlay.style.display = "none";
+    downloadItemKleinContainer.style.display = "none";
+    downloadItemGrootContainer.style.display = "none";
+    vacatureContainer.style.display = "none";
+    vacatureGrootContainer.style.display = "none";
+    marketingContainer.style.display = "none";
+    channelContainer.style.display = "none";
+  
+    // Show the selected container
+    const selectedContainer = document.getElementById(containerId);
+    if (selectedContainer) {
+      selectedContainer.style.display = "block";
+    } 
+    
+    if (selectedContainer == 'hideall') {
+        contentIndex.style.display = "none";
+    } 
 
-choices.appendChild( channelButton );
-channelButton.appendChild( channelButtonImg );
+    // Show the selected overlay if it exists
+    const overlayId = containerId + 'Overlay';
+    const selectedOverlay = document.getElementById(overlayId);
+    if (selectedOverlay) {
+      selectedOverlay.style.display = "block";
+    }
+  
+    // Reset the class names for all buttons
+    // ... (the same class name resetting logic as before)
+  }
+
+  
+// Event listener for select change
+selectMenu.addEventListener('change', function(event) {
+    const selectedOption = event.target.value;
+    if (selectedOption !== 'default') {
+      handleSelectChange(selectedOption);
+    }
+  });
+
+contentIndex.appendChild(selectMenu);
+choices.appendChild( selectMenu );
+
+
+//switchListFormDiv.appendChild(selectMenu);
+//switchListFormDiv.appendChild( selectMenu );

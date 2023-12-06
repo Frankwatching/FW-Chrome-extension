@@ -90,7 +90,9 @@ function handleButtonClick(container, buttonImg, overlay) {
 jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature';
 agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/';
 marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&timestamp=' + Date.now();
-bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news';
+//bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news';
+bcrss = 'https://www.frankwatching.com/wp-json/wp/v2/posts '; // Replace this with your WordPress REST API endpoint
+
 kennisbankrss = 'https://www.frankwatching.com/feed/?post_type=download';
 gfentries = 'https://www.frankwatching.com/wp-json/gf/v2/forms/128/entries'
 newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?poststatus=future-publish';
@@ -109,6 +111,7 @@ if ( searchID ) {
   marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&post_id='+ searchID;
   //console.log('marketing RSS:' + marketingrss);
   //bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news&postid='+ searchID;
+  bcrss = 'https://www.frankwatching.com/wp-json/wp/v2/posts/?include='+ searchID; // Replace this with your WordPress REST API endpoint
   //console.log('bc RSS:' + bcrss);
   kennisbankrss = 'https://www.frankwatching.com/feed?post_type=download&post_id='+ searchID;
   //console.log('kennisbank RSS:' + kennisbankrss);
@@ -417,7 +420,7 @@ function productItemKlein(item, index) {
   <table class="table1a">
   <tbody>
     <tr>
-      <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;height: auto; width: 100%; display: block;" src="${item_img_groot}" /></a></td>
+      <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" src="${item_img_groot}" /></a></td>
     </tr>
   </tbody>
   </table>
@@ -425,7 +428,7 @@ function productItemKlein(item, index) {
   <tbody>
     <tr>
       <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-        <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;display: none; height: 150px; width: 150px;" src="${item_img_klein}" /></a></div>
+        <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 150px;" src="${item_img_klein}" /></a></div>
       </td>
       <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
         <table class="tableC">
@@ -505,7 +508,7 @@ function productItemGroot(item, index) {
    <tr id="artikelGroot${postid}TrB">
     <td id="artikelGroot${postid}TdB">
        <a style="padding: 0px;" id="ct11_1" href="${item_link}">
-         <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
+         <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
        </a>
      </td>
    </tr>
@@ -633,7 +636,7 @@ function artikelenGrootItems(item, index) {
   <tr id="artikelGroot${postid}TrB">
    <td id="artikelGroot${postid}TdB">
       <a style="padding: 0px;" id="ct11_1" href="${item_link}">
-        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
+        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
       </a>
     </td>
   </tr>
@@ -712,7 +715,7 @@ function artikelenKleinItems(item, index) {
   <table class="table1a">
   <tbody>
     <tr>
-      <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;height: auto; width: 100%; display: block;" src="${item_img_groot}" /></a></td>
+      <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" src="${item_img_groot}" /></a></td>
     </tr>
   </tbody>
   </table>
@@ -720,7 +723,7 @@ function artikelenKleinItems(item, index) {
   <tbody>
     <tr>
       <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-        <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;display: none; height: 150px; width: 150px;" src="${item_img_klein}" /></a></div>
+        <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 150px;" src="${item_img_klein}" /></a></div>
       </td>
       <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
         <table class="tableC">
@@ -1295,7 +1298,7 @@ if (attachmentId) {
            <table class="table1a">
             <tbody>
               <tr>
-                <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${marketing_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;height: auto; width: 100%; max-width: 200px; display: block;" src="${imageUrl}" /></a></td>
+                <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${marketing_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; max-width: 200px; display: block;" src="${imageUrl}" /></a></td>
               </tr>
             </tbody>
           </table>
@@ -1309,7 +1312,7 @@ if (attachmentId) {
                   <table class="tableC">
                     <tbody>
                       <tr>
-                        <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: bold; font-family: 'Roboto', Arial;" href="${marketing_link}"><span style="padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; display: inline-block; vertical-align: top;">ADV
+                        <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: bold; font-family: 'Roboto', Arial;" href="${marketing_link}"><span style="padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; margin-bottom: 10px; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: top;">ADV
                         </span><br>${promotion_title}</a>
                         </td>
                       </tr>
@@ -1335,13 +1338,13 @@ if (attachmentId) {
          <tr id="artikelGroot${postid}TrB">
           <td id="artikelGroot${postid}TdB">
              <a style="padding: 0px;" id="ct11_1" href="${marketing_link}">
-               <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${imageUrl}" >
+               <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${imageUrl}" >
              </a>
            </td>
          </tr>
          <tr id="artikelGroot${postid}TrA">
           <td id="artikelGroot${postid}TdA">
-          <div style="display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; vertical-align: top;">THEMA VAN DE WEEK</div>
+          <div style="display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;">THEMA VAN DE WEEK</div>
            <a class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${marketing_link}">
              ${promotion_title}
            </a>
@@ -1374,7 +1377,7 @@ if (attachmentId) {
          <tr id="artikelGroot${postid}TrB">
           <td id="artikelGroot${postid}TdB">
              <a style="padding: 0px;" id="ct11_1" href="${marketing_link}">
-               <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${imageUrl}" >
+               <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px; object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${imageUrl}" >
              </a>
            </td>
          </tr>
@@ -1608,142 +1611,120 @@ if (attachmentId) {
 
 }
 
-// ## LOAD BUSINESS CHANNEL
+
+// BUSINESSCHANNEL via wordpress rest API
 "use strict";
+
 async function loadChannel() {
- try {
-    const response = await fetch(bcrss); // Fetch the RSS feed
+  try {
+    const response = await fetch(bcrss); // Fetch data from WordPress REST API
     if (!response.ok) {
-      throw new Error(`Failed to fetch the RSS feed. Status: ${response.status}`);
+      throw new Error(`Failed to fetch data from WordPress API. Status: ${response.status}`);
     }
 
-    const xmlText = await response.text();
-    const parser = new DOMParser();
-    const data = parser.parseFromString(xmlText, "text/xml");
-
-    const items = data.querySelectorAll("item");
+    const jsonData = await response.json(); // Parse response JSON
 
     const ChannelContainerContent = document.getElementById("channelContainerContent");
     if (ChannelContainerContent) {
-      ChannelContainerContent.innerHTML = "";
+      ChannelContainerContent.innerHTML = ""; // Clear container content
     }
 
-    await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
-
-    items.forEach(item => functionChannelItems(item));
+    if (Array.isArray(jsonData)) {
+      jsonData.forEach(item => functionChannelItems(item)); // Process each item in the array
+    } else {
+      functionChannelItems(jsonData); // Process the single item
+    }
   } catch (error) {
     console.error("Error loading Channel:", error);
   }
 }
 
-loadChannel();
-
-
-
-function functionChannelItems(item, index) {
-
-  var postid = item.querySelector("guid").innerHTML;
-  postid = postid.substring(postid.indexOf("p=") + 2);
-
-  var pubdate = item.querySelector("pubDate").innerHTML;
-  var pubdateArray = pubdate.split("+");
-
-  var description = item.querySelector("company").innerHTML;
-  description = description.replace("<![CDATA[", "").replace("]]>", "");
-
-  var article_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
-  var article_img = item.querySelector("enclosure").getAttribute("url");
-
-  var description = item.querySelector("description").innerHTML;
-  description = description.replace("<![CDATA[", "").replace("]]>", "");
-  
-  // Clip description to a maximum of 100 characters
-  if (description.length > 100) {
-    description = description.substring(0, 100) + '... <span style="font-size: 14px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" >Lees meer</span> ▸';
-  }
+async function functionChannelItems(item) {
+   // Accessing title and excerpt properties from the item object
+   const postid = item.id;
+   const article_title = item.title.rendered;
+   const excerpt = item.excerpt.rendered;
+   const article_link = item.link; 
+   const maxCharacters = 80; // Define the maximum number of characters
+   const description = item.excerpt.rendered ? item.excerpt.rendered.substring(0, maxCharacters)+'...' : ''; 
+   var pubdate = item.date;
 
     /* add category */
     var article_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
-    var article_categorie = article_categorie + '<span class="postPubDate">'+pubdateArray[0]+'</span>';
+    var article_categorie = article_categorie + '<span class="postPubDate">'+pubdate+'</span>';
     var article_categorie = article_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
-  
-    var article_categories = item.querySelectorAll("category");
-    article_categories_nodes = Array.prototype.slice.call(article_categories,0);
-    article_categories_nodes.forEach(function(element) {
-      let formName = element;
-      article_categorie = article_categorie + '<span class="categoryClassElement categoryClass'+formName.textContent+'">' + formName.textContent + '</span>';
-    });
-  
-    const divCat = document.createElement('div');
-    divCat.className = 'categoryClass';
-    divCat.innerHTML = article_categorie;
+    var article_categories = item.categories;
+    var article_categorie = article_categorie + '<span class="postPostID">&#9783 '+article_categories+'</span>';
+   
+    
+    let article_img = ''; // Initialize article_img here
+    const featuredMediaId = item.featured_media; 
+    
+    if (featuredMediaId) {
+    const featuredMediaUrl = `https://www.frankwatching.com/wp-json/wp/v2/media/${featuredMediaId}`;
+    fetch(featuredMediaUrl)
+    .then(res => res.json())
+    .then(mediaData => {
+          article_img = mediaData.source_url;
 
-  const div = document.createElement('div');
-   div.className = 'dragrow channel';
-   div.id = 'channel'+postid;
-   div.draggable = 'true';
+          // Create HTML elements or perform operations with the title and excerpt data
+          const ChannelContainerContent = document.getElementById("channelContainerContent");
 
-
-    div.innerHTML = `
-
-    <table class="table1a">
-    <tbody>
-      <tr>
-        <td class="tableDivider1a">
-          <a id="imgKleinArtikel${postid}Link" href="${article_link}">
-            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;height: auto; width: 100%; display: block;" src="${article_img}" />
-            </a>
-          </td>
-      </tr>
-    </tbody>
-    </table>
-    <table>
-    <tbody>
-      <tr>
-        <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-          <div class="tdDiv">
-            <a id="imgKlein${postid}Link" href="${article_link}">
-              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;display: none; height: 150px; width: 150px;" src="${article_img}" />
-            </a>
-          </div>
-        </td>
-        <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
-          <table class="tableC">
+          const divCat = document.createElement('div');
+          divCat.className = 'categoryClass';
+          divCat.innerHTML = article_categorie;
+          const div = document.createElement('div');
+          div.className = 'dragrow channel';
+          div.id = 'channel'+postid;
+          div.draggable = 'true';
+          
+          if (ChannelContainerContent) {
+            div.innerHTML = `
+            <table class="table1a">
             <tbody>
               <tr>
-                <td class="artikelKleinTDcA">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td id="channelTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="channelLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${article_link}">${item.querySelector("title").innerHTML}</a></td>
-                            </tr>
-                            <tr>
-                                <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="channelTDbC"><a id="channelLink${postid}description" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${article_link}">${description}</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${article_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" src="${article_img}" /></a></td>
+              </tr>
+            </tbody>
+            </table>
+            <table>
+            <tbody>
+              <tr>
+                <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+                  <div class="tdDiv"><a id="imgKlein${postid}Link" href="${article_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 150px;" src="${article_img}" /></a></div>
+                </td>
+                <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+                  <table class="tableC">
+                    <tbody>
+                      <tr>
+                        <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${article_link}">${article_title}</a></td>
+                      </tr>
+                      <tr>
+                        <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${article_link}">${description}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${article_link}"> Lees meer ▸</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </td>
               </tr>
             </tbody>
-          </table>
-        </td>
-      </tr>
-    </tbody>
-    </table>
-    
+            </table>
+            `;
+          
+            channelContainerContent.appendChild(divCat);
+            channelContainerContent.appendChild(div);
 
-    `;
-   channelContainerContent.appendChild(divCat);
-   channelContainerContent.appendChild(div);
+            document.getElementById('channel' + postid).ondragstart = function (event) {
+                event
+                  .dataTransfer
+                  .setData('text/html', event.target.innerHTML);
+              }
 
-   document.getElementById('channel' + postid).ondragstart = function (event) {
-       event
-         .dataTransfer
-         .setData('text/html', event.target.innerHTML);
-     }
+          }
+    })
+    .catch(error => console.error('Error fetching featured image:', error));
+  }
 }
-
-
+loadChannel(); // Call the function to load the WordPress data
 
 
 
@@ -1840,7 +1821,7 @@ function functiondownloadKleinItems(item, index) {
       <tr>
         <td class="tableDivider1a">
           <a id="imgKleinArtikel${postid}Link" href="${item_link}">
-            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;height: auto; width: 100%; display: block;" src="${enclosure_img}" />
+            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" src="${enclosure_img}" />
             </a>
           </td>
       </tr>
@@ -1852,7 +1833,7 @@ function functiondownloadKleinItems(item, index) {
         <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
           <div class="tdDiv">
             <a id="imgKlein${postid}Link" href="${item_link}">
-              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;display: none; height: 150px; width: 150px;" src="${enclosure_img}" />
+              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 150px;" src="${enclosure_img}" />
             </a>
           </div>
         </td>
@@ -1950,7 +1931,7 @@ function functiondownloadGrootItems(item, index) {
      <tr id="artikelGroot${postid}TrB">
       <td id="artikelGroot${postid}TdB">
          <a style="padding: 0px;" id="ct11_1" href="${item_link}">
-           <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${enclosure_img}" >
+           <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${enclosure_img}" >
          </a>
        </td>
      </tr>

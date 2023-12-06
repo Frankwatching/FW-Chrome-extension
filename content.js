@@ -1644,7 +1644,8 @@ async function functionChannelItems(item) {
    const postid = item.id;
    const article_title = item.title.rendered;
    const excerpt = item.excerpt.rendered;
-   const article_link = item.link; 
+   const article_link = item.link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=BusinessChannel&utm_content=%7c${sendDate}%7cartikel%7c`;
+
    const maxCharacters = 80; // Define the maximum number of characters
    const description = item.excerpt.rendered ? item.excerpt.rendered.substring(0, maxCharacters)+'...' : ''; 
    var pubdate = item.date;

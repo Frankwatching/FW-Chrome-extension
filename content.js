@@ -1225,6 +1225,12 @@ const promotion_koppeling_post = promotion_koppeling_postElement ? promotion_kop
 
   let imageUrl = ''; // Declare imageUrl in a broader scope and initialize it
 
+  const promotion_viewElement = item.querySelector("promotion_view");
+  const promotion_view = promotion_viewElement ? promotion_viewElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
+
+  const promotion_descriptionElement = item.querySelector("promotion_description");
+  const promotion_description = promotion_descriptionElement ? promotion_descriptionElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
+
   const promotion_typeElement = item.querySelector("promotion_type");
   const promotion_type = promotion_typeElement ? promotion_typeElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
   const utm_parameters = `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
@@ -1326,7 +1332,88 @@ if (attachmentId) {
             </tbody>
           </table>
           </a>
-        `;     
+        `;       
+      
+     
+      
+       } else if (promotion_type === 'dnb_advertorial' || promotion_type === 'wnb_advertorial') {
+
+          if (promotion_view === 'klein') {
+            console.log('View '+promotion_title+':', promotion_view);
+            innerHtmlContent = `
+            <table class="table1a">
+            <tbody>
+              <tr>
+                <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${marketing_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" src="${imageUrl}" /></a></td>
+              </tr>
+            </tbody>
+            </table>
+            <table>
+            <tbody>
+              <tr>
+                <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+                  <div class="tdDiv"><a id="imgKlein${postid}Link" href="${marketing_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 150px;" src="${imageUrl}" /></a></div>
+                </td>
+                <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+                  <table class="tableC">
+                    <tbody>
+                      <tr>
+                        <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${marketing_link}">${promotion_view}</a></td>
+                      </tr>
+                      <tr>
+                        <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${marketing_link}">${promotion_description}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${marketing_link}"> Lees meer ▸</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+            </table>
+            `;
+
+          } else {
+            console.log('View '+promotion_title+':', promotion_view);
+
+            innerHtmlContent = `
+
+            <a id="marketing-${postid}-Link" href="${marketing_link}">
+              <table id="artikelGroot${postid}T" style="display: block;">
+              <tbody id="artikelGroot${postid}Tb">
+              <tr id="artikelGroot${postid}TrB">
+                <td id="artikelGroot${postid}TdB">
+                  <a style="padding: 0px;" id="ct11_1" href="${marketing_link}">
+                    <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${imageUrl}" >
+                  </a>
+                </td>
+              </tr>
+              <tr id="artikelGroot${postid}TrA">
+                <td id="artikelGroot${postid}TdA">
+                <a class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${marketing_link}">
+                  ${promotion_title}
+                </a>
+                </td>
+              </tr>
+              <tr id="artikelGroot${postid}TrC">
+                <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
+
+                    <a class="grootArtikelDescription" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;" id="ct11_2" href="${marketing_link}">
+                    <span style="font-size: 16px; color: #333333;font-weight: 400;">
+                      ${promotion_description}
+                    </span>
+                  </a>
+                  <a class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;"  href="${marketing_link}"> Lees meer ▸</a>
+
+                </td>
+              </tr>
+              </tbody>
+            </table>
+              </a>
+
+        
+            `;
+          }
+        
+       
 
       } else if (promotion_type === 'wnb_ag_tvdw') {
         //console.log('Rendering wnb_ag_tvdw:', promo_title);

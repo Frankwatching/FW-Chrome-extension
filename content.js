@@ -1396,7 +1396,7 @@ const promotion_koppeling_post = promotion_koppeling_postElement ? promotion_kop
 
   const promotion_typeElement = item.querySelector("promotion_type");
   const promotion_type = promotion_typeElement ? promotion_typeElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
-  const utm_parameters = `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
+  const utm_parameters = `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7c${promotion_type}%7c`;
 
   const marketing_link = promotion_url+utm_parameters;
 

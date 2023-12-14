@@ -42,6 +42,11 @@ productItemGrootContainer.id = 'productItemGrootContainer';
 var productItemGrootContainerContent = document.createElement( 'div' );
 productItemGrootContainerContent.id = 'productItemGrootContainerContent';
 
+var productItemHeadlineContainer = document.createElement( 'div' );
+productItemHeadlineContainer.id = 'productItemHeadlineContainer';
+var productItemHeadlineContainerContent = document.createElement( 'div' );
+productItemHeadlineContainerContent.id = 'productItemHeadlineContainerContent';
+
 var downloadItemKleinContainer = document.createElement( 'div' );
 downloadItemKleinContainer.id = 'downloadItemKleinContainer';
 var downloadItemKleinContainerContent = document.createElement( 'div' );
@@ -52,6 +57,11 @@ downloadItemGrootContainer.id = 'downloadItemGrootContainer';
 var downloadItemGrootContainerContent = document.createElement( 'div' );
 downloadItemGrootContainerContent.id = 'downloadItemGrootContainerContent';
 
+var downloadItemHeadlineContainer = document.createElement( 'div' );
+downloadItemHeadlineContainer.id = 'downloadItemHeadlineContainer';
+var downloadItemHeadlineContainerContent = document.createElement( 'div' );
+downloadItemHeadlineContainerContent.id = 'downloadItemHeadlineContainerContent';
+
 var vacatureContainer = document.createElement( 'div' );
 vacatureContainer.id = 'vacatureContainer';
 var vacatureContainerContent = document.createElement( 'div' );
@@ -61,6 +71,11 @@ var vacatureGrootContainer = document.createElement( 'div' );
 vacatureGrootContainer.id = 'vacatureGrootContainer';
 var vacatureGrootContainerContent = document.createElement( 'div' );
 vacatureGrootContainerContent.id = 'vacatureGrootContainerContent';
+
+var vacatureHeadlineContainer = document.createElement( 'div' );
+vacatureHeadlineContainer.id = 'vacatureHeadlineContainer';
+var vacatureHeadlineContainerContent = document.createElement( 'div' );
+vacatureHeadlineContainerContent.id = 'vacatureHeadlineContainerContent';
 
 var marketingContainer = document.createElement( 'div' );
 marketingContainer.id = 'marketingContainer';

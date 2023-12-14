@@ -288,13 +288,14 @@ function agendaItems(item, index) {
   var title = json["title"];
   var link = json["link"];
   var postid = json["productid"];
-  var campaign = json["postmeta:campaign"];
+  var campaign = json["postmeta:campaign"]; //cams 1.0 def
+  var utmcampaign = json["postmeta:utmcampagin"]; //cams 2.0 def
   var location = json["postmeta:location"];
   var durration = json["postmeta:durration"];
   var dateMonth = json["postmeta:dateMonth"];
   var dateDay = json["postmeta:dateDay"];
 
-  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cartikel%7c`;
+  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
 
   //var pubdate = item.querySelector("pubdate").innerHTML;
   //var poststatus = item.querySelector("poststatus").innerHTML;
@@ -381,7 +382,8 @@ function productItemKlein(item, index) {
   var table = document.getElementById("academyTable");
   var json = xml2json(item);
   var link = json["link"];
-  var campaign = json["postmeta:campaign"];
+  var campaign = json["postmeta:campaign"]; //cams 1.0 def
+  var utmcampaign = json["postmeta:utmcampagin"]; //cams 2.0 def
   var location = json["postmeta:location"];
   var durration = json["postmeta:durration"];
   var dateMonth = json["postmeta:dateMonth"];
@@ -389,7 +391,7 @@ function productItemKlein(item, index) {
   var postid = json["productid"];
   var item_title = json["title"];
   var item_description = json["description"];
-  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cartikel%7c`;
+  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
 
   var item_img_klein = json["image_small"];
   var item_img_groot = json["image_large"];
@@ -469,13 +471,14 @@ function productItemGroot(item, index) {
   var json = xml2json(item);
   var link = json["link"];
   var postid = json["productid"];
-  var campaign = json["postmeta:campaign"];
+  var campaign = json["postmeta:campaign"]; //cams 1.0 def
+  var utmcampaign = json["postmeta:utmcampagin"]; //cams 2.0 def
   var location = json["postmeta:location"];
   var durration = json["postmeta:durration"];
   var dateMonth = json["postmeta:dateMonth"];
   var dateDay = json["postmeta:dateDay"];
 
-  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cartikel%7c`;
+  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
   var item_title = json["title"];
   var item_description = json["description"];
   var item_img_groot = json["image_large"];
@@ -554,13 +557,14 @@ function productItemHeadline(item, index) {
   var json = xml2json(item);
   var link = json["link"];
   var postid = json["productid"];
-  var campaign = json["postmeta:campaign"];
+  var campaign = json["postmeta:campaign"]; //cams 1.0 def
+  var utmcampaign = json["postmeta:utmcampagin"]; //cams 2.0 def
   var location = json["postmeta:location"];
   var durration = json["postmeta:durration"];
   var dateMonth = json["postmeta:dateMonth"];
   var dateDay = json["postmeta:dateDay"];
 
-  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${campaign}&utm_content=%7c${sendDate}%7cartikel%7c`;
+  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
   var item_title = json["title"];
   var item_description = json["description"];
   var item_img_groot = json["image_large"];
@@ -829,7 +833,7 @@ function artikelHeadlineItems(item, index) {
 
   var postid = item.querySelector("postid").innerHTML;
 
-  var item_link = item.querySelector("link").innerHTML + `&utm_source=nb-blog-${dagWeek}&utm_medium=emailHeadline&utm_campaign=artikel&utm_content=%7c${sendDate}%7cartikel%7c`;
+  var item_link = item.querySelector("link").innerHTML + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%headline%7c`;
 
   var item_img_groot = item.querySelector("*|afbeelding").innerHTML;
   item_img_groot = item_img_groot.replace("<![CDATA[", "").replace("]]>", "");
@@ -953,11 +957,11 @@ function functionVacatureKleinItems(item, index) {
   vac_standplaats = vac_standplaats.replace("<![CDATA[", "").replace("]]>", "");
 
   //dagelijks
-  var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
+  var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
 
   //wekelijks
   if(dagWeek != 'dagelijks') {
-    var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
+    var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -1090,9 +1094,9 @@ function functionVacatureGrootItems(item, index) {
   var vac_standplaats = item.querySelector("*|vac_standplaats").innerHTML;
   vac_standplaats = vac_standplaats.replace("<![CDATA[", "").replace("]]>", "");
 
-  var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
+  var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
   if(dagWeek != 'dagelijks') {
-    var vac_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
+    var vac_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -1211,9 +1215,9 @@ function functionVacatureHeadlineItems(item, index) {
   var vac_standplaats = item.querySelector("*|vac_standplaats").innerHTML;
   vac_standplaats = vac_standplaats.replace("<![CDATA[", "").replace("]]>", "");
 
-  var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
+  var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
   if(dagWeek != 'dagelijks') {
-    var vac_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
+    var vac_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -2029,9 +2033,9 @@ function functiondownloadKleinItems(item, index) {
       description = description.substring(0, 80) + '... <span style="font-size: 14px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" >Lees meer</span> ▸';
     }
 
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   if(dagWeek != 'dagelijks') {
-    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -2140,9 +2144,9 @@ function functiondownloadGrootItems(item, index) {
   
   var item_title = item.querySelector("title").innerHTML;
 
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   if(dagWeek != 'dagelijks') {
-    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -2233,9 +2237,9 @@ function functiondownloadHeadlineItems(item, index) {
   
   var item_title = item.querySelector("title").innerHTML;
 
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   if(dagWeek != 'dagelijks') {
-    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cartikel%7c`;
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");

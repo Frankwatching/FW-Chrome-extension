@@ -1330,9 +1330,9 @@ function functionMarketingItems(item, index) {
   const promotion_urlElement = item.querySelector("promotion_url");
   const promotion_url = promotion_urlElement ? promotion_urlElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
 
-    // Promotion_textarea  
-    const promotion_introElement = item.querySelector("promotion_textarea");
-    const promotion_intro = promotion_introElement ? promotion_introElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
+  // Promotion_textarea  
+  const promotion_introElement = item.querySelector("promotion_textarea");
+  const promotion_intro = promotion_introElement ? promotion_introElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
 
 
   // Promo image id  
@@ -1399,7 +1399,54 @@ const promotion_koppeling_post = promotion_koppeling_postElement ? promotion_kop
 
   const promotion_typeElement = item.querySelector("promotion_type");
   const promotion_type = promotion_typeElement ? promotion_typeElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
-  const utm_parameters = `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7c${promotion_type}%7c`;
+  
+
+  // UTM Type versus promotie type Cams 2.0
+  let cams_type = '';
+  if (promotion_type === 'wnb_agenda_events') {cams_type = 'agenda' }
+  if (
+    promotion_type === 'wnb_meer_tvdw' || 
+    promotion_type === 'wnb_headlines_tvdw'
+  ) {cams_type = 'headlineadv' }
+
+  if (
+    promotion_type === 'wnb_headlines_tvdw'
+  ) {cams_type = 'headlineonder' }
+
+  if (
+    promotion_type === 'wnb_ag_tvdw'
+  ) {cams_type = 'advthema' }
+
+  if (
+    promotion_type === 'wnk_ak_adv'
+  ) {cams_type = 'advthema' }
+  
+  if (
+    promotion_type === 'wnk_ag_adv'
+  ) {cams_type = 'artikelthema' }
+
+
+  if (
+    promotion_type === 'campagnebalk' || 
+    promotion_type === 'campagneblak'
+  ) {cams_type = 'headlineadv' }
+
+  if (
+    promotion_type === 'wnb_advertorial' || 
+    promotion_type === 'dnb_advertorial' || 
+    promotion_type === 'wnb_ag_cta'
+  ) {
+
+      if (promotion_view === 'klein') {
+        cams_type = 'advthema' 
+      } else {
+        cams_type = 'artikelthema' 
+      }
+
+  }
+
+  
+  const utm_parameters = `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7c${cams_type}%7c`;
 
   const marketing_link = promotion_url+utm_parameters;
 
@@ -1843,7 +1890,7 @@ if (attachmentId) {
  } else {
     innerHtmlContent = `
         <!-- Default HTML content -->
-        <a id="marketing-${postid}-Link" href="${promotion_url}">
+        <a id="marketing-${postid}-Link" href="${marketing_link}">
           <div class="${promotion_type}" style="border: 1px solid grey; border-radius: 4px; width: 100%;">
             <p style="color: #018A00; text-align: center; padding: 5px 10px; margin: 0; line-height: 1.3">${promo_title}</p>
           </div>

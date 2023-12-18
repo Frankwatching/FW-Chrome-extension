@@ -33,6 +33,20 @@ dagWeekSelect.style.color = '#FFF';
 dagWeekSelect.style.display = "block";
 dagWeekSelect.style.zIndex = '9';
 
+
+blogAlertSelect.id = 'blogAlertSelect';
+blogAlertSelect.style.position = 'fixed';
+blogAlertSelect.style.top = '0px';
+blogAlertSelect.style.marginTop = '7px';
+blogAlertSelect.style.left = '33%';
+blogAlertSelect.style.width = '114px';
+blogAlertSelect.style.minWidth= '114px';
+blogAlertSelect.style.height = '30px';
+blogAlertSelect.style.backgroundColor = '#f8f8f8';
+blogAlertSelect.style.color = '#FFF';
+blogAlertSelect.style.display = "block";
+blogAlertSelect.style.zIndex = '9';
+
 sendDateSelect.id = 'sendDateSelect';
 sendDateSelect.style.position = 'fixed';
 sendDateSelect.style.top = '0px';
@@ -289,6 +303,24 @@ dagWeekFormText.top = "0px";
 dagWeekFormText.color = "#CCCCCC";
 dagWeekFormText.margin = "7px 5px 5px 10px";
 
+
+blogAlertForm.id = "blogAlertForm";
+blogAlertForm.className = "blogAlertForm";
+blogAlertFormDiv.class = "switch-field"
+blogAlertFormInput.type = "checkbox";
+blogAlertFormInput.value = "blog";
+blogAlertFormInput.id= "blogAlertSwitch";
+document.getElementById ("blogAlertSwitch").addEventListener ("click", switchFunction, false);
+blogAlertFormLabel.className = "switch";
+blogAlertFormSpan.className = "slider round";
+blogAlertFormText.id = "blogAlertText";
+blogAlertFormText.display = "inline";
+blogAlertFormText.width = "auto";
+blogAlertFormText.top = "0px";
+blogAlertFormText.color = "#CCCCCC";
+blogAlertFormText.margin = "7px 5px 5px 10px";
+
+
 function switchFunction()
 {
   if (document.getElementById('dagWeekSwitch').checked)
@@ -299,6 +331,16 @@ function switchFunction()
       dagWeek = 'dagelijks';
       getAllContent();
   }
+
+  if (document.getElementById('blogAlertSwitch').checked)
+  {
+      blogAlert = 'al';
+      getAllContent();
+  } else {
+      blogAlert = 'blog';
+      getAllContent();
+  }
+  
 };
 
 inOutForm.id = "inOutForm";

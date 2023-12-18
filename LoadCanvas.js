@@ -8,6 +8,7 @@ document.body.style.width = '100%';
 var createCanvas = document.createElement( 'div' );
 var contentFeed = document.createElement( 'div' );
 var dagWeekSelect = document.createElement( 'div' );
+var blogAlertSelect = document.createElement( 'div' );
 var sendDateSelect = document.createElement( 'div' );
 var contentIndex = document.createElement( 'div' );
 var credits = document.createElement( 'div' );
@@ -150,6 +151,15 @@ var dagWeekFormText = document.createElement('span');
 
 let dagWeek = "dagelijks";
 
+var blogAlertForm = document.createElement('form');
+var blogAlertFormDiv = document.createElement('div');
+var blogAlertFormLabel = document.createElement('label');
+var blogAlertFormInput = document.createElement('input');
+var blogAlertFormSpan = document.createElement('span');
+var blogAlertFormText = document.createElement('span');
+
+let blogAlert = "blog";
+
 var sendDateForm = document.createElement('form');
 var sendDateFormDiv = document.createElement('div');
 var sendDatekFormLabel = document.createElement('label');
@@ -174,6 +184,14 @@ dagWeekFormDiv.appendChild( dagWeekFormLabel );
 dagWeekFormDiv.appendChild( dagWeekFormText );
 dagWeekFormLabel.appendChild( dagWeekFormInput );
 dagWeekFormLabel.appendChild( dagWeekFormSpan );
+
+createCanvas.appendChild( blogAlertSelect );
+blogAlertSelect.appendChild( blogAlertForm );
+blogAlertForm.appendChild( blogAlertFormDiv );
+blogAlertFormDiv.appendChild( blogAlertFormLabel );
+blogAlertFormDiv.appendChild( blogAlertFormText );
+blogAlertFormLabel.appendChild( blogAlertFormInput );
+blogAlertFormLabel.appendChild( blogAlertFormSpan );
 
 document.body.appendChild( createCanvas );
 createCanvas.appendChild( contentFeed );
@@ -210,11 +228,4 @@ switchListFormDiv.appendChild( switchListFormLabel );
 switchListFormDiv.appendChild( switchListFormText );
 switchListFormLabel.appendChild( switchListFormInput );
 switchListFormLabel.appendChild( switchListFormSpan );
-
-
-//switchListFormDiv.appendChild(dagWeekForm);
-//switchListFormDiv.appendChild( dagWeekForm );
-
-//switchListFormDiv.appendChild(sendDateSelect);
-//switchListFormDiv.appendChild( sendDateSelect );
 

@@ -255,6 +255,11 @@ input:checked + .slider:before {
 #dagWeekForm input:checked + .slider.round:before { content:"W" !important; color: #333; }
 /*#dagWeekForm  #dagWeekText { display: none;}*/
 
+
+#blogAlertForm .slider.round:before { content:"B" !important; font-weight: bold; font-size: 16px; color: #333; text-align: center; line-height: 30px; }
+#blogAlertForm input:checked + .slider.round:before { content:"A" !important; color: #333; }
+
+
 .kleinArtikel { border-bottom: 1px solid rgba(0,0,0,.2);}
 
 .divSearchKader {

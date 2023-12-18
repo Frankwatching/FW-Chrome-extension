@@ -141,7 +141,7 @@ const options = [
   { value: 'vacatureGrootContainer', text: 'Jobs Groot' },   
   { value: 'vacatureHeadlineContainer', text: 'Jobs Headline' },
   { value: 'marketingContainer', text: 'Cams 2.0' },
-  { value: 'channelContainer', text: 'BusinessChannel Klein' },  
+  //{ value: 'channelContainer', text: 'BusinessChannel Klein' },  
     // Add other options as needed
 ];
 

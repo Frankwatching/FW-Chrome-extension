@@ -29,12 +29,14 @@ let allLinks;
 
 window.onload = function () {
     var input = document.getElementById('dagWeekSwitch');
+    var inputTemplate = document.getElementById('blogAlertSwitch');
     var inputList = document.getElementById('switchListSwitch');
 
     sendDate = document.getElementById("sendDateSelector").value;
-    console.log(sendDate);
 
     function check() {
+        blogAlert = inputTemplate.checked ? "al" : "blog";
+        document.getElementById('blogAlertText').innerHTML = blogAlert;
         dagWeek = input.checked ? "wekelijks" : "dagelijks";
         document.getElementById('dagWeekText').innerHTML = dagWeek;
 
@@ -42,6 +44,7 @@ window.onload = function () {
         //document.getElementById('dagWeekText').innerHTML = listSort;
     }
     input.onchange = check;
+    inputTemplate.onchange = check;
     check();
 }
 
@@ -957,11 +960,11 @@ function functionVacatureKleinItems(item, index) {
   vac_standplaats = vac_standplaats.replace("<![CDATA[", "").replace("]]>", "");
 
   //dagelijks
-  var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+  var vac_link = item.querySelector("link").innerHTML + `?utm_source=-${blogAlert}-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
 
   //wekelijks
   if(dagWeek != 'dagelijks') {
-    var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+    var vac_link = item.querySelector("link").innerHTML + `?utm_source=-${blogAlert}-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -1094,9 +1097,9 @@ function functionVacatureGrootItems(item, index) {
   var vac_standplaats = item.querySelector("*|vac_standplaats").innerHTML;
   vac_standplaats = vac_standplaats.replace("<![CDATA[", "").replace("]]>", "");
 
-  var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+  var vac_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
   if(dagWeek != 'dagelijks') {
-    var vac_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+    var vac_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -1502,7 +1505,7 @@ if (attachmentId) {
        } else if (promotion_type === 'dnb_advertorial' || promotion_type === 'wnb_advertorial') {
 
           if (promotion_view === 'klein') {
-            console.log('View '+promotion_title+':', promotion_view);
+            //console.log('View '+promotion_title+':', promotion_view);
             innerHtmlContent = `
             <table class="table1a">
             <tbody>
@@ -1535,7 +1538,7 @@ if (attachmentId) {
             `;
 
           } else {
-            console.log('View '+promotion_title+':', promotion_view);
+            //console.log('View '+promotion_title+':', promotion_view);
 
             innerHtmlContent = `
 

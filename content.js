@@ -91,17 +91,24 @@ function handleButtonClick(container, buttonImg, overlay) {
 }
 
 
-
 // ## DATA SOURCES
 jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature';
+jobrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/vacature'; 
+
 agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/';
+agendarestapi = 'https://www.frankwatching.com/wp-json/wp/v2/product'; 
+
 marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&timestamp=' + Date.now();
-//bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news';
-bcrss = 'https://www.frankwatching.com/wp-json/wp/v2/posts '; // Replace this with your WordPress REST API endpoint
+marketingrestapi = 'https://wp.frankwatching.com/wp-json/wp/v2/promotion'; 
+
+bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news';
+bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts '; // Replace this with your WordPress REST API endpoint
 
 kennisbankrss = 'https://www.frankwatching.com/feed/?post_type=download';
-gfentries = 'https://www.frankwatching.com/wp-json/gf/v2/forms/128/entries'
+kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download'; 
+
 newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?poststatus=future-publish';
+newsrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/post'; 
 
 if ( listSort === 'popularity') {
   newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?popularity';
@@ -109,17 +116,26 @@ if ( listSort === 'popularity') {
 
 if ( searchID ) {
   newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?postid='+ searchID;
+  newsrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/post/?include='+ searchID; 
   //console.log('news RSS:' + newsrss);
+  
   jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature&post_id='+ searchID;
+  jobrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/vacature/?include='+ searchID; 
   //console.log('jobs RSS:' + jobrss);
+  
   agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?postid='+ searchID;
   //console.log('agenda RSS:' + agendarss);
+  
   marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&post_id='+ searchID;
+  marketingrestapi = 'https://wp.frankwatching.com/wp-json/wp/v2/promotion/?include='+ searchID; 
   //console.log('marketing RSS:' + marketingrss);
+  
   //bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news&postid='+ searchID;
-  bcrss = 'https://www.frankwatching.com/wp-json/wp/v2/posts/?include='+ searchID; // Replace this with your WordPress REST API endpoint
+  bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts/?include='+ searchID; //
   //console.log('bc RSS:' + bcrss);
+  
   kennisbankrss = 'https://www.frankwatching.com/feed?post_type=download&post_id='+ searchID;
+  kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download/?include='+ searchID; 
   //console.log('kennisbank RSS:' + kennisbankrss);
 }
 
@@ -1917,16 +1933,16 @@ if (attachmentId) {
 
 async function loadChannel() {
   try {
-    const response = await fetch(bcrss); // Fetch data from WordPress REST API
+    const response = await fetch(bcrestapi); // Fetch data from WordPress REST API
     if (!response.ok) {
       throw new Error(`Failed to fetch data from WordPress API. Status: ${response.status}`);
     }
 
     const jsonData = await response.json(); // Parse response JSON
 
-    const ChannelContainerContent = document.getElementById("channelContainerContent");
-    if (ChannelContainerContent) {
-      ChannelContainerContent.innerHTML = ""; // Clear container content
+    const ContainerContent = document.getElementById("channelContainerContent");
+    if (ContainerContent) {
+      ContainerContent.innerHTML = ""; // Clear container content
     }
 
     if (Array.isArray(jsonData)) {
@@ -1969,7 +1985,7 @@ async function functionChannelItems(item) {
           article_img = mediaData.source_url;
 
           // Create HTML elements or perform operations with the title and excerpt data
-          const ChannelContainerContent = document.getElementById("channelContainerContent");
+          const Container = document.getElementById("channelContainerContent");
 
           const divCat = document.createElement('div');
           divCat.className = 'categoryClass';
@@ -1979,7 +1995,7 @@ async function functionChannelItems(item) {
           div.id = 'channel'+postid;
           div.draggable = 'true';
           
-          if (ChannelContainerContent) {
+          if (Container) {
             div.innerHTML = `
             <table class="table1a">
             <tbody>

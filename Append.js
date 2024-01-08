@@ -177,15 +177,36 @@ function handleSelectChange(containerId) {
     vacatureHeadlineContainer.style.display = "none";
     marketingContainer.style.display = "none";
     channelContainer.style.display = "none";
-  
+    switchListForm.style.display = "none";
+
+
+    // Array of container IDs where you want to apply the extra style
+    const containerIdsArray = [
+      "channelContainer", 
+      "agendaAcademyContainer", 
+      "artikelenKleinContainer", 
+      "artikelenGrootContainer", 
+      "artikelHeadlineContainer", 
+      "productItemKleinContainer", 
+      "productItemGrootContainer", 
+      "productItemHeadlineContainer"
+    ];
+
     // Show the selected container
     const selectedContainer = document.getElementById(containerId);
     if (selectedContainer) {
       selectedContainer.style.display = "block";
+
+       // Check if the selectedContainer ID is in the containerIdsArray
+      if (containerIdsArray.includes(containerId)) {
+        // Apply the additional style
+        switchListForm.style.display = "block";
+      }
+
     } 
     
     if (selectedContainer == 'hideall') {
-        contentIndex.style.display = "none";
+        contentIndex.style.display = "block";
     } 
 
     // Show the selected overlay if it exists

@@ -2375,7 +2375,6 @@ fetch("https://raw.githubusercontent.com/Frankwatching/Act-On-External-Content/m
         if(versionid < out) {
           versiediv.className = 'versiondiv-update';
           text = `Lokale versie: ${versionid}&nbsp;`;
-          text = text + '<a href="https://github.com/Frankwatching/Act-On-External-Content" target="_blank">Nu updaten naar: ' + out + '</a>';
         }
         versiediv.innerHTML = text;
 

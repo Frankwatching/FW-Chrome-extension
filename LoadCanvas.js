@@ -8,6 +8,7 @@ document.body.style.width = '100%';
 var createCanvas = document.createElement( 'div' );
 var contentFeed = document.createElement( 'div' );
 var dagWeekSelect = document.createElement( 'div' );
+var blogAlertSelect = document.createElement( 'div' );
 var sendDateSelect = document.createElement( 'div' );
 var contentIndex = document.createElement( 'div' );
 var credits = document.createElement( 'div' );
@@ -25,12 +26,67 @@ artikelenGrootContainer.id = 'artikelenGrootContainer';
 var artikelenGrootContainerContent = document.createElement( 'div' );
 artikelenGrootContainerContent.id = 'artikelenGrootContainerContent';
 
+var artikelHeadlineContainer = document.createElement( 'div' );
+artikelHeadlineContainer.id = 'artikelHeadlineContainer';
+var artikelHeadlineContainerContent = document.createElement( 'div' );
+artikelHeadlineContainerContent.id = 'artikelHeadlineContainerContent';
+
 var agendaAcademyContainer = document.createElement( 'div' );
+
+var productItemKleinContainer = document.createElement( 'div' );
+productItemKleinContainer.id = 'productItemKleinContainer';
+var productItemKleinContainerContent = document.createElement( 'div' );
+productItemKleinContainerContent.id = 'productItemKleinContainerContent';
+
+var productItemGrootContainer = document.createElement( 'div' );
+productItemGrootContainer.id = 'productItemGrootContainer';
+var productItemGrootContainerContent = document.createElement( 'div' );
+productItemGrootContainerContent.id = 'productItemGrootContainerContent';
+
+var productItemHeadlineContainer = document.createElement( 'div' );
+productItemHeadlineContainer.id = 'productItemHeadlineContainer';
+var productItemHeadlineContainerContent = document.createElement( 'div' );
+productItemHeadlineContainerContent.id = 'productItemHeadlineContainerContent';
+
+var downloadItemKleinContainer = document.createElement( 'div' );
+downloadItemKleinContainer.id = 'downloadItemKleinContainer';
+var downloadItemKleinContainerContent = document.createElement( 'div' );
+downloadItemKleinContainerContent.id = 'downloadItemKleinContainerContent';
+
+var downloadItemGrootContainer = document.createElement( 'div' );
+downloadItemGrootContainer.id = 'downloadItemGrootContainer';
+var downloadItemGrootContainerContent = document.createElement( 'div' );
+downloadItemGrootContainerContent.id = 'downloadItemGrootContainerContent';
+
+var downloadItemHeadlineContainer = document.createElement( 'div' );
+downloadItemHeadlineContainer.id = 'downloadItemHeadlineContainer';
+var downloadItemHeadlineContainerContent = document.createElement( 'div' );
+downloadItemHeadlineContainerContent.id = 'downloadItemHeadlineContainerContent';
 
 var vacatureContainer = document.createElement( 'div' );
 vacatureContainer.id = 'vacatureContainer';
 var vacatureContainerContent = document.createElement( 'div' );
 vacatureContainerContent.id = 'vacatureContainerContent';
+
+var vacatureGrootContainer = document.createElement( 'div' );
+vacatureGrootContainer.id = 'vacatureGrootContainer';
+var vacatureGrootContainerContent = document.createElement( 'div' );
+vacatureGrootContainerContent.id = 'vacatureGrootContainerContent';
+
+var vacatureHeadlineContainer = document.createElement( 'div' );
+vacatureHeadlineContainer.id = 'vacatureHeadlineContainer';
+var vacatureHeadlineContainerContent = document.createElement( 'div' );
+vacatureHeadlineContainerContent.id = 'vacatureHeadlineContainerContent';
+
+var marketingContainer = document.createElement( 'div' );
+marketingContainer.id = 'marketingContainer';
+var marketingContainerContent = document.createElement( 'div' );
+marketingContainerContent.id = 'marketingContainerContent';
+
+var channelContainer = document.createElement( 'div' );
+channelContainer.id = 'channelContainer';
+var channelContainerContent = document.createElement( 'div' );
+channelContainerContent.id = 'channelContainerContent';
 
 //headlines
 var headlinesOverlay = document.createElement ( "div" );
@@ -84,17 +140,7 @@ var headlines7Td3 = document.createElement( 'td' );
 
 var agendaOverlay = document.createElement ( "div" );
 
-var choises = document.createElement ('div');
-var headlinesButton = document.createElement ('div');
-var headlinesButtonImg = document.createElement ('p');
-var artikelGrootButton = document.createElement ('div');
-var artikelGrootButtonImg = document.createElement ('p');
-var agendaAcademyButton = document.createElement ('div');
-var agendaAcademyButtonImg = document.createElement ('p');
-var artikelKleinButton = document.createElement ('div');
-var artikelKleinButtonImg = document.createElement ('p');
-var vacatureButton = document.createElement ('div');
-var vacatureButtonImg = document.createElement ('p');
+var choices = document.createElement ('div');
 
 var dagWeekForm = document.createElement('form');
 var dagWeekFormDiv = document.createElement('div');
@@ -104,6 +150,15 @@ var dagWeekFormSpan = document.createElement('span');
 var dagWeekFormText = document.createElement('span');
 
 let dagWeek = "dagelijks";
+
+var blogAlertForm = document.createElement('form');
+var blogAlertFormDiv = document.createElement('div');
+var blogAlertFormLabel = document.createElement('label');
+var blogAlertFormInput = document.createElement('input');
+var blogAlertFormSpan = document.createElement('span');
+var blogAlertFormText = document.createElement('span');
+
+let blogAlert = "blog";
 
 var sendDateForm = document.createElement('form');
 var sendDateFormDiv = document.createElement('div');
@@ -129,6 +184,14 @@ dagWeekFormDiv.appendChild( dagWeekFormLabel );
 dagWeekFormDiv.appendChild( dagWeekFormText );
 dagWeekFormLabel.appendChild( dagWeekFormInput );
 dagWeekFormLabel.appendChild( dagWeekFormSpan );
+
+createCanvas.appendChild( blogAlertSelect );
+blogAlertSelect.appendChild( blogAlertForm );
+blogAlertForm.appendChild( blogAlertFormDiv );
+blogAlertFormDiv.appendChild( blogAlertFormLabel );
+blogAlertFormDiv.appendChild( blogAlertFormText );
+blogAlertFormLabel.appendChild( blogAlertFormInput );
+blogAlertFormLabel.appendChild( blogAlertFormSpan );
 
 document.body.appendChild( createCanvas );
 createCanvas.appendChild( contentFeed );
@@ -158,10 +221,11 @@ var switchListFormText = document.createElement('span');
 
 let listSort = "normal";
 
-artikelenKleinContainer.appendChild( switchListFormSelect );
+contentIndex.appendChild( switchListFormSelect );
 switchListFormSelect.appendChild( switchListForm );
 switchListForm.appendChild( switchListFormDiv );
 switchListFormDiv.appendChild( switchListFormLabel );
 switchListFormDiv.appendChild( switchListFormText );
 switchListFormLabel.appendChild( switchListFormInput );
 switchListFormLabel.appendChild( switchListFormSpan );
+

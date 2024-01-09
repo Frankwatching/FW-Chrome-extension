@@ -60,19 +60,178 @@ artikelenGrootContainer.appendChild(artikelenGrootContainerContent);
 contentIndex.appendChild( artikelenKleinContainer );
 artikelenKleinContainer.appendChild( artikelenKleinContainerContent );
 
-//Vacatures
+//artikelHeadline
+contentIndex.appendChild( artikelHeadlineContainer );
+artikelHeadlineContainer.appendChild( artikelHeadlineContainerContent );
+
+//productItemKlein
+contentIndex.appendChild( productItemKleinContainer );
+productItemKleinContainer.appendChild( productItemKleinContainerContent );
+
+//productItemGroot
+contentIndex.appendChild( productItemGrootContainer );
+productItemGrootContainer.appendChild( productItemGrootContainerContent );
+
+//productItemHeadline
+contentIndex.appendChild( productItemHeadlineContainer );
+productItemHeadlineContainer.appendChild( productItemHeadlineContainerContent );
+
+//Vacatures klein
 contentIndex.appendChild(vacatureContainer);
 vacatureContainer.appendChild(vacatureContainerContent);
 
-//Menu
-contentFeed.appendChild( choises );
-choises.appendChild( headlinesButton );
-headlinesButton.appendChild( headlinesButtonImg );
-choises.appendChild( artikelGrootButton );
-artikelGrootButton.appendChild( artikelGrootButtonImg );
-choises.appendChild( agendaAcademyButton );
-agendaAcademyButton.appendChild( agendaAcademyButtonImg );
-choises.appendChild( artikelKleinButton );
-artikelKleinButton.appendChild( artikelKleinButtonImg );
-choises.appendChild( vacatureButton );
-vacatureButton.appendChild( vacatureButtonImg );
+//Vacatures groot
+contentIndex.appendChild(vacatureGrootContainer);
+vacatureGrootContainer.appendChild(vacatureGrootContainerContent);
+
+//Vacatures headline
+contentIndex.appendChild(vacatureHeadlineContainer);
+vacatureHeadlineContainer.appendChild(vacatureHeadlineContainerContent);
+
+//downloadItemKlein
+contentIndex.appendChild( downloadItemKleinContainer );
+downloadItemKleinContainer.appendChild( downloadItemKleinContainerContent );
+
+//downloadItemGroot
+contentIndex.appendChild( downloadItemGrootContainer );
+downloadItemGrootContainer.appendChild( downloadItemGrootContainerContent );
+
+//downloadItemHeadline
+contentIndex.appendChild( downloadItemHeadlineContainer );
+downloadItemHeadlineContainer.appendChild( downloadItemHeadlineContainerContent );
+
+//Marketing
+contentIndex.appendChild(marketingContainer);
+marketingContainer.appendChild(marketingContainerContent);
+
+//Business Channel
+contentIndex.appendChild(channelContainer);
+channelContainer.appendChild(channelContainerContent);
+
+//Menu, let op volgorde
+contentFeed.appendChild( choices );
+
+// Create img element
+const imgElement = document.createElement('img');
+imgElement.src = 'https://www.frankwatching.com/app/uploads/2023/01/FW-logo.png'; // Add your image URL here
+imgElement.style.width = 'auto'; 
+imgElement.style.height = '30px'; 
+imgElement.style.margin = '5px 5px'; 
+
+// Create select element
+const selectMenu = document.createElement('select');
+selectMenu.id = 'selectMenu';
+
+
+// Define options
+const options = [
+  { value: 'hideall', text: 'Selecteer content voor nieuwsbrief' },
+  { value: 'headlinesContainer', text: 'Blog Headlines' },
+  { value: 'artikelHeadlineContainer', text: 'Blog Headline' },
+  { value: 'artikelenKleinContainer', text: 'Blog Klein' },
+  { value: 'artikelenGrootContainer', text: 'Blog Groot' },
+  { value: 'productItemKleinContainer', text: 'Academy Klein' },
+  { value: 'productItemGrootContainer', text: 'Academy Groot' },  
+  { value: 'agendaAcademyContainer', text: 'Academy Agenda' },
+  { value: 'productItemHeadlineContainer', text: 'Academy Headline' },
+  { value: 'downloadItemKleinContainer', text: 'Kennisbank Klein' },
+  { value: 'downloadItemGrootContainer', text: 'Kennisbank Groot' },   
+  { value: 'downloadItemHeadlineContainer', text: 'Kennisbank Headline' },
+  { value: 'vacatureContainer', text: 'Jobs Klein' },
+  { value: 'vacatureGrootContainer', text: 'Jobs Groot' },   
+  { value: 'vacatureHeadlineContainer', text: 'Jobs Headline' },
+  { value: 'marketingContainer', text: 'Cams 2.0' },
+  { value: 'channelContainer', text: 'BusinessChannel Klein' },  
+    // Add other options as needed
+];
+
+// Add options to select element
+options.forEach(option => {
+  const optionElement = document.createElement('option');
+  optionElement.value = option.value;
+  optionElement.textContent = option.text;
+  selectMenu.appendChild(optionElement);
+
+});
+choices.appendChild(imgElement);
+
+
+
+function handleSelectChange(containerId) {
+    // Hide all containers and overlays
+    headlinesContainer.style.display = "none";
+    headlinesOverlay.style.display = "none";
+    agendaAcademyContainer.style.display = "none";
+    artikelenKleinContainer.style.display = "none";
+    artikelenGrootContainer.style.display = "none";
+    artikelHeadlineContainer.style.display = "none";
+    productItemKleinContainer.style.display = "none";
+    productItemGrootContainer.style.display = "none";
+    productItemHeadlineContainer.style.display = "none";
+    agendaOverlay.style.display = "none";
+    downloadItemKleinContainer.style.display = "none";
+    downloadItemGrootContainer.style.display = "none";
+    downloadItemHeadlineContainer.style.display = "none";
+    vacatureContainer.style.display = "none";
+    vacatureGrootContainer.style.display = "none";
+    vacatureHeadlineContainer.style.display = "none";
+    marketingContainer.style.display = "none";
+    channelContainer.style.display = "none";
+    switchListForm.style.display = "none";
+
+
+    // Array of container IDs where you want to apply the extra style
+    const containerIdsArray = [
+      "channelContainer", 
+      "agendaAcademyContainer", 
+      "artikelenKleinContainer", 
+      "artikelenGrootContainer", 
+      "artikelHeadlineContainer", 
+      "productItemKleinContainer", 
+      "productItemGrootContainer", 
+      "productItemHeadlineContainer"
+    ];
+
+    // Show the selected container
+    const selectedContainer = document.getElementById(containerId);
+    if (selectedContainer) {
+      selectedContainer.style.display = "block";
+
+       // Check if the selectedContainer ID is in the containerIdsArray
+      if (containerIdsArray.includes(containerId)) {
+        // Apply the additional style
+        switchListForm.style.display = "block";
+      }
+
+    } 
+    
+    if (selectedContainer == 'hideall') {
+        contentIndex.style.display = "block";
+    } 
+
+    // Show the selected overlay if it exists
+    const overlayId = containerId + 'Overlay';
+    const selectedOverlay = document.getElementById(overlayId);
+    if (selectedOverlay) {
+      selectedOverlay.style.display = "block";
+    }
+  
+    // Reset the class names for all buttons
+    // ... (the same class name resetting logic as before)
+  }
+
+  
+// Event listener for select change
+selectMenu.addEventListener('change', function(event) {
+    const selectedOption = event.target.value;
+    if (selectedOption !== 'default') {
+      handleSelectChange(selectedOption);
+    }
+  });
+
+contentIndex.appendChild(selectMenu);
+choices.appendChild( selectMenu );
+
+
+//switchListFormDiv.appendChild(selectMenu);
+//switchListFormDiv.appendChild( selectMenu );

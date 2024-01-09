@@ -98,8 +98,8 @@ jobrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/vacature';
 agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/';
 agendarestapi = 'https://www.frankwatching.com/wp-json/wp/v2/product'; 
 
-marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&timestamp=' + Date.now();
-marketingrestapi = 'https://wp.frankwatching.com/wp-json/wp/v2/promotion'; 
+marketingrss = 'https://cms.frankwatching.com/feed?post_type=promotion&timestamp=' + Date.now();
+marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion'; 
 
 bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news';
 bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts '; // Replace this with your WordPress REST API endpoint
@@ -126,8 +126,8 @@ if ( searchID ) {
   agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?postid='+ searchID;
   //console.log('agenda RSS:' + agendarss);
   
-  marketingrss = 'https://wp.frankwatching.com/feed?post_type=promotion&post_id='+ searchID;
-  marketingrestapi = 'https://wp.frankwatching.com/wp-json/wp/v2/promotion/?include='+ searchID; 
+  marketingrss = 'https://cms.frankwatching.com/feed?post_type=promotion&post_id='+ searchID;
+  marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion/?include='+ searchID; 
   //console.log('marketing RSS:' + marketingrss);
   
   //bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news&postid='+ searchID;
@@ -1401,7 +1401,7 @@ const promotion_koppeling_post = promotion_koppeling_postElement ? promotion_kop
 
 
   // Replace 'your-wordpress-url' with the URL of your WordPress site
-  const wordpressUrl = 'https://wp.frankwatching.com';
+  const wordpressUrl = 'https://cms.frankwatching.com';
   // Replace '123' with the attachment ID you want to get the URL for
   const attachmentId = promotion_image;
 

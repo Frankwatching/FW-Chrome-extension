@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.1.1";
+let versionid = "3.1.2";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');

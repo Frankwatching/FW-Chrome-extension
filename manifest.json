@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "FWAct-On external content v3.1.1",
-  "version": "3.1.1",
+  "name": "FWAct-On external content v3.1.2",
+  "version": "3.1.2",
   "content_scripts": [
     {
       "matches": [

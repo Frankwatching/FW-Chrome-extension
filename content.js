@@ -35,7 +35,7 @@ window.onload = function () {
     sendDate = document.getElementById("sendDateSelector").value;
 
     function check() {
-        blogAlert = inputTemplate.checked ? "al" : "blog";
+        blogAlert = inputTemplate.checked ? "al" : "nb";
         document.getElementById('blogAlertText').innerHTML = blogAlert;
         dagWeek = input.checked ? "wekelijks" : "dagelijks";
         document.getElementById('dagWeekText').innerHTML = dagWeek;
@@ -153,7 +153,7 @@ var futureHeadlineText = 'Voorbeeld';
 var futureHeadlineLink = 'https://voorbeeld.frankwatching.com/?';
 let headerline1 = document.getElementById('headline1');
 headerline1.textContent = futureHeadlineText;
-headerline1.setAttribute("href", futureHeadlineLink + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+headerline1.setAttribute("href", futureHeadlineLink + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
 
 "use strict";
 fetch("https://www.frankwatching.com/feed-nieuwsbrief-v2/?poststatus=future-publish")
@@ -196,7 +196,7 @@ function headlineFutureItems(item, index) {
       var futureHeadlineLink = jsonlink;
       let headerline1 = document.getElementById('headline1');
       headerline1.textContent = futureHeadlineText;
-      headerline1.setAttribute("href", futureHeadlineLink + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+      headerline1.setAttribute("href", futureHeadlineLink + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
     }
   }
 }
@@ -221,28 +221,28 @@ fetch("https://www.frankwatching.com/feed-nieuwsbrief-v2/")
 
     // let headerline1 = document.getElementById('headline1');
     // headerline1.textContent = futureHeadlineText;
-    // headerline1.setAttribute("href", futureHeadlineLink + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+    // headerline1.setAttribute("href", futureHeadlineLink + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
     let headerline1 = document.getElementById('headline1');
     headerline1.textContent = allTitles[1].firstChild.nodeValue;
-    headerline1.setAttribute("href", allLinks[1].textContent + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+    headerline1.setAttribute("href", allLinks[1].textContent + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
     let headerline2 = document.getElementById('headline2');
     headerline2.textContent = 'Voorbeeld';
-    headerline2.setAttribute("href", 'https://voorbeeld.frankwatching.com/?' + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+    headerline2.setAttribute("href", 'https://voorbeeld.frankwatching.com/?' + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
     let headerline3 = document.getElementById('headline3');
     headerline3.textContent = allTitles[2].firstChild.nodeValue;
-    headerline3.setAttribute("href", allLinks[2].textContent + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+    headerline3.setAttribute("href", allLinks[2].textContent + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
     let headerline4 = document.getElementById('headline4');
     headerline4.textContent = allTitles[3].firstChild.nodeValue;
-    headerline4.setAttribute("href", allLinks[3].textContent + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+    headerline4.setAttribute("href", allLinks[3].textContent + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
     let headerline5 = document.getElementById('headline5');
     headerline5.textContent = 'Voorbeeld';
-    headerline5.setAttribute("href", 'https://voorbeeld.frankwatching.com/?' + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+    headerline5.setAttribute("href", 'https://voorbeeld.frankwatching.com/?' + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
     let headerline6 = document.getElementById('headline6');
     headerline6.textContent = allTitles[4].firstChild.nodeValue;
-    headerline6.setAttribute("href", allLinks[4].textContent + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7cheadline%7c`);//campagne);
+    headerline6.setAttribute("href", allLinks[4].textContent + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7cheadline%7c`);//campagne);
     let headerline7 = document.getElementById('headline7');
     headerline7.textContent = allTitles[5].firstChild.nodeValue;
-    headerline7.setAttribute("href", allLinks[5].textContent + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+    headerline7.setAttribute("href", allLinks[5].textContent + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
 
 });
 
@@ -314,7 +314,7 @@ function agendaItems(item, index) {
   var dateMonth = json["postmeta:dateMonth"];
   var dateDay = json["postmeta:dateDay"];
 
-  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
+  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
 
   //var pubdate = item.querySelector("pubdate").innerHTML;
   //var poststatus = item.querySelector("poststatus").innerHTML;
@@ -410,7 +410,7 @@ function productItemKlein(item, index) {
   var postid = json["productid"];
   var item_title = json["title"];
   var item_description = json["description"];
-  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
+  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
 
   var item_img_klein = json["image_small"];
   var item_img_groot = json["image_large"];
@@ -497,7 +497,7 @@ function productItemGroot(item, index) {
   var dateMonth = json["postmeta:dateMonth"];
   var dateDay = json["postmeta:dateDay"];
 
-  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
+  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
   var item_title = json["title"];
   var item_description = json["description"];
   var item_img_groot = json["image_large"];
@@ -583,7 +583,7 @@ function productItemHeadline(item, index) {
   var dateMonth = json["postmeta:dateMonth"];
   var dateDay = json["postmeta:dateDay"];
 
-  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
+  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
   var item_title = json["title"];
   var item_description = json["description"];
   var item_img_groot = json["image_large"];
@@ -693,7 +693,7 @@ loadNews();
 function artikelenGrootItems(item, index) {
 
   var postid = item.querySelector("postid").innerHTML;
-  var item_link = item.querySelector("link").innerHTML + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7cartikel%7c`;
+  var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7cartikel%7c`;
 
   var item_img_groot = item.querySelector("*|afbeelding").innerHTML;
   item_img_groot = item_img_groot.replace("<![CDATA[", "").replace("]]>", "");
@@ -769,7 +769,7 @@ function artikelenKleinItems(item, index) {
 
   var postid = item.querySelector("postid").innerHTML;
 
-  var item_link = item.querySelector("link").innerHTML + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7cartikel%7c`;
+  var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7cartikel%7c`;
 
   var item_img_groot = item.querySelector("*|afbeelding").innerHTML;
   item_img_groot = item_img_groot.replace("<![CDATA[", "").replace("]]>", "");
@@ -852,7 +852,7 @@ function artikelHeadlineItems(item, index) {
 
   var postid = item.querySelector("postid").innerHTML;
 
-  var item_link = item.querySelector("link").innerHTML + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%headline%7c`;
+  var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%headline%7c`;
 
   var item_img_groot = item.querySelector("*|afbeelding").innerHTML;
   item_img_groot = item_img_groot.replace("<![CDATA[", "").replace("]]>", "");
@@ -976,11 +976,11 @@ function functionVacatureKleinItems(item, index) {
   vac_standplaats = vac_standplaats.replace("<![CDATA[", "").replace("]]>", "");
 
   //dagelijks
-  var vac_link = item.querySelector("link").innerHTML + `?utm_source=-${blogAlert}-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+  var vac_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
 
   //wekelijks
   if(dagWeek != 'dagelijks') {
-    var vac_link = item.querySelector("link").innerHTML + `?utm_source=-${blogAlert}-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+    var vac_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -1234,9 +1234,9 @@ function functionVacatureHeadlineItems(item, index) {
   var vac_standplaats = item.querySelector("*|vac_standplaats").innerHTML;
   vac_standplaats = vac_standplaats.replace("<![CDATA[", "").replace("]]>", "");
 
-  var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+  var vac_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
   if(dagWeek != 'dagelijks') {
-    var vac_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+    var vac_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -1462,7 +1462,7 @@ const promotion_koppeling_post = promotion_koppeling_postElement ? promotion_kop
   }
 
   
-  const utm_parameters = `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7c${cams_type}%7c`;
+  const utm_parameters = `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7c${cams_type}%7c`;
 
   const marketing_link = promotion_url+utm_parameters;
 
@@ -1960,7 +1960,7 @@ async function functionChannelItems(item) {
    const postid = item.id;
    const article_title = item.title.rendered;
    const excerpt = item.excerpt.rendered;
-   const article_link = item.link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=BusinessChannel&utm_content=%7c${sendDate}%7cartikel%7c`;
+   const article_link = item.link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=BusinessChannel&utm_content=%7c${sendDate}%7cartikel%7c`;
 
    const maxCharacters = 80; // Define the maximum number of characters
    const description = item.excerpt.rendered ? item.excerpt.rendered.substring(0, maxCharacters)+'...' : ''; 
@@ -2091,6 +2091,15 @@ function functiondownloadKleinItems(item, index) {
   var pubdate = item.querySelector("pubDate").innerHTML;
   var pubdateArray = pubdate.split("+");
 
+  var download_newsletter_title = item.querySelector("download_newsletter_title").innerHTML;
+  download_newsletter_title = download_newsletter_title.replace("<![CDATA[", "").replace("]]>", "");
+
+  var download_newsletter_intro = item.querySelector("download_newsletter_intro").innerHTML;
+  download_newsletter_intro = download_newsletter_intro.replace("<![CDATA[", "").replace("]]>", "");
+
+  var download_newsletter_utm = item.querySelector("download_newsletter_utm").innerHTML;
+  download_newsletter_utm = download_newsletter_utm.replace("<![CDATA[", "").replace("]]>", "");
+
   var description = item.querySelector("description").innerHTML;
   description = description.replace("<![CDATA[", "").replace("]]>", "");
 
@@ -2099,9 +2108,9 @@ function functiondownloadKleinItems(item, index) {
       description = description.substring(0, 80) + '... <span style="font-size: 14px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" >Lees meer</span> ▸';
     }
 
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   if(dagWeek != 'dagelijks') {
-    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -2210,9 +2219,9 @@ function functiondownloadGrootItems(item, index) {
   
   var item_title = item.querySelector("title").innerHTML;
 
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   if(dagWeek != 'dagelijks') {
-    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -2303,9 +2312,9 @@ function functiondownloadHeadlineItems(item, index) {
   
   var item_title = item.querySelector("title").innerHTML;
 
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   if(dagWeek != 'dagelijks') {
-    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");

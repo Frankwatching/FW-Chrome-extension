@@ -944,7 +944,7 @@ async function loadVacatures() {
     items.forEach(functionVacatureGrootItems);
     items.forEach(functionVacatureHeadlineItems);
   } catch (error) {
-    console.error("Error loading vacancies:", error);
+    console.error("Error loading jobs:", error);
   }
 }
 
@@ -2075,7 +2075,7 @@ async function loadKennisbank() {
     items.forEach(functiondownloadGrootItems);
     items.forEach(functiondownloadHeadlineItems);
   } catch (error) {
-    console.error("Error loading vacancies:", error);
+    console.error("Error loading kennisbank:", error);
   }
 }
 
@@ -2091,26 +2091,54 @@ function functiondownloadKleinItems(item, index) {
   var pubdate = item.querySelector("pubDate").innerHTML;
   var pubdateArray = pubdate.split("+");
 
-  var download_newsletter_title = item.querySelector("download_newsletter_title").innerHTML;
+  var item_title = item.querySelector("title").textContent;
+
+  var excerpt_element = item.querySelector("description");
+  var excerpt = excerpt_element ? excerpt_element.innerHTML : '';
+  excerpt = excerpt.replace("<![CDATA[", "").replace("]]>", "");
+
+  var description = '';
+
+  var download_newsletter_title = item.getElementsByTagNameNS("*", "download_newsletter_title")[0];
+  download_newsletter_title = download_newsletter_title ? download_newsletter_title.textContent : '';
   download_newsletter_title = download_newsletter_title.replace("<![CDATA[", "").replace("]]>", "");
 
-  var download_newsletter_intro = item.querySelector("download_newsletter_intro").innerHTML;
+  var download_newsletter_intro = item.getElementsByTagNameNS("*", "download_newsletter_intro")[0];
+  download_newsletter_intro = download_newsletter_intro ? download_newsletter_intro.textContent : '';
   download_newsletter_intro = download_newsletter_intro.replace("<![CDATA[", "").replace("]]>", "");
 
-  var download_newsletter_utm = item.querySelector("download_newsletter_utm").innerHTML;
+  var download_newsletter_utm = item.getElementsByTagNameNS("*", "download_newsletter_utm")[0];
+  download_newsletter_utm = download_newsletter_utm ? download_newsletter_utm.textContent : '';
   download_newsletter_utm = download_newsletter_utm.replace("<![CDATA[", "").replace("]]>", "");
 
-  var description = item.querySelector("description").innerHTML;
-  description = description.replace("<![CDATA[", "").replace("]]>", "");
+  // Show special newsleter title if this is specified in the backend
+  if (download_newsletter_title && download_newsletter_title.length > 1) {
+    item_title = download_newsletter_title;
+  }
+
+  // Show special newsleter intro if this is specified in the backend
+  if (download_newsletter_intro && download_newsletter_intro.length > 1) {
+    description = download_newsletter_intro;
+  } else {
+    description = excerpt;
+  }
+
+  // Show special newsleter utm if this is specified in the backend
+  if (download_newsletter_utm && download_newsletter_utm.length > 1) {
+    download_newsletter_utm = download_newsletter_utm;
+  } else {
+    download_newsletter_utm = 'kennisbank';
+  }
+
 
     // Clip description to a maximum of 100 characters
     if (description.length > 80) {
       description = description.substring(0, 80) + '... <span style="font-size: 14px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" >Lees meer</span> ▸';
     }
 
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${download_newsletter_utm}&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   if(dagWeek != 'dagelijks') {
-    var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${download_newsletter_utm}&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -2172,7 +2200,7 @@ function functiondownloadKleinItems(item, index) {
                     <table>
                         <tbody>
                             <tr>
-                                <td id="channelTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="channelLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${item_link}">${item.querySelector("title").innerHTML}</a></td>
+                                <td id="channelTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="channelLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${item_link}">${item_title}</a></td>
                             </tr>
                             <tr>
                                 <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="channelTDbC"><a id="channelLink${postid}description" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${item_link}">${description}</a></td>
@@ -2209,20 +2237,55 @@ function functiondownloadGrootItems(item, index) {
   var pubdate = item.querySelector("pubDate").innerHTML;
   var pubdateArray = pubdate.split("+");
 
-  var description = item.querySelector("description").innerHTML;
-  description = description.replace("<![CDATA[", "").replace("]]>", "");
+  var item_title = item.querySelector("title").textContent;
+
+  var excerpt_element = item.querySelector("description");
+  var excerpt = excerpt_element ? excerpt_element.innerHTML : '';
+  excerpt = excerpt.replace("<![CDATA[", "").replace("]]>", "");
+
+  var description = '';
+
+  var download_newsletter_title = item.getElementsByTagNameNS("*", "download_newsletter_title")[0];
+  download_newsletter_title = download_newsletter_title ? download_newsletter_title.textContent : '';
+  download_newsletter_title = download_newsletter_title.replace("<![CDATA[", "").replace("]]>", "");
+
+  var download_newsletter_intro = item.getElementsByTagNameNS("*", "download_newsletter_intro")[0];
+  download_newsletter_intro = download_newsletter_intro ? download_newsletter_intro.textContent : '';
+  download_newsletter_intro = download_newsletter_intro.replace("<![CDATA[", "").replace("]]>", "");
+
+  var download_newsletter_utm = item.getElementsByTagNameNS("*", "download_newsletter_utm")[0];
+  download_newsletter_utm = download_newsletter_utm ? download_newsletter_utm.textContent : '';
+  download_newsletter_utm = download_newsletter_utm.replace("<![CDATA[", "").replace("]]>", "");
+
+  // Show special newsleter title if this is specified in the backend
+  if (download_newsletter_title && download_newsletter_title.length > 1) {
+    item_title = download_newsletter_title;
+  }
+
+  // Show special newsleter intro if this is specified in the backend
+  if (download_newsletter_intro && download_newsletter_intro.length > 1) {
+    description = download_newsletter_intro;
+  } else {
+    description = excerpt;
+  }
+
+  // Show special newsleter utm if this is specified in the backend
+  if (download_newsletter_utm && download_newsletter_utm.length > 1) {
+    download_newsletter_utm = download_newsletter_utm;
+  } else {
+    download_newsletter_utm = 'kennisbank';
+  }
 
     // Clip description to a maximum of 100 characters
     if (description.length > 80) {
       description = description.substring(0, 80) + '... <span style="font-size: 14px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" >Lees meer</span> ▸';
     }
   
-  var item_title = item.querySelector("title").innerHTML;
-
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${download_newsletter_utm}&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   if(dagWeek != 'dagelijks') {
-    var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${download_newsletter_utm}&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   }
+  
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
 
@@ -2302,21 +2365,56 @@ function functiondownloadHeadlineItems(item, index) {
   var pubdate = item.querySelector("pubDate").innerHTML;
   var pubdateArray = pubdate.split("+");
 
-  var description = item.querySelector("description").innerHTML;
-  description = description.replace("<![CDATA[", "").replace("]]>", "");
+
+  var item_title = item.querySelector("title").textContent;
+
+  var excerpt_element = item.querySelector("description");
+  var excerpt = excerpt_element ? excerpt_element.innerHTML : '';
+  excerpt = excerpt.replace("<![CDATA[", "").replace("]]>", "");
+
+  var description = '';
+
+  var download_newsletter_title = item.getElementsByTagNameNS("*", "download_newsletter_title")[0];
+  download_newsletter_title = download_newsletter_title ? download_newsletter_title.textContent : '';
+  download_newsletter_title = download_newsletter_title.replace("<![CDATA[", "").replace("]]>", "");
+
+  var download_newsletter_intro = item.getElementsByTagNameNS("*", "download_newsletter_intro")[0];
+  download_newsletter_intro = download_newsletter_intro ? download_newsletter_intro.textContent : '';
+  download_newsletter_intro = download_newsletter_intro.replace("<![CDATA[", "").replace("]]>", "");
+
+  var download_newsletter_utm = item.getElementsByTagNameNS("*", "download_newsletter_utm")[0];
+  download_newsletter_utm = download_newsletter_utm ? download_newsletter_utm.textContent : '';
+  download_newsletter_utm = download_newsletter_utm.replace("<![CDATA[", "").replace("]]>", "");
+
+  // Show special newsleter title if this is specified in the backend
+  if (download_newsletter_title && download_newsletter_title.length > 1) {
+    item_title = download_newsletter_title;
+  }
+
+  // Show special newsleter intro if this is specified in the backend
+  if (download_newsletter_intro && download_newsletter_intro.length > 1) {
+    description = download_newsletter_intro;
+  } else {
+    description = excerpt;
+  }
+
+  // Show special newsleter utm if this is specified in the backend
+  if (download_newsletter_utm && download_newsletter_utm.length > 1) {
+    download_newsletter_utm = download_newsletter_utm;
+  } else {
+    download_newsletter_utm = 'kennisbank';
+  }
 
     // Clip description to a maximum of 100 characters
     if (description.length > 80) {
       description = description.substring(0, 80) + '... <span style="font-size: 14px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" >Lees meer</span> ▸';
-    }
-  
-  var item_title = item.querySelector("title").innerHTML;
+    }  
 
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${download_newsletter_utm}&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   if(dagWeek != 'dagelijks') {
-    var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${download_newsletter_utm}&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   }
-
+  
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
 
   /* add category */

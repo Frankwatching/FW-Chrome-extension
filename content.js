@@ -764,8 +764,7 @@ loadNews();
 function artikelenGrootItems(item, index) {
 
   var postid = item.querySelector("postid").innerHTML;
-  var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7cartikel%7c`;
-
+  
   var item_img_groot = item.querySelector("*|afbeelding").innerHTML;
   item_img_groot = item_img_groot.replace("<![CDATA[", "").replace("]]>", "");
 
@@ -773,12 +772,17 @@ function artikelenGrootItems(item, index) {
   var poststatus = item.querySelector("poststatus").innerHTML;
   var popularityscore = item.querySelector("popularityscore").innerHTML;
 
+  var option ='artikel';
   /* add category */
   var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
   var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
   var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
   var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
   var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
+  item_categorie += '<span class="extraOptions"><select id="selectOptionArtikelGroot'+postid+'"><option value="">maak een keuze</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option></select></span>';
+
+  var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}s%7c`;
+
 
   var item_categories = item.querySelector("categoriesName").innerHTML;
   var item_categories_array = removeDuplicates(item_categories.split("|"));
@@ -796,31 +800,47 @@ function artikelenGrootItems(item, index) {
   div.id = 'grootArtikel'+postid;
   div.draggable = 'true';
 
+
+    // Retrieve the existing select element
+    var selectElement = document.getElementById('selectOptionArtikelGroot' + postid);
+
+    // Add event listener to update the option variable
+    selectElement.addEventListener('change', function () {
+      option = this.value; // Update the option variable with the selected value
+      // Update item_link with the new option
+      item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}%7c`;
+      // Update the href attribute of the anchor tags with the new item_link
+      document.getElementById('imgGrootArtikel' + postid + 'Link').href = item_link;
+      document.getElementById('grootTitleLink' + postid).href = item_link;
+      document.getElementById('grootArtikelDescription' + postid).href = item_link;
+      document.getElementById('GrootArtikelCTA' + postid).href = item_link;
+    });
+
   div.innerHTML = `
   <table id="artikelGroot${postid}T" style=" display: block;">
  <tbody id="artikelGroot${postid}Tb">
   <tr id="artikelGroot${postid}TrB">
    <td id="artikelGroot${postid}TdB">
-      <a style="padding: 0px;" id="ct11_1" href="${item_link}">
+      <a style="padding: 0px;" id="imgGrootArtikel${postid}Link" href="${item_link}">
         <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
       </a>
     </td>
   </tr>
   <tr id="artikelGroot${postid}TrA">
    <td id="artikelGroot${postid}TdA">
-    <a class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+    <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
       ${item.querySelector("title").innerHTML}
     </a>
    </td>
   </tr>
   <tr id="artikelGroot${postid}TrC">
    <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-      <a class="grootArtikelDescription" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;" id="ct11_2" href="${item_link}">
+      <a id="grootArtikelDescription${postid}" class="grootArtikelDescription" href="${item_link}" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;">
         <span style="font-size: 16px; color: #333333;font-weight: 400;">
           ${item.querySelector("description").innerHTML}
         </span>
       </a>
-      <a class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;"  href="${item_link}"> Lees meer ▸</a>
+      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" href="${item_link}"> Lees meer ▸</a>
     </td>
   </tr>
  </tbody>
@@ -840,8 +860,6 @@ function artikelenKleinItems(item, index) {
 
   var postid = item.querySelector("postid").innerHTML;
 
-  var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7cartikel%7c`;
-
   var item_img_groot = item.querySelector("*|afbeelding").innerHTML;
   item_img_groot = item_img_groot.replace("<![CDATA[", "").replace("]]>", "");
 
@@ -852,12 +870,16 @@ function artikelenKleinItems(item, index) {
   var poststatus = item.querySelector("poststatus").innerHTML;
   var popularityscore = item.querySelector("popularityscore").innerHTML;
 
+
+   var option ='artikel';
    /* add category */
    var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
    var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
    var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
    var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
    var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
+   item_categorie += '<span class="extraOptions"><select id="selectOptionArtikelKlein'+postid+'"><option value="">maak een keuze</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option></select></span>';
+
 
    var item_categories = item.querySelector("categoriesName").innerHTML;
    var item_categories_array = removeDuplicates(item_categories.split("|"));
@@ -875,7 +897,24 @@ function artikelenKleinItems(item, index) {
    div.id = 'kleinArtikel'+postid;
    div.draggable = 'true';
 
-   
+
+   var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}%7c`;
+
+    // Retrieve the existing select element
+    var selectElement = document.getElementById('selectOptionArtikelKlein' + postid);
+
+    // Add event listener to update the option variable
+    selectElement.addEventListener('change', function () {
+    option = this.value; // Update the option variable with the selected value
+    // Update item_link with the new option
+    item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}%7c`;
+    // Update the href attribute of the anchor tags with the new item_link
+    document.getElementById('imgKleinArtikel' + postid + 'Link').href = item_link;
+    document.getElementById('imgKlein' + postid + 'Link').href = item_link;
+    document.getElementById('kleinTitleLink' + postid).href = item_link;
+    document.getElementById('DescriptionKleinArtikel' + postid).href = item_link;
+    document.getElementById('KleinArtikelCTA' + postid).href = item_link;
+  });
 
   div.innerHTML =  `
   <table class="table1a">
@@ -923,8 +962,6 @@ function artikelHeadlineItems(item, index) {
 
   var postid = item.querySelector("postid").innerHTML;
 
-  var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%headline%7c`;
-
   var item_img_groot = item.querySelector("*|afbeelding").innerHTML;
   item_img_groot = item_img_groot.replace("<![CDATA[", "").replace("]]>", "");
 
@@ -935,12 +972,14 @@ function artikelHeadlineItems(item, index) {
   var poststatus = item.querySelector("poststatus").innerHTML;
   var popularityscore = item.querySelector("popularityscore").innerHTML;
 
+  var option ='headline';
    /* add category */
    var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
    var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
    var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
    var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
    var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
+  item_categorie += '<span class="extraOptions"><select id="selectOptionHeadline'+postid+'"><option value="">maak een keuze</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option></select></span>'; 
 
    var item_categories = item.querySelector("categoriesName").innerHTML;
    var item_categories_array = removeDuplicates(item_categories.split("|"));
@@ -957,7 +996,20 @@ function artikelHeadlineItems(item, index) {
    div.className = 'headline';
    div.id = 'headline'+postid;
    div.draggable = 'true';
+   
+   var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7c${option}%7c`;
 
+  // Retrieve the existing select element
+  var selectElement = document.getElementById('selectOptionHeadline' + postid);
+
+  // Add event listener to update the option variable
+  selectElement.addEventListener('change', function () {
+    option = this.value; // Update the option variable with the selected value
+    // Update item_link with the new option
+    item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}%7c`;
+    // Update the href attribute of the anchor tags with the new item_link
+    document.getElementById('headlineItem' + postid + 'a').href = item_link;
+  });
    
 
   div.innerHTML =  `

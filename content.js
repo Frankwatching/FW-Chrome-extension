@@ -95,7 +95,7 @@ function handleButtonClick(container, buttonImg, overlay) {
 jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature';
 jobrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/vacature'; 
 
-agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/';
+agendarss = 'https://www.frankwatching.com/feed/academy/upcoming?timestamp=' + Date.now();
 agendarestapi = 'https://www.frankwatching.com/wp-json/wp/v2/product'; 
 
 marketingrss = 'https://cms.frankwatching.com/feed?post_type=promotion&timestamp=' + Date.now();
@@ -314,6 +314,21 @@ function agendaItems(item, index) {
   var dateMonth = json["postmeta:dateMonth"];
   var dateDay = json["postmeta:dateDay"];
 
+
+  var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
+  var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
+
+  // haal campagnenaam op
+  if (newsLetterUTMCampaignName !== undefined && newsLetterUTMCampaignName !== '') {
+    utmcampaign = newsLetterUTMCampaignName;
+  } else if (campaign !== '') {
+    utmcampaign = campaign;
+  } else if (utmcampaign !== '') {
+    utmcampaign = utmcampaign;
+  } else {  
+    utmcampaign = 'academy';
+  }
+
   var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
 
   //var pubdate = item.querySelector("pubdate").innerHTML;
@@ -410,27 +425,38 @@ function productItemKlein(item, index) {
   var postid = json["productid"];
   var item_title = json["title"];
   var item_description = json["description"];
+
+  var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
+  var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
+
+  // haal campagnenaam op
+  if (newsLetterUTMCampaignName !== undefined && newsLetterUTMCampaignName !== '') {
+    utmcampaign = newsLetterUTMCampaignName;
+  } else if (campaign !== '') {
+    utmcampaign = campaign;
+  } else if (utmcampaign !== '') {
+    utmcampaign = utmcampaign;
+  } else {  
+    utmcampaign = 'academy';
+  }
+
+  // haal nieuwsbrief intro
+  if (newsletterIntroTekst !== undefined && newsletterIntroTekst !== '') {
+    item_description = newsletterIntroTekst;
+  } else {
+    item_description = item_description;
+  }
+  
   var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
 
   var item_img_klein = json["image_small"];
   var item_img_groot = json["image_large"];
 
-  //var pubdate = item.querySelector("pubdate").innerHTML;
-  //var poststatus = item.querySelector("poststatus").innerHTML;
-  //var popularityscore = item.querySelector("popularityscore").innerHTML;
-
   /* add category */
   var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
-  //var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
   var item_categorie = item_categorie + '<span class="postPubDate">'+dateDay+'-'+dateMonth+'</span>';
   var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
-  //var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
 
-  //var item_categories = item.querySelector("categoriesName").innerHTML;
-  // var item_categories_array = removeDuplicates(item_categories.split("|"));
-  // item_categories_array.forEach(function(element) {
-  //   item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+element+'">' + element + '</span>';
-  // });
 
   const divCat = document.createElement('div');
   divCat.className = 'categoryClass';
@@ -496,15 +522,38 @@ function productItemGroot(item, index) {
   var durration = json["postmeta:durration"];
   var dateMonth = json["postmeta:dateMonth"];
   var dateDay = json["postmeta:dateDay"];
-
-  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
   var item_title = json["title"];
   var item_description = json["description"];
-  var item_img_groot = json["image_large"];
+  
+  var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
+  var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
 
+  // haal campagnenaam op
+  if (newsLetterUTMCampaignName !== undefined && newsLetterUTMCampaignName !== '') {
+    utmcampaign = newsLetterUTMCampaignName;
+  } else if (campaign !== '') {
+    utmcampaign = campaign;
+  } else if (utmcampaign !== '') {
+    utmcampaign = utmcampaign;
+  } else {  
+    utmcampaign = 'academy';
+  }
+
+
+  // haal nieuwsbrief intro
+  if (newsletterIntroTekst !== undefined && newsletterIntroTekst !== '') {
+    item_description = newsletterIntroTekst;
+  } else {
+    item_description = item_description;
+  }
+
+
+  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
+  var item_img_groot = json["image_large"];
   //var pubdate = item.querySelector("pubdate").innerHTML;
   //var poststatus = item.querySelector("poststatus").innerHTML;
   //var popularityscore = item.querySelector("popularityscore").innerHTML;
+
 
   /* add category */
   var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
@@ -582,11 +631,33 @@ function productItemHeadline(item, index) {
   var durration = json["postmeta:durration"];
   var dateMonth = json["postmeta:dateMonth"];
   var dateDay = json["postmeta:dateDay"];
-
-  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
   var item_title = json["title"];
   var item_description = json["description"];
   var item_img_groot = json["image_large"];
+  
+  var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
+  var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
+
+  // haal campagnenaam op
+  if (newsLetterUTMCampaignName != '') {
+    utmcampaign = newsLetterUTMCampaignName;
+  } else if (utmcampaign != '') {
+    utmcampaign = utmcampaign;
+  } else if (campaign != '') {
+    utmcampaign = campaign;
+  } else {  
+    utmcampaign = 'academy';
+  }
+
+  // haal nieuwsbrief intro
+  if (newsletterIntroTekst != '') {
+    item_description = newsletterIntroTekst;
+  } else {
+    item_description = item_description;
+  }
+
+
+  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
 
   //var pubdate = item.querySelector("pubdate").innerHTML;
   //var poststatus = item.querySelector("poststatus").innerHTML;

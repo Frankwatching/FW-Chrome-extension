@@ -35,7 +35,7 @@ window.onload = function () {
     sendDate = document.getElementById("sendDateSelector").value;
 
     function check() {
-        blogAlert = inputTemplate.checked ? "al" : "blog";
+        blogAlert = inputTemplate.checked ? "al" : "nb";
         document.getElementById('blogAlertText').innerHTML = blogAlert;
         dagWeek = input.checked ? "wekelijks" : "dagelijks";
         document.getElementById('dagWeekText').innerHTML = dagWeek;
@@ -95,7 +95,7 @@ function handleButtonClick(container, buttonImg, overlay) {
 jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature';
 jobrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/vacature'; 
 
-agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/';
+agendarss = 'https://www.frankwatching.com/feed/academy/upcoming?timestamp=' + Date.now();
 agendarestapi = 'https://www.frankwatching.com/wp-json/wp/v2/product'; 
 
 marketingrss = 'https://cms.frankwatching.com/feed?post_type=promotion&timestamp=' + Date.now();
@@ -153,7 +153,7 @@ var futureHeadlineText = 'Voorbeeld';
 var futureHeadlineLink = 'https://voorbeeld.frankwatching.com/?';
 let headerline1 = document.getElementById('headline1');
 headerline1.textContent = futureHeadlineText;
-headerline1.setAttribute("href", futureHeadlineLink + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+headerline1.setAttribute("href", futureHeadlineLink + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
 
 "use strict";
 fetch("https://www.frankwatching.com/feed-nieuwsbrief-v2/?poststatus=future-publish")
@@ -196,7 +196,7 @@ function headlineFutureItems(item, index) {
       var futureHeadlineLink = jsonlink;
       let headerline1 = document.getElementById('headline1');
       headerline1.textContent = futureHeadlineText;
-      headerline1.setAttribute("href", futureHeadlineLink + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+      headerline1.setAttribute("href", futureHeadlineLink + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
     }
   }
 }
@@ -221,28 +221,28 @@ fetch("https://www.frankwatching.com/feed-nieuwsbrief-v2/")
 
     // let headerline1 = document.getElementById('headline1');
     // headerline1.textContent = futureHeadlineText;
-    // headerline1.setAttribute("href", futureHeadlineLink + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+    // headerline1.setAttribute("href", futureHeadlineLink + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
     let headerline1 = document.getElementById('headline1');
     headerline1.textContent = allTitles[1].firstChild.nodeValue;
-    headerline1.setAttribute("href", allLinks[1].textContent + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+    headerline1.setAttribute("href", allLinks[1].textContent + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
     let headerline2 = document.getElementById('headline2');
     headerline2.textContent = 'Voorbeeld';
-    headerline2.setAttribute("href", 'https://voorbeeld.frankwatching.com/?' + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+    headerline2.setAttribute("href", 'https://voorbeeld.frankwatching.com/?' + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
     let headerline3 = document.getElementById('headline3');
     headerline3.textContent = allTitles[2].firstChild.nodeValue;
-    headerline3.setAttribute("href", allLinks[2].textContent + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+    headerline3.setAttribute("href", allLinks[2].textContent + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
     let headerline4 = document.getElementById('headline4');
     headerline4.textContent = allTitles[3].firstChild.nodeValue;
-    headerline4.setAttribute("href", allLinks[3].textContent + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+    headerline4.setAttribute("href", allLinks[3].textContent + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
     let headerline5 = document.getElementById('headline5');
     headerline5.textContent = 'Voorbeeld';
-    headerline5.setAttribute("href", 'https://voorbeeld.frankwatching.com/?' + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+    headerline5.setAttribute("href", 'https://voorbeeld.frankwatching.com/?' + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
     let headerline6 = document.getElementById('headline6');
     headerline6.textContent = allTitles[4].firstChild.nodeValue;
-    headerline6.setAttribute("href", allLinks[4].textContent + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7cheadline%7c`);//campagne);
+    headerline6.setAttribute("href", allLinks[4].textContent + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7cheadline%7c`);//campagne);
     let headerline7 = document.getElementById('headline7');
     headerline7.textContent = allTitles[5].firstChild.nodeValue;
-    headerline7.setAttribute("href", allLinks[5].textContent + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+    headerline7.setAttribute("href", allLinks[5].textContent + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
 
 });
 
@@ -314,7 +314,22 @@ function agendaItems(item, index) {
   var dateMonth = json["postmeta:dateMonth"];
   var dateDay = json["postmeta:dateDay"];
 
-  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
+
+  var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
+  var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
+
+  // haal campagnenaam op
+  if (newsLetterUTMCampaignName !== undefined && newsLetterUTMCampaignName !== '') {
+    utmcampaign = newsLetterUTMCampaignName;
+  } else if (campaign !== '') {
+    utmcampaign = campaign;
+  } else if (utmcampaign !== '') {
+    utmcampaign = utmcampaign;
+  } else {  
+    utmcampaign = 'academy';
+  }
+
+  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
 
   //var pubdate = item.querySelector("pubdate").innerHTML;
   //var poststatus = item.querySelector("poststatus").innerHTML;
@@ -410,27 +425,38 @@ function productItemKlein(item, index) {
   var postid = json["productid"];
   var item_title = json["title"];
   var item_description = json["description"];
-  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
+
+  var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
+  var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
+
+  // haal campagnenaam op
+  if (newsLetterUTMCampaignName !== undefined && newsLetterUTMCampaignName !== '') {
+    utmcampaign = newsLetterUTMCampaignName;
+  } else if (campaign !== '') {
+    utmcampaign = campaign;
+  } else if (utmcampaign !== '') {
+    utmcampaign = utmcampaign;
+  } else {  
+    utmcampaign = 'academy';
+  }
+
+  // haal nieuwsbrief intro
+  if (newsletterIntroTekst !== undefined && newsletterIntroTekst !== '') {
+    item_description = newsletterIntroTekst;
+  } else {
+    item_description = item_description;
+  }
+  
+  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
 
   var item_img_klein = json["image_small"];
   var item_img_groot = json["image_large"];
 
-  //var pubdate = item.querySelector("pubdate").innerHTML;
-  //var poststatus = item.querySelector("poststatus").innerHTML;
-  //var popularityscore = item.querySelector("popularityscore").innerHTML;
-
   /* add category */
   var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
-  //var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
   var item_categorie = item_categorie + '<span class="postPubDate">'+dateDay+'-'+dateMonth+'</span>';
   var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
-  //var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
 
-  //var item_categories = item.querySelector("categoriesName").innerHTML;
-  // var item_categories_array = removeDuplicates(item_categories.split("|"));
-  // item_categories_array.forEach(function(element) {
-  //   item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+element+'">' + element + '</span>';
-  // });
 
   const divCat = document.createElement('div');
   divCat.className = 'categoryClass';
@@ -496,15 +522,38 @@ function productItemGroot(item, index) {
   var durration = json["postmeta:durration"];
   var dateMonth = json["postmeta:dateMonth"];
   var dateDay = json["postmeta:dateDay"];
-
-  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
   var item_title = json["title"];
   var item_description = json["description"];
-  var item_img_groot = json["image_large"];
+  
+  var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
+  var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
 
+  // haal campagnenaam op
+  if (newsLetterUTMCampaignName !== undefined && newsLetterUTMCampaignName !== '') {
+    utmcampaign = newsLetterUTMCampaignName;
+  } else if (campaign !== '') {
+    utmcampaign = campaign;
+  } else if (utmcampaign !== '') {
+    utmcampaign = utmcampaign;
+  } else {  
+    utmcampaign = 'academy';
+  }
+
+
+  // haal nieuwsbrief intro
+  if (newsletterIntroTekst !== undefined && newsletterIntroTekst !== '') {
+    item_description = newsletterIntroTekst;
+  } else {
+    item_description = item_description;
+  }
+
+
+  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
+  var item_img_groot = json["image_large"];
   //var pubdate = item.querySelector("pubdate").innerHTML;
   //var poststatus = item.querySelector("poststatus").innerHTML;
   //var popularityscore = item.querySelector("popularityscore").innerHTML;
+
 
   /* add category */
   var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
@@ -582,11 +631,33 @@ function productItemHeadline(item, index) {
   var durration = json["postmeta:durration"];
   var dateMonth = json["postmeta:dateMonth"];
   var dateDay = json["postmeta:dateDay"];
-
-  var item_link = link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
   var item_title = json["title"];
   var item_description = json["description"];
   var item_img_groot = json["image_large"];
+  
+  var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
+  var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
+
+  // haal campagnenaam op
+  if (newsLetterUTMCampaignName != '') {
+    utmcampaign = newsLetterUTMCampaignName;
+  } else if (utmcampaign != '') {
+    utmcampaign = utmcampaign;
+  } else if (campaign != '') {
+    utmcampaign = campaign;
+  } else {  
+    utmcampaign = 'academy';
+  }
+
+  // haal nieuwsbrief intro
+  if (newsletterIntroTekst != '') {
+    item_description = newsletterIntroTekst;
+  } else {
+    item_description = item_description;
+  }
+
+
+  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
 
   //var pubdate = item.querySelector("pubdate").innerHTML;
   //var poststatus = item.querySelector("poststatus").innerHTML;
@@ -693,8 +764,7 @@ loadNews();
 function artikelenGrootItems(item, index) {
 
   var postid = item.querySelector("postid").innerHTML;
-  var item_link = item.querySelector("link").innerHTML + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7cartikel%7c`;
-
+  
   var item_img_groot = item.querySelector("*|afbeelding").innerHTML;
   item_img_groot = item_img_groot.replace("<![CDATA[", "").replace("]]>", "");
 
@@ -702,12 +772,18 @@ function artikelenGrootItems(item, index) {
   var poststatus = item.querySelector("poststatus").innerHTML;
   var popularityscore = item.querySelector("popularityscore").innerHTML;
 
+  var option ='artikel';
   /* add category */
   var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
   var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
   var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
   var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
   var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
+  item_categorie += '<span class="extraOptions"><select id="selectOptionArtikelGroot'+postid+'"><option value="">kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option></select></span>';
+  item_categorie += '<span class="extraOptions"><select id="selectOptionWeergaveArtikel'+postid+'"><option value="">kies weergave</option><option value="klein">klein</option><option value="groot">groot</option></select></span>';
+
+  var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}s%7c`;
+
 
   var item_categories = item.querySelector("categoriesName").innerHTML;
   var item_categories_array = removeDuplicates(item_categories.split("|"));
@@ -725,31 +801,47 @@ function artikelenGrootItems(item, index) {
   div.id = 'grootArtikel'+postid;
   div.draggable = 'true';
 
+
+    // Retrieve the existing select element
+    var selectElement = document.getElementById('selectOptionArtikelGroot' + postid);
+
+    // Add event listener to update the option variable
+    selectElement.addEventListener('change', function () {
+      option = this.value; // Update the option variable with the selected value
+      // Update item_link with the new option
+      item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}%7c`;
+      // Update the href attribute of the anchor tags with the new item_link
+      document.getElementById('imgGrootArtikel' + postid + 'Link').href = item_link;
+      document.getElementById('grootTitleLink' + postid).href = item_link;
+      document.getElementById('grootArtikelDescription' + postid).href = item_link;
+      document.getElementById('GrootArtikelCTA' + postid).href = item_link;
+    });
+
   div.innerHTML = `
   <table id="artikelGroot${postid}T" style=" display: block;">
  <tbody id="artikelGroot${postid}Tb">
   <tr id="artikelGroot${postid}TrB">
    <td id="artikelGroot${postid}TdB">
-      <a style="padding: 0px;" id="ct11_1" href="${item_link}">
+      <a style="padding: 0px;" id="imgGrootArtikel${postid}Link" href="${item_link}">
         <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
       </a>
     </td>
   </tr>
   <tr id="artikelGroot${postid}TrA">
    <td id="artikelGroot${postid}TdA">
-    <a class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+    <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
       ${item.querySelector("title").innerHTML}
     </a>
    </td>
   </tr>
   <tr id="artikelGroot${postid}TrC">
    <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-      <a class="grootArtikelDescription" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;" id="ct11_2" href="${item_link}">
+      <a id="grootArtikelDescription${postid}" class="grootArtikelDescription" href="${item_link}" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;">
         <span style="font-size: 16px; color: #333333;font-weight: 400;">
           ${item.querySelector("description").innerHTML}
         </span>
       </a>
-      <a class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;"  href="${item_link}"> Lees meer ▸</a>
+      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" href="${item_link}"> Lees meer ▸</a>
     </td>
   </tr>
  </tbody>
@@ -769,8 +861,6 @@ function artikelenKleinItems(item, index) {
 
   var postid = item.querySelector("postid").innerHTML;
 
-  var item_link = item.querySelector("link").innerHTML + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7cartikel%7c`;
-
   var item_img_groot = item.querySelector("*|afbeelding").innerHTML;
   item_img_groot = item_img_groot.replace("<![CDATA[", "").replace("]]>", "");
 
@@ -781,12 +871,16 @@ function artikelenKleinItems(item, index) {
   var poststatus = item.querySelector("poststatus").innerHTML;
   var popularityscore = item.querySelector("popularityscore").innerHTML;
 
+
+   var option ='artikel';
    /* add category */
    var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
    var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
    var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
    var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
    var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
+   item_categorie += '<span class="extraOptions"><select id="selectOptionArtikelKlein'+postid+'"><option value="">kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option></select></span>';
+
 
    var item_categories = item.querySelector("categoriesName").innerHTML;
    var item_categories_array = removeDuplicates(item_categories.split("|"));
@@ -804,7 +898,24 @@ function artikelenKleinItems(item, index) {
    div.id = 'kleinArtikel'+postid;
    div.draggable = 'true';
 
-   
+
+   var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}%7c`;
+
+    // Retrieve the existing select element
+    var selectElement = document.getElementById('selectOptionArtikelKlein' + postid);
+
+    // Add event listener to update the option variable
+    selectElement.addEventListener('change', function () {
+    option = this.value; // Update the option variable with the selected value
+    // Update item_link with the new option
+    item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}%7c`;
+    // Update the href attribute of the anchor tags with the new item_link
+    document.getElementById('imgKleinArtikel' + postid + 'Link').href = item_link;
+    document.getElementById('imgKlein' + postid + 'Link').href = item_link;
+    document.getElementById('kleinTitleLink' + postid).href = item_link;
+    document.getElementById('DescriptionKleinArtikel' + postid).href = item_link;
+    document.getElementById('KleinArtikelCTA' + postid).href = item_link;
+  });
 
   div.innerHTML =  `
   <table class="table1a">
@@ -852,8 +963,6 @@ function artikelHeadlineItems(item, index) {
 
   var postid = item.querySelector("postid").innerHTML;
 
-  var item_link = item.querySelector("link").innerHTML + `&utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%headline%7c`;
-
   var item_img_groot = item.querySelector("*|afbeelding").innerHTML;
   item_img_groot = item_img_groot.replace("<![CDATA[", "").replace("]]>", "");
 
@@ -864,12 +973,14 @@ function artikelHeadlineItems(item, index) {
   var poststatus = item.querySelector("poststatus").innerHTML;
   var popularityscore = item.querySelector("popularityscore").innerHTML;
 
+  var option ='headline';
    /* add category */
    var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
    var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
    var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
    var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
    var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
+  item_categorie += '<span class="extraOptions"><select id="selectOptionHeadline'+postid+'"><option value="">kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option></select></span>'; 
 
    var item_categories = item.querySelector("categoriesName").innerHTML;
    var item_categories_array = removeDuplicates(item_categories.split("|"));
@@ -886,7 +997,20 @@ function artikelHeadlineItems(item, index) {
    div.className = 'headline';
    div.id = 'headline'+postid;
    div.draggable = 'true';
+   
+   var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7c${option}%7c`;
 
+  // Retrieve the existing select element
+  var selectElement = document.getElementById('selectOptionHeadline' + postid);
+
+  // Add event listener to update the option variable
+  selectElement.addEventListener('change', function () {
+    option = this.value; // Update the option variable with the selected value
+    // Update item_link with the new option
+    item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}%7c`;
+    // Update the href attribute of the anchor tags with the new item_link
+    document.getElementById('headlineItem' + postid + 'a').href = item_link;
+  });
    
 
   div.innerHTML =  `
@@ -944,7 +1068,7 @@ async function loadVacatures() {
     items.forEach(functionVacatureGrootItems);
     items.forEach(functionVacatureHeadlineItems);
   } catch (error) {
-    console.error("Error loading vacancies:", error);
+    console.error("Error loading jobs:", error);
   }
 }
 
@@ -976,11 +1100,11 @@ function functionVacatureKleinItems(item, index) {
   vac_standplaats = vac_standplaats.replace("<![CDATA[", "").replace("]]>", "");
 
   //dagelijks
-  var vac_link = item.querySelector("link").innerHTML + `?utm_source=-${blogAlert}-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+  var vac_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
 
   //wekelijks
   if(dagWeek != 'dagelijks') {
-    var vac_link = item.querySelector("link").innerHTML + `?utm_source=-${blogAlert}-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+    var vac_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -1234,9 +1358,9 @@ function functionVacatureHeadlineItems(item, index) {
   var vac_standplaats = item.querySelector("*|vac_standplaats").innerHTML;
   vac_standplaats = vac_standplaats.replace("<![CDATA[", "").replace("]]>", "");
 
-  var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+  var vac_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
   if(dagWeek != 'dagelijks') {
-    var vac_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+    var vac_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -1462,7 +1586,7 @@ const promotion_koppeling_post = promotion_koppeling_postElement ? promotion_kop
   }
 
   
-  const utm_parameters = `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7c${cams_type}%7c`;
+  const utm_parameters = `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7c${cams_type}%7c`;
 
   const marketing_link = promotion_url+utm_parameters;
 
@@ -1960,7 +2084,7 @@ async function functionChannelItems(item) {
    const postid = item.id;
    const article_title = item.title.rendered;
    const excerpt = item.excerpt.rendered;
-   const article_link = item.link + `?utm_source=nb-blog-${dagWeek}&utm_medium=email&utm_campaign=BusinessChannel&utm_content=%7c${sendDate}%7cartikel%7c`;
+   const article_link = item.link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=BusinessChannel&utm_content=%7c${sendDate}%7cartikel%7c`;
 
    const maxCharacters = 80; // Define the maximum number of characters
    const description = item.excerpt.rendered ? item.excerpt.rendered.substring(0, maxCharacters)+'...' : ''; 
@@ -2075,7 +2199,7 @@ async function loadKennisbank() {
     items.forEach(functiondownloadGrootItems);
     items.forEach(functiondownloadHeadlineItems);
   } catch (error) {
-    console.error("Error loading vacancies:", error);
+    console.error("Error loading kennisbank:", error);
   }
 }
 
@@ -2091,17 +2215,54 @@ function functiondownloadKleinItems(item, index) {
   var pubdate = item.querySelector("pubDate").innerHTML;
   var pubdateArray = pubdate.split("+");
 
-  var description = item.querySelector("description").innerHTML;
-  description = description.replace("<![CDATA[", "").replace("]]>", "");
+  var item_title = item.querySelector("title").textContent;
+
+  var excerpt_element = item.querySelector("description");
+  var excerpt = excerpt_element ? excerpt_element.innerHTML : '';
+  excerpt = excerpt.replace("<![CDATA[", "").replace("]]>", "");
+
+  var description = '';
+
+  var download_newsletter_title = item.getElementsByTagNameNS("*", "download_newsletter_title")[0];
+  download_newsletter_title = download_newsletter_title ? download_newsletter_title.textContent : '';
+  download_newsletter_title = download_newsletter_title.replace("<![CDATA[", "").replace("]]>", "");
+
+  var download_newsletter_intro = item.getElementsByTagNameNS("*", "download_newsletter_intro")[0];
+  download_newsletter_intro = download_newsletter_intro ? download_newsletter_intro.textContent : '';
+  download_newsletter_intro = download_newsletter_intro.replace("<![CDATA[", "").replace("]]>", "");
+
+  var download_newsletter_utm = item.getElementsByTagNameNS("*", "download_newsletter_utm")[0];
+  download_newsletter_utm = download_newsletter_utm ? download_newsletter_utm.textContent : '';
+  download_newsletter_utm = download_newsletter_utm.replace("<![CDATA[", "").replace("]]>", "");
+
+  // Show special newsleter title if this is specified in the backend
+  if (download_newsletter_title && download_newsletter_title.length > 1) {
+    item_title = download_newsletter_title;
+  }
+
+  // Show special newsleter intro if this is specified in the backend
+  if (download_newsletter_intro && download_newsletter_intro.length > 1) {
+    description = download_newsletter_intro;
+  } else {
+    description = excerpt;
+  }
+
+  // Show special newsleter utm if this is specified in the backend
+  if (download_newsletter_utm && download_newsletter_utm.length > 1) {
+    download_newsletter_utm = download_newsletter_utm;
+  } else {
+    download_newsletter_utm = 'kennisbank';
+  }
+
 
     // Clip description to a maximum of 100 characters
     if (description.length > 80) {
       description = description.substring(0, 80) + '... <span style="font-size: 14px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" >Lees meer</span> ▸';
     }
 
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${download_newsletter_utm}&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   if(dagWeek != 'dagelijks') {
-    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${download_newsletter_utm}&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   }
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
@@ -2163,7 +2324,7 @@ function functiondownloadKleinItems(item, index) {
                     <table>
                         <tbody>
                             <tr>
-                                <td id="channelTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="channelLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${item_link}">${item.querySelector("title").innerHTML}</a></td>
+                                <td id="channelTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;"><a id="channelLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${item_link}">${item_title}</a></td>
                             </tr>
                             <tr>
                                 <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="channelTDbC"><a id="channelLink${postid}description" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${item_link}">${description}</a></td>
@@ -2200,20 +2361,55 @@ function functiondownloadGrootItems(item, index) {
   var pubdate = item.querySelector("pubDate").innerHTML;
   var pubdateArray = pubdate.split("+");
 
-  var description = item.querySelector("description").innerHTML;
-  description = description.replace("<![CDATA[", "").replace("]]>", "");
+  var item_title = item.querySelector("title").textContent;
+
+  var excerpt_element = item.querySelector("description");
+  var excerpt = excerpt_element ? excerpt_element.innerHTML : '';
+  excerpt = excerpt.replace("<![CDATA[", "").replace("]]>", "");
+
+  var description = '';
+
+  var download_newsletter_title = item.getElementsByTagNameNS("*", "download_newsletter_title")[0];
+  download_newsletter_title = download_newsletter_title ? download_newsletter_title.textContent : '';
+  download_newsletter_title = download_newsletter_title.replace("<![CDATA[", "").replace("]]>", "");
+
+  var download_newsletter_intro = item.getElementsByTagNameNS("*", "download_newsletter_intro")[0];
+  download_newsletter_intro = download_newsletter_intro ? download_newsletter_intro.textContent : '';
+  download_newsletter_intro = download_newsletter_intro.replace("<![CDATA[", "").replace("]]>", "");
+
+  var download_newsletter_utm = item.getElementsByTagNameNS("*", "download_newsletter_utm")[0];
+  download_newsletter_utm = download_newsletter_utm ? download_newsletter_utm.textContent : '';
+  download_newsletter_utm = download_newsletter_utm.replace("<![CDATA[", "").replace("]]>", "");
+
+  // Show special newsleter title if this is specified in the backend
+  if (download_newsletter_title && download_newsletter_title.length > 1) {
+    item_title = download_newsletter_title;
+  }
+
+  // Show special newsleter intro if this is specified in the backend
+  if (download_newsletter_intro && download_newsletter_intro.length > 1) {
+    description = download_newsletter_intro;
+  } else {
+    description = excerpt;
+  }
+
+  // Show special newsleter utm if this is specified in the backend
+  if (download_newsletter_utm && download_newsletter_utm.length > 1) {
+    download_newsletter_utm = download_newsletter_utm;
+  } else {
+    download_newsletter_utm = 'kennisbank';
+  }
 
     // Clip description to a maximum of 100 characters
     if (description.length > 80) {
       description = description.substring(0, 80) + '... <span style="font-size: 14px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" >Lees meer</span> ▸';
     }
   
-  var item_title = item.querySelector("title").innerHTML;
-
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${download_newsletter_utm}&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   if(dagWeek != 'dagelijks') {
-    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${download_newsletter_utm}&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   }
+  
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
 
@@ -2293,21 +2489,56 @@ function functiondownloadHeadlineItems(item, index) {
   var pubdate = item.querySelector("pubDate").innerHTML;
   var pubdateArray = pubdate.split("+");
 
-  var description = item.querySelector("description").innerHTML;
-  description = description.replace("<![CDATA[", "").replace("]]>", "");
+
+  var item_title = item.querySelector("title").textContent;
+
+  var excerpt_element = item.querySelector("description");
+  var excerpt = excerpt_element ? excerpt_element.innerHTML : '';
+  excerpt = excerpt.replace("<![CDATA[", "").replace("]]>", "");
+
+  var description = '';
+
+  var download_newsletter_title = item.getElementsByTagNameNS("*", "download_newsletter_title")[0];
+  download_newsletter_title = download_newsletter_title ? download_newsletter_title.textContent : '';
+  download_newsletter_title = download_newsletter_title.replace("<![CDATA[", "").replace("]]>", "");
+
+  var download_newsletter_intro = item.getElementsByTagNameNS("*", "download_newsletter_intro")[0];
+  download_newsletter_intro = download_newsletter_intro ? download_newsletter_intro.textContent : '';
+  download_newsletter_intro = download_newsletter_intro.replace("<![CDATA[", "").replace("]]>", "");
+
+  var download_newsletter_utm = item.getElementsByTagNameNS("*", "download_newsletter_utm")[0];
+  download_newsletter_utm = download_newsletter_utm ? download_newsletter_utm.textContent : '';
+  download_newsletter_utm = download_newsletter_utm.replace("<![CDATA[", "").replace("]]>", "");
+
+  // Show special newsleter title if this is specified in the backend
+  if (download_newsletter_title && download_newsletter_title.length > 1) {
+    item_title = download_newsletter_title;
+  }
+
+  // Show special newsleter intro if this is specified in the backend
+  if (download_newsletter_intro && download_newsletter_intro.length > 1) {
+    description = download_newsletter_intro;
+  } else {
+    description = excerpt;
+  }
+
+  // Show special newsleter utm if this is specified in the backend
+  if (download_newsletter_utm && download_newsletter_utm.length > 1) {
+    download_newsletter_utm = download_newsletter_utm;
+  } else {
+    download_newsletter_utm = 'kennisbank';
+  }
 
     // Clip description to a maximum of 100 characters
     if (description.length > 80) {
       description = description.substring(0, 80) + '... <span style="font-size: 14px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" >Lees meer</span> ▸';
-    }
-  
-  var item_title = item.querySelector("title").innerHTML;
+    }  
 
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${download_newsletter_utm}&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   if(dagWeek != 'dagelijks') {
-    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=kennisbank&amp;utm_content=%7c${sendDate}%7cadv%7c`;
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${download_newsletter_utm}&amp;utm_content=%7c${sendDate}%7cadv%7c`;
   }
-
+  
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
 
   /* add category */

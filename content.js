@@ -1052,6 +1052,8 @@ function artikelHeadlineItems(item, index) {
    var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
    var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
   item_categorie += '<span class="extraOptions"><select id="selectOptionHeadline'+postid+'"><option value="">kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option><option value="headlineonder">headlineonder</option></select></span>'; 
+  item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabelArtikelHeadline'+postid+'"><option value="">Kies label</option><option value="themavdweek">Thema van de week</option><option value="adv">Adv</option></select></span>';
+
 
    var item_categories = item.querySelector("categoriesName").innerHTML;
    var item_categories_array = removeDuplicates(item_categories.split("|"));
@@ -1082,6 +1084,39 @@ function artikelHeadlineItems(item, index) {
     // Update the href attribute of the anchor tags with the new item_link
     document.getElementById('headlineItem' + postid + 'a').href = item_link;
   });
+
+
+   // Reset label variables
+   label_adv = '';
+   label_themavdweek = '';
+ 
+   // Retrieve the existing select element
+   var selectElementLabel = document.getElementById('selectOptionLabelArtikelHeadline' + postid);
+ 
+   // Add event listener to update the option variable
+   selectElementLabel.addEventListener('change', function () {
+     var optionlabel = this.value; // Update the option variable with the selected value
+     
+     if (optionlabel === 'adv') {
+ 
+       label_themavdweek = '';
+       label_adv = '<span style="padding: 2px 5px; background: #ffffff; color: #018000; font-size: 9px; line-height: 1.3; font-weight: normal; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; vertical-align: top;">ADV</span>'; 
+     } else if (optionlabel === 'themavdweek') {
+ 
+       label_themavdweek = '<span style="padding: 2px 5px; background: #ffffff; color: #018000; font-size: 9px; line-height: 1.3; font-weight: normal; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; vertical-align: middle;">Thema van de week</span>'; 
+       label_adv = '';
+
+     } else {
+ 
+       label_adv = '';
+       label_themavdweek = ''; 
+ 
+     }
+ 
+     // Update label elements
+     document.getElementById('artikelHeadline_label_adv' + postid).innerHTML = label_adv;
+     document.getElementById('artikelHeadline_label_themavdweek' + postid).innerHTML = label_themavdweek;
+   });
    
 
   div.innerHTML =  `
@@ -1090,9 +1125,9 @@ function artikelHeadlineItems(item, index) {
   <tr>
   <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
   <td>
-    <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title}</a>
+    <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="artikelHeadline_label_themavdweek${postid}">${label_themavdweek}</span></a>
   </td>
-  <td style="width: 30px;">&nbsp;</td>
+  <td style="width: 30px;"><span id="artikelHeadline_label_adv${postid}">${label_adv}</span></td>
   </tr>
   </tbody>
   </table>

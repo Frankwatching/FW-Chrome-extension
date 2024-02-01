@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.1.2";
+let versionid = "3.1.3";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -764,6 +764,8 @@ loadNews();
 function artikelenGrootItems(item, index) {
 
   var postid = item.querySelector("postid").innerHTML;
+  var item_title = item.querySelector("title").innerHTML;
+  var item_description = item.querySelector("description").innerHTML;
   
   var item_img_groot = item.querySelector("*|afbeelding").innerHTML;
   item_img_groot = item_img_groot.replace("<![CDATA[", "").replace("]]>", "");
@@ -779,8 +781,8 @@ function artikelenGrootItems(item, index) {
   var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
   var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
   var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
-  item_categorie += '<span class="extraOptions"><select id="selectOptionArtikelGroot'+postid+'"><option value="">kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option></select></span>';
-  item_categorie += '<span class="extraOptions"><select id="selectOptionWeergaveArtikel'+postid+'"><option value="">kies weergave</option><option value="klein">klein</option><option value="groot">groot</option></select></span>';
+  item_categorie += '<span class="extraOptions"><select id="selectOptionArtikelGroot'+postid+'"><option value="">kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option><option value="headlineonder">headlineonder</option></select></span>';
+  item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabelArtikelGroot'+postid+'"><option value="">Kies label</option><option value="themavdweek">Thema van de week</option><option value="adv">Adv</option></select></span>';
 
   var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}s%7c`;
 
@@ -817,6 +819,38 @@ function artikelenGrootItems(item, index) {
       document.getElementById('GrootArtikelCTA' + postid).href = item_link;
     });
 
+    // Reset label variables
+    label_adv = '';
+    label_themavdweek = '';
+
+    // Retrieve the existing select element
+    var selectElementLabel = document.getElementById('selectOptionLabelArtikelGroot' + postid);
+
+    // Add event listener to update the option variable
+    selectElementLabel.addEventListener('change', function () {
+      var optionlabel = this.value; // Update the option variable with the selected value
+      
+      if (optionlabel === 'adv') {
+
+        label_themavdweek = '';
+        label_adv = '<span style="padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;">ADV</span>'; 
+      } else if (optionlabel === 'themavdweek') {
+
+        label_adv = '';
+
+        label_themavdweek = '<div style="display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;">THEMA VAN DE WEEK</div>'; 
+      } else {
+
+        label_adv = '';
+        label_themavdweek = ''; 
+
+      }
+
+      // Update label elements
+      document.getElementById('artikelGroot_label_adv' + postid).innerHTML = label_adv;
+      document.getElementById('artikelGroot_label_themavdweek' + postid).innerHTML = label_themavdweek;
+    });
+
   div.innerHTML = `
   <table id="artikelGroot${postid}T" style=" display: block;">
  <tbody id="artikelGroot${postid}Tb">
@@ -829,8 +863,9 @@ function artikelenGrootItems(item, index) {
   </tr>
   <tr id="artikelGroot${postid}TrA">
    <td id="artikelGroot${postid}TdA">
+   <span id="artikelGroot_label_themavdweek${postid}">${label_themavdweek}</span>
     <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
-      ${item.querySelector("title").innerHTML}
+      ${item_title} <span id="artikelGroot_label_adv${postid}">${label_adv}</span>
     </a>
    </td>
   </tr>
@@ -838,7 +873,7 @@ function artikelenGrootItems(item, index) {
    <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
       <a id="grootArtikelDescription${postid}" class="grootArtikelDescription" href="${item_link}" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;">
         <span style="font-size: 16px; color: #333333;font-weight: 400;">
-          ${item.querySelector("description").innerHTML}
+          ${item_description}
         </span>
       </a>
       <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" href="${item_link}"> Lees meer ▸</a>
@@ -860,6 +895,8 @@ function artikelenGrootItems(item, index) {
 function artikelenKleinItems(item, index) {
 
   var postid = item.querySelector("postid").innerHTML;
+  var item_title = item.querySelector("title").innerHTML;
+  var item_description = item.querySelector("description").innerHTML;
 
   var item_img_groot = item.querySelector("*|afbeelding").innerHTML;
   item_img_groot = item_img_groot.replace("<![CDATA[", "").replace("]]>", "");
@@ -879,7 +916,8 @@ function artikelenKleinItems(item, index) {
    var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
    var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
    var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
-   item_categorie += '<span class="extraOptions"><select id="selectOptionArtikelKlein'+postid+'"><option value="">kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option></select></span>';
+   item_categorie += '<span class="extraOptions"><select id="selectOptionArtikelKlein'+postid+'"><option value="">kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option><option value="headlineonder">headlineonder</option></select></span>';
+   item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabelArtikelKlein'+postid+'"><option value="">Kies label</option><option value="themavdweek">Thema van de week</option><option value="adv">Adv</option></select></span>';
 
 
    var item_categories = item.querySelector("categoriesName").innerHTML;
@@ -917,6 +955,37 @@ function artikelenKleinItems(item, index) {
     document.getElementById('KleinArtikelCTA' + postid).href = item_link;
   });
 
+  // Reset label variables
+  label_adv = '';
+  label_themavdweek = '';
+
+  // Retrieve the existing select element
+  var selectElementLabel = document.getElementById('selectOptionLabelArtikelKlein' + postid);
+
+  // Add event listener to update the option variable
+  selectElementLabel.addEventListener('change', function () {
+    var optionlabel = this.value; // Update the option variable with the selected value
+    
+    if (optionlabel === 'adv') {
+
+      label_themavdweek = '';
+      label_adv = '<div style="padding: 2px 10px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.1; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle; margin-bottom: 10px">ADV</div>'; 
+    } else if (optionlabel === 'themavdweek') {
+
+      label_themavdweek = '';
+      label_adv = '<div style="padding: 2px 10px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.1; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle; margin-bottom: 10px">THEMA VAN DE WEEK</div>'; 
+    } else {
+
+      label_adv = '';
+      label_themavdweek = ''; 
+
+    }
+
+    // Update label elements
+    document.getElementById('artikelKlein_label' + postid).innerHTML = label_adv;
+    //document.getElementById('label_themavdweek' + postid).innerHTML = label_themavdweek;
+  });
+
   div.innerHTML =  `
   <table class="table1a">
   <tbody>
@@ -935,10 +1004,12 @@ function artikelenKleinItems(item, index) {
         <table class="tableC">
           <tbody>
             <tr>
-              <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item.querySelector("title").innerHTML}</a></td>
+              <td class="artikelKleinTDcA">
+              <span id="artikelKlein_label${postid}">${label_adv}</span>
+              <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
             </tr>
             <tr>
-              <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item.querySelector("description").innerHTML}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
+              <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
             </tr>
           </tbody>
         </table>
@@ -980,7 +1051,9 @@ function artikelHeadlineItems(item, index) {
    var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
    var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
    var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
-  item_categorie += '<span class="extraOptions"><select id="selectOptionHeadline'+postid+'"><option value="">kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option></select></span>'; 
+  item_categorie += '<span class="extraOptions"><select id="selectOptionHeadline'+postid+'"><option value="">kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option><option value="headlineonder">headlineonder</option></select></span>'; 
+  item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabelArtikelHeadline'+postid+'"><option value="">Kies label</option><option value="themavdweek">Thema van de week</option><option value="adv">Adv</option></select></span>';
+
 
    var item_categories = item.querySelector("categoriesName").innerHTML;
    var item_categories_array = removeDuplicates(item_categories.split("|"));
@@ -1011,6 +1084,39 @@ function artikelHeadlineItems(item, index) {
     // Update the href attribute of the anchor tags with the new item_link
     document.getElementById('headlineItem' + postid + 'a').href = item_link;
   });
+
+
+   // Reset label variables
+   label_adv = '';
+   label_themavdweek = '';
+ 
+   // Retrieve the existing select element
+   var selectElementLabel = document.getElementById('selectOptionLabelArtikelHeadline' + postid);
+ 
+   // Add event listener to update the option variable
+   selectElementLabel.addEventListener('change', function () {
+     var optionlabel = this.value; // Update the option variable with the selected value
+     
+     if (optionlabel === 'adv') {
+ 
+       label_themavdweek = '';
+       label_adv = '<span style="padding: 2px 5px; background: #ffffff; color: #018000; font-size: 9px; line-height: 1.3; font-weight: normal; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; vertical-align: top;">ADV</span>'; 
+     } else if (optionlabel === 'themavdweek') {
+ 
+       label_themavdweek = '<span style="padding: 2px 5px; background: #ffffff; color: #018000; font-size: 9px; line-height: 1.3; font-weight: normal; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; vertical-align: middle;">Thema van de week</span>'; 
+       label_adv = '';
+
+     } else {
+ 
+       label_adv = '';
+       label_themavdweek = ''; 
+ 
+     }
+ 
+     // Update label elements
+     document.getElementById('artikelHeadline_label_adv' + postid).innerHTML = label_adv;
+     document.getElementById('artikelHeadline_label_themavdweek' + postid).innerHTML = label_themavdweek;
+   });
    
 
   div.innerHTML =  `
@@ -1019,9 +1125,9 @@ function artikelHeadlineItems(item, index) {
   <tr>
   <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
   <td>
-    <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title}</a>
+    <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="artikelHeadline_label_themavdweek${postid}">${label_themavdweek}</span></a>
   </td>
-  <td style="width: 30px;">&nbsp;</td>
+  <td style="width: 30px;"><span id="artikelHeadline_label_adv${postid}">${label_adv}</span></td>
   </tr>
   </tbody>
   </table>
@@ -1539,6 +1645,13 @@ const promotion_koppeling_post = promotion_koppeling_postElement ? promotion_kop
 
   const promotion_typeElement = item.querySelector("promotion_type");
   const promotion_type = promotion_typeElement ? promotion_typeElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
+
+  const promotion_utmcampaignElement = item.querySelector("promotion_utmcampaignname");
+  const promotion_utmcampaign = promotion_utmcampaignElement ? promotion_utmcampaignElement.innerHTML.replace("<![CDATA[", "").replace("]]>", "") : '';
+
+
+  const utmcampaign = promotion_utmcampaign;
+
   
 
   // UTM Type versus promotie type Cams 2.0
@@ -1586,7 +1699,7 @@ const promotion_koppeling_post = promotion_koppeling_postElement ? promotion_kop
   }
 
   
-  const utm_parameters = `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=marketing&amp;utm_content=%7c${sendDate}%7c${cams_type}%7c`;
+  const utm_parameters = `?utm_source=${blogAlert}-blog-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${utmcampaign}&amp;utm_content=%7c${sendDate}%7c${cams_type}%7c`;
 
   const marketing_link = promotion_url+utm_parameters;
 
@@ -2452,7 +2565,7 @@ function functiondownloadGrootItems(item, index) {
      <tr id="artikelGroot${postid}TrA">
       <td id="artikelGroot${postid}TdA">
        <a class="grootArtikelTitle" style="font-family: 'Roboto', Arial; color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
-         ${item_title}
+         ${item_title} 
        </a>
       </td>
      </tr>
@@ -2573,7 +2686,7 @@ function functiondownloadHeadlineItems(item, index) {
         <tr>
           <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
           <td>
-            <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title}</a>
+            <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span style="padding: 2px 5px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.3; font-weight: normal; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; vertical-align: middle;">ADV</span></a>
           </td>
           <td style="width: 30px;">&nbsp;</td>
         </tr>

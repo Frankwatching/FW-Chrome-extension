@@ -127,9 +127,9 @@ selectMenu.id = 'selectMenu';
 const options = [
   { value: 'hideall', text: 'Selecteer content voor nieuwsbrief' },
   { value: 'headlinesContainer', text: 'Blog Headlines' },
-  { value: 'artikelHeadlineContainer', text: 'Blog Headline' },
-  { value: 'artikelenKleinContainer', text: 'Blog Klein' },
-  { value: 'artikelenGrootContainer', text: 'Blog Groot' },
+  //{ value: 'artikelHeadlineContainer', text: 'Blog Headline' },
+  //{ value: 'artikelenKleinContainer', text: 'Blog Klein' },
+  { value: 'artikelenGrootContainer', text: 'Blog' },
   { value: 'productItemKleinContainer', text: 'Academy Klein' },
   { value: 'productItemGrootContainer', text: 'Academy Groot' },  
   { value: 'agendaAcademyContainer', text: 'Academy Agenda' },

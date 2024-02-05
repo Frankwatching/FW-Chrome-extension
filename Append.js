@@ -189,7 +189,17 @@ function handleSelectChange(containerId) {
       "artikelHeadlineContainer", 
       "productItemKleinContainer", 
       "productItemGrootContainer", 
+      "productItemHeadlineContainer", 
+      "downloadItemKleinContainer", 
+      "downloadItemGrootContainer", 
+      "downloadItemHeadlineContainer", 
+      "vacatureContainer", 
+      "vacatureGrootContainer",
+      "vacatureHeadlineContainer",
+      "marketingContainer", 
       "productItemHeadlineContainer"
+
+
     ];
 
     // Show the selected container

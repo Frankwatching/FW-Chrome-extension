@@ -95,7 +95,7 @@ function handleButtonClick(container, buttonImg, overlay) {
 jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature';
 jobrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/vacature'; 
 
-agendarss = 'https://www.frankwatching.com/feed/academy/upcoming?timestamp=' + Date.now();
+agendarss = 'https://www.frankwatching.com/feed/academy/upcoming';
 agendarestapi = 'https://www.frankwatching.com/wp-json/wp/v2/product'; 
 
 marketingrss = 'https://cms.frankwatching.com/feed?post_type=promotion&timestamp=' + Date.now();
@@ -271,32 +271,85 @@ document.getElementById('headlinesContainer').ondragstart = function (event) {
 
 
 // ## LOAD AGENDA
+// "use strict";
+// fetch(agendarss)
+// .then(response => response.text())
+// .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+// .then(data => {
+
+//   const items = data.querySelectorAll("item");
+
+//   var existAAC = document.getElementById("agendaAcademyContainer");
+//   if(existAAC){
+//     // console.log('List agenda items empty');
+//     existAAC.innerHTML = ``;
+
+//   }
+
+//   setTimeout(function() {
+//     for (var i = 0, len = 1; i < len; i++) {
+//       agendaItems(items[i]);
+//       productItemKlein(items[i]);
+//       productItemGroot(items[i]);
+//       productItemHeadline(items[i]);
+//     }
+
+//  }, 100);
+
+// });
+
 "use strict";
-fetch(agendarss)
-.then(response => response.text())
-.then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-.then(data => {
+"use strict";
 
-  const items = data.querySelectorAll("item");
+async function loadAgenda() {
+  try {
+    const response = await fetch(agendarss); // Fetch the agenda RSS feed
+    if (!response.ok) {
+      throw new Error(`Failed to fetch the agenda RSS feed. Status: ${response.status}`);
+    }
 
-  var existAAC = document.getElementById("agendaAcademyContainer");
-  if(existAAC){
-    // console.log('List agenda items empty');
-    existAAC.innerHTML = ``;
+    const xmlText = await response.text();
+    const parser = new DOMParser();
+    const data = parser.parseFromString(xmlText, "text/xml");
 
-  }
+    const items = data.querySelectorAll("item");
 
-  setTimeout(function() {
-    for (var i = 0, len = 10; i < len; i++) {
+    const agendaAcademyContainer = document.getElementById("agendaAcademyContainer");
+    if (agendaAcademyContainer) {
+      agendaAcademyContainer.innerHTML = "";
+    }
+
+    const productItemKleinContainerContent = document.getElementById("productItemKleinContainerContent");
+    if (productItemKleinContainerContent) {
+      productItemKleinContainerContent.innerHTML = "";
+    }
+
+    const productItemGrootContainerContent = document.getElementById("productItemGrootContainerContent");
+    if (productItemGrootContainerContent) {
+      productItemGrootContainerContent.innerHTML = "";
+    }
+
+    const productItemHeadlineContainerContent = document.getElementById("productItemHeadlineContainerContent");
+    if (productItemHeadlineContainerContent) {
+      productItemHeadlineContainerContent.innerHTML = "";
+    }
+
+    await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
+
+    // Process the first 4 items
+    const itemsToProcess = Math.min(items.length, 1);
+    for (let i = 0; i < itemsToProcess; i++) {
       agendaItems(items[i]);
       productItemKlein(items[i]);
       productItemGroot(items[i]);
       productItemHeadline(items[i]);
     }
+  } catch (error) {
+    console.error("Error loading agenda items:", error);
+  }
+}
 
- }, 100);
-
-});
+loadAgenda();
 
 
 
@@ -498,8 +551,8 @@ function productItemKlein(item, index) {
   </table>
   `;
 
-  productItemKleinContainer.appendChild(divCat);
-  productItemKleinContainer.appendChild(div);
+  productItemKleinContainerContent.appendChild(divCat);
+  productItemKleinContainerContent.appendChild(div);
 
    document.getElementById('productItemKlein' + postid).ondragstart = function (event) {
        event
@@ -608,8 +661,8 @@ function productItemGroot(item, index) {
  </table>
   `;
 
-  productItemGrootContainer.appendChild(divCat);
-  productItemGrootContainer.appendChild(div);
+  productItemGrootContainerContent.appendChild(divCat);
+  productItemGrootContainerContent.appendChild(div);
 
    document.getElementById('productItemGroot' + postid).ondragstart = function (event) {
        event
@@ -699,8 +752,8 @@ function productItemHeadline(item, index) {
   </table>
   `;
 
-  productItemHeadlineContainer.appendChild(divCat);
-  productItemHeadlineContainer.appendChild(div);
+  productItemHeadlineContainerContent.appendChild(divCat);
+  productItemHeadlineContainerContent.appendChild(div);
 
    document.getElementById('productItemHeadline' + postid).ondragstart = function (event) {
        event

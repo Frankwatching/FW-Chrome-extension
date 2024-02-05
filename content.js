@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.1.3";
+let versionid = "3.1.4";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -1171,7 +1171,7 @@ async function loadVacatures() {
     await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
 
     items.forEach(functionVacatureKleinItems);
-    items.forEach(functionVacatureGrootItems);
+    //items.forEach(functionVacatureGrootItems);
     items.forEach(functionVacatureHeadlineItems);
   } catch (error) {
     console.error("Error loading jobs:", error);

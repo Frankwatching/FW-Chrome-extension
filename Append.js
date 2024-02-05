@@ -138,10 +138,10 @@ const options = [
   { value: 'downloadItemGrootContainer', text: 'Kennisbank Groot' },   
   { value: 'downloadItemHeadlineContainer', text: 'Kennisbank Headline' },
   { value: 'vacatureContainer', text: 'Jobs Klein' },
-  { value: 'vacatureGrootContainer', text: 'Jobs Groot' },   
+ // { value: 'vacatureGrootContainer', text: 'Jobs Groot' },   
   { value: 'vacatureHeadlineContainer', text: 'Jobs Headline' },
   { value: 'marketingContainer', text: 'Cams 2.0' },
-  { value: 'channelContainer', text: 'BusinessChannel Klein' },  
+//  { value: 'channelContainer', text: 'BusinessChannel Klein' },  
     // Add other options as needed
 ];
 

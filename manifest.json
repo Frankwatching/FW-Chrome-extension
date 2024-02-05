@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Frankwatching Chrome extension for Act-On",
+  "name": "Frankwatching Chrome extension for Act-On v3.1.4",
   "version": "3.1.4",
   "content_scripts": [
     {

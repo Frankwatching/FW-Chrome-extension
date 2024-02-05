@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "FWAct-On external content v3.1.3",
-  "version": "3.1.3",
+  "name": "Frankwatching Chrome extension for Act-On",
+  "version": "3.1.4",
   "content_scripts": [
     {
       "matches": [

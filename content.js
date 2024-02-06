@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.1.4";
+let versionid = "3.1.5";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -1242,6 +1242,7 @@ function functionVacatureKleinItems(item, index) {
   var pubdate = item.querySelector("pubDate").innerHTML;
   var pubdateArray = pubdate.split("+");
 
+  var vac_title = item.querySelector("title").innerHTML;
   var description = item.querySelector("description").innerHTML;
   description = description.replace("<![CDATA[", "").replace("]]>", "");
 
@@ -1336,7 +1337,7 @@ function functionVacatureKleinItems(item, index) {
                         <tr>
                             <td id="vacatureTD${postid}bB">
                               <a id="vacatureLink${postid}title" class="titleVacature" style="display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto',Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px;margin: 10px 0px 0px 0px" href="${vac_link}">
-                                ${item.querySelector("title").innerHTML}
+                                ${vac_title}
                               </a>
                             </td>
                         </tr>
@@ -1376,6 +1377,7 @@ function functionVacatureGrootItems(item, index) {
 
   var postid = item.querySelector("guid").innerHTML;
   postid = postid.substring(postid.indexOf("p=") + 2);
+  var vac_title = item.querySelector("title").innerHTML;
 
   var pubdate = item.querySelector("pubDate").innerHTML;
   var pubdateArray = pubdate.split("+");
@@ -1456,7 +1458,7 @@ function functionVacatureGrootItems(item, index) {
                   <tr>
                       <td id="vacatureTD${postid}bB">
                         <a id="vacatureLink${postid}title" class="titleVacature" style="display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto',Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px;margin: 10px 0px 0px 0px" href="${vac_link}">
-                          ${item.querySelector("title").innerHTML}
+                          ${vac_title}
                         </a>
                       </td>
                   </tr>

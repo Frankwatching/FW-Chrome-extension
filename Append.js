@@ -127,9 +127,9 @@ selectMenu.id = 'selectMenu';
 const options = [
   { value: 'hideall', text: 'Selecteer content voor nieuwsbrief' },
   { value: 'headlinesContainer', text: 'Blog Headlines' },
-  { value: 'artikelHeadlineContainer', text: 'Blog Headline' },
-  { value: 'artikelenKleinContainer', text: 'Blog Klein' },
-  { value: 'artikelenGrootContainer', text: 'Blog Groot' },
+  //{ value: 'artikelHeadlineContainer', text: 'Blog Headline' },
+  //{ value: 'artikelenKleinContainer', text: 'Blog Klein' },
+  { value: 'artikelenGrootContainer', text: 'Blog' },
   { value: 'productItemKleinContainer', text: 'Academy Klein' },
   { value: 'productItemGrootContainer', text: 'Academy Groot' },  
   { value: 'agendaAcademyContainer', text: 'Academy Agenda' },
@@ -138,10 +138,10 @@ const options = [
   { value: 'downloadItemGrootContainer', text: 'Kennisbank Groot' },   
   { value: 'downloadItemHeadlineContainer', text: 'Kennisbank Headline' },
   { value: 'vacatureContainer', text: 'Jobs Klein' },
-  { value: 'vacatureGrootContainer', text: 'Jobs Groot' },   
+  //{ value: 'vacatureGrootContainer', text: 'Jobs Groot' },   
   { value: 'vacatureHeadlineContainer', text: 'Jobs Headline' },
   { value: 'marketingContainer', text: 'Cams 2.0' },
-  { value: 'channelContainer', text: 'BusinessChannel Klein' },  
+  //{ value: 'channelContainer', text: 'BusinessChannel Klein' },  
     // Add other options as needed
 ];
 

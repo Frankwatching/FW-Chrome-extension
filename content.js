@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.1.5";
+let versionid = "3.1.6";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -336,8 +336,8 @@ async function loadAgenda() {
 
     await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
 
-    // Process the first 4 items
-    const itemsToProcess = Math.min(items.length, 1);
+    // Process the first 10 items
+    const itemsToProcess = Math.min(items.length, 10);
     for (let i = 0; i < itemsToProcess; i++) {
       agendaItems(items[i]);
       productItemKlein(items[i]);

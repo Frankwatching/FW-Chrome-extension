@@ -56,13 +56,13 @@ phl7.appendChild( hl7 );
 contentIndex.appendChild( artikelenGrootContainer );
 artikelenGrootContainer.appendChild(artikelenGrootContainerContent);
 
-//artikelKlein
-contentIndex.appendChild( artikelenKleinContainer );
-artikelenKleinContainer.appendChild( artikelenKleinContainerContent );
+// //artikelKlein
+// contentIndex.appendChild( artikelenKleinContainer );
+// artikelenKleinContainer.appendChild( artikelenKleinContainerContent );
 
 //artikelHeadline
-contentIndex.appendChild( artikelHeadlineContainer );
-artikelHeadlineContainer.appendChild( artikelHeadlineContainerContent );
+// contentIndex.appendChild( artikelHeadlineContainer );
+// artikelHeadlineContainer.appendChild( artikelHeadlineContainerContent );
 
 //productItemKlein
 contentIndex.appendChild( productItemKleinContainer );
@@ -162,9 +162,9 @@ function handleSelectChange(containerId) {
     headlinesContainer.style.display = "none";
     headlinesOverlay.style.display = "none";
     agendaAcademyContainer.style.display = "none";
-    artikelenKleinContainer.style.display = "none";
+  //  artikelenKleinContainer.style.display = "none";
     artikelenGrootContainer.style.display = "none";
-    artikelHeadlineContainer.style.display = "none";
+//    artikelHeadlineContainer.style.display = "none";
     productItemKleinContainer.style.display = "none";
     productItemGrootContainer.style.display = "none";
     productItemHeadlineContainer.style.display = "none";
@@ -186,7 +186,7 @@ function handleSelectChange(containerId) {
       "agendaAcademyContainer", 
       "artikelenKleinContainer", 
       "artikelenGrootContainer", 
-      "artikelHeadlineContainer", 
+//      "artikelHeadlineContainer", 
       "productItemKleinContainer", 
       "productItemGrootContainer", 
       "productItemHeadlineContainer", 

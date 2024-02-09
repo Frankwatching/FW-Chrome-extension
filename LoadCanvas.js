@@ -16,20 +16,20 @@ var inOutSelect =document.createElement( 'div' );
 
 var headlinesContainer = document.createElement( 'div' );
 
-var artikelenKleinContainer = document.createElement( 'div' );
-artikelenKleinContainer.id = 'artikelenKleinContainer';
-var artikelenKleinContainerContent = document.createElement( 'div' );
-artikelenKleinContainerContent.id = 'artikelenKleinContainerContent';
+// var artikelenKleinContainer = document.createElement( 'div' );
+// artikelenKleinContainer.id = 'artikelenKleinContainer';
+// var artikelenKleinContainerContent = document.createElement( 'div' );
+// artikelenKleinContainerContent.id = 'artikelenKleinContainerContent';
 
 var artikelenGrootContainer = document.createElement( 'div' );
 artikelenGrootContainer.id = 'artikelenGrootContainer';
 var artikelenGrootContainerContent = document.createElement( 'div' );
 artikelenGrootContainerContent.id = 'artikelenGrootContainerContent';
 
-var artikelHeadlineContainer = document.createElement( 'div' );
-artikelHeadlineContainer.id = 'artikelHeadlineContainer';
-var artikelHeadlineContainerContent = document.createElement( 'div' );
-artikelHeadlineContainerContent.id = 'artikelHeadlineContainerContent';
+// var artikelHeadlineContainer = document.createElement( 'div' );
+// artikelHeadlineContainer.id = 'artikelHeadlineContainer';
+// var artikelHeadlineContainerContent = document.createElement( 'div' );
+// artikelHeadlineContainerContent.id = 'artikelHeadlineContainerContent';
 
 var agendaAcademyContainer = document.createElement( 'div' );
 

@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.1.5";
+let versionid = "3.2";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -64,9 +64,9 @@ function handleButtonClick(container, buttonImg, overlay) {
   headlinesContainer.style.display = "none";
   headlinesOverlay.style.display = "none";
   agendaAcademyContainer.style.display = "none";
-  artikelenKleinContainer.style.display = "none";
+  ///artikelenKleinContainer.style.display = "none";
   artikelenGrootContainer.style.display = "none";
-  artikelHeadlineContainer.style.display = "none";
+  //artikelHeadlineContainer.style.display = "none";
   productItemKleinContainer.style.display = "none";
   productItemGrootContainer.style.display = "none";
   productItemHeadlineContainer.style.display = "none";
@@ -299,7 +299,6 @@ document.getElementById('headlinesContainer').ondragstart = function (event) {
 // });
 
 "use strict";
-"use strict";
 
 async function loadAgenda() {
   try {
@@ -336,8 +335,8 @@ async function loadAgenda() {
 
     await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
 
-    // Process the first 4 items
-    const itemsToProcess = Math.min(items.length, 1);
+    // Process the first 10 items
+    const itemsToProcess = Math.min(items.length, 10);
     for (let i = 0; i < itemsToProcess; i++) {
       agendaItems(items[i]);
       productItemKlein(items[i]);
@@ -785,16 +784,6 @@ async function loadNews() {
       artikelenGrootContainerContent.innerHTML = "";
     }
 
-    const artikelenKleinContainerContent = document.getElementById("artikelenKleinContainerContent");
-    if (artikelenKleinContainerContent) {
-      artikelenKleinContainerContent.innerHTML = "";
-    }
-
-    const artikelHeadlineContainerContent = document.getElementById("artikelHeadlineContainerContent");
-    if (artikelHeadlineContainerContent) {
-      artikelHeadlineContainerContent.innerHTML = "";
-    }
-
     if (listSort === 'popularity') {
       const div = document.createElement('div');
       div.id = 'headingArtikelGroot';
@@ -804,9 +793,7 @@ async function loadNews() {
 
     await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
 
-    items.forEach(artikelenGrootItems);
-    items.forEach(artikelenKleinItems);
-    items.forEach(artikelHeadlineItems);
+    items.forEach(blogItems);
   } catch (error) {
     console.error("Error loading news articles:", error);
   }
@@ -814,8 +801,8 @@ async function loadNews() {
 
 loadNews();
 
-function artikelenGrootItems(item, index) {
-
+function blogItems(item, index) {
+  var weergave = ''; // Declare weergave variable at the beginning
   var postid = item.querySelector("postid").innerHTML;
   var item_title = item.querySelector("title").innerHTML;
   var item_description = item.querySelector("description").innerHTML;
@@ -829,26 +816,32 @@ function artikelenGrootItems(item, index) {
 
   var option ='artikel';
   /* add category */
-  var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
+  var item_categorie = '<div style="background: white;border-top:2px solid green;"><span class="categoryClassDag">'+dagWeek[0]+'</span>';
   var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
   var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
   var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
   var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
-
-  //toon weergave pulldown
-  item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergaveArtikelGroot'+postid+'"><option value="">Kies weergave</option><option value="headline">Headline</option><option value="klein">Afb. links</option><option value="groot">Afb. boven</option></select></span>';
-
-  item_categorie += '<span class="extraOptions"><select id="selectOptionArtikelGroot'+postid+'"><option value="">kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option><option value="headlineonder">headlineonder</option></select></span>';
-  item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabelArtikelGroot'+postid+'"><option value="">Kies label</option><option value="themavdweek">Thema van de week</option><option value="adv">Adv</option></select></span>';
-
-  var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}s%7c`;
-
 
   var item_categories = item.querySelector("categoriesName").innerHTML;
   var item_categories_array = removeDuplicates(item_categories.split("|"));
   item_categories_array.forEach(function(element) {
     item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+element+'">' + element + '</span>';
   });
+
+  item_categorie += '</div>';
+  item_categorie += '<div style="background:white;">';
+  //toon weergave pulldown
+  item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergaveArtikelGroot'+postid+'"><option value="">Kies weergave</option><option value="headline">Headline</option><option value="klein">Afb. links</option><option value="groot">Afb. boven</option></select></span>';
+
+  item_categorie += '<span class="extraOptions"><select id="selectOptionArtikelGroot'+postid+'"><option value="">kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option><option value="headlineonder">headlineonder</option></select></span>';
+  item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabelArtikelGroot'+postid+'"><option value="">Kies label</option><option value="themavdweek">Thema van de week</option><option value="adv">Adv</option></select></span>';
+
+  item_categorie += '</div>';
+
+  item_categorie += '<div style="background: white;"><span class="postTitle">'+item_title+'</span><span class="w100"></span></div>';
+
+  var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}s%7c`;
+
 
   const divCat = document.createElement('div');
   divCat.className = 'categoryClass';
@@ -934,65 +927,23 @@ function artikelenGrootItems(item, index) {
       }
 
 
-    });
+    });      
 
-    // Reset label variables
-    label_adv = '';
-    label_themavdweek = '';
+  let defaultText = `<p>Kies weergave voor "${item_title}"</p>`;
 
-    // Retrieve the existing select element
-    var selectElementLabel = document.getElementById('selectOptionLabelArtikelGroot' + postid);
-
-    // Add event listener to update the option variable
-    selectElementLabel.addEventListener('change', function () {
-      var optionlabel = this.value; // Update the option variable with the selected value
-      
-      if (optionlabel === 'adv') {
-
-        label_themavdweek = '';
-        label_adv = '<span style="padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;">ADV</span>'; 
-      } else if (optionlabel === 'themavdweek') {
-
-        label_adv = '';
-
-        label_themavdweek = '<div style="display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;">THEMA VAN DE WEEK</div>'; 
-      } else {
-
-        label_adv = '';
-        label_themavdweek = ''; 
-
-      }
-
-      // Update label elements if available
-      let advLabelElement = document.getElementById('container_label_adv' + postid);
-      if (advLabelElement) {
-          advLabelElement.innerHTML = label_adv;
-      }
-
-      let themavdweekLabelElement = document.getElementById('container_label_themavdweek' + postid);
-      if (themavdweekLabelElement) {
-          themavdweekLabelElement.innerHTML = label_themavdweek;
-      }
-
-
-    });
-
-         
-
-
-
-  // Reset label variables  
-  var weergave = '';
-  
   // Retrieve the existing select WEERGAVE element
   var selectElementWeergave = document.getElementById('selectOptionWeergaveArtikelGroot' + postid);
 
   // Add event listener to update the option variable
   selectElementWeergave.addEventListener('change', function () {
-    var optionlabel = this.value; // Update the option variable with the selected value
-    
-    if (optionlabel === 'headline') {
+    optionlabel = this.value; // Update the option variable with the selected value
 
+    if (optionlabel === 'headline') {
+      selectElementLabel.selectedIndex = 0;
+      // Reset label_adv and label_themavdweek
+      label_adv = '';
+      label_themavdweek = '';
+      typeweergave = 'headline';
       weergave = `<table id="headlineItem${postid}" width="100%">
       <tbody>
       <tr>
@@ -1007,7 +958,11 @@ function artikelenGrootItems(item, index) {
 
 
     } else if (optionlabel === 'klein') {
-
+      selectElementLabel.selectedIndex = 0;
+      // Reset label_adv and label_themavdweek
+      label_adv = '';
+      label_themavdweek = '';
+      typeweergave = 'klein';
       weergave = `<table class="table1a">
       <tbody>
         <tr>
@@ -1042,7 +997,11 @@ function artikelenGrootItems(item, index) {
 
     
     } else if (optionlabel === 'groot') {
-
+      selectElementLabel.selectedIndex = 0;
+      // Reset label_adv and label_themavdweek
+      label_adv = '';
+      label_themavdweek = '';
+      typeweergave = 'groot';
       weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
         <tbody id="artikelGroot${postid}Tb">
           <tr id="artikelGroot${postid}TrB">
@@ -1075,27 +1034,75 @@ function artikelenGrootItems(item, index) {
     `;
     
     } else if (optionlabel === '' || optionlabel === null) {
+      
       weergave = `
-      <table id="artikelGroot${postid}T" style=" display: block;">
-        <tbody id="artikelGroot${postid}Tb">
-          <tr id="artikelGroot${postid}TrB">
-          <td id="artikelGroot${postid}TdB">
-          <p>Kies weergave voor "${item_title}"</p>
-          </td>
-          </tr>
-        </tbody>
-        </table>`;
+          ${defaultText}
+         `;
     }
-
+    
     // Update weergave elements
     document.getElementById('artikelGroot_weergave' + postid).innerHTML = weergave;
    
   });
-  
+
   div.innerHTML = `
   <div id="artikelGroot_weergave${postid}">${weergave}</div>
   `;
 
+     // Reset label variables
+     label_adv = '';
+     label_themavdweek = '';
+ 
+     // Retrieve the existing select element
+     var selectElementLabel = document.getElementById('selectOptionLabelArtikelGroot' + postid);
+
+
+     // Add event listener to update the option variable
+    selectElementLabel.addEventListener('change', function () {
+      optionlabel = this.value; // Update the option variable with the selected value
+
+      // Update styling based on weergave and optionlabel
+      if (typeweergave === 'klein' && optionlabel === 'adv') {
+        styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle';
+      } else if (typeweergave === 'klein' && optionlabel === 'themavdweek') {
+        styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+      } else if (typeweergave === 'groot' && optionlabel === 'adv') {
+        styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+      } else if (typeweergave === 'groot' && optionlabel === 'themavdweek') {
+        styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+      } else if (typeweergave === 'headline' && optionlabel === 'adv') {
+        styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+      } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
+        styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
+      } else {
+        styling = ''; // Reset styling if none of the conditions match
+      }
+ 
+    // Inside the if conditions
+    if (optionlabel === 'adv') {
+      label_themavdweek = '';
+      label_adv = `<span style="${styling};">ADV</span>`; 
+    } else if (optionlabel === 'themavdweek') {
+      label_adv = '';
+      label_themavdweek = `<div style="${styling};">THEMA VAN DE WEEK</div>`; 
+    } else {
+      label_adv = '';
+      label_themavdweek = ''; 
+    }
+ 
+
+      // Update label elements if available
+      let advLabelElement = document.getElementById('container_label_adv' + postid);
+      if (advLabelElement) {
+          advLabelElement.innerHTML = label_adv;
+      }
+
+      let themavdweekLabelElement = document.getElementById('container_label_themavdweek' + postid);
+      if (themavdweekLabelElement) {
+          themavdweekLabelElement.innerHTML = label_themavdweek;
+      }
+
+    });
 
    artikelenGrootContainerContent.appendChild(div);
 
@@ -1105,258 +1112,11 @@ function artikelenGrootItems(item, index) {
          .setData('text/html', event.target.innerHTML);
      }
 
-}
-
-function artikelenKleinItems(item, index) {
-
-  var postid = item.querySelector("postid").innerHTML;
-  var item_title = item.querySelector("title").innerHTML;
-  var item_description = item.querySelector("description").innerHTML;
-
-  var item_img_groot = item.querySelector("*|afbeelding").innerHTML;
-  item_img_groot = item_img_groot.replace("<![CDATA[", "").replace("]]>", "");
-
-  var item_img_klein = item.querySelector("*|foto").innerHTML;
-  item_img_klein = item_img_klein.replace("<![CDATA[", "").replace("]]>", "");
-
-  var pubdate = item.querySelector("pubdate").innerHTML;
-  var poststatus = item.querySelector("poststatus").innerHTML;
-  var popularityscore = item.querySelector("popularityscore").innerHTML;
 
 
-   var option ='artikel';
-   /* add category */
-   var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
-   var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
-   var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
-   var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
-   var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
-   item_categorie += '<span class="extraOptions"><select id="selectOptionArtikelKlein'+postid+'"><option value="">kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option><option value="headlineonder">headlineonder</option></select></span>';
-   item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabelArtikelKlein'+postid+'"><option value="">Kies label</option><option value="themavdweek">Thema van de week</option><option value="adv">Adv</option></select></span>';
-
-
-   var item_categories = item.querySelector("categoriesName").innerHTML;
-   var item_categories_array = removeDuplicates(item_categories.split("|"));
-   item_categories_array.forEach(function(element) {
-     item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+element+'">' + element + '</span>';
-   });
-
-   const divCat = document.createElement('div');
-   divCat.className = 'categoryClass';
-   divCat.innerHTML = item_categorie;
-   artikelenKleinContainerContent.appendChild(divCat);
-
-   const div = document.createElement('div');
-   div.className = 'kleinArtikel';
-   div.id = 'kleinArtikel'+postid;
-   div.draggable = 'true';
-
-
-   var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}%7c`;
-
-    // Retrieve the existing select element
-    var selectElement = document.getElementById('selectOptionArtikelKlein' + postid);
-
-    // Add event listener to update the option variable
-    selectElement.addEventListener('change', function () {
-    option = this.value; // Update the option variable with the selected value
-    // Update item_link with the new option
-    item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}%7c`;
-    // Update the href attribute of the anchor tags with the new item_link
-    document.getElementById('imgKleinArtikel' + postid + 'Link').href = item_link;
-    document.getElementById('imgKlein' + postid + 'Link').href = item_link;
-    document.getElementById('kleinTitleLink' + postid).href = item_link;
-    document.getElementById('DescriptionKleinArtikel' + postid).href = item_link;
-    document.getElementById('KleinArtikelCTA' + postid).href = item_link;
-  });
-
-  // Reset label variables
-  label_adv = '';
-  label_themavdweek = '';
-
-  // Retrieve the existing select element
-  var selectElementLabel = document.getElementById('selectOptionLabelArtikelKlein' + postid);
-
-  // Add event listener to update the option variable
-  selectElementLabel.addEventListener('change', function () {
-    var optionlabel = this.value; // Update the option variable with the selected value
-    
-    if (optionlabel === 'adv') {
-
-      label_themavdweek = '';
-      label_adv = '<div style="padding: 2px 10px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.1; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle; margin-bottom: 10px">ADV</div>'; 
-    } else if (optionlabel === 'themavdweek') {
-
-      label_themavdweek = '';
-      label_adv = '<div style="padding: 2px 10px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.1; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle; margin-bottom: 10px">THEMA VAN DE WEEK</div>'; 
-    } else {
-
-      label_adv = '';
-      label_themavdweek = ''; 
-
-    }
-
-    // Update label elements
-    document.getElementById('artikelKlein_label' + postid).innerHTML = label_adv;
-    //document.getElementById('label_themavdweek' + postid).innerHTML = label_themavdweek;
-  });
-
-  div.innerHTML =  `
-  <table class="table1a">
-  <tbody>
-    <tr>
-      <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" src="${item_img_groot}" /></a></td>
-    </tr>
-  </tbody>
-  </table>
-  <table>
-  <tbody>
-    <tr>
-      <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-        <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 150px;" src="${item_img_klein}" /></a></div>
-      </td>
-      <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
-        <table class="tableC">
-          <tbody>
-            <tr>
-              <td class="artikelKleinTDcA">
-              <span id="artikelKlein_label${postid}">${label_adv}</span>
-              <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
-            </tr>
-            <tr>
-              <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-    </tr>
-  </tbody>
-  </table>
-  `;
-
-   artikelenKleinContainerContent.appendChild(div);
-
-   document.getElementById('kleinArtikel' + postid).ondragstart = function (event) {
-       event
-         .dataTransfer
-         .setData('text/html', event.target.innerHTML);
-     }
 
 }
 
-
-function artikelHeadlineItems(item, index) {
-
-  var postid = item.querySelector("postid").innerHTML;
-
-  var item_img_groot = item.querySelector("*|afbeelding").innerHTML;
-  item_img_groot = item_img_groot.replace("<![CDATA[", "").replace("]]>", "");
-
-  var item_img_klein = item.querySelector("*|foto").innerHTML;
-  item_img_klein = item_img_klein.replace("<![CDATA[", "").replace("]]>", "");
-  var item_title = item.querySelector("title").innerHTML;
-  var pubdate = item.querySelector("pubdate").innerHTML;
-  var poststatus = item.querySelector("poststatus").innerHTML;
-  var popularityscore = item.querySelector("popularityscore").innerHTML;
-
-  var option ='headline';
-   /* add category */
-   var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
-   var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
-   var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
-   var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
-   var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
-  item_categorie += '<span class="extraOptions"><select id="selectOptionHeadline'+postid+'"><option value="">kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option><option value="headlineonder">headlineonder</option></select></span>'; 
-  item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabelArtikelHeadline'+postid+'"><option value="">Kies label</option><option value="themavdweek">Thema van de week</option><option value="adv">Adv</option></select></span>';
-
-
-   var item_categories = item.querySelector("categoriesName").innerHTML;
-   var item_categories_array = removeDuplicates(item_categories.split("|"));
-   item_categories_array.forEach(function(element) {
-     item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+element+'">' + element + '</span>';
-   });
-
-   const divCat = document.createElement('div');
-   divCat.className = 'categoryClass';
-   divCat.innerHTML = item_categorie;
-   artikelHeadlineContainerContent.appendChild(divCat);
-
-   const div = document.createElement('div');
-   div.className = 'headline';
-   div.id = 'headline'+postid;
-   div.draggable = 'true';
-   
-   var item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7c${option}%7c`;
-
-  // Retrieve the existing select element
-  var selectElement = document.getElementById('selectOptionHeadline' + postid);
-
-  // Add event listener to update the option variable
-  selectElement.addEventListener('change', function () {
-    option = this.value; // Update the option variable with the selected value
-    // Update item_link with the new option
-    item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}%7c`;
-    // Update the href attribute of the anchor tags with the new item_link
-    document.getElementById('headlineItem' + postid + 'a').href = item_link;
-  });
-
-
-   // Reset label variables
-   label_adv = '';
-   label_themavdweek = '';
- 
-   // Retrieve the existing select element
-   var selectElementLabel = document.getElementById('selectOptionLabelArtikelHeadline' + postid);
- 
-   // Add event listener to update the option variable
-   selectElementLabel.addEventListener('change', function () {
-     var optionlabel = this.value; // Update the option variable with the selected value
-     
-     if (optionlabel === 'adv') {
- 
-       label_themavdweek = '';
-       label_adv = '<span style="padding: 2px 5px; background: #ffffff; color: #018000; font-size: 9px; line-height: 1.3; font-weight: normal; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; vertical-align: top;">ADV</span>'; 
-     } else if (optionlabel === 'themavdweek') {
- 
-       label_themavdweek = '<span style="padding: 2px 5px; background: #ffffff; color: #018000; font-size: 9px; line-height: 1.3; font-weight: normal; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; vertical-align: middle;">Thema van de week</span>'; 
-       label_adv = '';
-
-     } else {
- 
-       label_adv = '';
-       label_themavdweek = ''; 
- 
-     }
- 
-     // Update label elements
-     document.getElementById('artikelHeadline_label_adv' + postid).innerHTML = label_adv;
-     document.getElementById('artikelHeadline_label_themavdweek' + postid).innerHTML = label_themavdweek;
-   });
-   
-
-  div.innerHTML =  `
-  <table id="headlineItem${postid}" width="100%">
-  <tbody>
-  <tr>
-  <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
-  <td>
-    <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="artikelHeadline_label_themavdweek${postid}">${label_themavdweek}</span></a>
-  </td>
-  <td style="width: 30px;"><span id="artikelHeadline_label_adv${postid}">${label_adv}</span></td>
-  </tr>
-  </tbody>
-  </table>
-  `;
-
-   artikelHeadlineContainerContent.appendChild(div);
-
-   document.getElementById('headline' + postid).ondragstart = function (event) {
-       event
-         .dataTransfer
-         .setData('text/html', event.target.innerHTML);
-     }
-
-}
 
 // ## LOAD VACATURES
 "use strict";

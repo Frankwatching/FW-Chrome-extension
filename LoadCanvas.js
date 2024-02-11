@@ -53,16 +53,6 @@ downloadItemKleinContainer.id = 'downloadItemKleinContainer';
 var downloadItemKleinContainerContent = document.createElement( 'div' );
 downloadItemKleinContainerContent.id = 'downloadItemKleinContainerContent';
 
-var downloadItemGrootContainer = document.createElement( 'div' );
-downloadItemGrootContainer.id = 'downloadItemGrootContainer';
-var downloadItemGrootContainerContent = document.createElement( 'div' );
-downloadItemGrootContainerContent.id = 'downloadItemGrootContainerContent';
-
-var downloadItemHeadlineContainer = document.createElement( 'div' );
-downloadItemHeadlineContainer.id = 'downloadItemHeadlineContainer';
-var downloadItemHeadlineContainerContent = document.createElement( 'div' );
-downloadItemHeadlineContainerContent.id = 'downloadItemHeadlineContainerContent';
-
 var vacatureContainer = document.createElement( 'div' );
 vacatureContainer.id = 'vacatureContainer';
 var vacatureContainerContent = document.createElement( 'div' );

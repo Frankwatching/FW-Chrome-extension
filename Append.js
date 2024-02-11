@@ -92,13 +92,6 @@ vacatureHeadlineContainer.appendChild(vacatureHeadlineContainerContent);
 contentIndex.appendChild( downloadItemKleinContainer );
 downloadItemKleinContainer.appendChild( downloadItemKleinContainerContent );
 
-//downloadItemGroot
-contentIndex.appendChild( downloadItemGrootContainer );
-downloadItemGrootContainer.appendChild( downloadItemGrootContainerContent );
-
-//downloadItemHeadline
-contentIndex.appendChild( downloadItemHeadlineContainer );
-downloadItemHeadlineContainer.appendChild( downloadItemHeadlineContainerContent );
 
 //Marketing
 contentIndex.appendChild(marketingContainer);
@@ -134,9 +127,9 @@ const options = [
   { value: 'productItemGrootContainer', text: 'Academy Groot' },  
   { value: 'agendaAcademyContainer', text: 'Academy Agenda' },
   { value: 'productItemHeadlineContainer', text: 'Academy Headline' },
-  { value: 'downloadItemKleinContainer', text: 'Kennisbank Klein' },
-  { value: 'downloadItemGrootContainer', text: 'Kennisbank Groot' },   
-  { value: 'downloadItemHeadlineContainer', text: 'Kennisbank Headline' },
+  { value: 'downloadItemKleinContainer', text: 'Kennisbank' },
+//  { value: 'downloadItemGrootContainer', text: 'Kennisbank Groot' },   
+//  { value: 'downloadItemHeadlineContainer', text: 'Kennisbank Headline' },
   { value: 'vacatureContainer', text: 'Jobs Klein' },
   //{ value: 'vacatureGrootContainer', text: 'Jobs Groot' },   
   { value: 'vacatureHeadlineContainer', text: 'Jobs Headline' },
@@ -170,8 +163,8 @@ function handleSelectChange(containerId) {
     productItemHeadlineContainer.style.display = "none";
     agendaOverlay.style.display = "none";
     downloadItemKleinContainer.style.display = "none";
-    downloadItemGrootContainer.style.display = "none";
-    downloadItemHeadlineContainer.style.display = "none";
+//    downloadItemGrootContainer.style.display = "none";
+ //   downloadItemHeadlineContainer.style.display = "none";
     vacatureContainer.style.display = "none";
     vacatureGrootContainer.style.display = "none";
     vacatureHeadlineContainer.style.display = "none";
@@ -191,8 +184,8 @@ function handleSelectChange(containerId) {
       "productItemGrootContainer", 
       "productItemHeadlineContainer", 
       "downloadItemKleinContainer", 
-      "downloadItemGrootContainer", 
-      "downloadItemHeadlineContainer", 
+     // "downloadItemGrootContainer", 
+     // "downloadItemHeadlineContainer", 
       "vacatureContainer", 
       "vacatureGrootContainer",
       "vacatureHeadlineContainer",

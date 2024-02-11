@@ -72,8 +72,8 @@ function handleButtonClick(container, buttonImg, overlay) {
   productItemHeadlineContainer.style.display = "none";
   agendaOverlay.style.display = "none";
   downloadItemKleinContainer.style.display = "none";
-  downloadItemGrootContainer.style.display = "none";
-  downloadItemHeadlineContainer.style.display = "none";
+ // downloadItemGrootContainer.style.display = "none";
+ // downloadItemHeadlineContainer.style.display = "none";
   vacatureContainer.style.display = "none";
   vacatureGrootContainer.style.display = "none";
   vacatureHeadlineContainer.style.display = "none";
@@ -2273,11 +2273,6 @@ async function loadKennisbank() {
 
     const items = data.querySelectorAll("item");
 
-    const downloadItemGrootContainerContent = document.getElementById("downloadItemGrootContainerContent");
-    if (downloadItemGrootContainerContent) {
-      downloadItemGrootContainerContent.innerHTML = "";
-    }
-
     const downloadItemKleinContainerContent = document.getElementById("downloadItemKleinContainerContent");
     if (downloadItemKleinContainerContent) {
       downloadItemKleinContainerContent.innerHTML = "";
@@ -2286,8 +2281,6 @@ async function loadKennisbank() {
     await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
 
     items.forEach(functiondownloadKleinItems);
-    items.forEach(functiondownloadGrootItems);
-    items.forEach(functiondownloadHeadlineItems);
   } catch (error) {
     console.error("Error loading kennisbank:", error);
   }
@@ -2717,247 +2710,6 @@ console.error("Element with ID 'selectElementLabel" + postid + "' not found.");
          .setData('text/html', event.target.innerHTML);
      }
 }
-
-
-
-function functiondownloadGrootItems(item, index) {
-
-  var postid = item.querySelector("guid").innerHTML;
-  postid = postid.substring(postid.indexOf("p=") + 2);
-
-  var pubdate = item.querySelector("pubDate").innerHTML;
-  var pubdateArray = pubdate.split("+");
-
-  var item_title = item.querySelector("title").textContent;
-
-  var excerpt_element = item.querySelector("description");
-  var excerpt = excerpt_element ? excerpt_element.innerHTML : '';
-  excerpt = excerpt.replace("<![CDATA[", "").replace("]]>", "");
-
-  var description = '';
-
-  var download_newsletter_title = item.getElementsByTagNameNS("*", "download_newsletter_title")[0];
-  download_newsletter_title = download_newsletter_title ? download_newsletter_title.textContent : '';
-  download_newsletter_title = download_newsletter_title.replace("<![CDATA[", "").replace("]]>", "");
-
-  var download_newsletter_intro = item.getElementsByTagNameNS("*", "download_newsletter_intro")[0];
-  download_newsletter_intro = download_newsletter_intro ? download_newsletter_intro.textContent : '';
-  download_newsletter_intro = download_newsletter_intro.replace("<![CDATA[", "").replace("]]>", "");
-
-  var download_newsletter_utm = item.getElementsByTagNameNS("*", "download_newsletter_utm")[0];
-  download_newsletter_utm = download_newsletter_utm ? download_newsletter_utm.textContent : '';
-  download_newsletter_utm = download_newsletter_utm.replace("<![CDATA[", "").replace("]]>", "");
-
-  // Show special newsleter title if this is specified in the backend
-  if (download_newsletter_title && download_newsletter_title.length > 1) {
-    item_title = download_newsletter_title;
-  }
-
-  // Show special newsleter intro if this is specified in the backend
-  if (download_newsletter_intro && download_newsletter_intro.length > 1) {
-    description = download_newsletter_intro;
-  } else {
-    description = excerpt;
-  }
-
-  // Show special newsleter utm if this is specified in the backend
-  if (download_newsletter_utm && download_newsletter_utm.length > 1) {
-    download_newsletter_utm = download_newsletter_utm;
-  } else {
-    download_newsletter_utm = 'kennisbank';
-  }
-
-    // Clip description to a maximum of 100 characters
-    if (description.length > 80) {
-      description = description.substring(0, 80) + '... <span style="font-size: 14px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" >Lees meer</span> ▸';
-    }
-  
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${download_newsletter_utm}&amp;utm_content=%7c${sendDate}%7cadv%7c`;
-  if(dagWeek != 'dagelijks') {
-    var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${download_newsletter_utm}&amp;utm_content=%7c${sendDate}%7cadv%7c`;
-  }
-  
-
-  var enclosure_img = item.querySelector("enclosure").getAttribute("url");
-
-  /* add category */
-  var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
-  var item_categorie = item_categorie + '<span class="postPubDate">'+pubdateArray[0]+'</span>';
-  var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
-
-  var item_categories = item.querySelectorAll("category");
-  item_categories_nodes = Array.prototype.slice.call(item_categories,0);
-  item_categories_nodes.forEach(function(element) {
-    let formName = element;
-    item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+formName.textContent+'">' + formName.textContent + '</span>';
-  });
-
-  const divCat = document.createElement('div');
-  divCat.className = 'categoryClass';
-  divCat.innerHTML = item_categorie;
-
-  const div = document.createElement('div');
-   div.className = 'dragrow download';
-   div.id = 'downloadItemGr'+postid;
-   div.draggable = 'true';
-
-  var daginzet = '<tr><td id="downloadTD' + postid + 'bMob" class="downloadtd_mobile" style="display: none;"><a  style="display: none;" id="downloadImgLink' + postid + '" class="downloadImgLink_mob" href="'+item_link+'"><img id="imgdownloadArtikel'+postid+'mob" class="imgdownload_mobile" style="display: none;" src="'+enclosure_img+'" /></a></td></tr> ';
-   if(dagWeek != 'dagelijks') {
-    daginzet = '';
-  }
-
-    div.innerHTML = `
-    <table id="artikelGroot${postid}T" style="display: block;">
-    <tbody id="artikelGroot${postid}Tb">
-     <tr id="artikelGroot${postid}TrB">
-      <td id="artikelGroot${postid}TdB">
-         <a style="padding: 0px;" id="ct11_1" href="${item_link}">
-           <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${enclosure_img}" >
-         </a>
-       </td>
-     </tr>
-     <tr id="artikelGroot${postid}TrA">
-      <td id="artikelGroot${postid}TdA">
-       <a class="grootArtikelTitle" style="font-family: 'Roboto', Arial; color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
-         ${item_title} 
-       </a>
-      </td>
-     </tr>
-     <tr id="artikelGroot${postid}TrC">
-      <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-         <a class="grootArtikelDescription" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;" id="ct11_2" href="${item_link}">
-           <span style="font-size: 16px; color: #333333;font-weight: 400;">
-             ${description}
-           </span>
-         </a>
-       </td>
-     </tr>
-    </tbody>
-    </table>
-
-    `;
-
-   downloadItemGrootContainerContent.appendChild(divCat);
-   downloadItemGrootContainerContent.appendChild(div);
-
-   document.getElementById('downloadItemGr' + postid).ondragstart = function (event) {
-       event
-         .dataTransfer
-         .setData('text/html', event.target.innerHTML);
-     }
-}
-
-
-function functiondownloadHeadlineItems(item, index) {
-
-  var postid = item.querySelector("guid").innerHTML;
-  postid = postid.substring(postid.indexOf("p=") + 2);
-
-  var pubdate = item.querySelector("pubDate").innerHTML;
-  var pubdateArray = pubdate.split("+");
-
-
-  var item_title = item.querySelector("title").textContent;
-
-  var excerpt_element = item.querySelector("description");
-  var excerpt = excerpt_element ? excerpt_element.innerHTML : '';
-  excerpt = excerpt.replace("<![CDATA[", "").replace("]]>", "");
-
-  var description = '';
-
-  var download_newsletter_title = item.getElementsByTagNameNS("*", "download_newsletter_title")[0];
-  download_newsletter_title = download_newsletter_title ? download_newsletter_title.textContent : '';
-  download_newsletter_title = download_newsletter_title.replace("<![CDATA[", "").replace("]]>", "");
-
-  var download_newsletter_intro = item.getElementsByTagNameNS("*", "download_newsletter_intro")[0];
-  download_newsletter_intro = download_newsletter_intro ? download_newsletter_intro.textContent : '';
-  download_newsletter_intro = download_newsletter_intro.replace("<![CDATA[", "").replace("]]>", "");
-
-  var download_newsletter_utm = item.getElementsByTagNameNS("*", "download_newsletter_utm")[0];
-  download_newsletter_utm = download_newsletter_utm ? download_newsletter_utm.textContent : '';
-  download_newsletter_utm = download_newsletter_utm.replace("<![CDATA[", "").replace("]]>", "");
-
-  // Show special newsleter title if this is specified in the backend
-  if (download_newsletter_title && download_newsletter_title.length > 1) {
-    item_title = download_newsletter_title;
-  }
-
-  // Show special newsleter intro if this is specified in the backend
-  if (download_newsletter_intro && download_newsletter_intro.length > 1) {
-    description = download_newsletter_intro;
-  } else {
-    description = excerpt;
-  }
-
-  // Show special newsleter utm if this is specified in the backend
-  if (download_newsletter_utm && download_newsletter_utm.length > 1) {
-    download_newsletter_utm = download_newsletter_utm;
-  } else {
-    download_newsletter_utm = 'kennisbank';
-  }
-
-    // Clip description to a maximum of 100 characters
-    if (description.length > 80) {
-      description = description.substring(0, 80) + '... <span style="font-size: 14px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" >Lees meer</span> ▸';
-    }  
-
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${download_newsletter_utm}&amp;utm_content=%7c${sendDate}%7cadv%7c`;
-  if(dagWeek != 'dagelijks') {
-    var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-kennisbank-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${download_newsletter_utm}&amp;utm_content=%7c${sendDate}%7cadv%7c`;
-  }
-  
-  var enclosure_img = item.querySelector("enclosure").getAttribute("url");
-
-  /* add category */
-  var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
-  var item_categorie = item_categorie + '<span class="postPubDate">'+pubdateArray[0]+'</span>';
-  var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
-
-  var item_categories = item.querySelectorAll("category");
-  item_categories_nodes = Array.prototype.slice.call(item_categories,0);
-  item_categories_nodes.forEach(function(element) {
-    let formName = element;
-    item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+formName.textContent+'">' + formName.textContent + '</span>';
-  });
-
-  const divCat = document.createElement('div');
-  divCat.className = 'categoryClass';
-  divCat.innerHTML = item_categorie;
-
-  const div = document.createElement('div');
-   div.className = 'dragrow download';
-   div.id = 'downloadItemHeadline'+postid;
-   div.draggable = 'true';
-
-  var daginzet = '<tr><td id="downloadTD' + postid + 'bMob" class="downloadtd_mobile" style="display: none;"><a  style="display: none;" id="downloadImgLink' + postid + '" class="downloadImgLink_mob" href="'+item_link+'"><img id="imgdownloadArtikel'+postid+'mob" class="imgdownload_mobile" style="display: none;" src="'+enclosure_img+'" /></a></td></tr> ';
-   if(dagWeek != 'dagelijks') {
-    daginzet = '';
-  }
-
-    div.innerHTML = `
-    <table id="headlineItem${postid}" width="100%">
-      <tbody>
-        <tr>
-          <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
-          <td>
-            <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span style="padding: 2px 5px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.3; font-weight: normal; margin-bottom: 10px; border-radius: 4px; border: 1px solid #018000; vertical-align: middle;">ADV</span></a>
-          </td>
-          <td style="width: 30px;">&nbsp;</td>
-        </tr>
-      </tbody>
-    </table>
-    `;
-
-   downloadItemHeadlineContainerContent.appendChild(divCat);
-   downloadItemHeadlineContainerContent.appendChild(div);
-
-   document.getElementById('downloadItemHeadline' + postid).ondragstart = function (event) {
-       event
-         .dataTransfer
-         .setData('text/html', event.target.innerHTML);
-     }
-}
-
 
 
 

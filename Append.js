@@ -80,14 +80,6 @@ productItemHeadlineContainer.appendChild( productItemHeadlineContainerContent );
 contentIndex.appendChild(vacatureContainer);
 vacatureContainer.appendChild(vacatureContainerContent);
 
-//Vacatures groot
-contentIndex.appendChild(vacatureGrootContainer);
-vacatureGrootContainer.appendChild(vacatureGrootContainerContent);
-
-//Vacatures headline
-contentIndex.appendChild(vacatureHeadlineContainer);
-vacatureHeadlineContainer.appendChild(vacatureHeadlineContainerContent);
-
 //downloadItemKlein
 contentIndex.appendChild( downloadItemKleinContainer );
 downloadItemKleinContainer.appendChild( downloadItemKleinContainerContent );
@@ -130,9 +122,9 @@ const options = [
   { value: 'downloadItemKleinContainer', text: 'Kennisbank' },
 //  { value: 'downloadItemGrootContainer', text: 'Kennisbank Groot' },   
 //  { value: 'downloadItemHeadlineContainer', text: 'Kennisbank Headline' },
-  { value: 'vacatureContainer', text: 'Jobs Klein' },
+  { value: 'vacatureContainer', text: 'Jobs' },
   //{ value: 'vacatureGrootContainer', text: 'Jobs Groot' },   
-  { value: 'vacatureHeadlineContainer', text: 'Jobs Headline' },
+//  { value: 'vacatureHeadlineContainer', text: 'Jobs Headline' },
   { value: 'marketingContainer', text: 'Cams 2.0' },
   //{ value: 'channelContainer', text: 'BusinessChannel Klein' },  
     // Add other options as needed
@@ -166,8 +158,8 @@ function handleSelectChange(containerId) {
 //    downloadItemGrootContainer.style.display = "none";
  //   downloadItemHeadlineContainer.style.display = "none";
     vacatureContainer.style.display = "none";
-    vacatureGrootContainer.style.display = "none";
-    vacatureHeadlineContainer.style.display = "none";
+   // vacatureGrootContainer.style.display = "none";
+   // vacatureHeadlineContainer.style.display = "none";
     marketingContainer.style.display = "none";
     channelContainer.style.display = "none";
     switchListForm.style.display = "none";
@@ -187,8 +179,8 @@ function handleSelectChange(containerId) {
      // "downloadItemGrootContainer", 
      // "downloadItemHeadlineContainer", 
       "vacatureContainer", 
-      "vacatureGrootContainer",
-      "vacatureHeadlineContainer",
+     // "vacatureGrootContainer",
+     // "vacatureHeadlineContainer",
       "marketingContainer", 
       "productItemHeadlineContainer"
 

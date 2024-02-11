@@ -58,16 +58,6 @@ vacatureContainer.id = 'vacatureContainer';
 var vacatureContainerContent = document.createElement( 'div' );
 vacatureContainerContent.id = 'vacatureContainerContent';
 
-var vacatureGrootContainer = document.createElement( 'div' );
-vacatureGrootContainer.id = 'vacatureGrootContainer';
-var vacatureGrootContainerContent = document.createElement( 'div' );
-vacatureGrootContainerContent.id = 'vacatureGrootContainerContent';
-
-var vacatureHeadlineContainer = document.createElement( 'div' );
-vacatureHeadlineContainer.id = 'vacatureHeadlineContainer';
-var vacatureHeadlineContainerContent = document.createElement( 'div' );
-vacatureHeadlineContainerContent.id = 'vacatureHeadlineContainerContent';
-
 var marketingContainer = document.createElement( 'div' );
 marketingContainer.id = 'marketingContainer';
 var marketingContainerContent = document.createElement( 'div' );

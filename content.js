@@ -2414,7 +2414,7 @@ function functiondownloadKleinItems(item, index) {
 
   var enclosure_img = item.querySelector("enclosure").getAttribute("url");
 
-  var option ='kennisbank';
+  var option ='adv';
   /* add category */
   var item_categorie = '<div style="background: white;border-top:2px solid green;"><span class="categoryClassDag">'+dagWeek[0]+'</span>';
   var item_categorie = item_categorie + '<span class="postPubDate">'+pubdateArray[0]+'</span>';
@@ -2432,7 +2432,7 @@ function functiondownloadKleinItems(item, index) {
   //toon weergave pulldown
   item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergaveKennisbank'+postid+'"><option value="">1.Kies weergave</option><option value="headline">Headline</option><option value="klein">Afb. links</option><option value="groot">Afb. boven</option></select></span>';
 
-  item_categorie += '<span class="extraOptions"><select id="selectOptionKennisbank'+postid+'"><option value="">2.Kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option><option value="headlineonder">headlineonder</option></select></span>';
+  item_categorie += '<span class="extraOptions"><select id="selectOptionKennisbank'+postid+'"><option value="adv">2.Kies utm content</option><optgroup label="Kennisbank"><option value="adv">adv</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option></optgroup><optgroup label="Headline"><option value="headlineadv">headlineadv</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlineadvthema">headlineadvthema</option><option value="headlineonder">headlineonder</option></optgroup></select></span>';
   item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabelKennisbank'+postid+'"><option value="">3.Kies label</option><option value="themavdweek">Thema vd week</option><option value="adv">Adv</option></select></span>';
 
   item_categorie += '</div>';

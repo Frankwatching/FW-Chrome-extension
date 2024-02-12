@@ -607,8 +607,6 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
             <td>
               <a id="agendaAcademy${postid}a" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
                 <span class="agendaAcademyTitle" style="font-size: 14px; line-height: 1.3; color: #0E5C8C;font-weight: bold; display: block;">${item_title}</span>
-                <span id="container_label_adv${postid}">${label_adv}</span>
-                <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
               </a>
             </td>
           </tr>
@@ -616,7 +614,9 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
             <td>
               <a id="agendaAcademy${postid}a" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
                 <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);display: block;">${location} | ${durration}
-                </span>
+                
+                <span id="container_label_adv${postid}">${label_adv}</span>
+                <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></span>
               </a>
             </td>
           </tr>

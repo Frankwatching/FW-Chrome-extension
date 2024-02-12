@@ -38,15 +38,15 @@ productItemKleinContainer.id = 'productItemKleinContainer';
 var productItemKleinContainerContent = document.createElement( 'div' );
 productItemKleinContainerContent.id = 'productItemKleinContainerContent';
 
-var productItemGrootContainer = document.createElement( 'div' );
-productItemGrootContainer.id = 'productItemGrootContainer';
-var productItemGrootContainerContent = document.createElement( 'div' );
-productItemGrootContainerContent.id = 'productItemGrootContainerContent';
+// var productItemGrootContainer = document.createElement( 'div' );
+// productItemGrootContainer.id = 'productItemGrootContainer';
+// var productItemGrootContainerContent = document.createElement( 'div' );
+// productItemGrootContainerContent.id = 'productItemGrootContainerContent';
 
-var productItemHeadlineContainer = document.createElement( 'div' );
-productItemHeadlineContainer.id = 'productItemHeadlineContainer';
-var productItemHeadlineContainerContent = document.createElement( 'div' );
-productItemHeadlineContainerContent.id = 'productItemHeadlineContainerContent';
+// var productItemHeadlineContainer = document.createElement( 'div' );
+// productItemHeadlineContainer.id = 'productItemHeadlineContainer';
+// var productItemHeadlineContainerContent = document.createElement( 'div' );
+// productItemHeadlineContainerContent.id = 'productItemHeadlineContainerContent';
 
 var downloadItemKleinContainer = document.createElement( 'div' );
 downloadItemKleinContainer.id = 'downloadItemKleinContainer';

@@ -68,13 +68,13 @@ artikelenGrootContainer.appendChild(artikelenGrootContainerContent);
 contentIndex.appendChild( productItemKleinContainer );
 productItemKleinContainer.appendChild( productItemKleinContainerContent );
 
-//productItemGroot
-contentIndex.appendChild( productItemGrootContainer );
-productItemGrootContainer.appendChild( productItemGrootContainerContent );
+// //productItemGroot
+// contentIndex.appendChild( productItemGrootContainer );
+// productItemGrootContainer.appendChild( productItemGrootContainerContent );
 
-//productItemHeadline
-contentIndex.appendChild( productItemHeadlineContainer );
-productItemHeadlineContainer.appendChild( productItemHeadlineContainerContent );
+// //productItemHeadline
+// contentIndex.appendChild( productItemHeadlineContainer );
+// productItemHeadlineContainer.appendChild( productItemHeadlineContainerContent );
 
 //Vacatures klein
 contentIndex.appendChild(vacatureContainer);
@@ -115,10 +115,10 @@ const options = [
   //{ value: 'artikelHeadlineContainer', text: 'Blog Headline' },
   //{ value: 'artikelenKleinContainer', text: 'Blog Klein' },
   { value: 'artikelenGrootContainer', text: 'Blog' },
-  { value: 'productItemKleinContainer', text: 'Academy Klein' },
-  { value: 'productItemGrootContainer', text: 'Academy Groot' },  
+  { value: 'productItemKleinContainer', text: 'Academy' },
+//  { value: 'productItemGrootContainer', text: 'Academy Groot' },  
   { value: 'agendaAcademyContainer', text: 'Academy Agenda' },
-  { value: 'productItemHeadlineContainer', text: 'Academy Headline' },
+//  { value: 'productItemHeadlineContainer', text: 'Academy Headline' },
   { value: 'downloadItemKleinContainer', text: 'Kennisbank' },
 //  { value: 'downloadItemGrootContainer', text: 'Kennisbank Groot' },   
 //  { value: 'downloadItemHeadlineContainer', text: 'Kennisbank Headline' },
@@ -151,8 +151,8 @@ function handleSelectChange(containerId) {
     artikelenGrootContainer.style.display = "none";
 //    artikelHeadlineContainer.style.display = "none";
     productItemKleinContainer.style.display = "none";
-    productItemGrootContainer.style.display = "none";
-    productItemHeadlineContainer.style.display = "none";
+  //  productItemGrootContainer.style.display = "none";
+  //  productItemHeadlineContainer.style.display = "none";
     agendaOverlay.style.display = "none";
     downloadItemKleinContainer.style.display = "none";
 //    downloadItemGrootContainer.style.display = "none";
@@ -173,8 +173,8 @@ function handleSelectChange(containerId) {
       "artikelenGrootContainer", 
 //      "artikelHeadlineContainer", 
       "productItemKleinContainer", 
-      "productItemGrootContainer", 
-      "productItemHeadlineContainer", 
+      //"productItemGrootContainer", 
+      //"productItemHeadlineContainer", 
       "downloadItemKleinContainer", 
      // "downloadItemGrootContainer", 
      // "downloadItemHeadlineContainer", 

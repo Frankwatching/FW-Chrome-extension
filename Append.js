@@ -132,13 +132,13 @@ function handleSelectChange(containerId) {
 
     // Array of container IDs where you want to apply the extra style
     const containerIdsArray = [
-      "channelContainer", 
+     // "channelContainer", 
       "artikelenGrootContainer", 
-      "productItemKleinContainer", 
-      "downloadItemKleinContainer", 
-      "vacatureContainer", 
-      "marketingContainer", 
-      "productItemHeadlineContainer"
+      "productItemKleinContainer"
+    //  "downloadItemKleinContainer", 
+    //  "vacatureContainer", 
+    //  "marketingContainer", 
+    //  "productItemHeadlineContainer"
     ];
 
     // Show the selected container

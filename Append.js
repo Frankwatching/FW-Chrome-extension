@@ -68,37 +68,22 @@ artikelenGrootContainer.appendChild(artikelenGrootContainerContent);
 contentIndex.appendChild( productItemKleinContainer );
 productItemKleinContainer.appendChild( productItemKleinContainerContent );
 
-//productItemGroot
-contentIndex.appendChild( productItemGrootContainer );
-productItemGrootContainer.appendChild( productItemGrootContainerContent );
+// //productItemGroot
+// contentIndex.appendChild( productItemGrootContainer );
+// productItemGrootContainer.appendChild( productItemGrootContainerContent );
 
-//productItemHeadline
-contentIndex.appendChild( productItemHeadlineContainer );
-productItemHeadlineContainer.appendChild( productItemHeadlineContainerContent );
+// //productItemHeadline
+// contentIndex.appendChild( productItemHeadlineContainer );
+// productItemHeadlineContainer.appendChild( productItemHeadlineContainerContent );
 
 //Vacatures klein
 contentIndex.appendChild(vacatureContainer);
 vacatureContainer.appendChild(vacatureContainerContent);
 
-//Vacatures groot
-contentIndex.appendChild(vacatureGrootContainer);
-vacatureGrootContainer.appendChild(vacatureGrootContainerContent);
-
-//Vacatures headline
-contentIndex.appendChild(vacatureHeadlineContainer);
-vacatureHeadlineContainer.appendChild(vacatureHeadlineContainerContent);
-
 //downloadItemKlein
 contentIndex.appendChild( downloadItemKleinContainer );
 downloadItemKleinContainer.appendChild( downloadItemKleinContainerContent );
 
-//downloadItemGroot
-contentIndex.appendChild( downloadItemGrootContainer );
-downloadItemGrootContainer.appendChild( downloadItemGrootContainerContent );
-
-//downloadItemHeadline
-contentIndex.appendChild( downloadItemHeadlineContainer );
-downloadItemHeadlineContainer.appendChild( downloadItemHeadlineContainerContent );
 
 //Marketing
 contentIndex.appendChild(marketingContainer);
@@ -130,16 +115,16 @@ const options = [
   //{ value: 'artikelHeadlineContainer', text: 'Blog Headline' },
   //{ value: 'artikelenKleinContainer', text: 'Blog Klein' },
   { value: 'artikelenGrootContainer', text: 'Blog' },
-  { value: 'productItemKleinContainer', text: 'Academy Klein' },
-  { value: 'productItemGrootContainer', text: 'Academy Groot' },  
+  { value: 'productItemKleinContainer', text: 'Academy' },
+//  { value: 'productItemGrootContainer', text: 'Academy Groot' },  
   { value: 'agendaAcademyContainer', text: 'Academy Agenda' },
-  { value: 'productItemHeadlineContainer', text: 'Academy Headline' },
-  { value: 'downloadItemKleinContainer', text: 'Kennisbank Klein' },
-  { value: 'downloadItemGrootContainer', text: 'Kennisbank Groot' },   
-  { value: 'downloadItemHeadlineContainer', text: 'Kennisbank Headline' },
-  { value: 'vacatureContainer', text: 'Jobs Klein' },
+//  { value: 'productItemHeadlineContainer', text: 'Academy Headline' },
+  { value: 'downloadItemKleinContainer', text: 'Kennisbank' },
+//  { value: 'downloadItemGrootContainer', text: 'Kennisbank Groot' },   
+//  { value: 'downloadItemHeadlineContainer', text: 'Kennisbank Headline' },
+  { value: 'vacatureContainer', text: 'Jobs' },
   //{ value: 'vacatureGrootContainer', text: 'Jobs Groot' },   
-  { value: 'vacatureHeadlineContainer', text: 'Jobs Headline' },
+//  { value: 'vacatureHeadlineContainer', text: 'Jobs Headline' },
   { value: 'marketingContainer', text: 'Cams 2.0' },
   //{ value: 'channelContainer', text: 'BusinessChannel Klein' },  
     // Add other options as needed
@@ -166,15 +151,15 @@ function handleSelectChange(containerId) {
     artikelenGrootContainer.style.display = "none";
 //    artikelHeadlineContainer.style.display = "none";
     productItemKleinContainer.style.display = "none";
-    productItemGrootContainer.style.display = "none";
-    productItemHeadlineContainer.style.display = "none";
+  //  productItemGrootContainer.style.display = "none";
+  //  productItemHeadlineContainer.style.display = "none";
     agendaOverlay.style.display = "none";
     downloadItemKleinContainer.style.display = "none";
-    downloadItemGrootContainer.style.display = "none";
-    downloadItemHeadlineContainer.style.display = "none";
+//    downloadItemGrootContainer.style.display = "none";
+ //   downloadItemHeadlineContainer.style.display = "none";
     vacatureContainer.style.display = "none";
-    vacatureGrootContainer.style.display = "none";
-    vacatureHeadlineContainer.style.display = "none";
+   // vacatureGrootContainer.style.display = "none";
+   // vacatureHeadlineContainer.style.display = "none";
     marketingContainer.style.display = "none";
     channelContainer.style.display = "none";
     switchListForm.style.display = "none";
@@ -188,14 +173,14 @@ function handleSelectChange(containerId) {
       "artikelenGrootContainer", 
 //      "artikelHeadlineContainer", 
       "productItemKleinContainer", 
-      "productItemGrootContainer", 
-      "productItemHeadlineContainer", 
+      //"productItemGrootContainer", 
+      //"productItemHeadlineContainer", 
       "downloadItemKleinContainer", 
-      "downloadItemGrootContainer", 
-      "downloadItemHeadlineContainer", 
+     // "downloadItemGrootContainer", 
+     // "downloadItemHeadlineContainer", 
       "vacatureContainer", 
-      "vacatureGrootContainer",
-      "vacatureHeadlineContainer",
+     // "vacatureGrootContainer",
+     // "vacatureHeadlineContainer",
       "marketingContainer", 
       "productItemHeadlineContainer"
 

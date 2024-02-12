@@ -1183,9 +1183,9 @@ function functionVacatureItems(item, index) {
   item_categorie += '</div>';
   item_categorie += '<div style="background:white;">';
   //toon weergave pulldown
-  item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergaveVacature'+postid+'"><option value="">1.Kies weergave</option><option value="headline">Headline</option><option value="klein">Afb. links</option><option value="groot">Afb. boven</option></select></span>';
+  item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergaveVacature'+postid+'"><option value="">1.Kies weergave</option><option value="klein">Afb. links</option><option value="groot">Afb. boven</option><option value="headline">Headline</option></select></span>';
 
-  item_categorie += '<span class="extraOptions"><select id="selectOptionVacature'+postid+'"><option value="">2.Kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option><option value="headlineonder">headlineonder</option></select></span>';
+  item_categorie += '<span class="extraOptions"><select id="selectOptionVacature'+postid+'"><option value="vacature">2.Kies utm content</option><optgroup label="Vacature"><option value="vacature">vacature</option></optgroup><optgroup label="Headline"><option value="headlineadv">headlineadv</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvthema">headlineadvthema</option><option value="headlineonder">headlineonder</option></optgroup></select></span>';
   item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabelVacature'+postid+'"><option value="">3.Kies label</option><option value="themavdweek">Thema vd week</option><option value="adv">Adv</option></select></span>';
 
   item_categorie += '</div>';
@@ -1386,7 +1386,7 @@ if (selectElementWeergave) {
 
                               <tr>
                                 <td id="vacatureTD${postid}bA" class="vacatureTDbA">
-                                    <a id="metaPost${postid}"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaPost">
+                                    <a id="metaPost${postid}Link"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaPost">
                                     <span id="vacatureMeta${postid}a" class="metaPostCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
                                     </a>
                                 </td>
@@ -1439,7 +1439,7 @@ if (selectElementWeergave) {
       </tr>
       <tr>
             <td id="vacatureTD${postid}bA" class="vacatureTDbA">
-                <a id="metaPost${postid}"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaPost">
+                <a id="metaPost${postid}Link"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaPost">
                 <span id="vacatureMeta${postid}a" class="metaPostCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
                 </a>
             </td>

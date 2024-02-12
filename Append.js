@@ -1,6 +1,6 @@
 //agenda
-contentIndex.appendChild( agendaOverlay );
-contentIndex.appendChild( agendaAcademyContainer );
+//contentIndex.appendChild( agendaOverlay );
+//contentIndex.appendChild( agendaAcademyContainer );
 
 //headlines
 contentIndex.appendChild( headlinesOverlay );
@@ -56,25 +56,9 @@ phl7.appendChild( hl7 );
 contentIndex.appendChild( artikelenGrootContainer );
 artikelenGrootContainer.appendChild(artikelenGrootContainerContent);
 
-// //artikelKlein
-// contentIndex.appendChild( artikelenKleinContainer );
-// artikelenKleinContainer.appendChild( artikelenKleinContainerContent );
-
-//artikelHeadline
-// contentIndex.appendChild( artikelHeadlineContainer );
-// artikelHeadlineContainer.appendChild( artikelHeadlineContainerContent );
-
 //productItemKlein
 contentIndex.appendChild( productItemKleinContainer );
 productItemKleinContainer.appendChild( productItemKleinContainerContent );
-
-// //productItemGroot
-// contentIndex.appendChild( productItemGrootContainer );
-// productItemGrootContainer.appendChild( productItemGrootContainerContent );
-
-// //productItemHeadline
-// contentIndex.appendChild( productItemHeadlineContainer );
-// productItemHeadlineContainer.appendChild( productItemHeadlineContainerContent );
 
 //Vacatures klein
 contentIndex.appendChild(vacatureContainer);
@@ -112,21 +96,11 @@ selectMenu.id = 'selectMenu';
 const options = [
   { value: 'hideall', text: 'Selecteer content voor nieuwsbrief' },
   { value: 'headlinesContainer', text: 'Blog Headlines' },
-  //{ value: 'artikelHeadlineContainer', text: 'Blog Headline' },
-  //{ value: 'artikelenKleinContainer', text: 'Blog Klein' },
   { value: 'artikelenGrootContainer', text: 'Blog' },
   { value: 'productItemKleinContainer', text: 'Academy' },
-//  { value: 'productItemGrootContainer', text: 'Academy Groot' },  
-  { value: 'agendaAcademyContainer', text: 'Academy Agenda' },
-//  { value: 'productItemHeadlineContainer', text: 'Academy Headline' },
   { value: 'downloadItemKleinContainer', text: 'Kennisbank' },
-//  { value: 'downloadItemGrootContainer', text: 'Kennisbank Groot' },   
-//  { value: 'downloadItemHeadlineContainer', text: 'Kennisbank Headline' },
   { value: 'vacatureContainer', text: 'Jobs' },
-  //{ value: 'vacatureGrootContainer', text: 'Jobs Groot' },   
-//  { value: 'vacatureHeadlineContainer', text: 'Jobs Headline' },
   { value: 'marketingContainer', text: 'Cams 2.0' },
-  //{ value: 'channelContainer', text: 'BusinessChannel Klein' },  
     // Add other options as needed
 ];
 
@@ -146,20 +120,11 @@ function handleSelectChange(containerId) {
     // Hide all containers and overlays
     headlinesContainer.style.display = "none";
     headlinesOverlay.style.display = "none";
-    agendaAcademyContainer.style.display = "none";
-  //  artikelenKleinContainer.style.display = "none";
     artikelenGrootContainer.style.display = "none";
-//    artikelHeadlineContainer.style.display = "none";
     productItemKleinContainer.style.display = "none";
-  //  productItemGrootContainer.style.display = "none";
-  //  productItemHeadlineContainer.style.display = "none";
     agendaOverlay.style.display = "none";
     downloadItemKleinContainer.style.display = "none";
-//    downloadItemGrootContainer.style.display = "none";
- //   downloadItemHeadlineContainer.style.display = "none";
     vacatureContainer.style.display = "none";
-   // vacatureGrootContainer.style.display = "none";
-   // vacatureHeadlineContainer.style.display = "none";
     marketingContainer.style.display = "none";
     channelContainer.style.display = "none";
     switchListForm.style.display = "none";
@@ -168,23 +133,12 @@ function handleSelectChange(containerId) {
     // Array of container IDs where you want to apply the extra style
     const containerIdsArray = [
       "channelContainer", 
-      "agendaAcademyContainer", 
-      "artikelenKleinContainer", 
       "artikelenGrootContainer", 
-//      "artikelHeadlineContainer", 
       "productItemKleinContainer", 
-      //"productItemGrootContainer", 
-      //"productItemHeadlineContainer", 
       "downloadItemKleinContainer", 
-     // "downloadItemGrootContainer", 
-     // "downloadItemHeadlineContainer", 
       "vacatureContainer", 
-     // "vacatureGrootContainer",
-     // "vacatureHeadlineContainer",
       "marketingContainer", 
       "productItemHeadlineContainer"
-
-
     ];
 
     // Show the selected container

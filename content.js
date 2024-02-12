@@ -64,19 +64,11 @@ function handleButtonClick(container, buttonImg, overlay) {
   headlinesContainer.style.display = "none";
   headlinesOverlay.style.display = "none";
   agendaAcademyContainer.style.display = "none";
-  artikelenKleinContainer.style.display = "none";
   artikelenGrootContainer.style.display = "none";
-  //artikelHeadlineContainer.style.display = "none";
   productItemKleinContainer.style.display = "none";
-  //productItemGrootContainer.style.display = "none";
-  //productItemHeadlineContainer.style.display = "none";
   agendaOverlay.style.display = "none";
   downloadItemKleinContainer.style.display = "none";
- // downloadItemGrootContainer.style.display = "none";
- // downloadItemHeadlineContainer.style.display = "none";
   vacatureContainer.style.display = "none";
-  //vacatureGrootContainer.style.display = "none";
-  vacatureHeadlineContainer.style.display = "none";
   marketingContainer.style.display = "none";
   channelContainer.style.display = "none";
 
@@ -115,18 +107,18 @@ if ( listSort === 'popularity') {
 }
 
 if ( searchID ) {
-  newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?postid='+ searchID;
+  newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?postid='+ searchID+'&timestamp=' + Date.now();
   newsrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/post/?include='+ searchID; 
   //console.log('news RSS:' + newsrss);
   
-  jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature&post_id='+ searchID;
+  jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature';
   jobrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/vacature/?include='+ searchID; 
   //console.log('jobs RSS:' + jobrss);
   
-  agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?postid='+ searchID;
+  agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?postid='+ searchID+'&timestamp=' + Date.now();
   //console.log('agenda RSS:' + agendarss);
   
-  marketingrss = 'https://cms.frankwatching.com/feed?post_type=promotion&post_id='+ searchID;
+  marketingrss = 'https://cms.frankwatching.com/feed?post_type=promotion';
   marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion/?include='+ searchID; 
   //console.log('marketing RSS:' + marketingrss);
   
@@ -134,7 +126,7 @@ if ( searchID ) {
   bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts/?include='+ searchID; //
   //console.log('bc RSS:' + bcrss);
   
-  kennisbankrss = 'https://www.frankwatching.com/feed?post_type=download&post_id='+ searchID;
+  kennisbankrss = 'https://www.frankwatching.com/feed?post_type=download';
   kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download/?include='+ searchID; 
   //console.log('kennisbank RSS:' + kennisbankrss);
 }
@@ -285,35 +277,23 @@ async function loadAgenda() {
 
     const items = data.querySelectorAll("item");
 
-    const agendaAcademyContainer = document.getElementById("agendaAcademyContainer");
-    if (agendaAcademyContainer) {
-      agendaAcademyContainer.innerHTML = "";
-    }
+    // const agendaAcademyContainer = document.getElementById("agendaAcademyContainer");
+    // if (agendaAcademyContainer) {
+    //   agendaAcademyContainer.innerHTML = "";
+    // }
 
     const productItemKleinContainerContent = document.getElementById("productItemKleinContainerContent");
     if (productItemKleinContainerContent) {
       productItemKleinContainerContent.innerHTML = "";
     }
 
-    // const productItemGrootContainerContent = document.getElementById("productItemGrootContainerContent");
-    // if (productItemGrootContainerContent) {
-    //   productItemGrootContainerContent.innerHTML = "";
-    // }
-
-    // const productItemHeadlineContainerContent = document.getElementById("productItemHeadlineContainerContent");
-    // if (productItemHeadlineContainerContent) {
-    //   productItemHeadlineContainerContent.innerHTML = "";
-    // }
-
     await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
 
     // Process the first 10 items
     const itemsToProcess = Math.min(items.length, 10);
     for (let i = 0; i < itemsToProcess; i++) {
-      agendaItems(items[i]);
       productItem(items[i]);
-      //productItemGroot(items[i]);
-      //productItemHeadline(items[i]);
+    
     }
   } catch (error) {
     console.error("Error loading agenda items:", error);
@@ -372,7 +352,7 @@ function productItem(item, index) {
   item_categorie += '</div>';
   item_categorie += '<div style="background:white;">';
   //toon weergave pulldown
-  item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergaveProduct'+postid+'"><option value="">1.Kies weergave</option><option value="headline">Headline</option><option value="klein">Afb. links</option><option value="groot">Afb. boven</option></select></span>';
+  item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergaveProduct'+postid+'"><option value="">1.Kies weergave</option><option value="headline">Headline</option><option value="klein">Afb. links</option><option value="groot">Afb. boven</option><option value="agenda">Agenda</option></select></span>';
 
   item_categorie += '<span class="extraOptions"><select id="selectOptionProduct'+postid+'"><option value="">2.Kies utm content</option><option value="artikelthema">artikelthema</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option><option value="headlineactueel">headlineactueel</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlinethema">headlinethema</option><option value="headlineonder">headlineonder</option></select></span>';
   item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabelProduct'+postid+'"><option value="">3.Kies label</option><option value="themavdweek">Thema vd week</option><option value="adv">Adv</option></select></span>';
@@ -408,12 +388,20 @@ function productItem(item, index) {
       item_link = link + `&utm_source=${blogAlert}-agenda-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7c${option}%7c`;
       // Update the href attribute of the anchor tags with the new item_link
 
-
-      let imgGrootArtikelLink = document.getElementById('imgGrootArtikel' + postid + 'Link');
-      if (imgGrootArtikelLink) {
-          imgGrootArtikelLink.href = item_link;
+      // Update imagelink
+      let imgPost = document.getElementById('imgPost' + postid + 'Link');
+      if (imgPost) {
+        imgPost.href = item_link;
       } else {
-          console.error("Element with ID 'imgGrootArtikel" + postid + "Link' not found.");
+          console.error("Element with ID 'imgPost" + postid + "Link' not found.");
+      }
+
+      // Update metaPost
+      let metaPost = document.getElementById('metaPost' + postid + 'Link');
+      if (metaPost) {
+        metaPost.href = item_link;
+      } else {
+          console.error("Element with ID 'metaPost" + postid + "Link' not found.");
       }
 
       // Update grootTitleLink
@@ -470,6 +458,11 @@ function productItem(item, index) {
           headlineItem.href = item_link;
       }
 
+      // Update agendaAcademy
+      let agendaAcademyItem = document.getElementById('agendaAcademy' + postid + 'a');
+      if (agendaAcademyItem) {
+        agendaAcademyItem.href = item_link;
+      }
 
     });      
 
@@ -559,7 +552,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
           <tbody id="artikelGroot${postid}Tb">
             <tr id="artikelGroot${postid}TrB">
             <td id="artikelGroot${postid}TdB">
-                <a style="padding: 0px;" id="imgGrootArtikel${postid}Link" href="${item_link}">
+                <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
                   <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
                 </a>
               </td>
@@ -585,6 +578,55 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
           </tbody>
           </table>
       `;
+      
+      } else if (optionlabel === 'agenda') {
+        label_adv = '';
+        label_themavdweek = '';
+        typeweergave = 'agenda';
+        weergave = `
+        <table id="contentAcademyAgenda${postid}" style="display: inline-block; width: 100%; background: #fff; border-collapse: collapse; width: 100%;padding: 8px 10px;" align="left">
+      <tbody>
+      <tr>
+        <td style="width: 42px;">
+          <table width="40px">
+            <tbody>
+              <tr>
+                <td align="center" style="background: #C91C18; color: white; font-size: small; text-align: center;">${dateMonth}</td>
+              </tr>
+              <tr>
+              <td align="center" style="background: #f2f2f2; color: black; font-weight: bold;text-align: center;">${dateDay}</td>
+              </tr>
+            </tbody>
+          </table>      
+        </td>
+      <td style="">
+
+        <table id="contentAcademy" style="margin-left: 10px !important;">
+          <tbody>
+          <tr>
+            <td>
+              <a id="agendaAcademy${postid}a" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
+                <span class="agendaAcademyTitle" style="font-size: 14px; line-height: 1.3; color: #0E5C8C;font-weight: bold; display: block;">${item_title}</span>
+                <span id="container_label_adv${postid}">${label_adv}</span>
+                <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a id="agendaAcademy${postid}a" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
+                <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);display: block;">${location} | ${durration}
+                </span>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+      </tr>
+      </tbody>
+    </table>
+        `;
       
       } else if (optionlabel === '' || optionlabel === null) {
         
@@ -633,6 +675,10 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
           styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
         } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
           styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
+        } else if (typeweergave === 'agenda' && optionlabel === 'adv') {
+          styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+        } else if (typeweergave === 'agenda' && optionlabel === 'themavdweek') {
+          styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
         } else {
           styling = ''; // Reset styling if none of the conditions match
         }
@@ -668,417 +714,6 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
     }
 
    document.getElementById('productItemKlein' + postid).ondragstart = function (event) {
-       event
-         .dataTransfer
-         .setData('text/html', event.target.innerHTML);
-     }
-
-}
-
-
-function agendaItems(item, index) {
-
-  var table = document.getElementById("academyTable");
-  var json = xml2json(item);
-  var title = json["title"];
-  var link = json["link"];
-  var postid = json["productid"];
-  var campaign = json["postmeta:campaign"]; //cams 1.0 def
-  var utmcampaign = json["postmeta:utmcampagin"]; //cams 2.0 def
-  var location = json["postmeta:location"];
-  var durration = json["postmeta:durration"];
-  var dateMonth = json["postmeta:dateMonth"];
-  var dateDay = json["postmeta:dateDay"];
-
-
-  var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
-  var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
-
-  // haal campagnenaam op
-  if (newsLetterUTMCampaignName !== undefined && newsLetterUTMCampaignName !== '') {
-    utmcampaign = newsLetterUTMCampaignName;
-  } else if (campaign !== '') {
-    utmcampaign = campaign;
-  } else if (utmcampaign !== '') {
-    utmcampaign = utmcampaign;
-  } else {  
-    utmcampaign = 'academy';
-  }
-
-  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
-
-  //var pubdate = item.querySelector("pubdate").innerHTML;
-  //var poststatus = item.querySelector("poststatus").innerHTML;
-  //var popularityscore = item.querySelector("popularityscore").innerHTML;
-
-  /* add category */
-  var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
-  //var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
-  var item_categorie = item_categorie + '<span class="postPubDate">'+dateDay+'-'+dateMonth+'</span>';
-  var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
-  //var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
-
-  //var item_categories = item.querySelector("categoriesName").innerHTML;
-  // var item_categories_array = removeDuplicates(item_categories.split("|"));
-  // item_categories_array.forEach(function(element) {
-  //   item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+element+'">' + element + '</span>';
-  // });
-
-  const divCat = document.createElement('div');
-  divCat.className = 'categoryClass';
-  divCat.innerHTML = item_categorie;
-
-  const div = document.createElement('div');
-  div.className = 'itemAgenda';
-  div.id = 'agendaItem'+postid;
-  div.draggable = 'true';
-
-  div.innerHTML = `
-  <table id="contentAcademyAgenda${postid}" style="display: inline-block; width: 100%; background: #fff; border-collapse: collapse; width: 100%;padding: 8px 10px;" align="left">
-      <tbody>
-      <tr>
-        <td style="width: 42px;">
-          <table width="40px">
-            <tbody>
-              <tr>
-                <td align="center" style="background: #C91C18; color: white; font-size: small; text-align: center;">${dateMonth}</td>
-              </tr>
-              <tr>
-              <td align="center" style="background: #f2f2f2; color: black; font-weight: bold;text-align: center;">${dateDay}</td>
-              </tr>
-            </tbody>
-          </table>      
-        </td>
-      <td style="">
-
-        <table id="contentAcademy" style="margin-left: 10px !important;">
-          <tbody>
-          <tr>
-            <td>
-              <a id="agendaAcademy${postid}" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-                <span class="agendaAcademyTitle" style="font-size: 14px; line-height: 1.3; color: #0E5C8C;font-weight: bold; display: block;">${title}</span>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a id="agendaAcademy${postid}" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-                <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);display: block;">${location} | ${durration}
-                </span>
-              </a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </td>
-      </tr>
-      </tbody>
-    </table>
-  `;
-
-  agendaAcademyContainer.appendChild(divCat);
-  agendaAcademyContainer.appendChild(div);
-
-   document.getElementById('agendaItem' + postid).ondragstart = function (event) {
-       event
-         .dataTransfer
-         .setData('text/html', event.target.innerHTML);
-     }
-
-}
-
-function productItemKlein(item, index) {
-
-  var table = document.getElementById("academyTable");
-  var json = xml2json(item);
-  var link = json["link"];
-  var campaign = json["postmeta:campaign"]; //cams 1.0 def
-  var utmcampaign = json["postmeta:utmcampagin"]; //cams 2.0 def
-  var location = json["postmeta:location"];
-  var durration = json["postmeta:durration"];
-  var dateMonth = json["postmeta:dateMonth"];
-  var dateDay = json["postmeta:dateDay"];
-  var postid = json["productid"];
-  var item_title = json["title"];
-  var item_description = json["description"];
-
-  var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
-  var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
-
-  // haal campagnenaam op
-  if (newsLetterUTMCampaignName !== undefined && newsLetterUTMCampaignName !== '') {
-    utmcampaign = newsLetterUTMCampaignName;
-  } else if (campaign !== '') {
-    utmcampaign = campaign;
-  } else if (utmcampaign !== '') {
-    utmcampaign = utmcampaign;
-  } else {  
-    utmcampaign = 'academy';
-  }
-
-  // haal nieuwsbrief intro
-  if (newsletterIntroTekst !== undefined && newsletterIntroTekst !== '') {
-    item_description = newsletterIntroTekst;
-  } else {
-    item_description = item_description;
-  }
-  
-  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
-
-  var item_img_klein = json["image_small"];
-  var item_img_groot = json["image_large"];
-
-  /* add category */
-  var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
-  var item_categorie = item_categorie + '<span class="postPubDate">'+dateDay+'-'+dateMonth+'</span>';
-  var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
-
-
-  const divCat = document.createElement('div');
-  divCat.className = 'categoryClass';
-  divCat.innerHTML = item_categorie;
-
-  const div = document.createElement('div');
-  div.className = 'itemProduct';
-  div.id = 'productItemKlein'+postid;
-  div.draggable = 'true';
-
-  div.innerHTML = `
-  <table class="table1a">
-  <tbody>
-    <tr>
-      <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" src="${item_img_groot}" /></a></td>
-    </tr>
-  </tbody>
-  </table>
-  <table>
-  <tbody>
-    <tr>
-      <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-        <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 150px;" src="${item_img_klein}" /></a></div>
-      </td>
-      <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
-        <table class="tableC">
-          <tbody>
-            <tr>
-              <td class="artikelKleinTDcA"><a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
-            </tr>
-            <tr>
-              <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-    </tr>
-  </tbody>
-  </table>
-  `;
-
-  productItemKleinContainerContent.appendChild(divCat);
-  productItemKleinContainerContent.appendChild(div);
-
-   document.getElementById('productItemKlein' + postid).ondragstart = function (event) {
-       event
-         .dataTransfer
-         .setData('text/html', event.target.innerHTML);
-     }
-
-}
-
-
-function productItemGroot(item, index) {
-
-  var table = document.getElementById("academyTable");
-  var json = xml2json(item);
-  var link = json["link"];
-  var postid = json["productid"];
-  var campaign = json["postmeta:campaign"]; //cams 1.0 def
-  var utmcampaign = json["postmeta:utmcampagin"]; //cams 2.0 def
-  var location = json["postmeta:location"];
-  var durration = json["postmeta:durration"];
-  var dateMonth = json["postmeta:dateMonth"];
-  var dateDay = json["postmeta:dateDay"];
-  var item_title = json["title"];
-  var item_description = json["description"];
-  
-  var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
-  var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
-
-  // haal campagnenaam op
-  if (newsLetterUTMCampaignName !== undefined && newsLetterUTMCampaignName !== '') {
-    utmcampaign = newsLetterUTMCampaignName;
-  } else if (campaign !== '') {
-    utmcampaign = campaign;
-  } else if (utmcampaign !== '') {
-    utmcampaign = utmcampaign;
-  } else {  
-    utmcampaign = 'academy';
-  }
-
-
-  // haal nieuwsbrief intro
-  if (newsletterIntroTekst !== undefined && newsletterIntroTekst !== '') {
-    item_description = newsletterIntroTekst;
-  } else {
-    item_description = item_description;
-  }
-
-
-  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
-  var item_img_groot = json["image_large"];
-  //var pubdate = item.querySelector("pubdate").innerHTML;
-  //var poststatus = item.querySelector("poststatus").innerHTML;
-  //var popularityscore = item.querySelector("popularityscore").innerHTML;
-
-
-  /* add category */
-  var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
-  //var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
-  var item_categorie = item_categorie + '<span class="postPubDate">'+dateDay+'-'+dateMonth+'</span>';
-  var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
-  //var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
-
-  //var item_categories = item.querySelector("categoriesName").innerHTML;
-  // var item_categories_array = removeDuplicates(item_categories.split("|"));
-  // item_categories_array.forEach(function(element) {
-  //   item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+element+'">' + element + '</span>';
-  // });
-
-  const divCat = document.createElement('div');
-  divCat.className = 'categoryClass';
-  divCat.innerHTML = item_categorie;
-
-  const div = document.createElement('div');
-  div.className = 'itemProduct';
-  div.id = 'productItemGroot'+postid;
-  div.draggable = 'true';
-
-  div.innerHTML = `
-  <table id="artikelGroot${postid}T" style="display: block;">
-  <tbody id="artikelGroot${postid}Tb">
-   <tr id="artikelGroot${postid}TrB">
-    <td id="artikelGroot${postid}TdB">
-       <a style="padding: 0px;" id="ct11_1" href="${item_link}">
-         <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
-       </a>
-     </td>
-   </tr>
-   <tr id="artikelGroot${postid}TrA">
-    <td id="artikelGroot${postid}TdA">
-     <a class="grootArtikelTitle" style="font-family: 'Roboto', Arial; color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
-       ${item_title}
-     </a>
-    </td>
-   </tr>
-   <tr id="artikelGroot${postid}TrC">
-    <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-       <a class="grootArtikelDescription" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;" id="ct11_2" href="${item_link}">
-         <span style="font-size: 16px; color: #333333;font-weight: 400;">
-           ${item_description}
-         </span>
-       </a>
-       <a class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;"  href="${item_link}"> Lees meer ▸</a>
-     </td>
-   </tr>
-  </tbody>
- </table>
-  `;
-
-  productItemGrootContainerContent.appendChild(divCat);
-  productItemGrootContainerContent.appendChild(div);
-
-   document.getElementById('productItemGroot' + postid).ondragstart = function (event) {
-       event
-         .dataTransfer
-         .setData('text/html', event.target.innerHTML);
-     }
-
-}
-
-function productItemHeadline(item, index) {
-
-  var table = document.getElementById("academyTable");
-  var json = xml2json(item);
-  var link = json["link"];
-  var postid = json["productid"];
-  var campaign = json["postmeta:campaign"]; //cams 1.0 def
-  var utmcampaign = json["postmeta:utmcampagin"]; //cams 2.0 def
-  var location = json["postmeta:location"];
-  var durration = json["postmeta:durration"];
-  var dateMonth = json["postmeta:dateMonth"];
-  var dateDay = json["postmeta:dateDay"];
-  var item_title = json["title"];
-  var item_description = json["description"];
-  var item_img_groot = json["image_large"];
-  
-  var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
-  var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
-
-  // haal campagnenaam op
-  if (newsLetterUTMCampaignName != '') {
-    utmcampaign = newsLetterUTMCampaignName;
-  } else if (utmcampaign != '') {
-    utmcampaign = utmcampaign;
-  } else if (campaign != '') {
-    utmcampaign = campaign;
-  } else {  
-    utmcampaign = 'academy';
-  }
-
-  // haal nieuwsbrief intro
-  if (newsletterIntroTekst != '') {
-    item_description = newsletterIntroTekst;
-  } else {
-    item_description = item_description;
-  }
-
-
-  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cadv%7c`;
-
-  //var pubdate = item.querySelector("pubdate").innerHTML;
-  //var poststatus = item.querySelector("poststatus").innerHTML;
-  //var popularityscore = item.querySelector("popularityscore").innerHTML;
-
-  /* add category */
-  var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
-  //var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
-  var item_categorie = item_categorie + '<span class="postPubDate">'+dateDay+'-'+dateMonth+'</span>';
-  var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
-  //var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
-
-  //var item_categories = item.querySelector("categoriesName").innerHTML;
-  // var item_categories_array = removeDuplicates(item_categories.split("|"));
-  // item_categories_array.forEach(function(element) {
-  //   item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+element+'">' + element + '</span>';
-  // });
-
-  const divCat = document.createElement('div');
-  divCat.className = 'categoryClass';
-  divCat.innerHTML = item_categorie;
-
-  const div = document.createElement('div');
-  div.className = 'itemProduct';
-  div.id = 'productItemHeadline'+postid;
-  div.draggable = 'true';
-
-  div.innerHTML = `
-  <table id="headlineItem${postid}" width="100%">
-  <tbody>
-  <tr>
-  <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
-  <td>
-    <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title}</a>
-  </td>
-  <td style="width: 30px;">&nbsp;</td>
-  </tr>
-  </tbody>
-  </table>
-  `;
-
-  productItemHeadlineContainerContent.appendChild(divCat);
-  productItemHeadlineContainerContent.appendChild(div);
-
-   document.getElementById('productItemHeadline' + postid).ondragstart = function (event) {
        event
          .dataTransfer
          .setData('text/html', event.target.innerHTML);
@@ -1178,6 +813,10 @@ function blogItems(item, index) {
   div.draggable = 'true';
 
 
+  artikelenGrootContainerContent.appendChild(divCat);
+  artikelenGrootContainerContent.appendChild(div);
+
+
     // Retrieve the existing select element
     var selectElement = document.getElementById('selectOptionArtikelGroot' + postid);
 
@@ -1189,11 +828,20 @@ function blogItems(item, index) {
       // Update the href attribute of the anchor tags with the new item_link
 
 
-      let imgGrootArtikelLink = document.getElementById('imgGrootArtikel' + postid + 'Link');
-      if (imgGrootArtikelLink) {
-          imgGrootArtikelLink.href = item_link;
+      // Update imagelink
+      let imgPost = document.getElementById('imgPost' + postid + 'Link');
+      if (imgPost) {
+        imgPost.href = item_link;
       } else {
-          console.error("Element with ID 'imgGrootArtikel" + postid + "Link' not found.");
+          console.error("Element with ID 'imgPost" + postid + "Link' not found.");
+      }
+
+      // Update metaPost
+      let metaPost = document.getElementById('metaPost' + postid + 'Link');
+      if (metaPost) {
+        metaPost.href = item_link;
+      } else {
+          console.error("Element with ID 'metaPost" + postid + "Link' not found.");
       }
 
       // Update grootTitleLink
@@ -1330,7 +978,7 @@ function blogItems(item, index) {
         <tbody id="artikelGroot${postid}Tb">
           <tr id="artikelGroot${postid}TrB">
           <td id="artikelGroot${postid}TdB">
-              <a style="padding: 0px;" id="imgGrootArtikel${postid}Link" href="${item_link}">
+              <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
                 <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
               </a>
             </td>
@@ -1428,7 +1076,6 @@ function blogItems(item, index) {
 
     });
 
-   artikelenGrootContainerContent.appendChild(div);
 
    document.getElementById('grootArtikel' + postid).ondragstart = function (event) {
        event
@@ -1589,12 +1236,20 @@ function functionVacatureItems(item, index) {
         item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-vacature-${dagWeek}&utm_medium=email&utm_campaign=${newsletter_utm}&utm_content=%7c${sendDate}%7c${option}%7c`;
         // Update the href attribute of the anchor tags with the new item_link
 
-
-        let imgGrootArtikelLink = document.getElementById('imgGrootArtikel' + postid + 'Link');
-        if (imgGrootArtikelLink) {
-            imgGrootArtikelLink.href = item_link;
+        // Update imagelink
+        let imgPost = document.getElementById('imgPost' + postid + 'Link');
+        if (imgPost) {
+          imgPost.href = item_link;
         } else {
-            console.error("Element with ID 'imgGrootArtikel" + postid + "Link' not found.");
+            console.error("Element with ID 'imgPost" + postid + "Link' not found.");
+        }
+
+        // Update metaPost
+        let metaPost = document.getElementById('metaPost' + postid + 'Link');
+        if (metaPost) {
+          metaPost.href = item_link;
+        } else {
+            console.error("Element with ID 'metaPost" + postid + "Link' not found.");
         }
 
         // Update grootTitleLink
@@ -1731,8 +1386,8 @@ if (selectElementWeergave) {
 
                               <tr>
                                 <td id="vacatureTD${postid}bA" class="vacatureTDbA">
-                                    <a id="metaVacature${postid}"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaVacature">
-                                    <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
+                                    <a id="metaPost${postid}"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaPost">
+                                    <span id="vacatureMeta${postid}a" class="metaPostCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
                                     </a>
                                 </td>
                             </tr>
@@ -1777,15 +1432,15 @@ if (selectElementWeergave) {
       <tbody id="artikelGroot${postid}Tb">
       <tr id="artikelGroot${postid}TrB">
         <td id="artikelGroot${postid}TdB">
-          <a style="padding: 0px;" id="ct11_1" href="${item_link}">
+          <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
             <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${enclosure_img}" >
           </a>
         </td>
       </tr>
       <tr>
             <td id="vacatureTD${postid}bA" class="vacatureTDbA">
-                <a id="metaVacature${postid}"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaVacature">
-                <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
+                <a id="metaPost${postid}"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaPost">
+                <span id="vacatureMeta${postid}a" class="metaPostCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
                 </a>
             </td>
         </tr>
@@ -2419,14 +2074,14 @@ if (attachmentId) {
           <tbody>
           <tr>
             <td>
-              <a id="agendaAcademy${postid}" class="agendaItem" href="${marketing_link}" style="display: inline; margin: 0px; text-decoration: none;">
+              <a id="agendaAcademy${postid}a" class="agendaItem" href="${marketing_link}" style="display: inline; margin: 0px; text-decoration: none;">
                 <span class="agendaAcademyTitle" style="font-size: 14px; line-height: 1.3; color: #0E5C8C;font-weight: bold; display: block;">${promotion_title}</span>
               </a>
             </td>
           </tr>
           <tr>
             <td>
-              <a id="agendaAcademy${postid}" class="agendaItem" href="${marketing_link}" style="display: inline; margin: 0px; text-decoration: none;">
+              <a id="agendaAcademy${postid}a" class="agendaItem" href="${marketing_link}" style="display: inline; margin: 0px; text-decoration: none;">
                 <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);display: block;">${promotion_cta_text}
                 </span>
               </a>
@@ -2828,12 +2483,20 @@ function functiondownloadKleinItems(item, index) {
         item_link = item.querySelector("link").innerHTML + `&utm_source=${blogAlert}-kennisbank-${dagWeek}&utm_medium=email&utm_campaign=${download_newsletter_utm}&utm_content=%7c${sendDate}%7c${option}%7c`;
         // Update the href attribute of the anchor tags with the new item_link
 
-
-        let imgGrootArtikelLink = document.getElementById('imgGrootArtikel' + postid + 'Link');
-        if (imgGrootArtikelLink) {
-            imgGrootArtikelLink.href = item_link;
+        // Update imagelink
+        let imgPost = document.getElementById('imgPost' + postid + 'Link');
+        if (imgPost) {
+          imgPost.href = item_link;
         } else {
-            console.error("Element with ID 'imgGrootArtikel" + postid + "Link' not found.");
+            console.error("Element with ID 'imgPost" + postid + "Link' not found.");
+        }
+
+        // Update metaPost
+        let metaPost = document.getElementById('metaPost' + postid + 'Link');
+        if (metaPost) {
+          metaPost.href = item_link;
+        } else {
+            console.error("Element with ID 'metaPost" + postid + "Link' not found.");
         }
 
         // Update grootTitleLink
@@ -3003,7 +2666,7 @@ if (selectElementWeergave) {
       <tbody id="artikelGroot${postid}Tb">
       <tr id="artikelGroot${postid}TrB">
         <td id="artikelGroot${postid}TdB">
-          <a style="padding: 0px;" id="ct11_1" href="${item_link}">
+          <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
             <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${enclosure_img}" >
           </a>
         </td>

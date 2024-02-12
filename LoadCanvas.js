@@ -16,37 +16,15 @@ var inOutSelect =document.createElement( 'div' );
 
 var headlinesContainer = document.createElement( 'div' );
 
-// var artikelenKleinContainer = document.createElement( 'div' );
-// artikelenKleinContainer.id = 'artikelenKleinContainer';
-// var artikelenKleinContainerContent = document.createElement( 'div' );
-// artikelenKleinContainerContent.id = 'artikelenKleinContainerContent';
-
 var artikelenGrootContainer = document.createElement( 'div' );
 artikelenGrootContainer.id = 'artikelenGrootContainer';
 var artikelenGrootContainerContent = document.createElement( 'div' );
 artikelenGrootContainerContent.id = 'artikelenGrootContainerContent';
 
-// var artikelHeadlineContainer = document.createElement( 'div' );
-// artikelHeadlineContainer.id = 'artikelHeadlineContainer';
-// var artikelHeadlineContainerContent = document.createElement( 'div' );
-// artikelHeadlineContainerContent.id = 'artikelHeadlineContainerContent';
-
-var agendaAcademyContainer = document.createElement( 'div' );
-
 var productItemKleinContainer = document.createElement( 'div' );
 productItemKleinContainer.id = 'productItemKleinContainer';
 var productItemKleinContainerContent = document.createElement( 'div' );
 productItemKleinContainerContent.id = 'productItemKleinContainerContent';
-
-// var productItemGrootContainer = document.createElement( 'div' );
-// productItemGrootContainer.id = 'productItemGrootContainer';
-// var productItemGrootContainerContent = document.createElement( 'div' );
-// productItemGrootContainerContent.id = 'productItemGrootContainerContent';
-
-// var productItemHeadlineContainer = document.createElement( 'div' );
-// productItemHeadlineContainer.id = 'productItemHeadlineContainer';
-// var productItemHeadlineContainerContent = document.createElement( 'div' );
-// productItemHeadlineContainerContent.id = 'productItemHeadlineContainerContent';
 
 var downloadItemKleinContainer = document.createElement( 'div' );
 downloadItemKleinContainer.id = 'downloadItemKleinContainer';

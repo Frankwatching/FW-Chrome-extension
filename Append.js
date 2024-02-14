@@ -101,6 +101,7 @@ const options = [
   { value: 'downloadItemKleinContainer', text: 'Kennisbank' },
   { value: 'vacatureContainer', text: 'Jobs' },
   { value: 'marketingContainer', text: 'Cams 2.0' },
+  { value: 'channelContainer', text: 'BC' },
     // Add other options as needed
 ];
 
@@ -134,7 +135,8 @@ function handleSelectChange(containerId) {
     const containerIdsArray = [
      // "channelContainer", 
       "artikelenGrootContainer", 
-      "productItemKleinContainer"
+      "productItemKleinContainer",
+      "channelContainer",
     //  "downloadItemKleinContainer", 
     //  "vacatureContainer", 
     //  "marketingContainer", 

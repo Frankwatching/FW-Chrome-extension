@@ -2680,7 +2680,7 @@ async function functionChannelItems(item) {
     const featuredMediaId = item.featured_media; 
     
     if (featuredMediaId) {
-    const featuredMediaUrl = `https://cms.frankwatching.com/wp-json/wp/v2/media/${featuredMediaId}`;
+    const featuredMediaUrl = `https://www.frankwatching.com/wp-json/wp/v2/media/${featuredMediaId}`;
     fetch(featuredMediaUrl)
     .then(res => res.json())
     .then(mediaData => {

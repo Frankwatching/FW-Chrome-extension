@@ -1214,7 +1214,7 @@ async function loadVacatures() {
     if (Array.isArray(jsonData)) {
       jsonData.forEach(item => functionJobItems(item)); // Process each item in the array
     } else {
-      functionChannelItems(jsonData); // Process the single item
+      functionJobItems(jsonData); // Process the single item
     }
   } catch (error) {
     console.error("Error loading jobs:", error);
@@ -3111,7 +3111,7 @@ async function loadKennisbank() {
     if (Array.isArray(jsonData)) {
       jsonData.forEach(item => functiondownloadItems(item)); // Process each item in the array
     } else {
-      functionChannelItems(jsonData); // Process the single item
+      functiondownloadItems(jsonData); // Process the single item
     }
   } catch (error) {
     console.error("Error loading kennisbank:", error);

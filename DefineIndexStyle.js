@@ -87,6 +87,11 @@ contentIndex.style.maxWidth = '18%';
 contentIndex.style.boxShadow = '5px 7px 7px #ccc';
 contentIndex.style.display = 'none';
 
+agendaAcademyContainer.style.position = "absolute";
+agendaAcademyContainer.id = "agendaAcademyContainer";
+agendaAcademyContainer.draggable = "false";
+agendaAcademyContainer.style.display = "none";
+
 agendaOverlay.style.position = "absolute";
 agendaOverlay.style.height = "100%"
 agendaOverlay.style.width = "100%"

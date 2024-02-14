@@ -26,6 +26,8 @@ productItemKleinContainer.id = 'productItemKleinContainer';
 var productItemKleinContainerContent = document.createElement( 'div' );
 productItemKleinContainerContent.id = 'productItemKleinContainerContent';
 
+var agendaAcademyContainer = document.createElement( 'div' );
+
 var downloadItemKleinContainer = document.createElement( 'div' );
 downloadItemKleinContainer.id = 'downloadItemKleinContainer';
 var downloadItemKleinContainerContent = document.createElement( 'div' );

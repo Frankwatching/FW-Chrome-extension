@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.2";
+let versionid = "3.2.1";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -130,11 +130,6 @@ if ( searchID ) {
   kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download/?include='+ searchID; 
   //console.log('kennisbank RSS:' + kennisbankrss);
 }
-
-//if ( searchTitle ) {
-  //newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?posttitle='+ searchTitle; // not working because s= parameters results in redirect to searchresultspage
-//}
-
 
 //console.log('news RSS:' + newsrss);
 //console.log('agenda RSS:' + agendarss);
@@ -277,10 +272,10 @@ async function loadAgenda() {
 
     const items = data.querySelectorAll("item");
 
-    // const agendaAcademyContainer = document.getElementById("agendaAcademyContainer");
-    // if (agendaAcademyContainer) {
-    //   agendaAcademyContainer.innerHTML = "";
-    // }
+     const agendaAcademyContainer = document.getElementById("agendaAcademyContainer");
+     if (agendaAcademyContainer) {
+       agendaAcademyContainer.innerHTML = "";
+     }
 
     const productItemKleinContainerContent = document.getElementById("productItemKleinContainerContent");
     if (productItemKleinContainerContent) {
@@ -292,6 +287,7 @@ async function loadAgenda() {
     // Process the first 10 items
     const itemsToProcess = Math.min(items.length, 10);
     for (let i = 0; i < itemsToProcess; i++) {
+      agendaItems(items[i]);
       productItem(items[i]);
     
     }
@@ -303,6 +299,116 @@ async function loadAgenda() {
 loadAgenda();
 
 
+function agendaItems(item, index) {
+
+  var table = document.getElementById("academyTable");
+  var json = xml2json(item);
+  var title = json["title"];
+  var link = json["link"];
+  var postid = json["productid"];
+  var campaign = json["postmeta:campaign"]; //cams 1.0 def
+  var utmcampaign = json["postmeta:utmcampagin"]; //cams 2.0 def
+  var location = json["postmeta:location"];
+  var durration = json["postmeta:durration"];
+  var dateMonth = json["postmeta:dateMonth"];
+  var dateDay = json["postmeta:dateDay"];
+
+
+  var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
+  var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
+
+  // haal campagnenaam op
+  if (newsLetterUTMCampaignName !== undefined && newsLetterUTMCampaignName !== '') {
+    utmcampaign = newsLetterUTMCampaignName;
+  } else if (campaign !== '') {
+    utmcampaign = campaign;
+  } else if (utmcampaign !== '') {
+    utmcampaign = utmcampaign;
+  } else {  
+    utmcampaign = 'academy';
+  }
+
+  var item_link = link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7cagenda%7c`;
+
+  //var pubdate = item.querySelector("pubdate").innerHTML;
+  //var poststatus = item.querySelector("poststatus").innerHTML;
+  //var popularityscore = item.querySelector("popularityscore").innerHTML;
+
+  /* add category */
+  var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
+  //var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
+  var item_categorie = item_categorie + '<span class="postPubDate">'+dateDay+'-'+dateMonth+'</span>';
+  var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
+  //var item_categorie = item_categorie + '<span class="postScore">&#9733; '+popularityscore+'</span><span class="w100"></span>';
+
+  //var item_categories = item.querySelector("categoriesName").innerHTML;
+  // var item_categories_array = removeDuplicates(item_categories.split("|"));
+  // item_categories_array.forEach(function(element) {
+  //   item_categorie = item_categorie + '<span class="categoryClassElement categoryClass'+element+'">' + element + '</span>';
+  // });
+
+  const divCat = document.createElement('div');
+  divCat.className = 'categoryClass';
+  divCat.innerHTML = item_categorie;
+
+  const div = document.createElement('div');
+  div.className = 'itemAgenda';
+  div.id = 'agendaItem'+postid+dateDay+dateMonth;
+  div.draggable = 'true';
+
+  div.innerHTML = `
+  <table id="contentAcademyAgenda${postid}" style="display: inline-block; width: 100%; background: #fff; border-collapse: collapse; width: 100%;padding: 8px 10px;" align="left">
+      <tbody>
+      <tr>
+        <td style="width: 42px;">
+          <table width="40px">
+            <tbody>
+              <tr>
+                <td align="center" style="background: #C91C18; color: white; font-size: small; text-align: center;">${dateMonth}</td>
+              </tr>
+              <tr>
+              <td align="center" style="background: #f2f2f2; color: black; font-weight: bold;text-align: center;">${dateDay}</td>
+              </tr>
+            </tbody>
+          </table>      
+        </td>
+      <td style="">
+
+        <table id="contentAcademy" style="margin-left: 10px !important;">
+          <tbody>
+          <tr>
+            <td>
+              <a id="agendaAcademy${postid}" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
+                <span class="agendaAcademyTitle" style="font-size: 14px; line-height: 1.3; color: #0E5C8C;font-weight: bold; display: block;">${title}</span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a id="agendaAcademy${postid}" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
+                <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);display: block;">${location} | ${durration}
+                </span>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+      </tr>
+      </tbody>
+    </table>
+  `;
+
+  agendaAcademyContainer.appendChild(divCat);
+  agendaAcademyContainer.appendChild(div);
+
+   document.getElementById('agendaItem' + postid + dateDay + dateMonth).ondragstart = function (event) {
+       event
+         .dataTransfer
+         .setData('text/html', event.target.innerHTML);
+     }
+
+}
 
 function productItem(item, index) {
   var weergave = ''; // Declare weergave variable at the beginning
@@ -352,7 +458,7 @@ function productItem(item, index) {
   item_categorie += '</div>';
   item_categorie += '<div style="background:white;">';
   //toon weergave pulldown
-  item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergaveProduct'+postid+'"><option value="">1.Kies weergave</option><option value="agenda">Agenda</option><option value="klein">Afb. links</option><option value="groot">Afb. boven</option><option value="headline">Headline</option></select></span>';
+  item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergaveProduct'+postid+'"><option value="">1.Kies weergave</option><option value="klein">Afb. links</option><option value="groot">Afb. boven</option><option value="headline">Headline</option></select></span>';
 
   item_categorie += '<span class="extraOptions"><select id="selectOptionProduct'+postid+'"><option value="adv">2.Kies utm content</option><optgroup label="Agenda"><option value="agenda">agenda</option></optgroup><optgroup label="Academy"><option value="adv">adv</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option></optgroup><optgroup label="Headline"><option value="headlineadv">headlineadv</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlineadvthema">headlineadvthema</option><option value="headlineonder">headlineonder</option></optgroup></select></span>';
   item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabelProduct'+postid+'"><option value="">3.Kies label</option><option value="themavdweek">Thema vd week</option><option value="adv">Adv</option></select></span>';
@@ -579,54 +685,54 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
           </table>
       `;
       
-      } else if (optionlabel === 'agenda') {
-        label_adv = '';
-        label_themavdweek = '';
-        typeweergave = 'agenda';
-        weergave = `
-        <table id="contentAcademyAgenda${postid}" style="display: inline-block; width: 100%; background: #fff; border-collapse: collapse; width: 100%;padding: 8px 10px;" align="left">
-      <tbody>
-      <tr>
-        <td style="width: 42px;">
-          <table width="40px">
-            <tbody>
-              <tr>
-                <td align="center" style="background: #C91C18; color: white; font-size: small; text-align: center;">${dateMonth}</td>
-              </tr>
-              <tr>
-              <td align="center" style="background: #f2f2f2; color: black; font-weight: bold;text-align: center;">${dateDay}</td>
-              </tr>
-            </tbody>
-          </table>      
-        </td>
-      <td style="">
+      // } else if (optionlabel === 'agenda') {
+      //   label_adv = '';
+      //   label_themavdweek = '';
+      //   typeweergave = 'agenda';
+      //   weergave = `
+      //   <table id="contentAcademyAgenda${postid}" style="display: inline-block; width: 100%; background: #fff; border-collapse: collapse; width: 100%;padding: 8px 10px;" align="left">
+      //       <tbody>
+      //       <tr>
+      //         <td style="width: 42px;">
+      //           <table width="40px">
+      //             <tbody>
+      //               <tr>
+      //                 <td align="center" style="background: #C91C18; color: white; font-size: small; text-align: center;">${dateMonth}</td>
+      //               </tr>
+      //               <tr>
+      //               <td align="center" style="background: #f2f2f2; color: black; font-weight: bold;text-align: center;">${dateDay}</td>
+      //               </tr>
+      //             </tbody>
+      //           </table>      
+      //         </td>
+      //       <td style="">
 
-        <table id="contentAcademy" style="margin-left: 10px !important;">
-          <tbody>
-          <tr>
-            <td>
-              <a id="agendaAcademy${postid}a" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-                <span class="agendaAcademyTitle" style="font-size: 14px; line-height: 1.3; color: #0E5C8C;font-weight: bold; display: block;">${item_title}</span>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a id="agendaAcademy${postid}a" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-                <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);display: block;">${location} | ${durration}
-                
-                <span id="container_label_adv${postid}">${label_adv}</span>
-                <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></span>
-              </a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </td>
-      </tr>
-      </tbody>
-    </table>
-        `;
+      //         <table id="contentAcademy" style="margin-left: 10px !important;">
+      //           <tbody>
+      //           <tr>
+      //             <td>
+      //               <a id="agendaAcademy${postid}a" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
+      //                 <span class="agendaAcademyTitle" style="font-size: 14px; line-height: 1.3; color: #0E5C8C;font-weight: bold; display: block;">${item_title}</span>
+      //               </a>
+      //             </td>
+      //           </tr>
+      //           <tr>
+      //             <td>
+      //               <a id="agendaAcademy${postid}a" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
+      //                 <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);display: block;">${location} | ${durration}
+                      
+      //                 <span id="container_label_adv${postid}">${label_adv}</span>
+      //                 <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></span>
+      //               </a>
+      //             </td>
+      //           </tr>
+      //           </tbody>
+      //         </table>
+      //       </td>
+      //       </tr>
+      //       </tbody>
+      //     </table>
+      //   `;
       
       } else if (optionlabel === '' || optionlabel === null) {
         

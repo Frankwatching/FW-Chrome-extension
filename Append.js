@@ -1,6 +1,6 @@
 //agenda
-//contentIndex.appendChild( agendaOverlay );
-//contentIndex.appendChild( agendaAcademyContainer );
+contentIndex.appendChild( agendaOverlay );
+contentIndex.appendChild( agendaAcademyContainer );
 
 //headlines
 contentIndex.appendChild( headlinesOverlay );
@@ -98,6 +98,7 @@ const options = [
   { value: 'headlinesContainer', text: 'Blog Headlines' },
   { value: 'artikelenGrootContainer', text: 'Blog' },
   { value: 'productItemKleinContainer', text: 'Academy' },
+  { value: 'agendaAcademyContainer', text: 'Academy Agenda' },
   { value: 'downloadItemKleinContainer', text: 'Kennisbank' },
   { value: 'vacatureContainer', text: 'Jobs' },
   { value: 'marketingContainer', text: 'Cams 2.0' },
@@ -124,6 +125,7 @@ function handleSelectChange(containerId) {
     artikelenGrootContainer.style.display = "none";
     productItemKleinContainer.style.display = "none";
     agendaOverlay.style.display = "none";
+    agendaAcademyContainer.style.display = "none";
     downloadItemKleinContainer.style.display = "none";
     vacatureContainer.style.display = "none";
     marketingContainer.style.display = "none";
@@ -136,6 +138,7 @@ function handleSelectChange(containerId) {
      // "channelContainer", 
       "artikelenGrootContainer", 
       "productItemKleinContainer",
+      "agendaAcademyContainer", 
       "channelContainer",
       "downloadItemKleinContainer",
       "vacatureContainer", 

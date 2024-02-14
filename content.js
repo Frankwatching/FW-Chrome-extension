@@ -1085,7 +1085,7 @@ function blogItems(item, index) {
           <tr id="artikelGroot${postid}TrB">
           <td id="artikelGroot${postid}TdB">
               <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; " src="${item_img_groot}" >
               </a>
             </td>
           </tr>
@@ -1512,7 +1512,7 @@ async function functionJobItems(item) {
               <tr id="artikelGroot${postid}TrB">
                 <td id="artikelGroot${postid}TdB">
                   <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                    <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
+                    <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px;" src="${item_img_groot}" >
                   </a>
                 </td>
               </tr>

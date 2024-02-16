@@ -2083,31 +2083,582 @@ if (selectElementWeergave) {
 "use strict";
 async function loadMarketing() {
   try {
-    const response = await fetch(marketingrss); // Fetch the RSS feed
+    const response = await fetch(marketingrestapi); // Fetch data from WordPress REST API
     if (!response.ok) {
-      throw new Error(`Failed to fetch the RSS feed. Status: ${response.status}`);
+      throw new Error(`Failed to fetch data from WordPress API. Status: ${response.status}`);
     }
 
-    const xmlText = await response.text();
-    const parser = new DOMParser();
-    const data = parser.parseFromString(xmlText, "text/xml");
+    const jsonData = await response.json(); // Parse response JSON
 
-    const items = data.querySelectorAll("item");
-
-    const marketingContainerContent = document.getElementById("marketingContainerContent");
-    if (marketingContainerContent) {
-      marketingContainerContent.innerHTML = "";
+    const ContainerContent = document.getElementById("marketingContainerContent");
+    if (ContainerContent) {
+      ContainerContent.innerHTML = ""; // Clear container content
     }
 
-    await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
-
-    items.forEach(item => functionMarketingItems(item));
+    if (Array.isArray(jsonData)) {
+      jsonData.forEach(item => functionCamsItems(item)); // Process each item in the array
+    } else {
+      functionCamsItems(jsonData); // Process the single item
+    }
   } catch (error) {
     console.error("Error loading marketing:", error);
   }
+
 }
 
 loadMarketing();
+
+
+async function functionCamsItems(item) {
+
+  var weergave = ''; // Declare weergave variable at the beginning
+  var postid = item.id;
+  var item_title = item.title.rendered;
+
+     //invoer
+     var selectName = 'Marketing';
+     var labelNameLowercase = 'marketing';
+     var option ='cams';
+
+
+  //const pubdate = item.querySelector("pubDate").innerHTML.split("+")[0];
+  const pubdate = item.date
+  //const pubdateArray = pubdate.split("+");
+
+  // Titel promotion post type
+  // Titel promotie
+  
+  let promotion_title = item.acf.promotion_title;
+  if (!promotion_title) {
+    promotion_title = 'Vul titel in in cams';
+  }
+  // Campagnebalk titel  
+  const promotion_announcement = item.acf.promotion_announcement;
+  // Promo titel  
+  const promotion_url = item.acf.promotion_url;
+  // Promotion_textarea  
+  const promotion_intro = item.acf.promotion_intro;
+  // Promo image id  
+  const promotion_image = item.acf.promotion_image;
+  // Promo CTA tekst 
+  let promotion_cta_text = item.acf.promotion_cta_text;
+
+  if (!promotion_cta_text) {
+    promotion_cta_text = 'Missende CTA';
+  }
+  // Promo CTA tekst 
+  const promotion_startdate = item.acf.promotion_startdate;
+
+  //const promotion_startdateYear = promotion_startdate.substring(0, 4); // Extract year (first 4 characters)
+  const promotion_startdateMonth = item.acf.promotion_startdate.substring(4, 6); // Extract month (characters at index 4 and 5)
+  const promotion_startdateDay = item.acf.promotion_startdate.substring(6, 8); // Extract day (characters at index 6 and 7)
+ 
+   function getMonthAbbreviation(promotion_startdateMonth) {
+         const months = {
+             '01': 'JAN',
+             '02': 'FEB',
+             '03': 'MAR',
+             '04': 'APR',
+             '05': 'MAY',
+             '06': 'JUN',
+             '07': 'JUL',
+             '08': 'AUG',
+             '09': 'SEP',
+             '10': 'OCT',
+             '11': 'NOV',
+             '12': 'DEC'
+         };
+
+         return months[promotion_startdateMonth] || '';
+     }
+
+  // Assuming startdateMonth contains the numeric month value ('02' for February)
+  const promotion_startdate_monthAbbreviation = getMonthAbbreviation(promotion_startdateMonth);
+
+  // Promo koppeling_post: serialized string
+  const promotion_koppeling_post = item.acf.promotion_koppeling_post;
+
+  //console.log('Dit is de output:'+promotion_koppeling_post);
+
+  // Replace 'your-wordpress-url' with the URL of your WordPress site
+  const wordpressUrl = 'https://wp.frankwatching.com';
+  // Replace '123' with the attachment ID you want to get the URL for
+  const attachmentId = item.acf.promotion_image;
+
+  let imageUrl = ''; // Declare imageUrl in a broader scope and initialize it
+
+  const promotion_view = item.acfpromotion_view;
+  const promotion_description = item.acf.promotion_description;
+  const promotion_type = item.acf.promotion_type;
+  const promotion_utmcampaign = item.acf.promotion_utmcampaign;
+  const utmcampaign = promotion_utmcampaign;
+   
+  const utm_parameters = `?utm_source=${blogAlert}-${labelNameLowercase}-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${utmcampaign}&amp;utm_content=%7c${sendDate}%7c${option}%7c`;
+
+  var item_link = promotion_url+utm_parameters;
+
+  var maxCharacters = 80; // Define the maximum number of characters
+
+   var item_description = item.excerpt?.rendered ? item.excerpt.rendered.substring(0, maxCharacters) + '...' : '';
+
+   item_link = item.link + `?utm_source=${blogAlert}-${labelNameLowercase}-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7c${option}%7c`;
+
+    /* add category */
+    var item_categorie = '<div style="background: white;border-top:2px solid green;"><span class="categoryClassDag">'+dagWeek[0]+'</span>';
+    var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
+    var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
+    
+    var article_categories = item.acf.promotion_type;
+
+    var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+article_categories+'</span>';
+    item_categorie += '</div>';
+    item_categorie += '<div style="background:white;">';
+    //toon weergave pulldown
+    item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergave'+selectName+postid+'"><option value="">1.Kies weergave</option><option value="agenda">Agenda</option><option value="klein">Afb. links</option><option value="groot">Afb. boven</option><option value="grootcta">Afb. boven CTA</option><option value="campagnebalk">Campagnebalk</option><option value="headline">Headline</option></select></span>';
+
+    item_categorie += '<span class="extraOptions"><select id="selectOption'+selectName+postid+'"><option value="artikel">2.Kies utm content</option><optgroup label="Kennisbank"><option value="adv">adv</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option></optgroup><optgroup label="Headline"><option value="headlineadv">headlineadv</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlineadvthema">headlineadvthema</option><option value="headlineonder">headlineonder</option></optgroup></select></span>';
+    item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabel'+selectName+postid+'"><option value="">3.Kies label</option><option value="themavdweek">Thema vd week</option><option value="adv">Adv</option></select></span>';
+    item_categorie += '</div>';
+    item_categorie += '<div style="background: white;"><span class="postTitle">'+item_title+'</span><span class="w100"></span></div>';
+    
+    let item_img_groot = ''; // Initialize item_img_groot here
+    const featuredMediaId = item.featured_media; 
+    
+    if (featuredMediaId) {
+    const featuredMediaUrl = `https://wp.frankwatching.com/wp-json/wp/v2/media/${featuredMediaId}`;
+    fetch(featuredMediaUrl)
+    .then(res => res.json())
+    .then(mediaData => {
+      item_img_groot = mediaData.source_url;
+
+          
+      })
+      .catch(error => console.error('Error fetching featured image:', error));
+    }
+
+
+  // Create HTML elements or perform operations with the title and excerpt data
+  const Container = document.getElementById("marketingContainerContent");
+
+  const divCat = document.createElement('div');
+  divCat.className = 'categoryClass';
+  divCat.innerHTML = item_categorie;
+  const div = document.createElement('div');
+  div.className = 'dragrow ' + labelNameLowercase ;
+  div.id = labelNameLowercase+postid;
+  div.draggable = 'true';
+
+  marketingContainerContent.appendChild(divCat);
+  marketingContainerContent.appendChild(div);
+  
+  if (Container) {
+
+
+    // Retrieve the existing select element
+    var selectElement = document.getElementById('selectOption'+selectName + postid);
+
+    // Add event listener to update the option variable
+    selectElement.addEventListener('change', function () {
+      option = this.value; // Update the option variable with the selected value
+      // Update item_link with the new option
+      item_link = item.link + `&utm_source=${blogAlert}-${labelNameLowercase}-${dagWeek}&utm_medium=email&utm_campaign=${utmcampaign}&utm_content=%7c${sendDate}%7c${option}%7c`;
+      // Update the href attribute of the anchor tags with the new item_link
+
+
+      // Update imagelink
+      let imgPost = document.getElementById('imgPost' + postid + 'Link');
+      if (imgPost) {
+        imgPost.href = item_link;
+      } else {
+          console.error("Element with ID 'imgPost" + postid + "Link' not found.");
+      }
+
+      // Update metaPost
+      let metaPost = document.getElementById('metaPost' + postid + 'Link');
+      if (metaPost) {
+        metaPost.href = item_link;
+      } else {
+          console.error("Element with ID 'metaPost" + postid + "Link' not found.");
+      }
+
+      // Update grootTitleLink
+      let grootTitleLink = document.getElementById('grootTitleLink' + postid);
+      if (grootTitleLink) {
+          grootTitleLink.href = item_link;
+      }
+
+      // Update grootArtikelDescription
+      let grootArtikelDescription = document.getElementById('grootArtikelDescription' + postid);
+      if (grootArtikelDescription) {
+          grootArtikelDescription.href = item_link;
+      }
+
+      // Update GrootArtikelCTA
+      let GrootArtikelCTA = document.getElementById('GrootArtikelCTA' + postid);
+      if (GrootArtikelCTA) {
+          GrootArtikelCTA.href = item_link;
+      }
+
+      // Update imgKleinArtikelLink
+      let imgKleinArtikelLink = document.getElementById('imgKleinArtikel' + postid + 'Link');
+      if (imgKleinArtikelLink) {
+          imgKleinArtikelLink.href = item_link;
+      }
+
+      // Update imgKleinLink
+      let imgKleinLink = document.getElementById('imgKlein' + postid + 'Link');
+      if (imgKleinLink) {
+          imgKleinLink.href = item_link;
+      }
+
+      // Update kleinTitleLink
+      let kleinTitleLink = document.getElementById('kleinTitleLink' + postid);
+      if (kleinTitleLink) {
+          kleinTitleLink.href = item_link;
+      }
+
+      // Update DescriptionKleinArtikel
+      let DescriptionKleinArtikel = document.getElementById('DescriptionKleinArtikel' + postid);
+      if (DescriptionKleinArtikel) {
+          DescriptionKleinArtikel.href = item_link;
+      }
+
+      // Update KleinArtikelCTA
+      let KleinArtikelCTA = document.getElementById('KleinArtikelCTA' + postid);
+      if (KleinArtikelCTA) {
+          KleinArtikelCTA.href = item_link;
+      }
+
+      // Update headlineItem
+      let headlineItem = document.getElementById('headlineItem' + postid + 'a');
+      if (headlineItem) {
+          headlineItem.href = item_link;
+      }
+
+      // Update campagnebalkItem
+      let campagnebalkItem = document.getElementById('campagnebalk' + postid + 'a');
+      if (campagnebalkItem) {
+        campagnebalkItem.href = item_link;
+      }
+
+       // Update agendaAcademyItem
+       let agendaAcademyItem = document.getElementById('agendaAcademy' + postid + 'a');
+       if (agendaAcademyItem) {
+        agendaAcademyItem.href = item_link;
+       }
+
+      
+    });      
+
+    let defaultText = `<p style="padding-left: 15px;">Kies eerste een weergave</p>`;
+
+    // Retrieve the existing select WEERGAVE element
+    var selectElementWeergave = document.getElementById('selectOptionWeergave'+selectName + postid);
+
+    // Add event listener to update the option variable
+    selectElementWeergave.addEventListener('change', function () {
+    optionlabel = this.value; // Update the option variable with the selected value
+
+    if (optionlabel === 'headline') {
+      selectElementLabel.selectedIndex = 0;
+      // Reset label_adv and label_themavdweek
+      label_adv = '';
+      label_themavdweek = '';
+      typeweergave = 'headline';
+      weergave = `<table id="headlineItem${postid}" width="100%">
+      <tbody>
+      <tr>
+      <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+      <td>
+        <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
+      </td>
+      <td style="width: 30px;"><span id="container_label_adv${postid}">${label_adv}</span></td>
+      </tr>
+      </tbody>
+      </table>`;
+
+
+    } else if (optionlabel === 'klein') {
+      selectElementLabel.selectedIndex = 0;
+      // Reset label_adv and label_themavdweek
+      label_adv = '';
+      label_themavdweek = '';
+      typeweergave = 'klein';
+      weergave = `<table class="table1a">
+      <tbody>
+        <tr>
+          <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" src="${item_img_groot}" /></a></td>
+        </tr>
+      </tbody>
+      </table>
+      <table>
+      <tbody>
+        <tr>
+          <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+            <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 150px;" src="${item_img_groot}" /></a></div>
+          </td>
+          <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+            <table class="tableC">
+              <tbody>
+                <tr>
+                  <td class="artikelKleinTDcA">
+                  <span id="container_label_adv${postid}">${label_adv}</span>
+                  <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
+                </tr>
+                <tr>
+                  <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+      </table>`;
+
+    } else if (optionlabel === 'campagnebalk') {
+
+      selectElementLabel.selectedIndex = 0;
+      // Reset label_adv and label_themavdweek
+      label_adv = '';
+      label_themavdweek = '';
+      typeweergave = 'campagnebalk';
+      weergave = `
+      <table id="campagnebalkItem${postid}" width="100%">
+      <tbody>
+      <tr>
+      <td>
+        <a id="campagnebalk${postid}a" class="campagnebalk" href="${item_link}" style="display: block; margin: 0px 5px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">
+            <div style="border: 1px solid green; border-radius: 4px; color: #018A00; text-align: center; padding: 5px 10px; margin: 0; line-height: 1.3">
+            
+            
+            <a id="campagnebalk${postid}a" class="campagnebalk" href="${item_link}" style="display: block; margin: 0px; color: #018A00 ; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">
+            
+            ${promotion_announcement} <img src="https://a43352.actonservice.com/cdnr/forpci6/acton/attachment/43352/f-4d611174-6de4-44b3-9887-e3295d000b57/2/-/-/-/-/image.png?v=undefined" width="12" style="margin-left: 15px;" /></a>
+            </div>
+
+      
+      </td>
+      </tr>
+      </tbody>
+      </table>  </a>
+      `;
+
+
+    } else if (optionlabel === 'agenda') {
+
+      selectElementLabel.selectedIndex = 0;
+      // Reset label_adv and label_themavdweek
+      label_adv = '';
+      label_themavdweek = '';
+      typeweergave = 'agenda';
+      weergave = `
+     
+      <a id="agendaAcademy-${postid}-a" href="${item_link}">
+      <table id="agendaAcademy-${postid}-Link"  style="display: inline-block; width: 100%; background: #fff; border-collapse: collapse; width: 100%;padding: 8px 10px;" align="left">
+      <tbody>
+      <tr>
+        <td style="width: 42px;">
+          <table width="40px">
+            <tbody>
+              <tr>
+                <td align="center" style="background: #C91C18; color: white; font-size: small; text-align: center;">${promotion_startdate_monthAbbreviation}</td>
+              </tr>
+              <tr>
+              <td align="center" style="background: #f2f2f2; color: black; font-weight: bold;text-align: center;">${promotion_startdateDay}</td>
+              </tr>
+            </tbody>
+          </table>      
+        </td>
+      <td style="">
+
+        <table id="contentAcademy" style="margin-left: 10px !important;">
+          <tbody>
+          <tr>
+            <td>
+              <a id="agendaAcademy${postid}a" class="agendaItem" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
+                <span class="agendaAcademyTitle" style="font-size: 14px; line-height: 1.3; color: #0E5C8C;font-weight: bold; display: block;">${promotion_title}</span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a id="agendaAcademy${postid}a" class="agendaItem" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
+                <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);display: block;">${promotion_cta_text}
+                </span>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+      </tr>
+      </tbody>
+    </table>
+    </a>
+
+      `;
+    } else if (optionlabel === 'grootcta') {
+
+      selectElementLabel.selectedIndex = 0;
+      // Reset label_adv and label_themavdweek
+      label_adv = '';
+      label_themavdweek = '';
+      typeweergave = 'grootcta';
+      weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
+        <tbody id="artikelGroot${postid}Tb">
+          <tr id="artikelGroot${postid}TrB">
+          <td id="artikelGroot${postid}TdB">
+              <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
+              </a>
+            </td>
+          </tr>
+          <tr id="artikelGroot${postid}TrA">
+          <td id="artikelGroot${postid}TdA">
+          <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+            <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+              ${item_title} <span id="container_label_adv${postid}">${label_adv}</span>
+            </a>
+          </td>
+          </tr>
+          <tr id="artikelGroot${postid}TrC">
+          <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
+              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: #FF9901;box-shadow: 0px 2px 0px #CC7A01;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #331F00; padding: 15px 30px; margin: 0px 0;             display: inline-block; "  href="${item_link}"> ${promotion_cta_text}</a>
+
+            </td>
+          </tr>
+        </tbody>
+        </table>
+    `;
+
+    } else if (optionlabel === 'groot') {
+      selectElementLabel.selectedIndex = 0;
+      // Reset label_adv and label_themavdweek
+      label_adv = '';
+      label_themavdweek = '';
+      typeweergave = 'groot';
+      weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
+        <tbody id="artikelGroot${postid}Tb">
+          <tr id="artikelGroot${postid}TrB">
+          <td id="artikelGroot${postid}TdB">
+              <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
+              </a>
+            </td>
+          </tr>
+          <tr id="artikelGroot${postid}TrA">
+          <td id="artikelGroot${postid}TdA">
+          <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+            <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+              ${item_title} <span id="container_label_adv${postid}">${label_adv}</span>
+            </a>
+          </td>
+          </tr>
+          <tr id="artikelGroot${postid}TrC">
+          <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
+              <a id="grootArtikelDescription${postid}" class="grootArtikelDescription" href="${item_link}" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;">
+                <span style="font-size: 16px; color: #333333;font-weight: 400;">
+                  ${item_description}
+                </span>
+              </a>
+              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" href="${item_link}"> Lees meer ▸</a>
+            </td>
+          </tr>
+        </tbody>
+        </table>
+    `;
+
+    } else if (optionlabel === '' || optionlabel === null) {
+      
+      weergave = `
+          ${defaultText}
+        `;
+    }
+
+    // Update weergave elements
+    document.getElementById(labelNameLowercase+'_weergave' + postid).innerHTML = weergave;
+
+    });
+
+
+
+    div.innerHTML = `
+    <div id="${labelNameLowercase}_weergave${postid}">${weergave}</div>
+    `;
+
+    
+
+
+  // Reset label variables
+  label_adv = '';
+  label_themavdweek = '';
+
+  // Retrieve the existing select element
+  var selectElementLabel = document.getElementById('selectOptionLabel'+selectName+postid);
+
+
+  // Add event listener to update the option variable
+  selectElementLabel.addEventListener('change', function () {
+  optionlabel = this.value; // Update the option variable with the selected value
+
+  // Update styling based on weergave and optionlabel
+  if (typeweergave === 'klein' && optionlabel === 'adv') {
+    styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle';
+  } else if (typeweergave === 'klein' && optionlabel === 'themavdweek') {
+    styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+  } else if (typeweergave === 'groot' && optionlabel === 'adv') {
+    styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+  } else if (typeweergave === 'groot' && optionlabel === 'themavdweek') {
+    styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+  } else if (typeweergave === 'headline' && optionlabel === 'adv') {
+    styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+  } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
+    styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
+  } else {
+    styling = ''; // Reset styling if none of the conditions match
+  }
+
+  // Inside the if conditions
+  if (optionlabel === 'adv') {
+  label_themavdweek = '';
+  label_adv = `<span style="${styling};">ADV</span>`; 
+  } else if (optionlabel === 'themavdweek') {
+  label_adv = '';
+  label_themavdweek = `<div style="${styling};">THEMA VAN DE WEEK</div>`; 
+  } else {
+  label_adv = '';
+  label_themavdweek = ''; 
+  }
+
+
+  // Update label elements if available
+  let advLabelElement = document.getElementById('container_label_adv' + postid);
+  if (advLabelElement) {
+      advLabelElement.innerHTML = label_adv;
+  }
+
+  let themavdweekLabelElement = document.getElementById('container_label_themavdweek' + postid);
+  if (themavdweekLabelElement) {
+      themavdweekLabelElement.innerHTML = label_themavdweek;
+  }
+
+  });
+
+
+
+   //hier
+
+    document.getElementById(labelNameLowercase+postid).ondragstart = function (event) {
+        event
+          .dataTransfer
+          .setData('text/html', event.target.innerHTML);
+      }
+
+  }
+
+}
+
 
 
 

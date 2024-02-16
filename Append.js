@@ -142,7 +142,7 @@ function handleSelectChange(containerId) {
       "channelContainer",
       "downloadItemKleinContainer",
       "vacatureContainer", 
-    //  "marketingContainer", 
+      "marketingContainer", 
     //  "productItemHeadlineContainer"
     ];
 

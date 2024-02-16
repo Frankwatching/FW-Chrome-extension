@@ -2133,11 +2133,20 @@ async function functionCamsItems(item) {
     promotion_title = 'Vul titel in in cams';
   }
   // Campagnebalk titel  
-  const promotion_announcement = item.acf.promotion_announcement;
+  let promotion_announcement = item.acf.promotion_announcement;
+  if (!promotion_announcement) {
+    promotion_announcement = 'Missende titel';
+  }
   // Promo titel  
-  const promotion_url = item.acf.promotion_url;
+  let promotion_url = item.acf.promotion_url;
+  if (!promotion_url) {
+    promotion_url = 'Missende url';
+  }
   // Promotion_textarea  
-  const promotion_intro = item.acf.promotion_intro;
+  let promotion_intro = item.acf.promotion_intro;
+  if (!promotion_intro) {
+    promotion_intro = 'Missende intro';
+  }
   // Promo image id  
   const promotion_image = item.acf.promotion_image;
   // Promo CTA tekst 
@@ -2183,12 +2192,44 @@ async function functionCamsItems(item) {
   // Replace 'your-wordpress-url' with the URL of your WordPress site
   const wordpressUrl = 'https://wp.frankwatching.com';
   // Replace '123' with the attachment ID you want to get the URL for
-  const attachmentId = item.acf.promotion_image;
 
-  let imageUrl = ''; // Declare imageUrl in a broader scope and initialize it
 
+// Get the ID of the attachment
+const attachmentId = item.acf.promotion_image;
+let imageUrl; // Declare imageUrl variable outside the block
+
+let item_img_groot = '';
+
+// Check if attachmentId is null
+if (attachmentId) {
+  // Make a request to get the attachment details
+  fetch(`https://wp.frankwatching.com/wp-json/wp/v2/media/${attachmentId}`)
+    .then(response => response.json())
+    .then(attachmentData => {
+      if (attachmentData && attachmentData.source_url) {
+        const imageUrl = attachmentData.source_url;
+        item_img_groot = imageUrl;
+        console.log('Image URL:', imageUrl);
+        // Do whatever you need to do with imageUrl inside this block
+      } else {
+        item_img_groot = 'https://placehold.co/600x400  ';
+
+        console.log('No promotion image available');
+        // Handle the case where the attachment doesn't have a source URL
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching attachment data:', error);
+      
+    });
+
+item_img_groot = imageUrl;
+  
   const promotion_view = item.acfpromotion_view;
-  const promotion_description = item.acf.promotion_description;
+  let promotion_description = item.acf.promotion_description;
+  if (!promotion_description) {
+    promotion_description = 'Missende omschrijving';
+  }
   const promotion_type = item.acf.promotion_type;
   const promotion_utmcampaign = item.acf.promotion_utmcampaign;
   const utmcampaign = promotion_utmcampaign;
@@ -2221,7 +2262,6 @@ async function functionCamsItems(item) {
     item_categorie += '</div>';
     item_categorie += '<div style="background: white;"><span class="postTitle">'+item_title+'</span><span class="w100"></span></div>';
     
-    let item_img_groot = ''; // Initialize item_img_groot here
     const featuredMediaId = item.featured_media; 
     
     if (featuredMediaId) {
@@ -2615,6 +2655,14 @@ async function functionCamsItems(item) {
     styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
   } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
     styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
+  } else if (typeweergave === 'agenda' && optionlabel === 'adv') {
+    styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+  } else if (typeweergave === 'agenda' && optionlabel === 'adv') {
+    styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+  } else if (typeweergave === 'grootcta' && optionlabel === 'adv') {
+    styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+  } else if (typeweergave === 'grootcta' && optionlabel === 'adv') {
+    styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
   } else {
     styling = ''; // Reset styling if none of the conditions match
   }
@@ -2646,6 +2694,10 @@ async function functionCamsItems(item) {
   });
 
 
+} else {
+  console.log('No attachment ID available');
+  // Handle the case where attachmentId is null
+}
 
    //hier
 
@@ -2657,7 +2709,7 @@ async function functionCamsItems(item) {
 
   }
 
-}
+} 
 
 
 

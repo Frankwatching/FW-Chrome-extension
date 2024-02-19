@@ -101,8 +101,6 @@ agendaOverlay.id = "agendaOverlay";
 agendaOverlay.style.display = "none";
 agendaOverlay.style.zIndex = "-1";
 
-artikelenKleinContainer.style.position = "absolute";
-artikelenKleinContainer.style.display = "none";
 artikelenGrootContainer.style.position = "absolute";
 artikelenGrootContainer.style.display = "none";
 vacatureContainer.style.display = "none";

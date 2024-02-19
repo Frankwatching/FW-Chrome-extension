@@ -16,67 +16,27 @@ var inOutSelect =document.createElement( 'div' );
 
 var headlinesContainer = document.createElement( 'div' );
 
-var artikelenKleinContainer = document.createElement( 'div' );
-artikelenKleinContainer.id = 'artikelenKleinContainer';
-var artikelenKleinContainerContent = document.createElement( 'div' );
-artikelenKleinContainerContent.id = 'artikelenKleinContainerContent';
-
 var artikelenGrootContainer = document.createElement( 'div' );
 artikelenGrootContainer.id = 'artikelenGrootContainer';
 var artikelenGrootContainerContent = document.createElement( 'div' );
 artikelenGrootContainerContent.id = 'artikelenGrootContainerContent';
-
-var artikelHeadlineContainer = document.createElement( 'div' );
-artikelHeadlineContainer.id = 'artikelHeadlineContainer';
-var artikelHeadlineContainerContent = document.createElement( 'div' );
-artikelHeadlineContainerContent.id = 'artikelHeadlineContainerContent';
-
-var agendaAcademyContainer = document.createElement( 'div' );
 
 var productItemKleinContainer = document.createElement( 'div' );
 productItemKleinContainer.id = 'productItemKleinContainer';
 var productItemKleinContainerContent = document.createElement( 'div' );
 productItemKleinContainerContent.id = 'productItemKleinContainerContent';
 
-var productItemGrootContainer = document.createElement( 'div' );
-productItemGrootContainer.id = 'productItemGrootContainer';
-var productItemGrootContainerContent = document.createElement( 'div' );
-productItemGrootContainerContent.id = 'productItemGrootContainerContent';
-
-var productItemHeadlineContainer = document.createElement( 'div' );
-productItemHeadlineContainer.id = 'productItemHeadlineContainer';
-var productItemHeadlineContainerContent = document.createElement( 'div' );
-productItemHeadlineContainerContent.id = 'productItemHeadlineContainerContent';
+var agendaAcademyContainer = document.createElement( 'div' );
 
 var downloadItemKleinContainer = document.createElement( 'div' );
 downloadItemKleinContainer.id = 'downloadItemKleinContainer';
 var downloadItemKleinContainerContent = document.createElement( 'div' );
 downloadItemKleinContainerContent.id = 'downloadItemKleinContainerContent';
 
-var downloadItemGrootContainer = document.createElement( 'div' );
-downloadItemGrootContainer.id = 'downloadItemGrootContainer';
-var downloadItemGrootContainerContent = document.createElement( 'div' );
-downloadItemGrootContainerContent.id = 'downloadItemGrootContainerContent';
-
-var downloadItemHeadlineContainer = document.createElement( 'div' );
-downloadItemHeadlineContainer.id = 'downloadItemHeadlineContainer';
-var downloadItemHeadlineContainerContent = document.createElement( 'div' );
-downloadItemHeadlineContainerContent.id = 'downloadItemHeadlineContainerContent';
-
 var vacatureContainer = document.createElement( 'div' );
 vacatureContainer.id = 'vacatureContainer';
 var vacatureContainerContent = document.createElement( 'div' );
 vacatureContainerContent.id = 'vacatureContainerContent';
-
-var vacatureGrootContainer = document.createElement( 'div' );
-vacatureGrootContainer.id = 'vacatureGrootContainer';
-var vacatureGrootContainerContent = document.createElement( 'div' );
-vacatureGrootContainerContent.id = 'vacatureGrootContainerContent';
-
-var vacatureHeadlineContainer = document.createElement( 'div' );
-vacatureHeadlineContainer.id = 'vacatureHeadlineContainer';
-var vacatureHeadlineContainerContent = document.createElement( 'div' );
-vacatureHeadlineContainerContent.id = 'vacatureHeadlineContainerContent';
 
 var marketingContainer = document.createElement( 'div' );
 marketingContainer.id = 'marketingContainer';

@@ -1291,7 +1291,8 @@ async function functionJobItems(item) {
     fetch(featuredMediaUrl)
     .then(res => res.json())
     .then(mediaData => {
-      item_img_groot = mediaData.source_url;
+      item_img_groot = mediaData.guid.rendered;
+      
 
           // Create HTML elements or perform operations with the title and excerpt data
           const Container = document.getElementById("vacatureContainerContent");
@@ -2207,7 +2208,7 @@ if (attachmentId) {
     .then(response => response.json())
     .then(attachmentData => {
       if (attachmentData && attachmentData.source_url) {
-        const imageUrl = attachmentData.source_url;
+        const imageUrl = attachmentData.guid.rendered;
         item_img_groot = imageUrl;
         console.log('Image URL:', imageUrl);
         // Do whatever you need to do with imageUrl inside this block
@@ -2269,7 +2270,7 @@ item_img_groot = imageUrl;
     fetch(featuredMediaUrl)
     .then(res => res.json())
     .then(mediaData => {
-      item_img_groot = mediaData.source_url;
+      item_img_groot = mediaData.guid.rendered;
 
           
       })
@@ -3393,7 +3394,7 @@ async function functionChannelItems(item) {
     fetch(featuredMediaUrl)
     .then(res => res.json())
     .then(mediaData => {
-      item_img_groot = mediaData.source_url;
+      item_img_groot = mediaData.guid.rendered;
 
           // Create HTML elements or perform operations with the title and excerpt data
           const Container = document.getElementById("channelContainerContent");
@@ -3734,42 +3735,29 @@ async function functiondownloadItems(item) {
    var item_title = item.title.rendered;
    var excerpt = item.excerpt.rendered;
    utmcampaign = 'kennisbank';
-
-   var download_newsletter_title = '';
-   var download_newsletter_intro = '';
-   var download_newsletter_utm = '';
               
-   //TO DO: update ACF plugin live site to enable ACF in restapi
-    // var download_newsletter_title = item.getElementsByTagNameNS("*", "download_newsletter_title")[0];
-    // download_newsletter_title = download_newsletter_title ? download_newsletter_title.textContent : '';
-    // download_newsletter_title = download_newsletter_title.replace("<![CDATA[", "").replace("]]>", "");
+    var download_newsletter_title = item.acf.download_newsletter_title;
+    var download_newsletter_intro = item.acf.download_newsletter_intro;
+    var download_newsletter_utm = item.acf.download_newsletter_utm;
 
-    // var download_newsletter_intro = item.getElementsByTagNameNS("*", "download_newsletter_intro")[0];
-    // download_newsletter_intro = download_newsletter_intro ? download_newsletter_intro.textContent : '';
-    // download_newsletter_intro = download_newsletter_intro.replace("<![CDATA[", "").replace("]]>", "");
+    // Show special newsleter title if this is specified in the backend
+    if (download_newsletter_title && download_newsletter_title.length > 1) {
+      item_title = download_newsletter_title;
+    }
 
-    // var download_newsletter_utm = item.getElementsByTagNameNS("*", "download_newsletter_utm")[0];
-    // download_newsletter_utm = download_newsletter_utm ? download_newsletter_utm.textContent : '';
-    // download_newsletter_utm = download_newsletter_utm.replace("<![CDATA[", "").replace("]]>", "");
+    // Show special newsleter intro if this is specified in the backend
+    if (download_newsletter_intro && download_newsletter_intro.length > 1) {
+      description = download_newsletter_intro;
+    } else {
+      description = excerpt;
+    }
 
-    // // Show special newsleter title if this is specified in the backend
-    // if (download_newsletter_title && download_newsletter_title.length > 1) {
-    //   item_title = download_newsletter_title;
-    // }
-
-    // // Show special newsleter intro if this is specified in the backend
-    // if (download_newsletter_intro && download_newsletter_intro.length > 1) {
-    //   description = download_newsletter_intro;
-    // } else {
-    //   description = excerpt;
-    // }
-
-    // // Show special newsleter utm if this is specified in the backend
-    // if (download_newsletter_utm && download_newsletter_utm.length > 1) {
-    //   download_newsletter_utm = download_newsletter_utm;
-    // } else {
-    //   download_newsletter_utm = 'kennisbank';
-    // }
+    // Show special newsleter utm if this is specified in the backend
+    if (download_newsletter_utm && download_newsletter_utm.length > 1) {
+      download_newsletter_utm = download_newsletter_utm;
+    } else {
+      download_newsletter_utm = 'kennisbank';
+    }
 
 
    var maxCharacters = 80; // Define the maximum number of characters
@@ -3801,13 +3789,13 @@ async function functiondownloadItems(item) {
     
     let item_img_groot = ''; // Initialize item_img_groot here
     const featuredMediaId = item.featured_media; 
+    const boekcover = item.acf.boek_cover; 
     
-    if (featuredMediaId) {
-    const featuredMediaUrl = `https://www.frankwatching.com/wp-json/wp/v2/media/${featuredMediaId}`;
-    fetch(featuredMediaUrl)
+    if (boekcover) {
+    fetch(`https://www.frankwatching.com/wp-json/wp/v2/media/${boekcover}`)
     .then(res => res.json())
     .then(mediaData => {
-      item_img_groot = mediaData.source_url;
+      item_img_groot = mediaData.guid.rendered;
 
           // Create HTML elements or perform operations with the title and excerpt data
           const Container = document.getElementById("downloadItemKleinContainerContent");

@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.2.1";
+let versionid = "3.2.2";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -1240,9 +1240,9 @@ async function functionJobItems(item) {
    var pubdate = item.date;
 
 
-   var vac_org_naam = '[bedrijf]';
-   var vac_uur = 'xx uur';
-   var vac_standplaats = '[plaats]';
+   var vac_org_naam = item.acf.vac_org_naam;
+   var vac_uur = item.acf.vac_uur;
+   var vac_standplaats = item.acf.vac_standplaats;
 
   // TO DO: ACF update
   //  var vac_org_naam = item.querySelector("*|vac_org_naam").innerHTML;

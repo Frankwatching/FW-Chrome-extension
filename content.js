@@ -622,7 +622,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
                     <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
                   </tr>
                   <tr>
-                    <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
+                    <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
                   </tr>
                 </tbody>
               </table>
@@ -661,8 +661,8 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
                   <span style="font-size: 16px; color: #333333;font-weight: 400;">
                     ${item_description}
                   </span>
-                </a>
-                <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" href="${item_link}"> Lees meer ▸</a>
+               
+                <span id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;"> Lees meer ▸</span></a>
               </td>
             </tr>
           </tbody>
@@ -1054,7 +1054,7 @@ async function blogItems(item, index) {
                   <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
                 </tr>
                 <tr>
-                  <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
+                  <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
                 </tr>
               </tbody>
             </table>
@@ -1093,8 +1093,8 @@ async function blogItems(item, index) {
                 <span style="font-size: 16px; color: #333333;font-weight: 400;">
                   ${item_description}
                 </span>
-              </a>
-              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" href="${item_link}"> Lees meer ▸</a>
+             
+              <span id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;"> Lees meer ▸</span></a>
             </td>
           </tr>
         </tbody>
@@ -1221,12 +1221,12 @@ async function functionJobItems(item) {
    // Accessing title and excerpt properties from the item object
    var postid = item.id;
    var item_title = item.title.rendered;
-   var description = item.excerpt.rendered;
    utmcampaign = 'vacature';
 
 
    var maxCharacters = 80; // Define the maximum number of characters
-   var item_description = item.excerpt.rendered ? item.excerpt.rendered.substring(0, maxCharacters)+'...' : ''; 
+   var item_description = item.excerpt?.rendered ? item.excerpt.rendered.replace('<p>', '').replace('</p>', '').substring(0, maxCharacters) + '...' : '';
+
    var pubdate = item.date;
 
 
@@ -1479,7 +1479,7 @@ async function functionJobItems(item) {
                                           <a id="kleinTitleLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${item_link}">${item_title}</a></td>
                                       </tr>
                                       <tr>
-                                          <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="channelTDbC"><a id="DescriptionKleinArtikel${postid}" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${item_link}">${description} <span style="color: #0E5C8C;    font-size: 16px; ">Bekijk vacature ▸</span></a></td>
+                                          <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="channelTDbC"><a id="DescriptionKleinArtikel${postid}" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${item_link}">${item_description} <span style="color: #0E5C8C;    font-size: 16px; ">Bekijk vacature ▸</span></a></td>
                                       </tr>
                                   </tbody>
                               </table>
@@ -1527,7 +1527,7 @@ async function functionJobItems(item) {
                 <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
                   <a id="DescriptionKleinArtikel${postid}" class="grootArtikelDescription" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;" id="ct11_2" href="${item_link}">
                     <span style="font-size: 16px; color: #333333;font-weight: 400;">
-                      ${description}
+                      ${item_description}
                     </span>
                   </a>
                   <a id="KleinArtikelCTA${postid}" class="DescriptionVacature" style="display: inline; font-size: 14px; font-weight: regular; font-family: 'Roboto', Arial; color: #1a1a1a; text-decoration: none; padding: 0x 0px 0px 0px;" href="${item_link}">
@@ -1794,7 +1794,7 @@ item_img_groot = imageUrl;
 
   var maxCharacters = 80; // Define the maximum number of characters
 
-   var item_description = item.excerpt?.rendered ? item.excerpt.rendered.substring(0, maxCharacters) + '...' : '';
+  var item_description = item.excerpt?.rendered ? item.excerpt.rendered.replace('<p>', '').replace('</p>', '').substring(0, maxCharacters) + '...' : '';
 
    item_link = item.link + `?utm_source=${blogAlert}-${utmtaglowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${utmcampaign}&utm_content=%7c${sendDate}%7c${option}%7c`;
 
@@ -2001,7 +2001,7 @@ item_img_groot = imageUrl;
                   <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
                 </tr>
                 <tr>
-                  <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
+                  <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
                 </tr>
               </tbody>
             </table>
@@ -2155,8 +2155,8 @@ item_img_groot = imageUrl;
                 <span style="font-size: 16px; color: #333333;font-weight: 400;">
                   ${item_description}
                 </span>
-              </a>
-              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" href="${item_link}"> Lees meer ▸</a>
+              
+              <span id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;"> Lees meer ▸</span></a>
             </td>
           </tr>
         </tbody>
@@ -2299,11 +2299,10 @@ async function functionChannelItems(item) {
    // Accessing title and excerpt properties from the item object
    var postid = item.id;
    var item_title = item.title.rendered;
-   var excerpt = item.excerpt.rendered;
    utmcampaign = 'BusinessChannel';
 
    var maxCharacters = 80; // Define the maximum number of characters
-   var item_description = item.excerpt.rendered ? item.excerpt.rendered.substring(0, maxCharacters)+'...' : ''; 
+   var item_description = item.excerpt?.rendered ? item.excerpt.rendered.replace('<p>', '').replace('</p>', '').substring(0, maxCharacters) + '...' : '';
    var pubdate = item.date;
 
 
@@ -2500,7 +2499,7 @@ async function functionChannelItems(item) {
                           <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
                         </tr>
                         <tr>
-                          <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
+                          <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -2539,8 +2538,8 @@ async function functionChannelItems(item) {
                         <span style="font-size: 16px; color: #333333;font-weight: 400;">
                           ${item_description}
                         </span>
-                      </a>
-                      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" href="${item_link}"> Lees meer ▸</a>
+                      
+                      <span id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;"> Lees meer ▸</span></a>
                     </td>
                   </tr>
                 </tbody>
@@ -2678,7 +2677,7 @@ async function functiondownloadItems(item) {
    // Accessing title and excerpt properties from the item object
    var postid = item.id;
    var item_title = item.title.rendered;
-   var excerpt = item.excerpt.rendered;
+   var excerpt = item.excerpt?.rendered;
    utmcampaign = 'kennisbank';
               
     var download_newsletter_title = item.acf.download_newsletter_title;
@@ -2706,7 +2705,8 @@ async function functiondownloadItems(item) {
 
 
    var maxCharacters = 80; // Define the maximum number of characters
-   var item_description = item.excerpt.rendered ? item.excerpt.rendered.substring(0, maxCharacters)+'...' : ''; 
+   var item_description = item.excerpt?.rendered ? item.excerpt.rendered.replace('<p>', '').replace('</p>', '').substring(0, maxCharacters) + '...' : '';
+
    var pubdate = item.date;
    
    //invoer
@@ -2902,7 +2902,7 @@ async function functiondownloadItems(item) {
                           <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
                         </tr>
                         <tr>
-                          <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description}</a><a id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" href="${item_link}"> Lees meer ▸</a></td>
+                          <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" > Lees meer ▸</span></a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -2941,8 +2941,8 @@ async function functiondownloadItems(item) {
                         <span style="font-size: 16px; color: #333333;font-weight: 400;">
                           ${item_description}
                         </span>
-                      </a>
-                      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;" href="${item_link}"> Lees meer ▸</a>
+                     
+                      <span id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;"> Lees meer ▸</span></a>
                     </td>
                   </tr>
                 </tbody>

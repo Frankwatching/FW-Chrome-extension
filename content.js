@@ -82,25 +82,15 @@ function handleButtonClick(container, buttonImg, overlay) {
 
 }
 
-
-// ## DATA SOURCES
-jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature';
+// DATA SOURCES FRANKWATCHING
 jobrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/vacature'; 
-
 agendarss = 'https://www.frankwatching.com/feed/academy/upcoming';
-agendarestapi = 'https://www.frankwatching.com/wp-json/wp/v2/product'; 
-
-marketingrss = 'https://cms.frankwatching.com/feed?post_type=promotion&timestamp=' + Date.now();
+//agendarestapi = 'https://www.frankwatching.com/wp-json/wp/v2/product'; // nog niet ingebruik
 marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion'; 
-
-bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news';
-bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts '; // Replace this with your WordPress REST API endpoint
-
-kennisbankrss = 'https://www.frankwatching.com/feed/?post_type=download';
+bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts '; 
 kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download'; 
-
 newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?poststatus=future-publish';
-newsrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/post'; 
+//newsrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/post'; // nog niet in gebruik 
 
 if ( listSort === 'popularity') {
   newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?popularity';
@@ -108,32 +98,14 @@ if ( listSort === 'popularity') {
 
 if ( searchID ) {
   newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?postid='+ searchID+'&timestamp=' + Date.now();
-  newsrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/post/?include='+ searchID; 
-  //console.log('news RSS:' + newsrss);
-  
-  jobrss = 'https://cms.frankwatching.com/feed?post_type=vacature';
+  //newsrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/post/?include='+ searchID; // nog niet in gebruik 
   jobrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/vacature/?include='+ searchID; 
-  //console.log('jobs RSS:' + jobrss);
-  
   agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?postid='+ searchID+'&timestamp=' + Date.now();
-  //console.log('agenda RSS:' + agendarss);
-  
-  marketingrss = 'https://cms.frankwatching.com/feed?post_type=promotion';
   marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion/?include='+ searchID; 
-  //console.log('marketing RSS:' + marketingrss);
-  
-  //bcrss = 'https://www.frankwatching.com/feed?post_type=organisation_news&postid='+ searchID;
   bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts/?include='+ searchID; //
-  //console.log('bc RSS:' + bcrss);
-  
-  kennisbankrss = 'https://www.frankwatching.com/feed?post_type=download';
   kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download/?include='+ searchID; 
-  //console.log('kennisbank RSS:' + kennisbankrss);
+
 }
-
-//console.log('news RSS:' + newsrss);
-//console.log('agenda RSS:' + agendarss);
-
 
 // ## LOAD HEADLINES - 8 uur artikel
 var futureHeadlineText = 'Voorbeeld';

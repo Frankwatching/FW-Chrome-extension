@@ -449,7 +449,11 @@ async function productItem(item, index) {
   var item_img_klein = json["image_small"];
   var item_img_groot = json["image_large"];
 
+  //invoer
+  var selectName = 'Agenda';
+  var labelNameLowercase = 'blog';
   var option ='adv';
+
   /* add category */
   var item_categorie = '<div style="background: white;border-top:2px solid green;"><span class="categoryClassDag">'+dagWeek[0]+'</span>';
   item_categorie += '<span class="postPubDate">'+dateDay+'-'+dateMonth+'</span>';
@@ -467,7 +471,7 @@ async function productItem(item, index) {
 
   item_categorie += '<div style="background: white;"><span class="postTitle">'+item_title+'</span><span class="w100"></span></div>';
 
-  var item_link = link + `?utm_source=${blogAlert}-agenda-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${utmcampaign}&utm_content=%7c${sendDate}%7c${option}%7c`;
+  var item_link = link + `?utm_source=${blogAlert}-${labelNameLowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${utmcampaign}&utm_content=%7c${sendDate}%7c${option}%7c`;
 
   const divCat = document.createElement('div');
   divCat.className = 'categoryClass';
@@ -491,7 +495,7 @@ async function productItem(item, index) {
     selectElement.addEventListener('change', function () {
       option = this.value; // Update the option variable with the selected value
       // Update item_link with the new option
-      item_link = link + `?utm_source=${blogAlert}-agenda-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${utmcampaign}&utm_content=%7c${sendDate}%7c${option}%7c`;
+      item_link = link + `?utm_source=${blogAlert}-${labelNameLowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${utmcampaign}&utm_content=%7c${sendDate}%7c${option}%7c`;
       // Update the href attribute of the anchor tags with the new item_link
 
       // Update imagelink
@@ -879,6 +883,10 @@ async function blogItems(item, index) {
   var poststatus = item.querySelector("poststatus").innerHTML;
   var popularityscore = item.querySelector("popularityscore").innerHTML;
 
+
+  //invoer
+  var selectName = 'Blog';
+  var labelNameLowercase = 'blog';
   var option ='artikel';
   /* add category */
   var item_categorie = '<div style="background: white;border-top:2px solid green;"><span class="categoryClassDag">'+dagWeek[0]+'</span>';
@@ -905,7 +913,7 @@ async function blogItems(item, index) {
 
   item_categorie += '<div style="background: white;"><span class="postTitle">'+item_title+'</span><span class="w100"></span></div>';
 
-  var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}%7c`;
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-${labelNameLowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|artikel&utm_content=%7c${sendDate}%7c${option}%7c`;
 
 
   const divCat = document.createElement('div');
@@ -930,7 +938,7 @@ async function blogItems(item, index) {
     selectElement.addEventListener('change', function () {
       option = this.value; // Update the option variable with the selected value
       // Update item_link with the new option
-      item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}%7c`;
+      item_link = item.querySelector("link").innerHTML + `?utm_source=${blogAlert}-${labelNameLowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|artikel&utm_content=%7c${sendDate}%7c${option}%7c`;
       // Update the href attribute of the anchor tags with the new item_link
 
 
@@ -2315,8 +2323,12 @@ async function functionChannelItems(item) {
    var pubdate = item.date;
 
 
+   //invoer
+   var selectName = 'BusinessChannel';
+   var utmcampaign = 'artikel';
+   var labelNameLowercase = 'blog';
    var option ='artikel';
-   var item_link = item.link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${utmcampaign}&utm_content=%7c${sendDate}%7c${option}%7c`;
+   var item_link = item.link + `?utm_source=${blogAlert}-${labelNameLowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${utmcampaign}&utm_content=%7c${sendDate}%7c${option}%7c`;
 
     /* add category */
     var item_categorie = '<div style="background: white;border-top:2px solid green;"><span class="categoryClassDag">'+dagWeek[0]+'</span>';
@@ -2369,7 +2381,7 @@ async function functionChannelItems(item) {
             selectElement.addEventListener('change', function () {
               option = this.value; // Update the option variable with the selected value
               // Update item_link with the new option
-              item_link = item.link + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7c${option}%7c`;
+              item_link = item.link + `?utm_source=${blogAlert}-${labelNameLowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${utmcampaign}&utm_content=%7c${sendDate}%7c${option}%7c`;
               // Update the href attribute of the anchor tags with the new item_link
 
 
@@ -2714,7 +2726,7 @@ async function functiondownloadItems(item) {
    
    //invoer
    var selectName = 'Kennisbank';
-   var labelNameLowercase = 'kennisbank';
+   var labelNameLowercase = 'blog';
    var option ='adv';
 
    var item_link = item.link + `?utm_source=${blogAlert}-${labelNameLowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${download_newsletter_utm}&utm_content=%7c${sendDate}%7c${option}%7c`;

@@ -101,8 +101,8 @@ const options = [
   { value: 'agendaAcademyContainer', text: 'Academy Agenda' },
   { value: 'downloadItemKleinContainer', text: 'Kennisbank' },
   { value: 'vacatureContainer', text: 'Jobs' },
-  { value: 'marketingContainer', text: 'Cams 2.0' },
-  { value: 'channelContainer', text: 'BC' },
+  //{ value: 'marketingContainer', text: 'Cams 2.0' },
+  //{ value: 'channelContainer', text: 'BC' },
     // Add other options as needed
 ];
 

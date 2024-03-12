@@ -372,7 +372,7 @@ async function agendaItems(item, index) {
           <tr>
             <td>
               <a id="agendaAcademy${postid}" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-                <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);display: block;">${location} | ${durration}
+                <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);display: block;">${location} • ${durration}
                 </span>
               </a>
             </td>
@@ -684,55 +684,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
           </tbody>
           </table>
       `;
-      
-      // } else if (optionlabel === 'agenda') {
-      //   label_adv = '';
-      //   label_themavdweek = '';
-      //   typeweergave = 'agenda';
-      //   weergave = `
-      //   <table id="contentAcademyAgenda${postid}" style="display: inline-block; width: 100%; background: #fff; border-collapse: collapse; width: 100%;padding: 8px 10px;" align="left">
-      //       <tbody>
-      //       <tr>
-      //         <td style="width: 42px;">
-      //           <table width="40px">
-      //             <tbody>
-      //               <tr>
-      //                 <td align="center" style="background: #C91C18; color: white; font-size: small; text-align: center;">${dateMonth}</td>
-      //               </tr>
-      //               <tr>
-      //               <td align="center" style="background: #f2f2f2; color: black; font-weight: bold;text-align: center;">${dateDay}</td>
-      //               </tr>
-      //             </tbody>
-      //           </table>      
-      //         </td>
-      //       <td style="">
-
-      //         <table id="contentAcademy" style="margin-left: 10px !important;">
-      //           <tbody>
-      //           <tr>
-      //             <td>
-      //               <a id="agendaAcademy${postid}a" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-      //                 <span class="agendaAcademyTitle" style="font-size: 14px; line-height: 1.3; color: #0E5C8C;font-weight: bold; display: block;">${item_title}</span>
-      //               </a>
-      //             </td>
-      //           </tr>
-      //           <tr>
-      //             <td>
-      //               <a id="agendaAcademy${postid}a" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-      //                 <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);display: block;">${location} | ${durration}
-                      
-      //                 <span id="container_label_adv${postid}">${label_adv}</span>
-      //                 <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></span>
-      //               </a>
-      //             </td>
-      //           </tr>
-      //           </tbody>
-      //         </table>
-      //       </td>
-      //       </tr>
-      //       </tbody>
-      //     </table>
-      //   `;
+    
       
       } else if (optionlabel === '' || optionlabel === null) {
         

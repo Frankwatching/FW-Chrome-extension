@@ -275,7 +275,7 @@ async function agendaItems(item, index) {
 
   var table = document.getElementById("academyTable");
   var json = xml2json(item);
-  var title = json["title"];
+  var item_title = json["title"];
   var link = json["link"];
   var postid = json["productid"];
   var campaign = json["postmeta:campaign"]; //cams 1.0 def
@@ -292,8 +292,16 @@ async function agendaItems(item, index) {
   var labelNameLowercase = 'agendaitem';
   var option ='agenda';
 
+  var newsletterTitle = json["postmeta:newsletterTitle"]; 
   var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
   var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
+  
+    // haal nieuwsbrief titel op
+    if (newsletterTitle !== undefined && newsletterTitle !== '') {
+      item_title = newsletterTitle;
+    } else {
+      item_title = item_title;
+    }
 
   // haal campagnenaam op
   if (newsLetterUTMCampaignName !== undefined && newsLetterUTMCampaignName !== '') {
@@ -357,7 +365,7 @@ async function agendaItems(item, index) {
           <tr>
             <td>
               <a id="agendaAcademy${postid}" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-                <span class="agendaAcademyTitle" style="font-size: 14px; line-height: 1.3; color: #0E5C8C;font-weight: bold; display: block;">${title}</span>
+                <span class="agendaAcademyTitle" style="font-size: 14px; line-height: 1.3; color: #0E5C8C;font-weight: bold; display: block;">${item_title}</span>
               </a>
             </td>
           </tr>
@@ -403,8 +411,16 @@ async function productItem(item, index) {
   var item_title = json["title"];
   var item_description = json["description"];
 
+  var newsletterTitle = json["postmeta:newsletterTitle"]; 
   var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
   var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
+
+    // haal nieuwsbrief titel op
+    if (newsletterTitle !== undefined && newsletterTitle !== '') {
+      item_title = newsletterTitle;
+    } else {
+      item_title = item_title;
+    }
 
   // haal campagnenaam op
   if (newsLetterUTMCampaignName !== undefined && newsLetterUTMCampaignName !== '') {
@@ -583,7 +599,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         weergave = `<table id="headlineItem${postid}" width="100%">
         <tbody>
         <tr>
-        <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+        <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
         <td>
           <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
         </td>
@@ -1015,7 +1031,7 @@ async function blogItems(item, index) {
       weergave = `<table id="headlineItem${postid}" width="100%">
       <tbody>
       <tr>
-      <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+      <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
       <td>
         <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
       </td>
@@ -1411,7 +1427,7 @@ async function functionJobItems(item) {
               weergave = `<table id="headlineItem${postid}" width="100%">
               <tbody>
               <tr>
-              <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+              <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
               <td>
                 <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
               </td>
@@ -1744,7 +1760,7 @@ async function functionCamsItems(item) {
   //console.log('Dit is de output:'+promotion_koppeling_post);
 
   // Replace 'your-wordpress-url' with the URL of your WordPress site
-  const wordpressUrl = 'https://wp.frankwatching.com';
+  const wordpressUrl = 'https://cms.frankwatching.com';
   // Replace '123' with the attachment ID you want to get the URL for
 
 
@@ -1757,7 +1773,7 @@ let item_img_groot = '';
 // Check if attachmentId is null
 if (attachmentId) {
   // Make a request to get the attachment details
-  fetch(`https://wp.frankwatching.com/wp-json/wp/v2/media/${attachmentId}`)
+  fetch(`https://cms.frankwatching.com/wp-json/wp/v2/media/${attachmentId}`)
     .then(response => response.json())
     .then(attachmentData => {
       if (attachmentData && attachmentData.source_url) {
@@ -1819,7 +1835,7 @@ item_img_groot = imageUrl;
     const featuredMediaId = item.featured_media; 
     
     if (featuredMediaId) {
-    const featuredMediaUrl = `https://wp.frankwatching.com/wp-json/wp/v2/media/${featuredMediaId}`;
+    const featuredMediaUrl = `https://cms.frankwatching.com/wp-json/wp/v2/media/${featuredMediaId}`;
     fetch(featuredMediaUrl)
     .then(res => res.json())
     .then(mediaData => {
@@ -1962,7 +1978,7 @@ item_img_groot = imageUrl;
       weergave = `<table id="headlineItem${postid}" width="100%">
       <tbody>
       <tr>
-      <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+      <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
       <td>
         <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
       </td>
@@ -2460,7 +2476,7 @@ async function functionChannelItems(item) {
               weergave = `<table id="headlineItem${postid}" width="100%">
               <tbody>
               <tr>
-              <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+              <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
               <td>
                 <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
               </td>
@@ -2863,7 +2879,7 @@ async function functiondownloadItems(item) {
               weergave = `<table id="headlineItem${postid}" width="100%">
               <tbody>
               <tr>
-              <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+              <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
               <td>
                 <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
               </td>

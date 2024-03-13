@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.2.2";
+let versionid = "3.2.3";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -275,7 +275,7 @@ async function agendaItems(item, index) {
 
   var table = document.getElementById("academyTable");
   var json = xml2json(item);
-  var title = json["title"];
+  var item_title = json["title"];
   var link = json["link"];
   var postid = json["productid"];
   var campaign = json["postmeta:campaign"]; //cams 1.0 def
@@ -292,8 +292,16 @@ async function agendaItems(item, index) {
   var labelNameLowercase = 'agendaitem';
   var option ='agenda';
 
+  var newsletterTitle = json["postmeta:newsletterTitle"]; 
   var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
   var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
+  
+    // haal nieuwsbrief titel op
+    if (newsletterTitle !== undefined && newsletterTitle !== '') {
+      item_title = newsletterTitle;
+    } else {
+      item_title = item_title;
+    }
 
   // haal campagnenaam op
   if (newsLetterUTMCampaignName !== undefined && newsLetterUTMCampaignName !== '') {
@@ -357,14 +365,14 @@ async function agendaItems(item, index) {
           <tr>
             <td>
               <a id="agendaAcademy${postid}" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-                <span class="agendaAcademyTitle" style="font-size: 14px; line-height: 1.3; color: #0E5C8C;font-weight: bold; display: block;">${title}</span>
+                <span class="agendaAcademyTitle" style="font-size: 14px; line-height: 1.3; color: #0E5C8C;font-weight: bold; display: block;">${item_title}</span>
               </a>
             </td>
           </tr>
           <tr>
             <td>
               <a id="agendaAcademy${postid}" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-                <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);display: block;">${location} | ${durration}
+                <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);display: block;">${location} • ${durration}
                 </span>
               </a>
             </td>
@@ -403,8 +411,16 @@ async function productItem(item, index) {
   var item_title = json["title"];
   var item_description = json["description"];
 
+  var newsletterTitle = json["postmeta:newsletterTitle"]; 
   var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
   var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
+
+    // haal nieuwsbrief titel op
+    if (newsletterTitle !== undefined && newsletterTitle !== '') {
+      item_title = newsletterTitle;
+    } else {
+      item_title = item_title;
+    }
 
   // haal campagnenaam op
   if (newsLetterUTMCampaignName !== undefined && newsLetterUTMCampaignName !== '') {
@@ -583,7 +599,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         weergave = `<table id="headlineItem${postid}" width="100%">
         <tbody>
         <tr>
-        <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+        <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
         <td>
           <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
         </td>
@@ -668,55 +684,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
           </tbody>
           </table>
       `;
-      
-      // } else if (optionlabel === 'agenda') {
-      //   label_adv = '';
-      //   label_themavdweek = '';
-      //   typeweergave = 'agenda';
-      //   weergave = `
-      //   <table id="contentAcademyAgenda${postid}" style="display: inline-block; width: 100%; background: #fff; border-collapse: collapse; width: 100%;padding: 8px 10px;" align="left">
-      //       <tbody>
-      //       <tr>
-      //         <td style="width: 42px;">
-      //           <table width="40px">
-      //             <tbody>
-      //               <tr>
-      //                 <td align="center" style="background: #C91C18; color: white; font-size: small; text-align: center;">${dateMonth}</td>
-      //               </tr>
-      //               <tr>
-      //               <td align="center" style="background: #f2f2f2; color: black; font-weight: bold;text-align: center;">${dateDay}</td>
-      //               </tr>
-      //             </tbody>
-      //           </table>      
-      //         </td>
-      //       <td style="">
-
-      //         <table id="contentAcademy" style="margin-left: 10px !important;">
-      //           <tbody>
-      //           <tr>
-      //             <td>
-      //               <a id="agendaAcademy${postid}a" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-      //                 <span class="agendaAcademyTitle" style="font-size: 14px; line-height: 1.3; color: #0E5C8C;font-weight: bold; display: block;">${item_title}</span>
-      //               </a>
-      //             </td>
-      //           </tr>
-      //           <tr>
-      //             <td>
-      //               <a id="agendaAcademy${postid}a" class="agendaItemm" href="${item_link}" style="display: inline; margin: 0px; text-decoration: none;">
-      //                 <span style="line-height: 1.3; font-size: 14px; color: rgb(158, 158, 158);display: block;">${location} | ${durration}
-                      
-      //                 <span id="container_label_adv${postid}">${label_adv}</span>
-      //                 <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></span>
-      //               </a>
-      //             </td>
-      //           </tr>
-      //           </tbody>
-      //         </table>
-      //       </td>
-      //       </tr>
-      //       </tbody>
-      //     </table>
-      //   `;
+    
       
       } else if (optionlabel === '' || optionlabel === null) {
         
@@ -1015,7 +983,7 @@ async function blogItems(item, index) {
       weergave = `<table id="headlineItem${postid}" width="100%">
       <tbody>
       <tr>
-      <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+      <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
       <td>
         <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
       </td>
@@ -1277,13 +1245,15 @@ async function functionJobItems(item) {
     let item_img_groot = ''; // Initialize item_img_groot here
     const featuredMediaId = item.featured_media; 
     
+    const wordpressUrl = 'https://cms.frankwatching.com';
+
     if (featuredMediaId) {
-    const featuredMediaUrl = `https://cms.frankwatching.com/wp-json/wp/v2/media/${featuredMediaId}`;
+    const featuredMediaUrl = wordpressUrl+`/wp-json/wp/v2/media/${featuredMediaId}`;
     fetch(featuredMediaUrl)
     .then(res => res.json())
     .then(mediaData => {
       item_img_groot = mediaData.guid.rendered;
-      
+      item_img_scaled = mediaData.image_size?.source_url;
 
           // Create HTML elements or perform operations with the title and excerpt data
           const Container = document.getElementById("vacatureContainerContent");
@@ -1411,7 +1381,7 @@ async function functionJobItems(item) {
               weergave = `<table id="headlineItem${postid}" width="100%">
               <tbody>
               <tr>
-              <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+              <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
               <td>
                 <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
               </td>
@@ -1432,7 +1402,7 @@ async function functionJobItems(item) {
                 <tr>
                   <td class="tableDivider1a">
                     <a id="imgKleinArtikel${postid}Link" href="${item_link}">
-                      <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" src="${item_img_groot}" />
+                      <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #f5f5f5;" src="${item_img_groot}" />
                       </a>
                     </td>
                 </tr>
@@ -1444,7 +1414,7 @@ async function functionJobItems(item) {
                   <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
                     <div class="tdDiv">
                       <a id="imgKlein${postid}Link" href="${item_link}">
-                        <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 150px;" src="${item_img_groot}" />
+                        <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: auto; width: 150px;background: #f5f5f5;" src="${item_img_groot}" />
                       </a>
                     </div>
                   </td>
@@ -1504,7 +1474,7 @@ async function functionJobItems(item) {
               <tr id="artikelGroot${postid}TrB">
                 <td id="artikelGroot${postid}TdB">
                   <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                    <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px;" src="${item_img_groot}" >
+                    <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: contain;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px;" src="${item_img_groot}" >
                   </a>
                 </td>
               </tr>
@@ -1659,7 +1629,7 @@ async function loadMarketing() {
 
 }
 
-loadMarketing();
+//loadMarketing();
 
 
 async function functionCamsItems(item) {
@@ -1743,9 +1713,7 @@ async function functionCamsItems(item) {
 
   //console.log('Dit is de output:'+promotion_koppeling_post);
 
-  // Replace 'your-wordpress-url' with the URL of your WordPress site
-  const wordpressUrl = 'https://wp.frankwatching.com';
-  // Replace '123' with the attachment ID you want to get the URL for
+  const wordpressUrl = 'https://cms.frankwatching.com';
 
 
 // Get the ID of the attachment
@@ -1757,7 +1725,7 @@ let item_img_groot = '';
 // Check if attachmentId is null
 if (attachmentId) {
   // Make a request to get the attachment details
-  fetch(`https://wp.frankwatching.com/wp-json/wp/v2/media/${attachmentId}`)
+  fetch(wordpressUrl+`/wp-json/wp/v2/media/${attachmentId}`)
     .then(response => response.json())
     .then(attachmentData => {
       if (attachmentData && attachmentData.source_url) {
@@ -1819,7 +1787,7 @@ item_img_groot = imageUrl;
     const featuredMediaId = item.featured_media; 
     
     if (featuredMediaId) {
-    const featuredMediaUrl = `https://wp.frankwatching.com/wp-json/wp/v2/media/${featuredMediaId}`;
+    const featuredMediaUrl = wordpressUrl+`/wp-json/wp/v2/media/${featuredMediaId}`;
     fetch(featuredMediaUrl)
     .then(res => res.json())
     .then(mediaData => {
@@ -1962,7 +1930,7 @@ item_img_groot = imageUrl;
       weergave = `<table id="headlineItem${postid}" width="100%">
       <tbody>
       <tr>
-      <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+      <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
       <td>
         <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
       </td>
@@ -2460,7 +2428,7 @@ async function functionChannelItems(item) {
               weergave = `<table id="headlineItem${postid}" width="100%">
               <tbody>
               <tr>
-              <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+              <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
               <td>
                 <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
               </td>
@@ -2637,7 +2605,7 @@ async function functionChannelItems(item) {
     .catch(error => console.error('Error fetching featured image:', error));
   }
 }
-loadChannel(); // Call the function to load the WordPress data
+//loadChannel(); // Call the function to load the WordPress data
 
 
 
@@ -2734,11 +2702,19 @@ async function functiondownloadItems(item) {
     item_categorie += '<div style="background: white;"><span class="postTitle">'+item_title+'</span><span class="w100"></span></div>';
     
     let item_img_groot = ''; // Initialize item_img_groot here
+    let mediaId = ''; // Initialize mediaId here
     const featuredMediaId = item.featured_media; 
     const boekcover = item.acf.boek_cover; 
+    const wordpressUrl = 'https://www.frankwatching.com';
+
+    if (boekcover !== undefined && boekcover !== '') {
+      mediaId = boekcover;
+    } else {
+      mediaId = featuredMediaId;
+    }
     
-    if (boekcover) {
-    fetch(`https://www.frankwatching.com/wp-json/wp/v2/media/${boekcover}`)
+    if (mediaId) {
+    fetch(wordpressUrl+`/wp-json/wp/v2/media/${mediaId}`)
     .then(res => res.json())
     .then(mediaData => {
       item_img_groot = mediaData.guid.rendered;
@@ -2863,7 +2839,7 @@ async function functiondownloadItems(item) {
               weergave = `<table id="headlineItem${postid}" width="100%">
               <tbody>
               <tr>
-              <td style="font-size: 12px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+              <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
               <td>
                 <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
               </td>
@@ -2882,7 +2858,7 @@ async function functiondownloadItems(item) {
               weergave = `<table class="table1a">
               <tbody>
                 <tr>
-                  <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" src="${item_img_groot}" /></a></td>
+                  <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: 175px; width: auto; display: block;background: #f5f5f5;" src="${item_img_groot}" /></a></td>
                 </tr>
               </tbody>
               </table>
@@ -2890,7 +2866,7 @@ async function functiondownloadItems(item) {
               <tbody>
                 <tr>
                   <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-                    <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 150px;" src="${item_img_groot}" /></a></div>
+                    <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: 175px; width: auto;background: #f5f5f5;" src="${item_img_groot}" /></a></div>
                   </td>
                   <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
                     <table class="tableC">
@@ -2923,7 +2899,7 @@ async function functiondownloadItems(item) {
                   <tr id="artikelGroot${postid}TrB">
                   <td id="artikelGroot${postid}TdB">
                       <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
+                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: contain;background: #f5f5f5;" src="${item_img_groot}" >
                       </a>
                     </td>
                   </tr>

@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.2.2";
+let versionid = "3.2.3";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -1245,13 +1245,15 @@ async function functionJobItems(item) {
     let item_img_groot = ''; // Initialize item_img_groot here
     const featuredMediaId = item.featured_media; 
     
+    const wordpressUrl = 'https://cms.frankwatching.com';
+
     if (featuredMediaId) {
-    const featuredMediaUrl = `https://cms.frankwatching.com/wp-json/wp/v2/media/${featuredMediaId}`;
+    const featuredMediaUrl = wordpressUrl+`/wp-json/wp/v2/media/${featuredMediaId}`;
     fetch(featuredMediaUrl)
     .then(res => res.json())
     .then(mediaData => {
       item_img_groot = mediaData.guid.rendered;
-      
+      item_img_scaled = mediaData.image_size?.source_url;
 
           // Create HTML elements or perform operations with the title and excerpt data
           const Container = document.getElementById("vacatureContainerContent");
@@ -1400,7 +1402,7 @@ async function functionJobItems(item) {
                 <tr>
                   <td class="tableDivider1a">
                     <a id="imgKleinArtikel${postid}Link" href="${item_link}">
-                      <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" src="${item_img_groot}" />
+                      <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #f5f5f5;" src="${item_img_groot}" />
                       </a>
                     </td>
                 </tr>
@@ -1412,7 +1414,7 @@ async function functionJobItems(item) {
                   <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
                     <div class="tdDiv">
                       <a id="imgKlein${postid}Link" href="${item_link}">
-                        <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 150px;" src="${item_img_groot}" />
+                        <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: auto; width: 150px;background: #f5f5f5;" src="${item_img_groot}" />
                       </a>
                     </div>
                   </td>
@@ -1472,7 +1474,7 @@ async function functionJobItems(item) {
               <tr id="artikelGroot${postid}TrB">
                 <td id="artikelGroot${postid}TdB">
                   <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                    <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px;" src="${item_img_groot}" >
+                    <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: contain;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px;" src="${item_img_groot}" >
                   </a>
                 </td>
               </tr>
@@ -1627,7 +1629,7 @@ async function loadMarketing() {
 
 }
 
-loadMarketing();
+//loadMarketing();
 
 
 async function functionCamsItems(item) {
@@ -1711,9 +1713,7 @@ async function functionCamsItems(item) {
 
   //console.log('Dit is de output:'+promotion_koppeling_post);
 
-  // Replace 'your-wordpress-url' with the URL of your WordPress site
   const wordpressUrl = 'https://cms.frankwatching.com';
-  // Replace '123' with the attachment ID you want to get the URL for
 
 
 // Get the ID of the attachment
@@ -1725,7 +1725,7 @@ let item_img_groot = '';
 // Check if attachmentId is null
 if (attachmentId) {
   // Make a request to get the attachment details
-  fetch(`https://cms.frankwatching.com/wp-json/wp/v2/media/${attachmentId}`)
+  fetch(wordpressUrl+`/wp-json/wp/v2/media/${attachmentId}`)
     .then(response => response.json())
     .then(attachmentData => {
       if (attachmentData && attachmentData.source_url) {
@@ -1787,7 +1787,7 @@ item_img_groot = imageUrl;
     const featuredMediaId = item.featured_media; 
     
     if (featuredMediaId) {
-    const featuredMediaUrl = `https://cms.frankwatching.com/wp-json/wp/v2/media/${featuredMediaId}`;
+    const featuredMediaUrl = wordpressUrl+`/wp-json/wp/v2/media/${featuredMediaId}`;
     fetch(featuredMediaUrl)
     .then(res => res.json())
     .then(mediaData => {
@@ -2605,7 +2605,7 @@ async function functionChannelItems(item) {
     .catch(error => console.error('Error fetching featured image:', error));
   }
 }
-loadChannel(); // Call the function to load the WordPress data
+//loadChannel(); // Call the function to load the WordPress data
 
 
 
@@ -2702,11 +2702,19 @@ async function functiondownloadItems(item) {
     item_categorie += '<div style="background: white;"><span class="postTitle">'+item_title+'</span><span class="w100"></span></div>';
     
     let item_img_groot = ''; // Initialize item_img_groot here
+    let mediaId = ''; // Initialize mediaId here
     const featuredMediaId = item.featured_media; 
     const boekcover = item.acf.boek_cover; 
+    const wordpressUrl = 'https://www.frankwatching.com';
+
+    if (boekcover !== undefined && boekcover !== '') {
+      mediaId = boekcover;
+    } else {
+      mediaId = featuredMediaId;
+    }
     
-    if (boekcover) {
-    fetch(`https://www.frankwatching.com/wp-json/wp/v2/media/${boekcover}`)
+    if (mediaId) {
+    fetch(wordpressUrl+`/wp-json/wp/v2/media/${mediaId}`)
     .then(res => res.json())
     .then(mediaData => {
       item_img_groot = mediaData.guid.rendered;
@@ -2850,7 +2858,7 @@ async function functiondownloadItems(item) {
               weergave = `<table class="table1a">
               <tbody>
                 <tr>
-                  <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" src="${item_img_groot}" /></a></td>
+                  <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: 175px; width: auto; display: block;background: #f5f5f5;" src="${item_img_groot}" /></a></td>
                 </tr>
               </tbody>
               </table>
@@ -2858,7 +2866,7 @@ async function functiondownloadItems(item) {
               <tbody>
                 <tr>
                   <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-                    <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 150px;" src="${item_img_groot}" /></a></div>
+                    <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: 175px; width: auto;background: #f5f5f5;" src="${item_img_groot}" /></a></div>
                   </td>
                   <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
                     <table class="tableC">
@@ -2891,7 +2899,7 @@ async function functiondownloadItems(item) {
                   <tr id="artikelGroot${postid}TrB">
                   <td id="artikelGroot${postid}TdB">
                       <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
+                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: contain;background: #f5f5f5;" src="${item_img_groot}" >
                       </a>
                     </td>
                   </tr>

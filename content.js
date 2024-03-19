@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.2.3";
+let versionid = "3.2.4";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -36,6 +36,7 @@ window.onload = function () {
 
     function check() {
         blogAlert = inputTemplate.checked ? "al" : "nb";
+        newsletterType = inputTemplate.checked ? "vacature" : "blog";
         document.getElementById('blogAlertText').innerHTML = blogAlert;
         dagWeek = input.checked ? "wekelijks" : "dagelijks";
         document.getElementById('dagWeekText').innerHTML = dagWeek;
@@ -457,7 +458,7 @@ async function productItem(item, index) {
   item_categorie += '</div>';
   item_categorie += '<div style="background:white;">';
   //toon weergave pulldown
-  item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergaveProduct'+postid+'"><option value="">1.Kies weergave</option><option value="klein">Afb. links</option><option value="groot">Afb. boven</option><option value="headline">Headline</option></select></span>';
+  item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergaveProduct'+postid+'"><option value="">1.Kies weergave</option><option value="klein">Afb. links</option><option value="groot">Afb. boven</option><option value="grootcta">Afb. boven + CTA</option><option value="headline">Headline</option><option value="campagnebalk">Campagnebalk</option></select></span>';
 
   item_categorie += '<span class="extraOptions"><select id="selectOptionProduct'+postid+'"><option value="adv">2.Kies utm content</option><optgroup label="Agenda"><option value="agenda">agenda</option></optgroup><optgroup label="Academy"><option value="adv">adv</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option></optgroup><optgroup label="Headline"><option value="headlineadv">headlineadv</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlineadvthema">headlineadvthema</option><option value="headlineonder">headlineonder</option></optgroup></select></span>';
   item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabelProduct'+postid+'"><option value="">3.Kies label</option><option value="themavdweek">Thema vd week</option><option value="adv">Adv</option></select></span>';
@@ -570,6 +571,12 @@ async function productItem(item, index) {
         agendaAcademyItem.href = item_link;
       }
 
+       // Update campagnebalkItem
+      let campagnebalkItem = document.getElementById('campagnebalkItemP' + postid + 'a');
+      if (campagnebalkItem) {
+        campagnebalkItem.href = item_link;
+      }
+
     });      
 
     
@@ -626,7 +633,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         <tbody>
           <tr>
             <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-              <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 150px;" src="${item_img_groot}" /></a></div>
+              <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 175px;" src="${item_img_groot}" /></a></div>
             </td>
             <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
               <table class="tableC">
@@ -646,7 +653,61 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
           </tr>
         </tbody>
         </table>`;
-    
+      } else if (optionlabel === 'campagnebalk') {
+
+      
+      label_adv = '';
+      label_themavdweek = '';
+      typeweergave = 'campagnebalk';
+      weergave = `
+
+      <table id="artikelGroot${postid}T" style=" display: block;">
+        <tbody id="artikelGroot${postid}Tb">
+          <tr id="artikelGroot${postid}TrC">
+          <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
+              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; width: 100%; display: inline-block; "  href="${item_link}"> ${item_title} ▸</a>
+
+            </td>
+          </tr>
+        </tbody>
+        </table>
+      `;
+
+      } else if (optionlabel === 'grootcta') {
+
+        
+        selectElementLabel.selectedIndex = 0;
+        // Reset label_adv and label_themavdweek
+        label_adv = '';
+        label_themavdweek = '';
+        typeweergave = 'grootcta';
+        weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
+          <tbody id="artikelGroot${postid}Tb">
+            <tr id="artikelGroot${postid}TrB">
+            <td id="artikelGroot${postid}TdB">
+                <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
+                  <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px;max-height: 229px; object-fit: contain; background: #f5f5f5;" src="${item_img_groot}" >
+                </a>
+              </td>
+            </tr>
+            <tr id="artikelGroot${postid}TrA">
+            <td id="artikelGroot${postid}TdA">
+            <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+              <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+                ${item_title} <span id="container_label_adv${postid}">${label_adv}</span>
+              </a>
+            </td>
+            </tr>
+            <tr id="artikelGroot${postid}TrC">
+            <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
+                <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: #FF9901;box-shadow: 0px 2px 0px #CC7A01;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #331F00; padding: 15px 30px; margin: 0px 0;             display: inline-block; "  href="${item_link}">Bekijk ▸</a>
+
+              </td>
+            </tr>
+          </tbody>
+          </table>
+      `;      
+
       
       } else if (optionlabel === 'groot') {
         selectElementLabel.selectedIndex = 0;
@@ -659,7 +720,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
             <tr id="artikelGroot${postid}TrB">
             <td id="artikelGroot${postid}TdB">
                 <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                  <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
+                  <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px;max-height: 229px; object-fit: cover;" src="${item_img_groot}" >
                 </a>
               </td>
             </tr>
@@ -737,6 +798,10 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
           styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
         } else if (typeweergave === 'agenda' && optionlabel === 'themavdweek') {
           styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
+        } else if (typeweergave === 'grootcta' && optionlabel === 'adv') {
+          styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+        } else if (typeweergave === 'grootcta' && optionlabel === 'themavdweek') {
+          styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
         } else {
           styling = ''; // Reset styling if none of the conditions match
         }
@@ -1010,7 +1075,7 @@ async function blogItems(item, index) {
       <tbody>
         <tr>
           <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-            <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 150px;" src="${item_img_groot}" /></a></div>
+            <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 175px;" src="${item_img_groot}" /></a></div>
           </td>
           <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
             <table class="tableC">
@@ -1043,7 +1108,7 @@ async function blogItems(item, index) {
           <tr id="artikelGroot${postid}TrB">
           <td id="artikelGroot${postid}TdB">
               <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; " src="${item_img_groot}" >
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px;max-height: 229px; " src="${item_img_groot}" >
               </a>
             </td>
           </tr>
@@ -1224,7 +1289,7 @@ async function functionJobItems(item) {
    var labelNameLowercase = 'jobitem';
    var option ='vacature';
 
-   var item_link = item.link + `?utm_source=${blogAlert}-${utmtaglowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${newsletter_utm}&utm_content=%7c${sendDate}%7c${option}%7c`;
+   var item_link = item.link + `?utm_source=${blogAlert}-${newsletterType}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${newsletter_utm}&utm_content=%7c${sendDate}%7c${option}%7c`;
 
     /* add category */
     var item_categorie = '<div style="background: white;border-top:2px solid green;"><span class="categoryClassDag">'+dagWeek[0]+'</span>';
@@ -1286,7 +1351,7 @@ async function functionJobItems(item) {
             selectElement.addEventListener('change', function () {
               option = this.value; // Update the option variable with the selected value
               // Update item_link with the new option
-              item_link = item.link + `?utm_source=${blogAlert}-${utmtaglowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${newsletter_utm}&utm_content=%7c${sendDate}%7c${option}%7c`;
+              item_link = item.link + `?utm_source=${blogAlert}-${newsletterType}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${newsletter_utm}&utm_content=%7c${sendDate}%7c${option}%7c`;
               // Update the href attribute of the anchor tags with the new item_link
 
 
@@ -1402,7 +1467,7 @@ async function functionJobItems(item) {
                 <tr>
                   <td class="tableDivider1a">
                     <a id="imgKleinArtikel${postid}Link" href="${item_link}">
-                      <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #f5f5f5;" src="${item_img_groot}" />
+                      <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #f5f5f5;    min-height: 175px; max-height: 175px;" src="${item_img_groot}" />
                       </a>
                     </td>
                 </tr>
@@ -1414,7 +1479,7 @@ async function functionJobItems(item) {
                   <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
                     <div class="tdDiv">
                       <a id="imgKlein${postid}Link" href="${item_link}">
-                        <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: auto; width: 150px;background: #f5f5f5;" src="${item_img_groot}" />
+                        <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: auto; width: 175px;background: #f5f5f5;    min-height: 175px; max-height: 175px;" src="${item_img_groot}" />
                       </a>
                     </div>
                   </td>
@@ -1474,7 +1539,7 @@ async function functionJobItems(item) {
               <tr id="artikelGroot${postid}TrB">
                 <td id="artikelGroot${postid}TdB">
                   <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                    <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: contain;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px;" src="${item_img_groot}" >
+                    <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: contain;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px;max-height: 229px;" src="${item_img_groot}" >
                   </a>
                 </td>
               </tr>
@@ -1501,7 +1566,7 @@ async function functionJobItems(item) {
                     </span>
                   </a>
                   <a id="KleinArtikelCTA${postid}" class="DescriptionVacature" style="display: inline; font-size: 14px; font-weight: regular; font-family: 'Roboto', Arial; color: #1a1a1a; text-decoration: none; padding: 0x 0px 0px 0px;" href="${item_link}">
-                                  Bekijk de vacature >
+                                  Bekijk de vacature ▸
                                 </a>
                 </td>
               </tr>
@@ -1957,7 +2022,7 @@ item_img_groot = imageUrl;
       <tbody>
         <tr>
           <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-            <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 150px;" src="${item_img_groot}" /></a></div>
+            <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 175px;" src="${item_img_groot}" /></a></div>
           </td>
           <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
             <table class="tableC">
@@ -1985,27 +2050,17 @@ item_img_groot = imageUrl;
       label_adv = '';
       label_themavdweek = '';
       typeweergave = 'campagnebalk';
-      weergave = `
-      <table id="campagnebalkItem${postid}" width="100%">
-      <tbody>
-      <tr>
-      <td>
-        <a id="campagnebalk${postid}a" class="campagnebalk" href="${item_link}" style="display: block; margin: 0px 5px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">
-            <div style="border: 1px solid green; border-radius: 4px; color: #018A00; text-align: center; padding: 5px 10px; margin: 0; line-height: 1.3">
-            
-            
-            <a id="campagnebalk${postid}a" class="campagnebalk" href="${item_link}" style="display: block; margin: 0px; color: #018A00 ; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">
-            
-            ${promotion_announcement} <img src="https://a43352.actonservice.com/cdnr/forpci6/acton/attachment/43352/f-4d611174-6de4-44b3-9887-e3295d000b57/2/-/-/-/-/image.png?v=undefined" width="12" style="margin-left: 15px;" /></a>
-            </div>
-
-      
-      </td>
-      </tr>
-      </tbody>
-      </table>  </a>
-      `;
-
+      weergave = ` 
+      <table id="artikelGroot${postid}T" style=" display: block;">
+                <tbody id="artikelGroot${postid}Tb">
+                  <tr id="artikelGroot${postid}TrC">
+                  <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
+                      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; width: 100%; display: inline-block; "  href="${item_link}"> ${promotion_announcement} ▸</a>
+                    </td>
+                  </tr>
+                </tbody>
+                </table>
+        `;
 
     } else if (optionlabel === 'agenda') {
 
@@ -2072,7 +2127,7 @@ item_img_groot = imageUrl;
           <tr id="artikelGroot${postid}TrB">
           <td id="artikelGroot${postid}TdB">
               <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px;max-height: 229px; object-fit: contain; background: #f5f5f5;" src="${item_img_groot}" >
               </a>
             </td>
           </tr>
@@ -2105,7 +2160,7 @@ item_img_groot = imageUrl;
           <tr id="artikelGroot${postid}TrB">
           <td id="artikelGroot${postid}TdB">
               <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px;max-height: 229px; object-fit: cover;" src="${item_img_groot}" >
               </a>
             </td>
           </tr>
@@ -2183,7 +2238,7 @@ item_img_groot = imageUrl;
     styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
   } else if (typeweergave === 'grootcta' && optionlabel === 'adv') {
     styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
-  } else if (typeweergave === 'grootcta' && optionlabel === 'adv') {
+  } else if (typeweergave === 'grootcta' && optionlabel === 'themavdweek') {
     styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
   } else {
     styling = ''; // Reset styling if none of the conditions match
@@ -2455,7 +2510,7 @@ async function functionChannelItems(item) {
               <tbody>
                 <tr>
                   <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-                    <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 150px;" src="${item_img_groot}" /></a></div>
+                    <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 175px;" src="${item_img_groot}" /></a></div>
                   </td>
                   <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
                     <table class="tableC">
@@ -2488,7 +2543,7 @@ async function functionChannelItems(item) {
                   <tr id="artikelGroot${postid}TrB">
                   <td id="artikelGroot${postid}TdB">
                       <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: cover;" src="${item_img_groot}" >
+                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px;max-height: 229px; object-fit: cover;" src="${item_img_groot}" >
                       </a>
                     </td>
                   </tr>
@@ -2694,7 +2749,7 @@ async function functiondownloadItems(item) {
     item_categorie += '</div>';
     item_categorie += '<div style="background:white;">';
     //toon weergave pulldown
-    item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergave'+selectName+postid+'"><option value="">1.Kies weergave</option><option value="klein">Afb. links</option><option value="groot">Afb. boven</option><option value="headline">Headline</option></select></span>';
+    item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergave'+selectName+postid+'"><option value="">1.Kies weergave</option><option value="klein">Afb. links</option><option value="groot">Afb. boven</option><option value="grootcta">Afb. boven + CTA</option><option value="headline">Headline</option><option value="campagnebalk">Campagnebalk</option></select></span>';
 
     item_categorie += '<span class="extraOptions"><select id="selectOption'+selectName+postid+'"><option value="artikel">2.Kies utm content</option><optgroup label="Kennisbank"><option value="adv">adv</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option></optgroup><optgroup label="Headline"><option value="headlineadv">headlineadv</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlineadvthema">headlineadvthema</option><option value="headlineonder">headlineonder</option></optgroup></select></span>';
     item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabel'+selectName+postid+'"><option value="">3.Kies label</option><option value="themavdweek">Thema vd week</option><option value="adv">Adv</option></select></span>';
@@ -2818,6 +2873,12 @@ async function functiondownloadItems(item) {
                   headlineItem.href = item_link;
               }
 
+              // Update campagnebalkItem
+              let campagnebalkItem = document.getElementById('campagnebalkItemD' + postid + 'a');
+              if (campagnebalkItem) {
+                campagnebalkItem.href = item_link;
+              }
+
 
             });      
 
@@ -2887,6 +2948,61 @@ async function functiondownloadItems(item) {
               </tbody>
               </table>`;
 
+            } else if (optionlabel === 'campagnebalk') {
+
+      
+              selectElementLabel.selectedIndex = 0;
+              // Reset label_adv and label_themavdweek
+              label_adv = '';
+              label_themavdweek = '';
+              typeweergave = 'campagnebalk';
+              weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
+                <tbody id="artikelGroot${postid}Tb">
+                  <tr id="artikelGroot${postid}TrC">
+                  <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
+                      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; width: 100%; display: inline-block; "  href="${item_link}"> ${item_title} ▸</a>
+        
+                    </td>
+                  </tr>
+                </tbody>
+                </table>
+            `;
+            
+            } else if (optionlabel === 'grootcta') {
+
+      
+              selectElementLabel.selectedIndex = 0;
+              // Reset label_adv and label_themavdweek
+              label_adv = '';
+              label_themavdweek = '';
+              typeweergave = 'grootcta';
+              weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
+                <tbody id="artikelGroot${postid}Tb">
+                  <tr id="artikelGroot${postid}TrB">
+                  <td id="artikelGroot${postid}TdB">
+                      <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
+                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px;max-height: 229px; object-fit: contain; background: #f5f5f5;" src="${item_img_groot}" >
+                      </a>
+                    </td>
+                  </tr>
+                  <tr id="artikelGroot${postid}TrA">
+                  <td id="artikelGroot${postid}TdA">
+                  <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+                      ${item_title} <span id="container_label_adv${postid}">${label_adv}</span>
+                    </a>
+                  </td>
+                  </tr>
+                  <tr id="artikelGroot${postid}TrC">
+                  <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
+                      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: #FF9901;box-shadow: 0px 2px 0px #CC7A01;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #331F00; padding: 15px 30px; margin: 0px 0;             display: inline-block; "  href="${item_link}">Bekijk ▸</a>
+        
+                    </td>
+                  </tr>
+                </tbody>
+                </table>
+            `;
+          
 
             } else if (optionlabel === 'groot') {
               selectElementLabel.selectedIndex = 0;
@@ -2899,7 +3015,7 @@ async function functiondownloadItems(item) {
                   <tr id="artikelGroot${postid}TrB">
                   <td id="artikelGroot${postid}TdB">
                       <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 195px;max-height: 195px; object-fit: contain;background: #f5f5f5;" src="${item_img_groot}" >
+                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px;max-height: 229px; object-fit: contain;background: #f5f5f5;" src="${item_img_groot}" >
                       </a>
                     </td>
                   </tr>
@@ -2971,6 +3087,12 @@ async function functiondownloadItems(item) {
             styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
             styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
+          } else if (typeweergave === 'grootcta' && optionlabel === 'adv') {
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+          } else if (typeweergave === 'grootcta' && optionlabel === 'themavdweek') {
+            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+
+
           } else {
             styling = ''; // Reset styling if none of the conditions match
           }

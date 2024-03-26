@@ -2,26 +2,26 @@
 a {
   text-decoration: none;
   font-size: 16px !important;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: Arial, sans-serif;
   color: #18608B;
 }
 
 .messagePaneNest p {
-    font-family: 'Roboto', Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     color: #666666;
 
 }
 .messagePaneNest span {
-    font-family: 'Roboto', Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     color: #666666;
 
 }
 .messagePaneNest a {
-    font-family: 'Roboto', Arial, sans-serif;
+    font-family: Arial, sans-serif;
     color: #18608B;
     text-decoration: none;
 }
@@ -64,12 +64,12 @@ a {
 
 .kleinArtikel .titleKleinArtikel {
   font-size: 10px !important;
-  line-height: 1.3 !important;
+  line-height: 13px !important;
 }
 
 .kleinArtikel .DescriptionKleinArtikel {
   font-size: 8px !important;
-  line-height: 1.3 !important;
+  line-height: 13px !important;
 }
 
 .kleinArtikel .KleinArtikelCTA {
@@ -83,7 +83,7 @@ a {
 
 .kleinArtikel .tableDivider2 {
   max-height: 90px !important;
-  line-height: 1.3;
+  line-height: 1;
 
 }
 .imgKleinArtikel {
@@ -110,9 +110,12 @@ a {
 
 .grootArtikelTitle {
   font-size: 9pt;
-  line-height: 1.3 !important;
+  line-height: 22px !important;
 }
 
+.ButtonImg {
+
+}
 
 .ButtonImgPressd {
   border-bottom: 5px solid #1483C6;
@@ -124,7 +127,6 @@ a {
 
 /* The switch - the box around the slider */
 .switch {
-  background: #f5f5f5 !important;
   position: relative !important;
   display: inline-block !important;
   width: 60px !important;
@@ -153,22 +155,10 @@ a {
   transition: .4s !important;
 }
 
-/*#dagWeekText {
+#dagWeekText {
   color: #CCCCCC !important;
   margin: 10px 0px 0px 10px !important;
-}*/
-
-/* #dagWeekText {
-  position: relative;
-  left: 10px;
-  font-size: 16px;
-  text-transform: capitalize;
-  top: 8px;
-}*/
-#switchListSwitchText {
-  top: 12px;
-  position: relative;
-} 
+}
 
 .slider:before {
   position: absolute !important;
@@ -176,7 +166,7 @@ a {
   height: 26px !important;
   width: 26px !important;
   left: 4px !important;
-  bottom: 2px !important;
+  bottom: 4px !important;
   background-color: white !important;
   -webkit-transition: .4s !important;
   transition: .4s !important;
@@ -196,25 +186,13 @@ input:checked + .slider:before {
   transform: translateX(26px) !important;
 }
 
-#sendDateSelector,
-#selectMenu {
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  height: 30px;
-  margin-top: 10px;
-}
-
-#sendDateForm input[type=date] {padding: 4px 10px;}
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px !important;
-  margin: 2px; 
 }
 
 .slider.round:before {
   border-radius: 50% !important;
-
 }
 
 #versiondiv { 
@@ -248,28 +226,23 @@ input:checked + .slider:before {
 .categoryClass span.postScore {  border:1px solid rgba(0,0,0,.5); background: rgba(255,255,255,1); }
 
 #headingArtikelGroot { padding: 10px; border-bottom: 1px solid #000; font-weight: bold; font-size: 16px; }
-#switchListForm { padding: 5px; height: auto; border-bottom: 1px solid #ccc; }
-#switchListForm #switchListSwitchText p { display: inline-block; font-weight: normal; margin: 0; padding: 0 10px; font-size: 16px; }
+#switchListForm { padding: 5px; border-bottom: 1px solid #000; }
+#switchListForm #switchListSwitchText p { display: inline-block; font-weight: bold; margin: 0; padding: 0 10px; font-size: 16px; }
 
 #dagWeekForm .slider.round:before { content:"D" !important; font-weight: bold; font-size: 16px; color: #333; text-align: center; line-height: 30px; }
 #dagWeekForm input:checked + .slider.round:before { content:"W" !important; color: #333; }
-/*#dagWeekForm  #dagWeekText { display: none;}*/
-
-
-#blogAlertForm .slider.round:before { content:"B" !important; font-weight: bold; font-size: 16px; color: #333; text-align: center; line-height: 30px; }
-#blogAlertForm input:checked + .slider.round:before { content:"A" !important; color: #333; }
-
+#dagWeekForm  #dagWeekText { display: none;}
 
 .kleinArtikel { border-bottom: 1px solid rgba(0,0,0,.2);}
 
 .divSearchKader {
   width: 100%;
-  height: auto;
-    display: inline-block;
-    padding: 2px 0px;
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid rgba(0,0,0,.2);
+  height: 65px;
 }
-.divSearchKader label { width: 100%; float: left;display: none;  }
+.divSearchKader label { width: 100%; float: left; }
 .divSearchKader input { width: 73%; float: left; padding: 0 4px; line-height: 28px; }
 .divSearchKader div.button { width: 25%; float: right; cursor: pointer; background: #148acb; border: 1px solid #2e6da4; color: #fff; text-align: center;  line-height: 28px;}
 .divSearchKader div.button:hover { background: #2e6da4; }
-.divSearchKader .button {padding: 0;}

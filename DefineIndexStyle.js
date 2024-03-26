@@ -5,8 +5,8 @@ createCanvas.id = 'canvas';
 createCanvas.style.position = 'fixed';
 createCanvas.style.top = '49px';
 createCanvas.style.left = '0px';
-createCanvas.style.bottom = '0px';
-createCanvas.style.backgroundColor = '#ccc';
+createCanvas.style.bottom = '51px';
+createCanvas.style.backgroundColor = '#f5f5f5';
 createCanvas.style.display = "block";
 createCanvas.style.zIndex = "19000";
 
@@ -24,37 +24,25 @@ dagWeekSelect.id = 'contentStyle';
 dagWeekSelect.style.position = 'fixed';
 dagWeekSelect.style.top = '0px';
 dagWeekSelect.style.marginTop = '7px';
-dagWeekSelect.style.left = '22%';
+dagWeekSelect.style.left = '27%';
 dagWeekSelect.style.width = '114px';
 dagWeekSelect.style.minWidth= '114px';
 dagWeekSelect.style.height = '30px';
 dagWeekSelect.style.backgroundColor = '#f8f8f8';
 dagWeekSelect.style.color = '#FFF';
 dagWeekSelect.style.display = "block";
-dagWeekSelect.style.zIndex = '9';
-
-
-blogAlertSelect.id = 'blogAlertSelect';
-blogAlertSelect.style.position = 'fixed';
-blogAlertSelect.style.top = '0px';
-blogAlertSelect.style.marginTop = '7px';
-blogAlertSelect.style.left = '33%';
-blogAlertSelect.style.width = '114px';
-blogAlertSelect.style.minWidth= '114px';
-blogAlertSelect.style.height = '30px';
-blogAlertSelect.style.backgroundColor = '#f8f8f8';
-blogAlertSelect.style.color = '#FFF';
-blogAlertSelect.style.display = "block";
-blogAlertSelect.style.zIndex = '9';
 
 sendDateSelect.id = 'sendDateSelect';
 sendDateSelect.style.position = 'fixed';
 sendDateSelect.style.top = '0px';
-sendDateSelect.style.left = '26%';
+sendDateSelect.style.marginTop = '7px';
+sendDateSelect.style.left = '38%';
+sendDateSelect.style.width = '114px';
+sendDateSelect.style.minWidth= '114px';
+sendDateSelect.style.height = '30px';
 sendDateSelect.style.backgroundColor = '#f8f8f8';
 sendDateSelect.style.color = '#FFF';
 sendDateSelect.style.display = "block";
-sendDateSelect.style.zIndex = '9';
 
 inOutSelect.id = 'contentStyle';
 inOutSelect.style.position = 'fixed';
@@ -68,39 +56,150 @@ inOutSelect.style.color = '#FFF';
 inOutSelect.style.display = "block";
 inOutSelect.style.zIndex = "3001";
 
-choices.style.width = "100%";
-choices.style.height = '49px';
-choices.style.minWidth = canvsMinWidth;
-choices.className = "choices";
-choices.cssFloat = "left";
-choices.style.display = "flex";
+choises.style.width = "100%";
+choises.style.height = '49px';
+choises.style.minWidth = canvsMinWidth;
+choises.className = "choises";
+choises.cssFloat = "left";
+choises.style.display = "inline";
+
+headlinesButton.style.width = "20%"
+headlinesButton.style.height = '49px';
+headlinesButton.style.backgroundColor = "#fafafa";
+headlinesButton.style.color = "#000";
+headlinesButton.style.display = "block";
+headlinesButton.style.cssFloat="left"
+headlinesButton.id = "headlinesButton"
+headlinesButtonImg.textContent = "Headlines";
+headlinesButtonImg.style.textAlign = "center";
+headlinesButtonImg.style.display = "block";
+headlinesButtonImg.className = "ButtonImg";
+headlinesButtonImg.style.width = "100%";
+headlinesButtonImg.style.marginLeft="auto";
+headlinesButtonImg.style.marginRight="auto";
+headlinesButtonImg.style.verticalAlign = "center";
+headlinesButtonImg.style.color = "#cccccc";
+headlinesButtonImg.style.fontFamily = "Helvetiva, Arial";
+headlinesButtonImg.style.fontSize= "14px";
+headlinesButtonImg.style.fontWeight= "bold";
+headlinesButtonImg.style.top= "0px";
+headlinesButtonImg.style.height= "29px"
+
+
+artikelGrootButton.style.width = "20%"
+artikelGrootButton.style.height = '49px';
+artikelGrootButton.style.backgroundColor = "#fafafa";
+artikelGrootButton.style.color = "#000";
+artikelGrootButton.style.display = "block";
+artikelGrootButton.style.cssFloat="left"
+artikelGrootButton.id = "artikelGrootButton"
+artikelGrootButtonImg.textContent = "Artikels";
+artikelGrootButtonImg.style.textAlign = "center";
+artikelGrootButtonImg.style.display = "block";
+artikelGrootButtonImg.className = "ButtonImg";
+artikelGrootButtonImg.style.width = "100%";
+artikelGrootButtonImg.style.marginLeft="auto";
+artikelGrootButtonImg.style.marginRight="auto";
+artikelGrootButtonImg.style.verticalAlign = "center";
+artikelGrootButtonImg.style.color = "#cccccc";
+artikelGrootButtonImg.style.fontFamily = "Helvetiva, Arial";
+artikelGrootButtonImg.style.fontSize= "14px";
+artikelGrootButtonImg.style.fontWeight= "bold";
+artikelGrootButtonImg.style.top= "0px";
+artikelGrootButtonImg.style.height= "29px"
+
+agendaAcademyButton.style.width = "20%";
+agendaAcademyButton.style.height = '49px';
+agendaAcademyButton.style.backgroundColor = "#fafafa";
+agendaAcademyButton.style.color = "#000";
+agendaAcademyButton.style.display = "block";
+agendaAcademyButton.style.cssFloat="left"
+agendaAcademyButton.id = "agendaAcademyButton"
+agendaAcademyButtonImg.textContent = "Agenda";
+agendaAcademyButtonImg.style.textAlign = "center";
+agendaAcademyButtonImg.style.display = "block";
+agendaAcademyButtonImg.className = "ButtonImg";
+agendaAcademyButtonImg.style.width = "100%";
+agendaAcademyButtonImg.style.marginLeft="auto"
+agendaAcademyButtonImg.style.marginRight="auto"
+agendaAcademyButtonImg.style.verticalAlign = "center";
+agendaAcademyButtonImg.style.color = "#cccccc";
+agendaAcademyButtonImg.style.fontFamily = "Helvetiva, Arial";
+agendaAcademyButtonImg.style.fontSize= "14px";
+agendaAcademyButtonImg.style.fontWeight= "bold";
+agendaAcademyButtonImg.style.top= "0px";
+agendaAcademyButtonImg.style.height= "29px"
+
+
+artikelKleinButton.style.width = "20%"
+artikelKleinButton.style.height = '49px';
+artikelKleinButton.style.backgroundColor = "#fafafa";
+artikelKleinButton.style.color = "#000";
+artikelKleinButton.style.display = "block";
+artikelKleinButton.style.cssFloat="left"
+artikelKleinButton.id="artikelKleinButton"
+artikelKleinButtonImg.textContent = "Items";
+artikelKleinButtonImg.style.textAlign = "center";
+artikelKleinButtonImg.style.display = "block";
+artikelKleinButtonImg.className = "ButtonImg";
+artikelKleinButtonImg.style.width = "100%";
+artikelKleinButtonImg.style.marginLeft="auto"
+artikelKleinButtonImg.style.marginRight="auto"
+artikelKleinButtonImg.style.verticalAlign = "center";
+artikelKleinButtonImg.style.color = "#cccccc";
+artikelKleinButtonImg.style.fontFamily = "Helvetiva, Arial";
+artikelKleinButtonImg.style.fontSize= "14px";
+artikelKleinButtonImg.style.fontWeight= "bold";
+artikelKleinButtonImg.style.top= "0px";
+artikelKleinButtonImg.style.height= "29px"
+
+vacatureButton.style.width = "20%"
+vacatureButton.style.height = '49px';
+vacatureButton.style.backgroundColor = "#fafafa";
+vacatureButton.style.color = "#000";
+vacatureButton.style.display = "block";
+vacatureButton.style.cssFloat="left"
+vacatureButton.id = "vacatureButton"
+vacatureButtonImg.textContent = "Vacatures";
+vacatureButtonImg.style.textAlign = "center";
+vacatureButtonImg.style.display = "block";
+vacatureButtonImg.className = "ButtonImg";
+vacatureButtonImg.style.width = "100%";
+vacatureButtonImg.style.marginLeft="auto";
+vacatureButtonImg.style.marginRight="auto";
+vacatureButtonImg.style.verticalAlign = "center";
+vacatureButtonImg.style.color = "#cccccc";
+vacatureButtonImg.style.fontFamily = "Helvetiva, Arial";
+vacatureButtonImg.style.fontSize= "14px";
+vacatureButtonImg.style.fontWeight= "bold";
+vacatureButtonImg.style.top= "0px";
+vacatureButtonImg.style.height= "29px"
 
 contentIndex.id = 'contentIndex';
 contentIndex.style.position = 'fixed';
 contentIndex.style.top = '50px';
 contentIndex.style.left = '0px';
-contentIndex.style.bottom = '0px';
-contentIndex.style.backgroundColor = '#fff';
+contentIndex.style.bottom = '51px';
+contentIndex.style.backgroundColor = '#f5f5f5';
 contentIndex.style.display = 'block';
 contentIndex.style.overflowY = 'scroll';
-contentIndex.style.maxWidth = '18%';
-contentIndex.style.boxShadow = '5px 7px 7px #ccc';
-contentIndex.style.display = 'none';
 
 agendaAcademyContainer.style.position = "absolute";
 agendaAcademyContainer.id = "agendaAcademyContainer";
-agendaAcademyContainer.draggable = "false";
+agendaAcademyContainer.draggable = "true";
 agendaAcademyContainer.style.display = "none";
 
 agendaOverlay.style.position = "absolute";
 agendaOverlay.style.height = "100%"
 agendaOverlay.style.width = "100%"
 agendaOverlay.id = "agendaOverlay";
-//agendaOverlay.draggable = "true";
-//agendaOverlay.ondragstart='onDragStart(event);'
+agendaOverlay.draggable = "true";
+agendaOverlay.ondragstart='onDragStart(event);'
 agendaOverlay.style.display = "none";
-agendaOverlay.style.zIndex = "-1";
+agendaOverlay.style.zIndex = "19300";
 
+artikelenKleinContainer.style.position = "absolute";
+artikelenKleinContainer.style.display = "none";
 artikelenGrootContainer.style.position = "absolute";
 artikelenGrootContainer.style.display = "none";
 vacatureContainer.style.display = "none";
@@ -111,16 +210,13 @@ contentIndex.style.fontSize = "14px";
 
 credits.id = 'credits';
 credits.style.position = 'fixed';
-credits.style.height = '30px';
+credits.style.height = '50px';
 credits.style.left = '0px';
-//credits.style.width = canvasWidth;
-//credits.style.minWidth= canvsMinWidth;
-credits.style.width = '100%';
-credits.style.maxWidth= '18%';
+credits.style.width = canvasWidth;
+credits.style.minWidth= canvsMinWidth;
 credits.style.bottom = '0Px';
 credits.style.backgroundColor = '#f8f8f8';
 credits.style.display = "block";
-
 
 
 headlinesContainer.style.position = "absolute";
@@ -165,8 +261,8 @@ headlinesOverlay.style.zIndex = "19300";
   shl2b.id = "sheadline2b";
   shl2b.style.display = "inline";
   shl2b.style.alignContent= "right";
-  shl2b.style.border="1px solid #018A00"
-  shl2b.style.color="#018A00"
+  shl2b.style.border="1px solid #666666"
+  shl2b.style.color="#666666"
   shl2b.style.cssFloat="right"
   shl2b.style.fontSize="9px"
 
@@ -209,8 +305,8 @@ headlinesOverlay.style.zIndex = "19300";
   shl5b.id = "sheadline5b";
   shl5b.style.display = "inline";
   shl5b.style.alignContent= "right";
-  shl5b.style.border="1px solid #018A00"
-  shl5b.style.color="#018A00"
+  shl5b.style.border="1px solid #666666"
+  shl5b.style.color="#666666"
   shl5b.style.cssFloat="right"
   shl5b.style.fontSize="9px"
 
@@ -239,14 +335,12 @@ headlinesOverlay.style.zIndex = "19300";
   phl7.style.color = "#18608B"
 
   headlineTable.width="100%";
-  headlineTable.style.lineHeight= "1.3";
+  headlineTable.style.lineHeight= "22px";
 
   headlines1Td1.textContent = "▸ ";
   headlines1Td1.style.fontSize = "12px";
   headlines1Td1.style.verticalAlign = "top";
-  headlines1Td1.style.width = "20px";
   headlines1Td1.style.color = "#18608B";
-  headlines1Td3.style.width = "30px";
   headlines2Td1.textContent = "▸ ";
   headlines2Td1.style.fontSize = "12px";
   headlines2Td1.style.verticalAlign = "top";
@@ -301,24 +395,6 @@ dagWeekFormText.top = "0px";
 dagWeekFormText.color = "#CCCCCC";
 dagWeekFormText.margin = "7px 5px 5px 10px";
 
-
-blogAlertForm.id = "blogAlertForm";
-blogAlertForm.className = "blogAlertForm";
-blogAlertFormDiv.class = "switch-field"
-blogAlertFormInput.type = "checkbox";
-blogAlertFormInput.value = "blog";
-blogAlertFormInput.id= "blogAlertSwitch";
-document.getElementById ("blogAlertSwitch").addEventListener ("click", switchFunction, false);
-blogAlertFormLabel.className = "switch";
-blogAlertFormSpan.className = "slider round";
-blogAlertFormText.id = "blogAlertText";
-blogAlertFormText.display = "inline";
-blogAlertFormText.width = "auto";
-blogAlertFormText.top = "0px";
-blogAlertFormText.color = "#CCCCCC";
-blogAlertFormText.margin = "7px 5px 5px 10px";
-
-
 function switchFunction()
 {
   if (document.getElementById('dagWeekSwitch').checked)
@@ -329,19 +405,10 @@ function switchFunction()
       dagWeek = 'dagelijks';
       getAllContent();
   }
-
-  if (document.getElementById('blogAlertSwitch').checked)
-  {
-      blogAlert = 'al';
-      getAllContent();
-  } else {
-      blogAlert = 'blog';
-      getAllContent();
-  }
-  
 };
 
 inOutForm.id = "inOutForm";
+
 inOutForm.style.bottom = "0px !important";
 inOutForm.style.left = "20% !important;";
 inOutForm.style.height = "20px !important;";
@@ -369,7 +436,6 @@ function switchFunctionInOut()
       document.getElementById('credits').style.minWidth = '100px';
       document.getElementById('contentIndex').style.width = canvasWidth;
       document.getElementById('contentIndex').style.minWidth = '100px';
-      document.getElementById('contentIndex').style.display = 'block';
       console.log (inOut)
   } else {
       inOut = 'in';
@@ -381,7 +447,6 @@ function switchFunctionInOut()
       document.getElementById('credits').style.minWidth = '0px';
       document.getElementById('contentIndex').style.width = '0px';
       document.getElementById('contentIndex').style.minWidth = '0px';
-      document.getElementById('contentIndex').style.display = 'none';
       console.log (inOut)
   }
 };
@@ -423,19 +488,13 @@ function switchListFunction()
 
 
 let searchID = '';
-//let searchTitle = '';
 const divSearch = document.createElement('div');
 divSearch.className = 'divSearchKader';
 divSearch.id = 'divSearchKader';
-divSearch.innerHTML = `
-<label for="divSearchKaderInput">Zoek op postid:</label>
-<input type="text" placeholder="Zoek op postid..." id="divSearchKaderInput">
-<div class="button">Zoek</div>
-`;
+divSearch.innerHTML = `<label for="divSearchKaderInput">Zoek op postid:</label><input type="text" placeholder="Zoek op postid..." id="divSearchKaderInput"><div class="button">Zoek</div>`;
 switchListForm.appendChild(divSearch);
 
 document.getElementById ("divSearchKaderInput").addEventListener ("change", inputSearch, false);
-//document.getElementById ("divSearchKaderInputTitle").addEventListener ("change", inputSearch, false);
 
 function inputSearch()
 {
@@ -444,6 +503,5 @@ function inputSearch()
 //   getAllContent();
 console.log('This Value is', this.value);
   searchID = this.value;
-  //searchTitle = this.value;
   getAllContent();
 };

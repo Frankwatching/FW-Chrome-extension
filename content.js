@@ -1064,37 +1064,38 @@ async function blogItems(item, index) {
       label_adv = '';
       label_themavdweek = '';
       typeweergave = 'klein';
-      weergave = `<table class="table1a">
-      <tbody>
+      weergave = `
         <tr>
-          <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_groot}" /></a></td>
-        </tr>
-      </tbody>
-      </table>
-      <table>
-      <tbody>
-        <tr>
-          <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-            <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 175px;" width="175" src="${item_img_groot}" /></a></div>
-          </td>
-          <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
-            <table class="tableC">
-              <tbody>
+            <td id="imgKleinArtikel${postid}TdAaa"  dir="ltr" align="center" valign="top" width="100%" style="padding: 10px;"><table id="imgKleinArtikel${postid}tableA"  align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-                  <td class="artikelKleinTDcA">
-                  <span id="container_label_adv${postid}">${label_adv}</span>
-                  <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
-                </tr>
-                <tr>
-                  <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-      </table>`;
+                <td id="imgKleinArtikel${postid}TdA"  width="33.33%" class="stack-column-center"><table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                    <td id="imgKleinArtikel${postid}Ab"   dir="ltr" valign="top" style="padding: 0 10px;"><img id="imgKleinArtikel${postid}a"  src="${item_img_groot}"  width="170" alt="alt_text" border="0" class="center-on-narrow"></td>
+                  </tr>
+                  </table></td>
+                <td id="imgKleinArtikel${postid}Ac"  width="66.66%" class="stack-column-center"><table id="imgKleinArtikel${postid}Ba"  align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                    <td id="imgKleinArtikel${postid}TdB"  dir="ltr" valign="top" style="font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555; padding: 10px; text-align: left;" class="center-on-narrow"><strong style="color:#111111;">${item_title}</strong> <br>
+
+                        <span id="container_label_adv${postid}">${label_adv}</span>
+                        <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+
+                        <br>
+                        ${item_description}<br>
+                        <br>
+                        <a id="imgKlein${postid}Link" href="${item_link}" style="background: #222222; border: 15px solid #222222; padding: 0 10px;color: #ffffff; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a"> 
+                              <!--[if mso]>&nbsp;&nbsp;&nbsp;&nbsp;<![endif]-->Lees meer ▸<!--[if mso]>&nbsp;&nbsp;&nbsp;&nbsp;<![endif]--> 
+                              </a>
+                        
+                      
+                      </td>
+                  </tr>
+                  </table></td>
+              </tr>
+              </table></td>
+          </tr>
+        <!-- Thumbnail Left, Text Right : END --> 
+    `;
 
     
     } else if (optionlabel === 'groot') {

@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.2.5";
+let versionid = "3.2.6";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -347,7 +347,7 @@ async function agendaItems(item, index) {
   <table id="contentAcademyAgenda${postid}" style="display: inline-block; width: 100%; background: #fff; border-collapse: collapse; width: 100%;padding: 8px 10px;" align="left">
       <tbody>
       <tr>
-        <td style="width: 42px;">
+        <td style="width: 42px; vertical-align: top;padding-top: 5px;">
           <table width="40px">
             <tbody>
               <tr>
@@ -359,7 +359,7 @@ async function agendaItems(item, index) {
             </tbody>
           </table>      
         </td>
-      <td style="">
+      <td style="vertical-align: top;">
 
         <table id="contentAcademy" style="margin-left: 10px !important;">
           <tbody>
@@ -661,11 +661,11 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
       typeweergave = 'campagnebalk';
       weergave = `
 
-      <table id="artikelGroot${postid}T" style=" display: block;">
+      <table id="artikelGroot${postid}T" style=" width: 100%;">
         <tbody id="artikelGroot${postid}Tb">
           <tr id="artikelGroot${postid}TrC">
           <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; width: 100%; display: inline-block; "  href="${item_link}"> ${item_title} ▸</a>
+              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}"> ${item_title} ▸</a>
 
             </td>
           </tr>
@@ -686,7 +686,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
             <tr id="artikelGroot${postid}TrB">
             <td id="artikelGroot${postid}TdB">
                 <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px; object-fit: cover; background: #f5f5f5;" height="229" src="${item_img_groot}" >
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: cover; background: #f5f5f5;" height="229" src="${item_img_groot}" >
                 </a>
               </td>
             </tr>
@@ -720,7 +720,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
             <tr id="artikelGroot${postid}TrB">
             <td id="artikelGroot${postid}TdB">
                 <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px; object-fit: cover; background: #f5f5f5;" height="229" src="${item_img_groot}" >
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: cover; background: #f5f5f5;" height="229" src="${item_img_groot}" >
                 </a>
               </td>
             </tr>
@@ -1108,7 +1108,7 @@ async function blogItems(item, index) {
           <tr id="artikelGroot${postid}TrB">
           <td id="artikelGroot${postid}TdB">
               <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-              <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px; object-fit: cover; background: #f5f5f5;" height="229" src="${item_img_groot}" >
+              <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: cover; background: #f5f5f5;" height="229" src="${item_img_groot}" >
               </a>
             </td>
           </tr>
@@ -1539,7 +1539,7 @@ async function functionJobItems(item) {
               <tr id="artikelGroot${postid}TrB">
                 <td id="artikelGroot${postid}TdB">
                   <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                    <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: contain;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px;max-height: 229px; background: #f5f5f5; " src="${item_img_groot}" >
+                    <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: contain;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px;max-height: 192px; background: #f5f5f5; " src="${item_img_groot}" >
                   </a>
                 </td>
               </tr>
@@ -2127,7 +2127,7 @@ item_img_groot = imageUrl;
           <tr id="artikelGroot${postid}TrB">
           <td id="artikelGroot${postid}TdB">
               <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px;object-fit: contain; background: #f5f5f5;" src="${item_img_groot}" >
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px;object-fit: contain; background: #f5f5f5;" src="${item_img_groot}" >
               </a>
             </td>
           </tr>
@@ -2160,7 +2160,7 @@ item_img_groot = imageUrl;
           <tr id="artikelGroot${postid}TrB">
           <td id="artikelGroot${postid}TdB">
               <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px; object-fit: cover;" src="${item_img_groot}" >
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: cover;" src="${item_img_groot}" >
               </a>
             </td>
           </tr>
@@ -2543,7 +2543,7 @@ async function functionChannelItems(item) {
                   <tr id="artikelGroot${postid}TrB">
                   <td id="artikelGroot${postid}TdB">
                       <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px; object-fit: cover;" src="${item_img_groot}" >
+                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: cover;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: cover;" src="${item_img_groot}" >
                       </a>
                     </td>
                   </tr>
@@ -2981,7 +2981,7 @@ async function functiondownloadItems(item) {
                   <tr id="artikelGroot${postid}TrB">
                   <td id="artikelGroot${postid}TdB">
                       <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px; object-fit: contain; background: #f5f5f5;" src="${item_img_groot}" >
+                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: contain; background: #f5f5f5;" src="${item_img_groot}" >
                       </a>
                     </td>
                   </tr>
@@ -3015,7 +3015,7 @@ async function functiondownloadItems(item) {
                   <tr id="artikelGroot${postid}TrB">
                   <td id="artikelGroot${postid}TdB">
                       <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 229px; object-fit: contain; background: #f5f5f5;" src="${item_img_groot}" >
+                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: contain; background: #f5f5f5;" src="${item_img_groot}" >
                       </a>
                     </td>
                   </tr>

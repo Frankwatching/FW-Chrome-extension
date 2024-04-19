@@ -23,7 +23,8 @@ sendDateFormInput.addEventListener("change", getAllContent);
 
 let styleHeadlines = document.getElementsByClassName('headline');
 for (var i = 0; i < styleHeadlines.length; i++) {
-  styleHeadlines[i].style.fontsize = "12px";
+  styleHeadlines[i].style.fontsize = "16px";
+  styleHeadlines[i].style.textDecoration = "none";
 }
 let allLinks;
 

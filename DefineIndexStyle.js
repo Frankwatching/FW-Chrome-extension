@@ -142,7 +142,8 @@ headlinesOverlay.style.zIndex = "19300";
   hl1.style.display = "block";
   hl1.className = "headline";
   hl1.style.margin = "0px";
-  hl1.style.color = "#18608B"
+  hl1.style.color = "#18608B";
+  hl1.style.fontSize="16px"
 
   phl1.id = "pheadline1";
   phl1.style.display = "block";
@@ -154,7 +155,8 @@ headlinesOverlay.style.zIndex = "19300";
   hl2.style.display = "inline";
   hl2.className = "headline";
   hl2.style.margin = "0px";
-  hl2.style.color = "#18608B"
+  hl2.style.color = "#18608B";
+  hl2.style.fontSize="16px"
 
   phl2.id = "pheadline2";
   phl2.style.display = "inline";
@@ -174,7 +176,8 @@ headlinesOverlay.style.zIndex = "19300";
   hl3.style.display = "block";
   hl3.className = "headline";
   hl3.style.margin = "0px";
-  hl3.style.color = "#18608B"
+  hl3.style.color = "#18608B";
+  hl3.style.fontSize="16px"
 
   phl3.id = "pheadline3";
   phl3.style.display = "block";
@@ -186,7 +189,8 @@ headlinesOverlay.style.zIndex = "19300";
   hl4.style.display = "block";
   hl4.className = "headline";
   hl4.style.margin = "0px";
-  hl4.style.color = "#18608B"
+  hl4.style.color = "#18608B";
+  hl4.style.fontSize="16px"
 
   phl4.id = "pheadline4";
   phl4.style.display = "block";
@@ -198,7 +202,8 @@ headlinesOverlay.style.zIndex = "19300";
   hl5.style.display = "inline";
   hl5.className = "headline";
   hl5.style.margin = "0px";
-  hl5.style.color = "#18608B"
+  hl5.style.color = "#18608B";
+  hl5.style.fontSize="16px"
 
   phl5.id = "pheadline5";
   phl5.style.display = "inline";
@@ -218,7 +223,8 @@ headlinesOverlay.style.zIndex = "19300";
   hl6.style.display = "block";
   hl6.className = "headline";
   hl6.style.margin = "0px";
-  hl6.style.color = "#18608B"
+  hl6.style.color = "#18608B";
+  hl6.style.fontSize="16px"
 
   phl6.id = "pheadline6";
   phl6.style.display = "block";
@@ -230,7 +236,8 @@ headlinesOverlay.style.zIndex = "19300";
   hl7.style.display = "block";
   hl7.className = "headline";
   hl7.style.margin = "0px";
-  hl7.style.color = "#18608B"
+  hl7.style.color = "#18608B";
+  hl7.style.fontSize="16px"
 
   phl7.id = "pheadline7";
   phl7.style.display = "block";

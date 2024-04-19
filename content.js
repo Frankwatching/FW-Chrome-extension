@@ -2050,17 +2050,16 @@ item_img_groot = imageUrl;
       label_adv = '';
       label_themavdweek = '';
       typeweergave = 'campagnebalk';
-      weergave = ` 
-      <table id="artikelGroot${postid}T" style=" display: block;">
-                <tbody id="artikelGroot${postid}Tb">
-                  <tr id="artikelGroot${postid}TrC">
-                  <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-                      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; width: 100%; display: inline-block;text-decoration: none; "  href="${item_link}"> ${promotion_announcement} ▸</a>
-                    </td>
-                  </tr>
-                </tbody>
-                </table>
-        `;
+      weergave = `<table id="artikelGroot${postid}T" style=" width: 100%;">
+        <tbody id="artikelGroot${postid}Tb">
+          <tr id="artikelGroot${postid}TrC">
+          <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
+              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}"> ${promotion_announcement} ▸</a>
+
+            </td>
+          </tr>
+        </tbody>
+        </table>`;
 
     } else if (optionlabel === 'agenda') {
 
@@ -2956,16 +2955,16 @@ async function functiondownloadItems(item) {
               label_adv = '';
               label_themavdweek = '';
               typeweergave = 'campagnebalk';
-              weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
+              weergave = `<table id="artikelGroot${postid}T" style=" width: 100%;">
                 <tbody id="artikelGroot${postid}Tb">
                   <tr id="artikelGroot${postid}TrC">
                   <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-                      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; width: 100%; display: inline-block; "  href="${item_link}"> ${item_title} ▸</a>
-        
+                      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}"> ${item_title} ▸</a>
+
                     </td>
                   </tr>
                 </tbody>
-                </table>
+              </table>
             `;
             
             } else if (optionlabel === 'grootcta') {

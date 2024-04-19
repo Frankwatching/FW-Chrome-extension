@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Frankwatching extension for Act-On v3.2.6",
-  "version": "3.2.6",
+  "name": "Frankwatching extension for Act-On v3.2.7",
+  "version": "3.2.7",
   "content_scripts": [
     {
       "matches": [

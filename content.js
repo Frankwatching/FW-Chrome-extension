@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.2.6";
+let versionid = "3.2.7";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -608,7 +608,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         <tr>
         <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
         <td>
-          <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
+          <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;text-decoration: none;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
         </td>
         <td style="width: 30px;"><span id="container_label_adv${postid}">${label_adv}</span></td>
         </tr>
@@ -642,10 +642,10 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
                     <td class="artikelKleinTDcA">
                     <span id="container_label_adv${postid}">${label_adv}</span>
                     <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
+                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title}</a></td>
                   </tr>
                   <tr>
-                    <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
+                    <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
                   </tr>
                 </tbody>
               </table>
@@ -686,14 +686,14 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
             <tr id="artikelGroot${postid}TrB">
             <td id="artikelGroot${postid}TdB">
                 <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: cover; background: #f5f5f5;" height="229" src="${item_img_groot}" >
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: cover; background: #ffffff;" height="229" src="${item_img_groot}" >
                 </a>
               </td>
             </tr>
             <tr id="artikelGroot${postid}TrA">
             <td id="artikelGroot${postid}TdA">
             <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-              <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+              <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
                 ${item_title} <span id="container_label_adv${postid}">${label_adv}</span>
               </a>
             </td>
@@ -720,21 +720,21 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
             <tr id="artikelGroot${postid}TrB">
             <td id="artikelGroot${postid}TdB">
                 <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: cover; background: #f5f5f5;" height="229" src="${item_img_groot}" >
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: cover; background: #ffffff;" height="229" src="${item_img_groot}" >
                 </a>
               </td>
             </tr>
             <tr id="artikelGroot${postid}TrA">
             <td id="artikelGroot${postid}TdA">
             <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-              <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+              <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
                 ${item_title} <span id="container_label_adv${postid}">${label_adv}</span>
               </a>
             </td>
             </tr>
             <tr id="artikelGroot${postid}TrC">
             <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-                <a id="grootArtikelDescription${postid}" class="grootArtikelDescription" href="${item_link}" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;">
+                <a id="grootArtikelDescription${postid}" class="grootArtikelDescription" href="${item_link}" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;text-decoration: none;">
                   <span style="font-size: 16px; color: #333333;font-weight: 400;">
                     ${item_description}
                   </span>
@@ -1050,7 +1050,7 @@ async function blogItems(item, index) {
       <tr>
       <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
       <td>
-        <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
+        <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;text-decoration: none;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
       </td>
       <td style="width: 30px;"><span id="container_label_adv${postid}">${label_adv}</span></td>
       </tr>
@@ -1084,10 +1084,10 @@ async function blogItems(item, index) {
                   <td class="artikelKleinTDcA">
                   <span id="container_label_adv${postid}">${label_adv}</span>
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
+                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title}</a></td>
                 </tr>
                 <tr>
-                  <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
+                  <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
                 </tr>
               </tbody>
             </table>
@@ -1108,21 +1108,21 @@ async function blogItems(item, index) {
           <tr id="artikelGroot${postid}TrB">
           <td id="artikelGroot${postid}TdB">
               <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-              <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: cover; background: #f5f5f5;" height="229" src="${item_img_groot}" >
+              <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: cover; background: #ffffff;" height="229" src="${item_img_groot}" >
               </a>
             </td>
           </tr>
           <tr id="artikelGroot${postid}TrA">
           <td id="artikelGroot${postid}TdA">
           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-            <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+            <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
               ${item_title} <span id="container_label_adv${postid}">${label_adv}</span>
             </a>
           </td>
           </tr>
           <tr id="artikelGroot${postid}TrC">
           <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-              <a id="grootArtikelDescription${postid}" class="grootArtikelDescription" href="${item_link}" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;">
+              <a id="grootArtikelDescription${postid}" class="grootArtikelDescription" href="${item_link}" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;text-decoration: none;">
                 <span style="font-size: 16px; color: #333333;font-weight: 400;">
                   ${item_description}
                 </span>
@@ -1448,7 +1448,7 @@ async function functionJobItems(item) {
               <tr>
               <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
               <td>
-                <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
+                <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;text-decoration: none;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
               </td>
               <td style="width: 30px;"><span id="container_label_adv${postid}">${label_adv}</span></td>
               </tr>
@@ -1467,7 +1467,7 @@ async function functionJobItems(item) {
                 <tr>
                   <td class="tableDivider1a">
                     <a id="imgKleinArtikel${postid}Link" href="${item_link}">
-                      <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #f5f5f5;    min-height: 175px; max-height: 175px;" height="175" src="${item_img_groot}" />
+                      <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #ffffff;    min-height: 175px; max-height: 175px;" height="175" src="${item_img_groot}" />
                       </a>
                     </td>
                 </tr>
@@ -1479,7 +1479,7 @@ async function functionJobItems(item) {
                   <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
                     <div class="tdDiv">
                       <a id="imgKlein${postid}Link" href="${item_link}">
-                        <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: auto; width: 175px;background: #f5f5f5;    min-height: 175px; max-height: 175px;" width="175" src="${item_img_groot}" />
+                        <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: auto; width: 175px;background: #ffffff;    min-height: 175px; max-height: 175px;" width="175" src="${item_img_groot}" />
                       </a>
                     </div>
                   </td>
@@ -1494,7 +1494,7 @@ async function functionJobItems(item) {
         
                                       <tr>
                                         <td id="vacatureTD${postid}bA" class="vacatureTDbA">
-                                            <a id="metaPost${postid}Link"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaPost">
+                                            <a id="metaPost${postid}Link"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;text-decoration: none;" class="metaPost">
                                             <span id="vacatureMeta${postid}a" class="metaPostCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
                                             </a>
                                         </td>
@@ -1539,13 +1539,13 @@ async function functionJobItems(item) {
               <tr id="artikelGroot${postid}TrB">
                 <td id="artikelGroot${postid}TdB">
                   <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                    <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: contain;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px;max-height: 192px; background: #f5f5f5; " src="${item_img_groot}" >
+                    <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;object-fit: contain;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px;max-height: 192px; background: #ffffff; " src="${item_img_groot}" >
                   </a>
                 </td>
               </tr>
               <tr>
                     <td id="vacatureTD${postid}bA" class="vacatureTDbA">
-                        <a id="metaPost${postid}Link"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaPost">
+                        <a id="metaPost${postid}Link"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;text-decoration: none;" class="metaPost">
                         <span id="vacatureMeta${postid}a" class="metaPostCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
                         </a>
                     </td>
@@ -1553,14 +1553,14 @@ async function functionJobItems(item) {
               <tr id="artikelGroot${postid}TrA">
                 <td id="artikelGroot${postid}TdA">
                 <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                <a id="kleinTitleLink${postid}title" class="grootArtikelTitle" style="font-family: 'Roboto', Arial; color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+                <a id="kleinTitleLink${postid}title" class="grootArtikelTitle" style="font-family: 'Roboto', Arial; color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
                   ${item_title} <span id="container_label_adv${postid}">${label_adv}</span>
                 </a>
                 </td>
               </tr>
               <tr id="artikelGroot${postid}TrC">
                 <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-                  <a id="DescriptionKleinArtikel${postid}" class="grootArtikelDescription" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;" id="ct11_2" href="${item_link}">
+                  <a id="DescriptionKleinArtikel${postid}" class="grootArtikelDescription" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;text-decoration: none;" id="ct11_2" href="${item_link}">
                     <span style="font-size: 16px; color: #333333;font-weight: 400;">
                       ${item_description}
                     </span>
@@ -1997,7 +1997,7 @@ item_img_groot = imageUrl;
       <tr>
       <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
       <td>
-        <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
+        <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;text-decoration: none;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
       </td>
       <td style="width: 30px;"><span id="container_label_adv${postid}">${label_adv}</span></td>
       </tr>
@@ -2031,10 +2031,10 @@ item_img_groot = imageUrl;
                   <td class="artikelKleinTDcA">
                   <span id="container_label_adv${postid}">${label_adv}</span>
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
+                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title}</a></td>
                 </tr>
                 <tr>
-                  <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
+                  <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
                 </tr>
               </tbody>
             </table>
@@ -2055,7 +2055,7 @@ item_img_groot = imageUrl;
                 <tbody id="artikelGroot${postid}Tb">
                   <tr id="artikelGroot${postid}TrC">
                   <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-                      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; width: 100%; display: inline-block; "  href="${item_link}"> ${promotion_announcement} ▸</a>
+                      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; width: 100%; display: inline-block;text-decoration: none; "  href="${item_link}"> ${promotion_announcement} ▸</a>
                     </td>
                   </tr>
                 </tbody>
@@ -2127,7 +2127,7 @@ item_img_groot = imageUrl;
           <tr id="artikelGroot${postid}TrB">
           <td id="artikelGroot${postid}TdB">
               <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px;object-fit: contain; background: #f5f5f5;" src="${item_img_groot}" >
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px;object-fit: contain; background: #ffffff;" src="${item_img_groot}" >
               </a>
             </td>
           </tr>
@@ -2141,7 +2141,7 @@ item_img_groot = imageUrl;
           </tr>
           <tr id="artikelGroot${postid}TrC">
           <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: #FF9901;box-shadow: 0px 2px 0px #CC7A01;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #331F00; padding: 15px 30px; margin: 0px 0;             display: inline-block; "  href="${item_link}"> ${promotion_cta_text}</a>
+              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: #FF9901;box-shadow: 0px 2px 0px #CC7A01;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #331F00; padding: 15px 30px; margin: 0px 0;             display: inline-block;text-decoration: none; "  href="${item_link}"> ${promotion_cta_text}</a>
 
             </td>
           </tr>
@@ -2167,14 +2167,14 @@ item_img_groot = imageUrl;
           <tr id="artikelGroot${postid}TrA">
           <td id="artikelGroot${postid}TdA">
           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-            <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+            <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
               ${item_title} <span id="container_label_adv${postid}">${label_adv}</span>
             </a>
           </td>
           </tr>
           <tr id="artikelGroot${postid}TrC">
           <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-              <a id="grootArtikelDescription${postid}" class="grootArtikelDescription" href="${item_link}" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;">
+              <a id="grootArtikelDescription${postid}" class="grootArtikelDescription" href="${item_link}" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;text-decoration: none;">
                 <span style="font-size: 16px; color: #333333;font-weight: 400;">
                   ${item_description}
                 </span>
@@ -2485,7 +2485,7 @@ async function functionChannelItems(item) {
               <tr>
               <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
               <td>
-                <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
+                <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;text-decoration: none;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
               </td>
               <td style="width: 30px;"><span id="container_label_adv${postid}">${label_adv}</span></td>
               </tr>
@@ -2519,10 +2519,10 @@ async function functionChannelItems(item) {
                           <td class="artikelKleinTDcA">
                           <span id="container_label_adv${postid}">${label_adv}</span>
                           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
+                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title}</a></td>
                         </tr>
                         <tr>
-                          <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
+                          <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -2550,14 +2550,14 @@ async function functionChannelItems(item) {
                   <tr id="artikelGroot${postid}TrA">
                   <td id="artikelGroot${postid}TdA">
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
                       ${item_title} <span id="container_label_adv${postid}">${label_adv}</span>
                     </a>
                   </td>
                   </tr>
                   <tr id="artikelGroot${postid}TrC">
                   <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-                      <a id="grootArtikelDescription${postid}" class="grootArtikelDescription" href="${item_link}" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;">
+                      <a id="grootArtikelDescription${postid}" class="grootArtikelDescription" href="${item_link}" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;text-decoration: none;">
                         <span style="font-size: 16px; color: #333333;font-weight: 400;">
                           ${item_description}
                         </span>
@@ -2902,7 +2902,7 @@ async function functiondownloadItems(item) {
               <tr>
               <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
               <td>
-                <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
+                <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;text-decoration: none;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
               </td>
               <td style="width: 30px;"><span id="container_label_adv${postid}">${label_adv}</span></td>
               </tr>
@@ -2919,7 +2919,7 @@ async function functiondownloadItems(item) {
               weergave = `<table class="table1a">
               <tbody>
                 <tr>
-                  <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: auto; display: block;background: #f5f5f5;" height="175" src="${item_img_groot}" /></a></td>
+                  <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_groot}" /></a></td>
                 </tr>
               </tbody>
               </table>
@@ -2927,7 +2927,7 @@ async function functiondownloadItems(item) {
               <tbody>
                 <tr>
                   <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-                    <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: 175px; width: 100%; max-width: 175px; background: #f5f5f5;" width="175" src="${item_img_groot}" /></a></div>
+                    <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: 175px; width: 100%; max-width: 175px; background: #ffffff;" width="175" src="${item_img_groot}" /></a></div>
                   </td>
                   <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
                     <table class="tableC">
@@ -2936,10 +2936,10 @@ async function functiondownloadItems(item) {
                           <td class="artikelKleinTDcA">
                           <span id="container_label_adv${postid}">${label_adv}</span>
                           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;" href="${item_link}">${item_title}</a></td>
+                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title}</a></td>
                         </tr>
                         <tr>
-                          <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" > Lees meer ▸</span></a></td>
+                          <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" > Lees meer ▸</span></a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -2981,14 +2981,14 @@ async function functiondownloadItems(item) {
                   <tr id="artikelGroot${postid}TrB">
                   <td id="artikelGroot${postid}TdB">
                       <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: contain; background: #f5f5f5;" src="${item_img_groot}" >
+                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: contain; background: #ffffff;" src="${item_img_groot}" >
                       </a>
                     </td>
                   </tr>
                   <tr id="artikelGroot${postid}TrA">
                   <td id="artikelGroot${postid}TdA">
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
                       ${item_title} <span id="container_label_adv${postid}">${label_adv}</span>
                     </a>
                   </td>
@@ -3015,21 +3015,21 @@ async function functiondownloadItems(item) {
                   <tr id="artikelGroot${postid}TrB">
                   <td id="artikelGroot${postid}TdB">
                       <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: contain; background: #f5f5f5;" src="${item_img_groot}" >
+                        <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; object-fit: contain; background: #ffffff;" src="${item_img_groot}" >
                       </a>
                     </td>
                   </tr>
                   <tr id="artikelGroot${postid}TrA">
                   <td id="artikelGroot${postid}TdA">
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;" href="${item_link}">
+                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 10px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
                       ${item_title} <span id="container_label_adv${postid}">${label_adv}</span>
                     </a>
                   </td>
                   </tr>
                   <tr id="artikelGroot${postid}TrC">
                   <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-                      <a id="grootArtikelDescription${postid}" class="grootArtikelDescription" href="${item_link}" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;">
+                      <a id="grootArtikelDescription${postid}" class="grootArtikelDescription" href="${item_link}" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;text-decoration: none;">
                         <span style="font-size: 16px; color: #333333;font-weight: 400;">
                           ${item_description}
                         </span>

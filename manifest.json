@@ -1,11 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "Frankwatching extension for Act-On v3.2.7",
-  "version": "3.2.7",
+  "name": "Frankwatching extension for Act-On v3.2.8",
+  "version": "3.2.8",
   "content_scripts": [
     {
       "matches": [
-        "*://*.actonsoftware.com/app/classic/if/_compose/*"
+        "*://*.actonsoftware.com/app/classic/if/_compose/*",
+        "*://*.actonsoftware.com/app/content/emails/*"
       ],
 
       "js": ["LoadCanvas.js", "Append.js", "DefineIndexStyle.js", "content.js"],

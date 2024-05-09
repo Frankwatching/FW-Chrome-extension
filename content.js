@@ -1269,7 +1269,7 @@ async function functionJobItems(item) {
    utmcampaign = 'vacature';
 
 
-   var maxCharacters = 80; // Define the maximum number of characters
+   var maxCharacters = 160; // Define the maximum number of characters
    var item_description = item.excerpt?.rendered ? item.excerpt.rendered.replace('<p>', '').replace('</p>', '').substring(0, maxCharacters) + '...' : '';
 
    var pubdate = item.date;
@@ -1844,7 +1844,7 @@ item_img_groot = imageUrl;
 
   var item_link = promotion_url+utm_parameters;
 
-  var maxCharacters = 80; // Define the maximum number of characters
+  var maxCharacters = 160; // Define the maximum number of characters
 
   var item_description = item.excerpt?.rendered ? item.excerpt.rendered.replace('<p>', '').replace('</p>', '').substring(0, maxCharacters) + '...' : '';
 
@@ -2351,7 +2351,7 @@ async function functionChannelItems(item) {
    var item_title = item.title.rendered;
    utmcampaign = 'BusinessChannel';
 
-   var maxCharacters = 80; // Define the maximum number of characters
+   var maxCharacters = 160; // Define the maximum number of characters
    var item_description = item.excerpt?.rendered ? item.excerpt.rendered.replace('<p>', '').replace('</p>', '').substring(0, maxCharacters) + '...' : '';
    var pubdate = item.date;
 
@@ -2761,7 +2761,7 @@ async function functiondownloadItems(item) {
     }
 
 
-   var maxCharacters = 80; // Define the maximum number of characters
+   var maxCharacters = 160; // Define the maximum number of characters
    var item_description = item.excerpt?.rendered ? item.excerpt.rendered.replace('<p>', '').replace('</p>', '').substring(0, maxCharacters) + '...' : '';
 
    var pubdate = item.date;

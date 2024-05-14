@@ -595,8 +595,9 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
     
       if (optionlabel === 'headline') {
         selectElementLabel.selectedIndex = 0;
-        // Reset label_adv and label_themavdweek
+        // Reset labels
         label_adv = '';
+        label_tip = '';
         label_themavdweek = '';
         typeweergave = 'headline';
         weergave = `<table id="headlineItem${postid}" width="100%">
@@ -614,8 +615,9 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
     
       } else if (optionlabel === 'klein') {
         selectElementLabel.selectedIndex = 0;
-        // Reset label_adv and label_themavdweek
+        // Reset labels
         label_adv = '';
+        label_tip = '';
         label_themavdweek = '';
         typeweergave = 'klein';
         weergave = `<table class="table1a">
@@ -673,8 +675,9 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
 
         
         selectElementLabel.selectedIndex = 0;
-        // Reset label_adv and label_themavdweek
+        // Reset labels
         label_adv = '';
+        label_tip = '';
         label_themavdweek = '';
         typeweergave = 'grootcta';
         weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
@@ -707,8 +710,9 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
       
       } else if (optionlabel === 'groot') {
         selectElementLabel.selectedIndex = 0;
-        // Reset label_adv and label_themavdweek
+        // Reset labels
         label_adv = '';
+        label_tip = '';
         label_themavdweek = '';
         typeweergave = 'groot';
         weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
@@ -1058,8 +1062,9 @@ async function blogItems(item, index) {
 
     if (optionlabel === 'headline') {
       selectElementLabel.selectedIndex = 0;
-      // Reset label_adv and label_themavdweek
+      // Reset labels
       label_adv = '';
+      label_tip = '';
       label_themavdweek = '';
       typeweergave = 'headline';
       weergave = `<table id="headlineItem${postid}" width="100%">
@@ -1077,8 +1082,9 @@ async function blogItems(item, index) {
 
     } else if (optionlabel === 'klein') {
       selectElementLabel.selectedIndex = 0;
-      // Reset label_adv and label_themavdweek
+      // Reset labels
       label_adv = '';
+      label_tip = '';
       label_themavdweek = '';
       typeweergave = 'klein';
       weergave = `<table class="table1a">
@@ -1116,8 +1122,9 @@ async function blogItems(item, index) {
     
     } else if (optionlabel === 'groot') {
       selectElementLabel.selectedIndex = 0;
-      // Reset label_adv and label_themavdweek
+      // Reset labels
       label_adv = '';
+      label_tip = '';
       label_themavdweek = '';
       typeweergave = 'groot';
       weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
@@ -1475,8 +1482,9 @@ async function functionJobItems(item) {
 
             if (optionlabel === 'headline') {
               selectElementLabel.selectedIndex = 0;
-              // Reset label_adv and label_themavdweek
+              // Reset labels
               label_adv = '';
+              label_tip = '';
               label_themavdweek = '';
               typeweergave = 'headline';
               weergave = `<table id="headlineItem${postid}" width="100%">
@@ -1494,8 +1502,9 @@ async function functionJobItems(item) {
 
             } else if (optionlabel === 'klein') {
               selectElementLabel.selectedIndex = 0;
-              // Reset label_adv and label_themavdweek
+              // Reset labels
               label_adv = '';
+              label_tip = '';
               label_themavdweek = '';
               typeweergave = 'klein';
               weergave = `<table class="table1a">
@@ -1566,8 +1575,9 @@ async function functionJobItems(item) {
 
             } else if (optionlabel === 'groot') {
               selectElementLabel.selectedIndex = 0;
-              // Reset label_adv and label_themavdweek
+              // Reset labels
               label_adv = '';
+              label_tip = '';
               label_themavdweek = '';
               typeweergave = 'groot';
               weergave = `<table id="artikelGroot${postid}T" style="display: block;">
@@ -2043,8 +2053,9 @@ item_img_groot = imageUrl;
 
     if (optionlabel === 'headline') {
       selectElementLabel.selectedIndex = 0;
-      // Reset label_adv and label_themavdweek
+      // Reset labels
       label_adv = '';
+      label_tip = '';
       label_themavdweek = '';
       typeweergave = 'headline';
       weergave = `<table id="headlineItem${postid}" width="100%">
@@ -2062,8 +2073,9 @@ item_img_groot = imageUrl;
 
     } else if (optionlabel === 'klein') {
       selectElementLabel.selectedIndex = 0;
-      // Reset label_adv and label_themavdweek
+      // Reset labels
       label_adv = '';
+      label_tip = '';
       label_themavdweek = '';
       typeweergave = 'klein';
       weergave = `<table class="table1a">
@@ -2101,8 +2113,9 @@ item_img_groot = imageUrl;
     } else if (optionlabel === 'campagnebalk') {
 
       selectElementLabel.selectedIndex = 0;
-      // Reset label_adv and label_themavdweek
+      // Reset labels
       label_adv = '';
+      label_tip = '';
       label_themavdweek = '';
       typeweergave = 'campagnebalk';
       weergave = `<table id="artikelGroot${postid}T" style=" width: 100%;">
@@ -2119,8 +2132,9 @@ item_img_groot = imageUrl;
     } else if (optionlabel === 'agenda') {
 
       selectElementLabel.selectedIndex = 0;
-      // Reset label_adv and label_themavdweek
+      // Reset labels
       label_adv = '';
+      label_tip = '';
       label_themavdweek = '';
       typeweergave = 'agenda';
       weergave = `
@@ -2172,8 +2186,9 @@ item_img_groot = imageUrl;
     } else if (optionlabel === 'grootcta') {
 
       selectElementLabel.selectedIndex = 0;
-      // Reset label_adv and label_themavdweek
+      // Reset labels
       label_adv = '';
+      label_tip = '';
       label_themavdweek = '';
       typeweergave = 'grootcta';
       weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
@@ -2205,8 +2220,9 @@ item_img_groot = imageUrl;
 
     } else if (optionlabel === 'groot') {
       selectElementLabel.selectedIndex = 0;
-      // Reset label_adv and label_themavdweek
+      // Reset labels
       label_adv = '';
+      label_tip = '';
       label_themavdweek = '';
       typeweergave = 'groot';
       weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
@@ -2547,8 +2563,9 @@ async function functionChannelItems(item) {
 
             if (optionlabel === 'headline') {
               selectElementLabel.selectedIndex = 0;
-              // Reset label_adv and label_themavdweek
+              // Reset labels
               label_adv = '';
+              label_tip = '';
               label_themavdweek = '';
               typeweergave = 'headline';
               weergave = `<table id="headlineItem${postid}" width="100%">
@@ -2566,8 +2583,9 @@ async function functionChannelItems(item) {
 
             } else if (optionlabel === 'klein') {
               selectElementLabel.selectedIndex = 0;
-              // Reset label_adv and label_themavdweek
+              // Reset labels
               label_adv = '';
+              label_tip = '';
               label_themavdweek = '';
               typeweergave = 'klein';
               weergave = `<table class="table1a">
@@ -2605,8 +2623,9 @@ async function functionChannelItems(item) {
 
             } else if (optionlabel === 'groot') {
               selectElementLabel.selectedIndex = 0;
-              // Reset label_adv and label_themavdweek
+              // Reset labels
               label_adv = '';
+              label_tip = '';
               label_themavdweek = '';
               typeweergave = 'groot';
               weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
@@ -2983,8 +3002,9 @@ async function functiondownloadItems(item) {
 
             if (optionlabel === 'headline') {
               selectElementLabel.selectedIndex = 0;
-              // Reset label_adv and label_themavdweek
+              // Reset labels
               label_adv = '';
+              label_tip = '';
               label_themavdweek = '';
               typeweergave = 'headline';
               weergave = `<table id="headlineItem${postid}" width="100%">
@@ -3002,8 +3022,9 @@ async function functiondownloadItems(item) {
 
             } else if (optionlabel === 'klein') {
               selectElementLabel.selectedIndex = 0;
-              // Reset label_adv and label_themavdweek
+              // Reset labels
               label_adv = '';
+              label_tip = '';
               label_themavdweek = '';
               typeweergave = 'klein';
               weergave = `<table class="table1a">
@@ -3042,8 +3063,9 @@ async function functiondownloadItems(item) {
 
       
               selectElementLabel.selectedIndex = 0;
-              // Reset label_adv and label_themavdweek
+              // Reset labels
               label_adv = '';
+              label_tip = '';
               label_themavdweek = '';
               typeweergave = 'campagnebalk';
               weergave = `<table id="artikelGroot${postid}T" style=" width: 100%;">
@@ -3062,8 +3084,9 @@ async function functiondownloadItems(item) {
 
       
               selectElementLabel.selectedIndex = 0;
-              // Reset label_adv and label_themavdweek
+              // Reset labels
               label_adv = '';
+              label_tip = '';
               label_themavdweek = '';
               typeweergave = 'grootcta';
               weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
@@ -3096,8 +3119,9 @@ async function functiondownloadItems(item) {
 
             } else if (optionlabel === 'groot') {
               selectElementLabel.selectedIndex = 0;
-              // Reset label_adv and label_themavdweek
+              // Reset labels
               label_adv = '';
+              label_tip = '';
               label_themavdweek = '';
               typeweergave = 'groot';
               weergave = `<table id="artikelGroot${postid}T" style=" display: block;">

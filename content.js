@@ -785,11 +785,11 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         } else if (typeweergave === 'klein' && optionlabel === 'tip') {
           styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;'; 
         } else if (typeweergave === 'groot' && optionlabel === 'adv') {
-          styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+          styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
         } else if (typeweergave === 'groot' && optionlabel === 'themavdweek') {
           styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
         } else if (typeweergave === 'groot' && optionlabel === 'tip') {
-          styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+          styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
         } else if (typeweergave === 'headline' && optionlabel === 'adv') {
           styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
         } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
@@ -799,11 +799,11 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         } else if (typeweergave === 'agenda' && optionlabel === 'themavdweek') {
           styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
         } else if (typeweergave === 'grootcta' && optionlabel === 'adv') {
-          styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+          styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
         } else if (typeweergave === 'grootcta' && optionlabel === 'themavdweek') {
           styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
         } else if (typeweergave === 'grootcta' && optionlabel === 'tip') {
-          styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+          styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
         } else {
           styling = ''; // Reset styling if none of the conditions match
         }
@@ -811,15 +811,19 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
       // Inside the optionlabel conditions
       if (optionlabel === 'adv') {
         label_themavdweek = '';
+        label_tip = '';
         label_adv = `<span style="${styling};">ADV</span>`; 
       } else if (optionlabel === 'tip') {
         label_adv = '';
-        label_themavdweek = `<div style="${styling};">Tip</div>`; 
+        label_themavdweek = '';
+        label_tip = `<div style="${styling};">Tip</div>`; 
       } else if (optionlabel === 'themavdweek') {
         label_adv = '';
+        label_tip = '';
         label_themavdweek = `<div style="${styling};">THEMA VAN DE WEEK</div>`; 
       } else {
         label_adv = '';
+        label_tip = '';
         label_themavdweek = ''; 
       }
 
@@ -833,6 +837,11 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         let themavdweekLabelElement = document.getElementById('container_label_themavdweek' + postid);
         if (themavdweekLabelElement) {
             themavdweekLabelElement.innerHTML = label_themavdweek;
+        }
+
+        let tipLabelElement = document.getElementById('container_label_tip' + postid);
+        if (tipLabelElement) {
+            tipLabelElement.innerHTML = label_tip;
         }
 
       });
@@ -1175,11 +1184,11 @@ async function blogItems(item, index) {
       } else if (typeweergave === 'klein' && optionlabel === 'tip') {
         styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;'; 
       } else if (typeweergave === 'groot' && optionlabel === 'adv') {
-        styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+        styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
       } else if (typeweergave === 'groot' && optionlabel === 'themavdweek') {
         styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
       } else if (typeweergave === 'groot' && optionlabel === 'tip') {
-        styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+        styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
       } else if (typeweergave === 'headline' && optionlabel === 'adv') {
         styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
       } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
@@ -1191,15 +1200,19 @@ async function blogItems(item, index) {
     // Inside the optionlabel conditions
     if (optionlabel === 'adv') {
       label_themavdweek = '';
+      label_tip = '';
       label_adv = `<span style="${styling};">ADV</span>`; 
     } else if (optionlabel === 'tip') {
       label_adv = '';
-      label_themavdweek = `<div style="${styling};">Tip</div>`; 
+      label_themavdweek = '';
+      label_tip = `<div style="${styling};">Tip</div>`; 
     } else if (optionlabel === 'themavdweek') {
       label_adv = '';
+      label_tip = '';
       label_themavdweek = `<div style="${styling};">THEMA VAN DE WEEK</div>`; 
     } else {
       label_adv = '';
+      label_tip = '';
       label_themavdweek = ''; 
     }
  
@@ -1213,6 +1226,11 @@ async function blogItems(item, index) {
       let themavdweekLabelElement = document.getElementById('container_label_themavdweek' + postid);
       if (themavdweekLabelElement) {
           themavdweekLabelElement.innerHTML = label_themavdweek;
+      }
+
+      let tipLabelElement = document.getElementById('container_label_tip' + postid);
+      if (tipLabelElement) {
+          tipLabelElement.innerHTML = label_tip;
       }
 
     });
@@ -1627,11 +1645,11 @@ async function functionJobItems(item) {
           } else if (typeweergave === 'klein' && optionlabel === 'tip') {
             styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;'; 
           } else if (typeweergave === 'groot' && optionlabel === 'adv') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'groot' && optionlabel === 'themavdweek') {
             styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
           } else if (typeweergave === 'groot' && optionlabel === 'tip') {
-            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'headline' && optionlabel === 'adv') {
             styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
@@ -1643,15 +1661,19 @@ async function functionJobItems(item) {
           // Inside the optionlabel conditions
           if (optionlabel === 'adv') {
             label_themavdweek = '';
+            label_tip = '';
             label_adv = `<span style="${styling};">ADV</span>`; 
           } else if (optionlabel === 'tip') {
             label_adv = '';
-            label_themavdweek = `<div style="${styling};">Tip</div>`; 
+            label_themavdweek = '';
+            label_tip = `<div style="${styling};">Tip</div>`; 
           } else if (optionlabel === 'themavdweek') {
             label_adv = '';
+            label_tip = '';
             label_themavdweek = `<div style="${styling};">THEMA VAN DE WEEK</div>`; 
           } else {
             label_adv = '';
+            label_tip = '';
             label_themavdweek = ''; 
           }
 
@@ -1665,6 +1687,11 @@ async function functionJobItems(item) {
           let themavdweekLabelElement = document.getElementById('container_label_themavdweek' + postid);
           if (themavdweekLabelElement) {
               themavdweekLabelElement.innerHTML = label_themavdweek;
+          }
+
+          let tipLabelElement = document.getElementById('container_label_tip' + postid);
+          if (tipLabelElement) {
+              tipLabelElement.innerHTML = label_tip;
           }
 
           });
@@ -2245,11 +2272,11 @@ item_img_groot = imageUrl;
   } else if (typeweergave === 'klein' && optionlabel === 'tip') {
     styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;'; 
   } else if (typeweergave === 'groot' && optionlabel === 'adv') {
-    styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+    styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
   } else if (typeweergave === 'groot' && optionlabel === 'themavdweek') {
     styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
   } else if (typeweergave === 'groot' && optionlabel === 'tip') {
-    styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+    styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
   } else if (typeweergave === 'headline' && optionlabel === 'adv') {
     styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
   } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
@@ -2259,11 +2286,11 @@ item_img_groot = imageUrl;
   } else if (typeweergave === 'agenda' && optionlabel === 'adv') {
     styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
   } else if (typeweergave === 'grootcta' && optionlabel === 'adv') {
-    styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+    styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
   } else if (typeweergave === 'grootcta' && optionlabel === 'themavdweek') {
     styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
   } else if (typeweergave === 'grootcta' && optionlabel === 'tip') {
-    styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+    styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
   } else {
     styling = ''; // Reset styling if none of the conditions match
   }
@@ -2293,6 +2320,11 @@ item_img_groot = imageUrl;
   let themavdweekLabelElement = document.getElementById('container_label_themavdweek' + postid);
   if (themavdweekLabelElement) {
       themavdweekLabelElement.innerHTML = label_themavdweek;
+  }
+
+  let tipLabelElement = document.getElementById('container_label_tip' + postid);
+  if (tipLabelElement) {
+      tipLabelElement.innerHTML = label_tip;
   }
 
   });
@@ -2637,11 +2669,11 @@ async function functionChannelItems(item) {
           } else if (typeweergave === 'klein' && optionlabel === 'tip') {
             styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;'; 
           } else if (typeweergave === 'groot' && optionlabel === 'adv') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'groot' && optionlabel === 'themavdweek') {
             styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
           } else if (typeweergave === 'groot' && optionlabel === 'tip') {
-            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'headline' && optionlabel === 'adv') {
             styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
@@ -2653,15 +2685,19 @@ async function functionChannelItems(item) {
           // Inside the optionlabel conditions
           if (optionlabel === 'adv') {
             label_themavdweek = '';
+            label_tip = '';
             label_adv = `<span style="${styling};">ADV</span>`; 
           } else if (optionlabel === 'tip') {
             label_adv = '';
-            label_themavdweek = `<div style="${styling};">Tip</div>`; 
+            label_themavdweek = '';
+            label_tip = `<div style="${styling};">Tip</div>`; 
           } else if (optionlabel === 'themavdweek') {
             label_adv = '';
+            label_tip = '';
             label_themavdweek = `<div style="${styling};">THEMA VAN DE WEEK</div>`; 
           } else {
             label_adv = '';
+            label_tip = '';
             label_themavdweek = ''; 
           }
 
@@ -2675,6 +2711,11 @@ async function functionChannelItems(item) {
           let themavdweekLabelElement = document.getElementById('container_label_themavdweek' + postid);
           if (themavdweekLabelElement) {
               themavdweekLabelElement.innerHTML = label_themavdweek;
+          }
+
+          let tipLabelElement = document.getElementById('container_label_tip' + postid);
+          if (tipLabelElement) {
+              tipLabelElement.innerHTML = label_tip;
           }
 
           });
@@ -3116,38 +3157,42 @@ async function functiondownloadItems(item) {
           } else if (typeweergave === 'klein' && optionlabel === 'tip') {
             styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;'; 
           } else if (typeweergave === 'groot' && optionlabel === 'adv') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'groot' && optionlabel === 'themavdweek') {
             styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
           } else if (typeweergave === 'groot' && optionlabel === 'tip') {
-            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'headline' && optionlabel === 'adv') {
             styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
             styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
           } else if (typeweergave === 'grootcta' && optionlabel === 'adv') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'grootcta' && optionlabel === 'themavdweek') {
             styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
           } else if (typeweergave === 'grootcta' && optionlabel === 'tip') {
-            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
 
           } else {
             styling = ''; // Reset styling if none of the conditions match
           }
 
-         // Inside the optionlabel conditions
+          // Inside the optionlabel conditions
           if (optionlabel === 'adv') {
             label_themavdweek = '';
+            label_tip = '';
             label_adv = `<span style="${styling};">ADV</span>`; 
           } else if (optionlabel === 'tip') {
             label_adv = '';
-            label_themavdweek = `<div style="${styling};">Tip</div>`; 
+            label_themavdweek = '';
+            label_tip = `<div style="${styling};">Tip</div>`; 
           } else if (optionlabel === 'themavdweek') {
             label_adv = '';
+            label_tip = '';
             label_themavdweek = `<div style="${styling};">THEMA VAN DE WEEK</div>`; 
           } else {
             label_adv = '';
+            label_tip = '';
             label_themavdweek = ''; 
           }
 
@@ -3161,6 +3206,11 @@ async function functiondownloadItems(item) {
           let themavdweekLabelElement = document.getElementById('container_label_themavdweek' + postid);
           if (themavdweekLabelElement) {
               themavdweekLabelElement.innerHTML = label_themavdweek;
+          }
+
+          let tipLabelElement = document.getElementById('container_label_tip' + postid);
+          if (tipLabelElement) {
+              tipLabelElement.innerHTML = label_tip;
           }
 
           });

@@ -661,7 +661,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         <tbody id="artikelGroot${postid}Tb">
           <tr id="artikelGroot${postid}TrC">
           <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}"> ${item_title} ▸</a>
+              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}">[TIP] ${item_title} ▸</a>
 
             </td>
           </tr>
@@ -2109,7 +2109,7 @@ item_img_groot = imageUrl;
         <tbody id="artikelGroot${postid}Tb">
           <tr id="artikelGroot${postid}TrC">
           <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}"> ${promotion_announcement} ▸</a>
+              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}">[TIP] ${promotion_announcement} ▸</a>
 
             </td>
           </tr>

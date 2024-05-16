@@ -531,12 +531,13 @@ function functionVacatureItems(item, index) {
 
   var postid = item.querySelector("guid").innerHTML;
   postid = postid.substring(postid.indexOf("p=") + 2);
+  var item_title = item.querySelector("title").innerHTML;
 
   var pubdate = item.querySelector("pubDate").innerHTML;
   var pubdateArray = pubdate.split("+");
 
   var description = item.querySelector("description").innerHTML;
-  description = description.replace("<![CDATA[", "").replace("]]>", "");
+  item_description = description.replace("<![CDATA[", "").replace("]]>", "");
 
   var vac_org_naam = item.querySelector("*|vac_org_naam").innerHTML;
   vac_org_naam = htmlDecode(vac_org_naam.replace("<![CDATA[", "").replace("]]>", ""));
@@ -551,12 +552,12 @@ function functionVacatureItems(item, index) {
   var vac_standplaats = item.querySelector("*|vac_standplaats").innerHTML;
   vac_standplaats = vac_standplaats.replace("<![CDATA[", "").replace("]]>", "");
 
-  var vac_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+  var item_link = item.querySelector("link").innerHTML + `?utm_source=al-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
   if(dagWeek != 'dagelijks') {
-    var vac_link = item.querySelector("link").innerHTML + `?utm_source=nb-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
+    var item_link = item.querySelector("link").innerHTML + `?utm_source=nb-jobs-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=vacature&amp;utm_content=%7c${sendDate}%7cvacature%7c`;
   }
 
-  var enclosure_img = item.querySelector("enclosure").getAttribute("url");
+  var item_img_groot = item.querySelector("enclosure").getAttribute("url");
 
   /* add category */
   var vac_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
@@ -579,7 +580,7 @@ function functionVacatureItems(item, index) {
    div.id = 'vacature'+postid;
    div.draggable = 'true';
 
-  var daginzet = '<tr><td id="vacatureTD' + postid + 'bMob" class="vacaturetd_mobile" style="display: none;"><a style="display: none;" id="vacatureImgLink' + postid + '" class="vacatureImgLink_mob" href="'+vac_link+'"><img id="imgVacatureArtikel'+postid+'mob" class="imgVacature_mobile" style="display: none;" src="'+enclosure_img+'" /></a></td></tr> ';
+  var daginzet = '<tr><td id="vacatureTD' + postid + 'bMob" class="vacaturetd_mobile" style="display: none;"><a style="display: none;" id="vacatureImgLink' + postid + '" class="vacatureImgLink_mob" href="'+item_link+'"><img id="imgVacatureArtikel'+postid+'mob" class="imgVacature_mobile" style="display: none;" src="'+item_img_groot+'" /></a></td></tr> ';
    if(dagWeek != 'dagelijks') {
     daginzet = '';
   }
@@ -590,8 +591,8 @@ function functionVacatureItems(item, index) {
     <tbody>
       <tr>
         <td class="tableDivider1a">
-          <a id="imgKleinArtikel${postid}Link" href="${vac_link}">
-            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="height: auto; width: 100%; display: block; max-width: 200px !important; margin: 15px 0; " src="${enclosure_img}" />
+          <a id="imgKleinArtikel${postid}Link" href="${item_link}">
+            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #ffffff;    min-height: 155px; max-height: 155px;" height="155" src="${item_img_groot}" />
             </a>
           </td>
       </tr>
@@ -602,8 +603,8 @@ function functionVacatureItems(item, index) {
       <tr>
         <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
           <div class="tdDiv">
-            <a id="imgKlein${postid}Link" href="${vac_link}">
-              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="display: none; width: 100%; height: auto; max-width: 175px; margin: auto;" src="${enclosure_img}" />
+            <a id="imgKlein${postid}Link" href="${item_link}">
+              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: auto; width: 155px;background: #ffffff;    min-height: 155px; max-height: 155px;" width="155" src="${item_img_groot}" />
             </a>
           </div>
         </td>
@@ -614,30 +615,23 @@ function functionVacatureItems(item, index) {
                 <td class="artikelKleinTDcA">
                     <table>
                         <tbody>
+                            ${daginzet}
 
-                        ${daginzet}
-                        <tr>
-                            <td id="vacatureTD${postid}bA" class="vacatureTDbA">
-                              <a id="metaVacature${postid}"  href="${vac_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;" class="metaVacature">
-                                <span id="vacatureMeta${postid}a" class="metaVacatureCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
-                              </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td id="vacatureTD${postid}bB">
-                              <a id="vacatureLink${postid}title" class="titleVacature" style="display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto',Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px;margin: 10px 0px 0px 0px" href="${vac_link}">
-                                ${item.querySelector("title").innerHTML}
-                              </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td id="vacatureTD${postid}bC" style="display: block; font-size: 14px; line-height: 1.3; font-weight: regular; font-family: 'Roboto',Arial; color: #333333; text-decoration: none;" class="vacatureTDbC">
-                              <a id="vacatureLink${postid}description" class="DescriptionVacature" style="display: block; font-size: 14px; font-weight: regular; font-family: 'Roboto',Arial; color: #333333; text-decoration: none; padding: 0px;" href="${vac_link}">
-                                ${description} <span style="color: #0E5C8C;    font-size: 16px; ">Bekijk vacature ▸</span>
-                              </a>
-                              
-                            </td>
-                        </tr>
+                            <tr>
+                              <td id="vacatureTD${postid}bA" class="vacatureTDbA">
+                                  <a id="metaPost${postid}Link"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;text-decoration: none;" class="metaPost">
+                                  <span id="vacatureMeta${postid}a" class="metaPostCompany" style="font-size: 12px; font-weight: normal;  font-family: 'Roboto', Arial; line-height: 1.2; color: #018A00;">${vac_org_naam} in ${vac_standplaats}</span>
+                                  </a>
+                              </td>
+                          </tr>
+                          
+                            <tr>
+                                <td id="channelTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;">
+                                <a id="kleinTitleLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${item_link}">${item_title}</a></td>
+                            </tr>
+                            <tr>
+                                <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="channelTDbC"><a id="DescriptionKleinArtikel${postid}" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${item_link}">${item_description} <span style="color: #0E5C8C;    font-size: 16px; ">Bekijk vacature ▸</span></a></td>
+                            </tr>
                         </tbody>
                     </table>
                 </td>

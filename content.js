@@ -1507,70 +1507,42 @@ async function functionJobItems(item) {
               label_tip = '';
               label_themavdweek = '';
               typeweergave = 'klein';
-              weergave = `<table class="table1a">
-              <tbody>
-                <tr>
-                  <td class="tableDivider1a">
-                    <a id="imgKleinArtikel${postid}Link" href="${item_link}">
-                      <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #ffffff;    min-height: 155px; max-height: 155px;" height="155" src="${item_img_groot}" />
-                      </a>
-                    </td>
-                </tr>
-              </tbody>
-              </table>
-              <table>
-              <tbody>
-                <tr>
-                  <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-                    <div class="tdDiv">
-                      <a id="imgKlein${postid}Link" href="${item_link}">
-                        <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: auto; width: 155px;background: #ffffff;    min-height: 155px; max-height: 155px;" width="155" src="${item_img_groot}" />
-                      </a>
-                    </div>
-                  </td>
-                  <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
-                    <table class="tableC">
-                      <tbody>
+              weergave = `
+                  
+               <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tr>
-                          <td class="artikelKleinTDcA">
-                              <table>
-                                  <tbody>
-                                      ${daginzet}
-        
-                                      <tr>
-                                        <td id="vacatureTD${postid}bA" class="vacatureTDbA">
-                                            <a id="metaPost${postid}Link"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;text-decoration: none;" class="metaPost">
-                                            <span id="vacatureMeta${postid}a" class="metaPostCompany" style="font-size: 12px; font-weight: normal;  font-family: 'Roboto', Arial; line-height: 1.2; color: #018A00;">${vac_org_naam} in ${vac_standplaats}</span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    
-                                      <tr>
-                                          <td id="channelTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;">
-                                          
-                                          
-                                          <span id="container_label_adv${postid}">${label_adv}</span>
-                                          <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                          
-                                          
-        
-        
-        
-                                          <a id="kleinTitleLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${item_link}">${item_title}</a></td>
-                                      </tr>
-                                      <tr>
-                                          <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="channelTDbC"><a id="DescriptionKleinArtikel${postid}" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${item_link}">${item_description} <span style="color: #0E5C8C;    font-size: 16px; ">Bekijk vacature ▸</span></a></td>
-                                      </tr>
-                                  </tbody>
-                              </table>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                </tr>
-              </tbody>
-              </table>`;
+                        <td width="33.33%" class="stack-column-center"><table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                            <td dir="ltr" valign="top" style="padding: 0 10px;"><img src="${item_img_groot}"  width="170" alt="alt_text" border="0" class="center-on-narrow"></td>
+                          </tr>
+                          </table></td>
+                        <td width="66.66%" class="stack-column-center"><table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                            <td dir="ltr" valign="top" style="font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555; padding: 10px; text-align: left;" class="center-on-narrow"><strong style="color:#111111;">
+
+                                ${daginzet}
+
+                                <a id="metaPost${postid}Link"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;text-decoration: none;" class="metaPost">
+                                <span id="vacatureMeta${postid}a" class="metaPostCompany" style="font-size: 12px; font-weight: normal;  font-family: 'Roboto', Arial; line-height: 1.2; color: #018A00;">${vac_org_naam} in ${vac_standplaats}</span>
+                                </a>
+
+                                <span id="container_label_adv${postid}">${label_adv}</span>
+                                <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+
+
+                                <a id="kleinTitleLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${item_link}">${item_title}</a>
+
+
+                                <a id="DescriptionKleinArtikel${postid}" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${item_link}">${item_description} <span style="color: #0E5C8C;    font-size: 16px; ">Bekijk vacature ▸</span></a>
+
+                            </td>
+                          </tr>
+                          </table></td>
+                      </tr>
+                      </table>
+              
+                            
+              `;
 
 
             } else if (optionlabel === 'groot') {

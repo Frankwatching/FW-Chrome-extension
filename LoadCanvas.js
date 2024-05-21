@@ -38,6 +38,11 @@ vacatureContainer.id = 'vacatureContainer';
 var vacatureContainerContent = document.createElement( 'div' );
 vacatureContainerContent.id = 'vacatureContainerContent';
 
+var themaContainer = document.createElement( 'div' );
+themaContainer.id = 'themaContainer';
+var themaContainerContent = document.createElement( 'div' );
+themaContainerContent.id = 'themaContainerContent';
+
 var marketingContainer = document.createElement( 'div' );
 marketingContainer.id = 'marketingContainer';
 var marketingContainerContent = document.createElement( 'div' );

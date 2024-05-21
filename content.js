@@ -91,6 +91,8 @@ agendarss = 'https://www.frankwatching.com/feed/academy/upcoming';
 marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion'; 
 bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts '; 
 kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download'; 
+videorestapi = 'https://www.frankwatching.com/wp-json/wp/v2/video'; 
+whitepaperrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/whitepaper'; 
 newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?poststatus=future-publish';
 //newsrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/post'; // nog niet in gebruik 
 
@@ -106,7 +108,8 @@ if ( searchID ) {
   marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion/?include='+ searchID; 
   bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts/?include='+ searchID; //
   kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download/?include='+ searchID; 
-
+  videorestapi = 'https://www.frankwatching.com/wp-json/wp/v2/video/?include='+ searchID;
+  whitepaperrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/whitepaper/?include='+ searchID; 
 }
 
 // ## LOAD HEADLINES - 8 uur artikel
@@ -2776,32 +2779,43 @@ async function functionChannelItems(item) {
 "use strict";
 async function loadKennisbank() {
   try {
-    const response = await fetch(kennisbankrestapi); // Fetch data from WordPress REST API
-    if (!response.ok) {
-      throw new Error(`Failed to fetch data from WordPress API. Status: ${response.status}`);
-    }
+    // Fetch all data concurrently using Promise.all
+    const responses = await Promise.all([
+      fetch(kennisbankrestapi),
+      fetch(videorestapi),
+      fetch(whitepaperrestapi)
+    ]);
 
-    const jsonData = await response.json(); // Parse response JSON
+    // Check if all responses are okay
+    responses.forEach(response => {
+      if (!response.ok) {
+        throw new Error(`Failed to fetch data from WordPress API. Status: ${response.status}`);
+      }
+    });
+
+    // Parse all JSON data concurrently
+    const jsonDataArray = await Promise.all(responses.map(response => response.json()));
+
+    // Combine all fetched data into one array
+    const combinedData = jsonDataArray.flat();
 
     const ContainerContent = document.getElementById("downloadItemKleinContainerContent");
     if (ContainerContent) {
       ContainerContent.innerHTML = ""; // Clear container content
     }
 
-    if (Array.isArray(jsonData)) {
-      jsonData.forEach(item => functiondownloadItems(item)); // Process each item in the array
+    if (Array.isArray(combinedData)) {
+      combinedData.forEach(item => functiondownloadItems(item)); // Process each item in the array
     } else {
-      functiondownloadItems(jsonData); // Process the single item
+      functiondownloadItems(combinedData); // Process the single item
     }
   } catch (error) {
     console.error("Error loading kennisbank:", error);
   }
 }
 
+
 loadKennisbank();
-
-
-
 
 async function functiondownloadItems(item) {
 

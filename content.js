@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.2.9";
+let versionid = "3.3.0";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -91,6 +91,8 @@ agendarss = 'https://www.frankwatching.com/feed/academy/upcoming';
 marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion'; 
 bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts '; 
 kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download'; 
+videorestapi = 'https://www.frankwatching.com/wp-json/wp/v2/video'; 
+whitepaperrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/whitepaper'; 
 newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?poststatus=future-publish';
 //newsrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/post'; // nog niet in gebruik 
 
@@ -106,7 +108,8 @@ if ( searchID ) {
   marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion/?include='+ searchID; 
   bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts/?include='+ searchID; //
   kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download/?include='+ searchID; 
-
+  videorestapi = 'https://www.frankwatching.com/wp-json/wp/v2/video/?include='+ searchID;
+  whitepaperrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/whitepaper/?include='+ searchID; 
 }
 
 // ## LOAD HEADLINES - 8 uur artikel
@@ -1732,6 +1735,102 @@ async function functionJobItems(item) {
 }
 
 
+
+// Function to generate dummy data
+function ThemanieuwsbrievenData() {
+  return [
+      { id: 1, title: "Social", content: "Let's connect! 2 keer per maand een update over ontwikkelingen in social media.", logourl: "https://service.frankwatching.com/cdnr/aiepci5/acton/attachment/42767/f-b15960ed-cf33-4356-ba4b-1fcc3a3e5555/1/-/-/-/-/Thema%20nieuwsbrief%20FW%20-%20emailfooter%20-%20blok%20-%20social.png", buttontext: "Aanmelden", buttonurl: "https://service.frankwatching.com/acton/eform/42767/087e7bbd-4384-4a7c-bca2-bf45382ef78d/d-ext-0001?Emailadres={{Emailadres}}&amp;Thema={{={{Thema}}|}}%2CA:010" },
+      { id: 2, title: "Communicatie", content: "1 à 2 keer per maand een update over communicatie. Praat je mee?", logourl: "https://service.frankwatching.com/cdnr/aiepci5/acton/attachment/42767/f-8938086d-ce8c-4526-9a5f-36eac17d8137/1/-/-/-/-/Thema%20nieuwsbrief%20FW%20-%20emailfooter%20-%20blok%20-%20communicatie.png", buttontext: "Aanmelden", buttonurl: "https://service.frankwatching.com/acton/eform/42767/087e7bbd-4384-4a7c-bca2-bf45382ef78d/d-ext-0001?Emailadres={{Emailadres}}&amp;Thema={{Thema}}%2CA:012" },
+      { id: 3, title: "Content", content: "Ontvang 2 keer per maand een update over content met een vleugje power, magie en creativiteit.", logourl: "https://service.frankwatching.com/cdnr/aiepci5/acton/attachment/42767/f-6c84e118-079b-43e0-8ba0-b76b55813e91/1/-/-/-/-/Thema%20nieuwsbrief%20FW%20-%20emailfooter%20-%20blok%20-%20content.png", buttontext: "Aanmelden", buttonurl: "https://service.frankwatching.com/acton/eform/42767/087e7bbd-4384-4a7c-bca2-bf45382ef78d/d-ext-0001?Emailadres={{Emailadres}}&amp;Thema={{Thema}}%2CA:156" },
+      { id: 4, title: "Marketing", content: "Marketing minds opgelet! Ontvang 2 keer per maand een update over marketingthema's die je niet wil missen.", logourl: "https://service.frankwatching.com/cdnr/aiepci5/acton/attachment/42767/f-e05e9a48-c784-4fd8-905b-d030a18ca195/1/-/-/-/-/Thema%20nieuwsbrief%20FW%20-%20emailfooter%20-%20blok%20-%20marketing.png", buttontext: "Aanmelden", buttonurl: "https://service.frankwatching.com/acton/eform/42767/087e7bbd-4384-4a7c-bca2-bf45382ef78d/d-ext-0001?Emailadres={{Emailadres}}&amp;Thema={{Thema}}%2CA:008" },
+      { id: 5, title: "Mens & Werk", content: "Weet wat er speelt: ontvang elke 3 weken een update over ontwikkelingen in HR en arbeidsmarktcommunicatie", logourl: "https://service.frankwatching.com/cdnr/aiepci5/acton/attachment/42767/f-0407f930-97d6-4d35-8edd-046a960a6663/1/-/-/-/-/Thema%20nieuwsbrief%20FW%20-%20emailfooter%20-%20blok%20-%20mens%20%26%20werk.png", buttontext: "Aanmelden", buttonurl: "https://service.frankwatching.com/acton/eform/42767/087e7bbd-4384-4a7c-bca2-bf45382ef78d/d-ext-0001?Emailadres={{Emailadres}}&amp;Thema={{Thema}}%2CA:015" },
+      { id: 6, title: "Kijkt verder", content: "Blik op de toekomst: maandelijks een update over opvallende trends &amp; AI in digital marketing en communicatie.", logourl: "https://service.frankwatching.com/cdnr/aiepci5/acton/attachment/42767/f-6e83b7f7-3700-4573-8dec-908ba654f863/1/-/-/-/-/Thema%20nieuwsbrief%20FW%20-%20emailfooter%20-%20blok%20-%20kijkt%20verder.png", buttontext: "Aanmelden", buttonurl: "https://service.frankwatching.com/acton/eform/42767/087e7bbd-4384-4a7c-bca2-bf45382ef78d/d-ext-0001?Emailadres=%7B%7BEmailadres%7D%7D&amp;Thema=%7B%7BThema%7D%7D%2CA%3A003" },
+      { id: 7, title: "Klantcontact 2.0", content: "Ontvang maandelijks een nieuwsbrief waar persoonlijke aandacht en innovatie centraal staan.", logourl: "https://service.frankwatching.com/cdnr/adepci3/acton/attachment/42767/f-7824e399-d7ab-4789-9c1d-05d7c43f6fa0/1/-/-/-/-/Thema%20nieuwsbrief%20FW%20-%20emailfooter%20-%20blok%20-%20klantcontact%202.0.png", buttontext: "Aanmelden", buttonurl: "https://service.frankwatching.com/acton/eform/42767/087e7bbd-4384-4a7c-bca2-bf45382ef78d/d-ext-0001?Emailadres={{Emailadres}}&amp;Thema={{Thema}}%2CA:007" }
+  ];
+}
+
+
+async function loadThemanieuwsbrievenContent() {
+  try {
+      // Get dummy data
+      const dummyData = ThemanieuwsbrievenData();
+
+      const ContainerContent = document.getElementById("themaContainerContent");
+      if (ContainerContent) {
+          ContainerContent.innerHTML = ""; // Clear container content
+      }
+
+      // Using dummy data
+      dummyData.forEach(item => functionThemaItems(item));
+  } catch (error) {
+      console.error("Error loading jobs:", error);
+  }
+}
+
+loadThemanieuwsbrievenContent();
+
+
+async function functionThemaItems(item) {
+    const ContainerContent = document.getElementById("themaContainerContent");
+    if (!ContainerContent) return;
+
+    // Create a div to hold each item
+    const itemDiv = document.createElement("div");
+ // Set ID for the div
+        itemDiv.id = `themaItem-${item.id}`;
+
+    // Construct the HTML structure for the item
+    const itemHTML = `    
+    <table width="100%" role="presentation" cellspacing="10px" cellpadding="0" border="0" style="width: 100%;">
+        <tbody>
+            <tr style="height: 22px;">
+                <td style="text-align: left; height: 22px;">
+                    <h3 style="font-family: Arial; font-size: 20px; margin: 0px; line-height: 22px;"><span style="color: #333333;">${item.title}</span></h3>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+
+   <table>
+      <tbody>
+        <tr>
+          <td class="" height="auto" style="padding-bottom: 20px; width: 100px; display: block;">
+            <div class="tdDiv"><a id="imgKlein${item.id}Link" href="${item.buttonurl}"><img id="imgKleinArtikel${item.id}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover; height: 100px; width: 100px;" width="100" src="${item.logourl}" /></a></div>
+          </td>
+          <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+            <table class="tableC">
+              <tbody>
+                <tr>
+                  <td><a id="DescriptionKleinArtikel${item.id}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item.buttonurl}">${item.content} </a></td>
+                </tr>
+                <tr>
+                <td><a id="DescriptionKleinArtikel${item.id}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item.buttonurl}"><span id="KleinArtikelCTA${item.id}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> ${item.buttontext} ▸</span></a></td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+      </table>
+      
+    `;
+
+    // Set innerHTML of itemDiv
+    itemDiv.innerHTML = itemHTML;
+
+    // Append itemDiv to the ContainerContent
+    ContainerContent.appendChild(itemDiv);
+
+    // Add dragstart event listener
+    itemDiv.draggable = true;
+    itemDiv.addEventListener("dragstart", function(event) {
+        event.dataTransfer.setData('text/html', event.target.innerHTML);
+    });
+}
+
+
 // ## LOAD MARKETING
 "use strict";
 async function loadMarketing() {
@@ -2776,32 +2875,43 @@ async function functionChannelItems(item) {
 "use strict";
 async function loadKennisbank() {
   try {
-    const response = await fetch(kennisbankrestapi); // Fetch data from WordPress REST API
-    if (!response.ok) {
-      throw new Error(`Failed to fetch data from WordPress API. Status: ${response.status}`);
-    }
+    // Fetch all data concurrently using Promise.all
+    const responses = await Promise.all([
+      fetch(kennisbankrestapi),
+      fetch(videorestapi),
+      fetch(whitepaperrestapi)
+    ]);
 
-    const jsonData = await response.json(); // Parse response JSON
+    // Check if all responses are okay
+    responses.forEach(response => {
+      if (!response.ok) {
+        throw new Error(`Failed to fetch data from WordPress API. Status: ${response.status}`);
+      }
+    });
+
+    // Parse all JSON data concurrently
+    const jsonDataArray = await Promise.all(responses.map(response => response.json()));
+
+    // Combine all fetched data into one array
+    const combinedData = jsonDataArray.flat();
 
     const ContainerContent = document.getElementById("downloadItemKleinContainerContent");
     if (ContainerContent) {
       ContainerContent.innerHTML = ""; // Clear container content
     }
 
-    if (Array.isArray(jsonData)) {
-      jsonData.forEach(item => functiondownloadItems(item)); // Process each item in the array
+    if (Array.isArray(combinedData)) {
+      combinedData.forEach(item => functiondownloadItems(item)); // Process each item in the array
     } else {
-      functiondownloadItems(jsonData); // Process the single item
+      functiondownloadItems(combinedData); // Process the single item
     }
   } catch (error) {
     console.error("Error loading kennisbank:", error);
   }
 }
 
+
 loadKennisbank();
-
-
-
 
 async function functiondownloadItems(item) {
 

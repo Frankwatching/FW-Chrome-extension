@@ -64,6 +64,10 @@ productItemKleinContainer.appendChild( productItemKleinContainerContent );
 contentIndex.appendChild(vacatureContainer);
 vacatureContainer.appendChild(vacatureContainerContent);
 
+//Themanieuwsbrieven
+contentIndex.appendChild(themaContainer);
+themaContainer.appendChild(themaContainerContent);
+
 //downloadItemKlein
 contentIndex.appendChild( downloadItemKleinContainer );
 downloadItemKleinContainer.appendChild( downloadItemKleinContainerContent );
@@ -101,6 +105,7 @@ const options = [
   { value: 'agendaAcademyContainer', text: 'Academy Agenda' },
   { value: 'downloadItemKleinContainer', text: 'Kennisbank' },
   { value: 'vacatureContainer', text: 'Jobs' },
+  { value: 'themaContainer', text: 'Themanieuwsbrieven' },
   //{ value: 'marketingContainer', text: 'Cams 2.0' },
   //{ value: 'channelContainer', text: 'BC' },
     // Add other options as needed
@@ -129,6 +134,7 @@ function handleSelectChange(containerId) {
     downloadItemKleinContainer.style.display = "none";
     vacatureContainer.style.display = "none";
     marketingContainer.style.display = "none";
+    themaContainer.style.display = "none";
     channelContainer.style.display = "none";
     switchListForm.style.display = "none";
 
@@ -143,6 +149,7 @@ function handleSelectChange(containerId) {
       "downloadItemKleinContainer",
       "vacatureContainer", 
       "marketingContainer", 
+      "themaContainer", 
     //  "productItemHeadlineContainer"
     ];
 

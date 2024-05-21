@@ -8,7 +8,7 @@ createCanvas.style.left = '0px';
 createCanvas.style.bottom = '0px';
 createCanvas.style.backgroundColor = '#ccc';
 createCanvas.style.display = "block";
-createCanvas.style.zIndex = "19000";
+createCanvas.style.zIndex = "99999";
 
 contentFeed.id = 'contentStyle';
 contentFeed.style.position = 'fixed';
@@ -104,6 +104,8 @@ agendaOverlay.style.zIndex = "-1";
 artikelenGrootContainer.style.position = "absolute";
 artikelenGrootContainer.style.display = "none";
 vacatureContainer.style.display = "none";
+themaContainer.style.display = "none";
+
 
 //changable style
 contentIndex.style.color = "2d2d2d";

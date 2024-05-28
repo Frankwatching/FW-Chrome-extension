@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.3.0";
+let versionid = "3.3.1";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -659,6 +659,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
       
       label_adv = '';
       label_themavdweek = '';
+      label_tip = '';
       typeweergave = 'campagnebalk';
       weergave = `
 
@@ -666,7 +667,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         <tbody id="artikelGroot${postid}Tb">
           <tr id="artikelGroot${postid}TrC">
           <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}">[TIP] ${item_title} ▸</a>
+              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}"><span id="container_label_tip${postid}">${label_tip}</span> ${item_title} ▸</a>
 
             </td>
           </tr>
@@ -812,6 +813,8 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
           styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
         } else if (typeweergave === 'grootcta' && optionlabel === 'themavdweek') {
           styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+        } else if (typeweergave === 'campagnebalk' && optionlabel === 'tip') {
+          styling = 'color: #018000; font-size: 16px; display: inline; vertical-align: top;';
         } else if (typeweergave === 'grootcta' && optionlabel === 'tip') {
           styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
         } else {
@@ -826,7 +829,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
       } else if (optionlabel === 'tip') {
         label_adv = '';
         label_themavdweek = '';
-        label_tip = `<div style="${styling};">Tip</div>`; 
+        label_tip = `<span style="${styling};">Tip</span>`; 
       } else if (optionlabel === 'themavdweek') {
         label_adv = '';
         label_tip = '';
@@ -1221,7 +1224,7 @@ async function blogItems(item, index) {
     } else if (optionlabel === 'tip') {
       label_adv = '';
       label_themavdweek = '';
-      label_tip = `<div style="${styling};">Tip</div>`; 
+      label_tip = `<span style="${styling};">Tip</span>`; 
     } else if (optionlabel === 'themavdweek') {
       label_adv = '';
       label_tip = '';
@@ -1688,7 +1691,7 @@ async function functionJobItems(item) {
           } else if (optionlabel === 'tip') {
             label_adv = '';
             label_themavdweek = '';
-            label_tip = `<div style="${styling};">Tip</div>`; 
+            label_tip = `<span style="${styling};">Tip</span>`; 
           } else if (optionlabel === 'themavdweek') {
             label_adv = '';
             label_tip = '';
@@ -2221,7 +2224,7 @@ item_img_groot = imageUrl;
         <tbody id="artikelGroot${postid}Tb">
           <tr id="artikelGroot${postid}TrC">
           <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}">[TIP] ${promotion_announcement} ▸</a>
+              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}"><span id="container_label_tip${postid}">${label_tip}</span> ${promotion_announcement} ▸</a>
 
             </td>
           </tr>
@@ -2418,6 +2421,8 @@ item_img_groot = imageUrl;
     styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
   } else if (typeweergave === 'grootcta' && optionlabel === 'tip') {
     styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+  } else if (typeweergave === 'campagnebalk' && optionlabel === 'tip') {
+    styling = 'color: #018000; font-size: 16px; display: inline; vertical-align: top;';
   } else {
     styling = ''; // Reset styling if none of the conditions match
   }
@@ -2428,7 +2433,7 @@ item_img_groot = imageUrl;
     label_adv = `<span style="${styling};">ADV</span>`; 
   } else if (optionlabel === 'tip') {
     label_adv = '';
-    label_themavdweek = `<div style="${styling};">Tip</div>`; 
+    label_themavdweek = `<span style="${styling};">Tip</span>`; 
   } else if (optionlabel === 'themavdweek') {
     label_adv = '';
     label_themavdweek = `<div style="${styling};">THEMA VAN DE WEEK</div>`; 
@@ -2823,7 +2828,7 @@ async function functionChannelItems(item) {
           } else if (optionlabel === 'tip') {
             label_adv = '';
             label_themavdweek = '';
-            label_tip = `<div style="${styling};">Tip</div>`; 
+            label_tip = `<span style="${styling};">Tip</span>`; 
           } else if (optionlabel === 'themavdweek') {
             label_adv = '';
             label_tip = '';
@@ -3182,7 +3187,7 @@ async function functiondownloadItems(item) {
                 <tbody id="artikelGroot${postid}Tb">
                   <tr id="artikelGroot${postid}TrC">
                   <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-                      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}">[TIP] ${item_title} ▸</a>
+                      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block;" href="${item_link}"><span id="container_label_tip${postid}">${label_tip}</span> ${item_title} ▸</a>
 
                     </td>
                   </tr>
@@ -3324,7 +3329,8 @@ async function functiondownloadItems(item) {
             styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
           } else if (typeweergave === 'grootcta' && optionlabel === 'tip') {
             styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
-
+          } else if (typeweergave === 'campagnebalk' && optionlabel === 'tip') {
+            styling = 'color: #018000; font-size: 16px; display: inline; vertical-align: top;';
           } else {
             styling = ''; // Reset styling if none of the conditions match
           }
@@ -3337,7 +3343,7 @@ async function functiondownloadItems(item) {
           } else if (optionlabel === 'tip') {
             label_adv = '';
             label_themavdweek = '';
-            label_tip = `<div style="${styling};">Tip</div>`; 
+            label_tip = `<span style="${styling};">Tip</span>`; 
           } else if (optionlabel === 'themavdweek') {
             label_adv = '';
             label_tip = '';

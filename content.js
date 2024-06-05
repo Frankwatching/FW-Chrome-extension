@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.3.1";
+let versionid = "3.3.2";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -37,7 +37,7 @@ window.onload = function () {
 
     function check() {
         blogAlert = inputTemplate.checked ? "al" : "nb";
-        newsletterType = inputTemplate.checked ? "vacature" : "blog";
+        newsletterType = inputTemplate.checked ? "jobs" : "blog";
         document.getElementById('blogAlertText').innerHTML = blogAlert;
         dagWeek = input.checked ? "wekelijks" : "dagelijks";
         document.getElementById('dagWeekText').innerHTML = dagWeek;
@@ -415,6 +415,19 @@ async function productItem(item, index) {
   var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
   var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
 
+
+  /*$new_post->useAlternatives = get_field('gebruik_alternatief', $id);
+					$new_post->altnewsletterTitle = get_field('product_alt_newsletter_title', $id);
+                    $new_post->altnewsletterIntroTekst = get_field('product_alt_newsletter_intro', $id);
+                    $new_post->altnewsLetterUTMCampaignName = get_field('product_alt_newsletter_utm_campaign_name', $id);
+                    $new_post->altnewsLetterImage = get_field('product_alt_newsletter_image', $id); */
+  var useAlternatives = json["postmeta:useAlternatives"]; 
+  var altnewsletterTitle = json["postmeta:altNewsletterTitle"]; 
+  var altnewsLetterUTMCampaignName = json["postmeta:altNewsLetterUTMCampaignName"]; 
+  var altnewsletterIntroTekst = json["postmeta:altNewsletterIntroTekst"]; 
+  var altnewsletterImage = json["postmeta:altNewsLetterImage"]; 
+
+
     // haal nieuwsbrief titel op
     if (newsletterTitle !== undefined && newsletterTitle !== '') {
       item_title = newsletterTitle;
@@ -439,6 +452,9 @@ async function productItem(item, index) {
   } else {
     item_description = item_description;
   }
+
+
+
   
   var item_img_klein = json["image_small"];
   var item_img_groot = json["image_large"];
@@ -476,7 +492,16 @@ async function productItem(item, index) {
   div.className = 'dragrow ' + labelNameLowercase ;
   div.id = labelNameLowercase+postid;
   div.draggable = 'true';
+
   
+    //show alternative campagne data
+    if (useAlternatives == 'ja') {
+      item_title = altnewsletterTitle;
+      item_description = altnewsletterIntroTekst;
+      utmcampaign = altnewsLetterUTMCampaignName;
+      item_img_groot = altnewsletterImage;
+  
+    }
 
   productItemKleinContainerContent.appendChild(divCat);
   productItemKleinContainerContent.appendChild(div);
@@ -829,7 +854,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
       } else if (optionlabel === 'tip') {
         label_adv = '';
         label_themavdweek = '';
-        label_tip = `<span style="${styling};">Tip</span>`; 
+        label_tip = `<span style="${styling};">TIP</span>`; 
       } else if (optionlabel === 'themavdweek') {
         label_adv = '';
         label_tip = '';
@@ -1224,7 +1249,7 @@ async function blogItems(item, index) {
     } else if (optionlabel === 'tip') {
       label_adv = '';
       label_themavdweek = '';
-      label_tip = `<span style="${styling};">Tip</span>`; 
+      label_tip = `<span style="${styling};">TIP</span>`; 
     } else if (optionlabel === 'themavdweek') {
       label_adv = '';
       label_tip = '';
@@ -1366,7 +1391,7 @@ async function functionJobItems(item) {
     fetch(featuredMediaUrl)
     .then(res => res.json())
     .then(mediaData => {
-      item_img_groot = mediaData.guid.rendered;
+      item_img_groot = mediaData.guid?.rendered;
       item_img_scaled = mediaData.image_size?.source_url;
 
           // Create HTML elements or perform operations with the title and excerpt data
@@ -1691,7 +1716,7 @@ async function functionJobItems(item) {
           } else if (optionlabel === 'tip') {
             label_adv = '';
             label_themavdweek = '';
-            label_tip = `<span style="${styling};">Tip</span>`; 
+            label_tip = `<span style="${styling};">TIP</span>`; 
           } else if (optionlabel === 'themavdweek') {
             label_adv = '';
             label_tip = '';
@@ -2017,13 +2042,12 @@ item_img_groot = imageUrl;
     item_categorie += '<div style="background: white;"><span class="postTitle">'+item_title+'</span><span class="w100"></span></div>';
     
     const featuredMediaId = item.featured_media; 
-    
     if (featuredMediaId) {
     const featuredMediaUrl = wordpressUrl+`/wp-json/wp/v2/media/${featuredMediaId}`;
     fetch(featuredMediaUrl)
     .then(res => res.json())
     .then(mediaData => {
-      item_img_groot = mediaData.guid.rendered;
+      item_img_groot = mediaData.guid?.rendered;
 
           
       })
@@ -2433,7 +2457,8 @@ item_img_groot = imageUrl;
     label_adv = `<span style="${styling};">ADV</span>`; 
   } else if (optionlabel === 'tip') {
     label_adv = '';
-    label_themavdweek = `<span style="${styling};">Tip</span>`; 
+    label_tip = `<span style="${styling};">TIP</span>`; 
+    label_themavdweek = ``; 
   } else if (optionlabel === 'themavdweek') {
     label_adv = '';
     label_themavdweek = `<div style="${styling};">THEMA VAN DE WEEK</div>`; 
@@ -2552,7 +2577,7 @@ async function functionChannelItems(item) {
     fetch(featuredMediaUrl)
     .then(res => res.json())
     .then(mediaData => {
-      item_img_groot = mediaData.guid.rendered;
+      item_img_groot = mediaData.guid?.rendered;
 
           // Create HTML elements or perform operations with the title and excerpt data
           const Container = document.getElementById("channelContainerContent");
@@ -2828,7 +2853,7 @@ async function functionChannelItems(item) {
           } else if (optionlabel === 'tip') {
             label_adv = '';
             label_themavdweek = '';
-            label_tip = `<span style="${styling};">Tip</span>`; 
+            label_tip = `<span style="${styling};">TIP</span>`; 
           } else if (optionlabel === 'themavdweek') {
             label_adv = '';
             label_tip = '';
@@ -2996,7 +3021,7 @@ async function functiondownloadItems(item) {
     fetch(wordpressUrl+`/wp-json/wp/v2/media/${mediaId}`)
     .then(res => res.json())
     .then(mediaData => {
-      item_img_groot = mediaData.guid.rendered;
+      item_img_groot = mediaData.guid?.rendered;
 
           // Create HTML elements or perform operations with the title and excerpt data
           const Container = document.getElementById("downloadItemKleinContainerContent");
@@ -3343,7 +3368,7 @@ async function functiondownloadItems(item) {
           } else if (optionlabel === 'tip') {
             label_adv = '';
             label_themavdweek = '';
-            label_tip = `<span style="${styling};">Tip</span>`; 
+            label_tip = `<span style="${styling};">TIP</span>`; 
           } else if (optionlabel === 'themavdweek') {
             label_adv = '';
             label_tip = '';

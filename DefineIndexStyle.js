@@ -252,37 +252,37 @@ headlinesOverlay.style.zIndex = "19300";
 
   headlines1Td1.textContent = "▸ ";
   headlines1Td1.style.fontSize = "16px";
-  headlines1Td1.style.verticalAlign = "top";
+  headlines1Td1.style.verticalAlign = "middle";
   headlines1Td1.style.width = "20px";
   headlines1Td1.style.color = "#18608B";
   headlines1Td3.style.width = "30px";
   headlines2Td1.textContent = "▸ ";
   headlines2Td1.style.fontSize = "16px";
-  headlines2Td1.style.verticalAlign = "top";
+  headlines2Td1.style.verticalAlign = "middle";
   headlines2Td1.style.color = "#18608B";
   headlines3Td1.textContent = "▸ ";
   headlines3Td1.style.fontSize = "16px";
-  headlines3Td1.style.verticalAlign = "top";
+  headlines3Td1.style.verticalAlign = "middle";
   headlines3Td1.style.color = "#18608B";
   headlines4Td1.textContent = "▸ ";
   headlines4Td1.style.fontSize = "16px";
-  headlines4Td1.style.verticalAlign = "top";
+  headlines4Td1.style.verticalAlign = "middle";
   headlines4Td1.style.color = "#18608B";
   headlines5Td1.textContent = "▸ ";
   headlines5Td1.style.fontSize = "16px";
-  headlines5Td1.style.verticalAlign = "top";
+  headlines5Td1.style.verticalAlign = "middle";
   headlines5Td1.style.color = "#18608B";
   headlines6Td1.textContent = "▸ ";
   headlines6Td1.style.fontSize = "16px";
-  headlines6Td1.style.verticalAlign = "top";
+  headlines6Td1.style.verticalAlign = "middle";
   headlines6Td1.style.color = "#18608B";
   headlines7Td1.textContent = "▸ ";
   headlines7Td1.style.fontSize = "16px";
-  headlines7Td1.style.verticalAlign = "top";
+  headlines7Td1.style.verticalAlign = "middle";
   headlines7Td1.style.color = "#18608B";
 
-  headlines2Td3.style.verticalAlign = "top";
-  headlines5Td3.style.verticalAlign = "top";
+  headlines2Td3.style.verticalAlign = "middle";
+  headlines5Td3.style.verticalAlign = "middle";
 
 //form styling
 

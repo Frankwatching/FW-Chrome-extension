@@ -262,7 +262,7 @@ async function loadAgenda() {
     await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
 
     // Process the first 10 items
-    const itemsToProcess = Math.min(items.length, 10);
+    const itemsToProcess = Math.min(items.length, 20);
     for (let i = 0; i < itemsToProcess; i++) {
       agendaItems(items[i]);
       productItem(items[i]);
@@ -493,7 +493,7 @@ async function productItem(item, index) {
   div.id = labelNameLowercase+postid;
   div.draggable = 'true';
 
-  
+
     //show alternative campagne data
     if (useAlternatives == 'ja') {
       item_title = altnewsletterTitle;
@@ -631,7 +631,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         weergave = `<table id="headlineItem${postid}" width="100%">
         <tbody>
         <tr>
-        <td style="font-size: 16px; vertical-align: top; width: 20px; color: #18608b;">▸</td>
+        <td style="font-size: 16px; vertical-align: middle; width: 20px; color: #18608b;">▸</td>
         <td>
           <a id="headlineItem${postid}a" class="headline" href="${item_link}" style="display: block; margin: 0px; color: #18608b; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial;text-decoration: none;">${item_title} <span id="container_label_themavdweek${postid}">${label_themavdweek}</span></a>
         </td>
@@ -692,7 +692,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         <tbody id="artikelGroot${postid}Tb">
           <tr id="artikelGroot${postid}TrC">
           <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}"><span id="container_label_tip${postid}">${label_tip}</span> ${item_title} ▸</a>
+              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto', Arial;font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}"><span id="container_label_tip${postid}">${label_tip}</span> ${item_title} ▸</a>
 
             </td>
           </tr>
@@ -825,13 +825,13 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         } else if (typeweergave === 'groot' && optionlabel === 'tip') {
           styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
         } else if (typeweergave === 'headline' && optionlabel === 'adv') {
-          styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+          styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
         } else if (typeweergave === 'headline' && optionlabel === 'tip') {
-          styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+          styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
         } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
           styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
         } else if (typeweergave === 'agenda' && optionlabel === 'adv') {
-          styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+          styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
         } else if (typeweergave === 'agenda' && optionlabel === 'themavdweek') {
           styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
         } else if (typeweergave === 'grootcta' && optionlabel === 'adv') {
@@ -1232,9 +1232,9 @@ async function blogItems(item, index) {
       } else if (typeweergave === 'groot' && optionlabel === 'tip') {
         styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
       } else if (typeweergave === 'headline' && optionlabel === 'adv') {
-        styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+        styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
       } else if (typeweergave === 'headline' && optionlabel === 'tip') {
-        styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+        styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
       } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
         styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
       } else {
@@ -1699,9 +1699,9 @@ async function functionJobItems(item) {
           } else if (typeweergave === 'groot' && optionlabel === 'tip') {
             styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'headline' && optionlabel === 'adv') {
-            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'tip') {
-            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
             styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
           } else {
@@ -2248,7 +2248,7 @@ item_img_groot = imageUrl;
         <tbody id="artikelGroot${postid}Tb">
           <tr id="artikelGroot${postid}TrC">
           <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}"><span id="container_label_tip${postid}">${label_tip}</span> ${promotion_announcement} ▸</a>
+              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto', Arial;font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}"><span id="container_label_tip${postid}">${label_tip}</span> ${promotion_announcement} ▸</a>
 
             </td>
           </tr>
@@ -2430,15 +2430,15 @@ item_img_groot = imageUrl;
   } else if (typeweergave === 'groot' && optionlabel === 'tip') {
     styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
   } else if (typeweergave === 'headline' && optionlabel === 'adv') {
-    styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+    styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
   } else if (typeweergave === 'headline' && optionlabel === 'tip') {
-    styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+    styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
   } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
     styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
   } else if (typeweergave === 'agenda' && optionlabel === 'adv') {
-    styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+    styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
   } else if (typeweergave === 'agenda' && optionlabel === 'adv') {
-    styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+    styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
   } else if (typeweergave === 'grootcta' && optionlabel === 'adv') {
     styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
   } else if (typeweergave === 'grootcta' && optionlabel === 'themavdweek') {
@@ -2836,9 +2836,9 @@ async function functionChannelItems(item) {
           } else if (typeweergave === 'groot' && optionlabel === 'tip') {
             styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'headline' && optionlabel === 'adv') {
-            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'tip') {
-            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
             styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
           } else {
@@ -3212,7 +3212,7 @@ async function functiondownloadItems(item) {
                 <tbody id="artikelGroot${postid}Tb">
                   <tr id="artikelGroot${postid}TrC">
                   <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-                      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block;" href="${item_link}"><span id="container_label_tip${postid}">${label_tip}</span> ${item_title} ▸</a>
+                      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto', Arial;font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block;" href="${item_link}"><span id="container_label_tip${postid}">${label_tip}</span> ${item_title} ▸</a>
 
                     </td>
                   </tr>
@@ -3343,9 +3343,9 @@ async function functiondownloadItems(item) {
           } else if (typeweergave === 'groot' && optionlabel === 'tip') {
             styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'headline' && optionlabel === 'adv') {
-            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'tip') {
-            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; float: right; font-size: 9px;';
+            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
             styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
           } else if (typeweergave === 'grootcta' && optionlabel === 'adv') {

@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.3.2";
+let versionid = "3.3.3";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -204,9 +204,9 @@ fetch("https://www.frankwatching.com/feed-nieuwsbrief-v2/")
     let headerline6 = document.getElementById('headline6');
     headerline6.textContent = allTitles[4].firstChild.nodeValue;
     headerline6.setAttribute("href", allLinks[4].textContent + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7cheadline%7c`);//campagne);
-    let headerline7 = document.getElementById('headline7');
-    headerline7.textContent = allTitles[5].firstChild.nodeValue;
-    headerline7.setAttribute("href", allLinks[5].textContent + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+    // let headerline7 = document.getElementById('headline7');
+    // headerline7.textContent = allTitles[5].firstChild.nodeValue;
+    // headerline7.setAttribute("href", allLinks[5].textContent + `&utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
 
 });
 
@@ -1570,8 +1570,8 @@ async function functionJobItems(item) {
         
                                       <tr>
                                         <td id="vacatureTD${postid}bA" class="vacatureTDbA">
-                                            <a id="metaPost${postid}Link"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;text-decoration: none;" class="metaPost">
-                                            <span id="vacatureMeta${postid}a" class="metaPostCompany" style="font-size: 12px; font-weight: normal;  font-family: 'Roboto', Arial; line-height: 1.2; color: #018A00;">${vac_org_naam} in ${vac_standplaats}</span>
+                                            <a id="metaPost${postid}Link"  href="${item_link}" style="display: block; font-size: 14px; line-height: 1.2; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;text-decoration: none;" class="metaPost">
+                                            <span id="vacatureMeta${postid}a" class="metaPostCompany" style="font-size: 14px; font-weight: normal;  font-family: 'Roboto', Arial; line-height: 1.2; color: #018A00;">${vac_org_naam} in ${vac_standplaats}</span>
                                             </a>
                                         </td>
                                     </tr>
@@ -1587,7 +1587,7 @@ async function functionJobItems(item) {
         
         
         
-                                          <a id="kleinTitleLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 8px 0px 0px 0px;" href="${item_link}">${item_title}</a></td>
+                                          <a id="kleinTitleLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 4px 0px 0px 0px;" href="${item_link}">${item_title}</a></td>
                                       </tr>
                                       <tr>
                                           <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="channelTDbC"><a id="DescriptionKleinArtikel${postid}" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${item_link}">${item_description} <span style="color: #0E5C8C;    font-size: 16px; ">Bekijk vacature ▸</span></a></td>
@@ -1622,8 +1622,8 @@ async function functionJobItems(item) {
               </tr>
               <tr>
                     <td id="vacatureTD${postid}bA" class="vacatureTDbA">
-                        <a id="metaPost${postid}Link"  href="${item_link}" style="display: block; font-size: 12px; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;text-decoration: none;" class="metaPost">
-                        <span id="vacatureMeta${postid}a" class="metaPostCompany" style="font-size: 12px; font-weight: regular; font-family: 'Roboto',Arial; color: #018A00; border-radius: 4px; border: 1px solid #018A00; padding:2px 10px">${vac_org_naam} in ${vac_standplaats}</span>
+                        <a id="metaPost${postid}Link"  href="${item_link}" style="display: block; font-size: 14px; line-height: 1.2; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00 !important;text-decoration: none;" class="metaPost">
+                        <span id="vacatureMeta${postid}a" class="metaPostCompany" style="font-size: 14px; font-weight: normal;  font-family: 'Roboto', Arial; line-height: 1.2; color: #018A00;">${vac_org_naam} in ${vac_standplaats}</span>
                         </a>
                     </td>
                 </tr>
@@ -3369,7 +3369,7 @@ async function functiondownloadItems(item) {
             label_adv = '';
             label_themavdweek = '';
             label_tip = `<span style="${styling};">TIP</span>`; 
-          } else if (optionlabel === 'themavdweek') {
+            } else if (optionlabel === 'themavdweek') {
             label_adv = '';
             label_tip = '';
             label_themavdweek = `<div style="${styling};">THEMA VAN DE WEEK</div>`; 

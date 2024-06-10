@@ -276,10 +276,10 @@ headlinesOverlay.style.zIndex = "19300";
   headlines6Td1.style.fontSize = "16px";
   headlines6Td1.style.verticalAlign = "middle";
   headlines6Td1.style.color = "#18608B";
-  headlines7Td1.textContent = "▸ ";
-  headlines7Td1.style.fontSize = "16px";
-  headlines7Td1.style.verticalAlign = "middle";
-  headlines7Td1.style.color = "#18608B";
+  // headlines7Td1.textContent = "▸ ";
+  // headlines7Td1.style.fontSize = "16px";
+  // headlines7Td1.style.verticalAlign = "middle";
+  // headlines7Td1.style.color = "#18608B";
 
   headlines2Td3.style.verticalAlign = "middle";
   headlines5Td3.style.verticalAlign = "middle";

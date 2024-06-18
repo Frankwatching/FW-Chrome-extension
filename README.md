@@ -1,2 +1,2 @@
 # Act-On-External-Content
-original repo from Thomas Sonneveld (Marketing Guys)
+Chrome extensie voor Frankwatching voor het laden van dynamische content vanuit ons platform. 

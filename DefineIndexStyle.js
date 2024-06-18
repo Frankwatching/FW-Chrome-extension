@@ -234,18 +234,18 @@ headlinesOverlay.style.zIndex = "19300";
   phl6.style.margin = "0px";
   phl6.style.color = "#18608B"
 
-  hl7.id = "headline7";
-  hl7.style.display = "block";
-  hl7.className = "headline";
-  hl7.style.margin = "0px";
-  hl7.style.color = "#18608B";
-  hl7.style.fontSize="16px"
+  // hl7.id = "headline7";
+  // hl7.style.display = "block";
+  // hl7.className = "headline";
+  // hl7.style.margin = "0px";
+  // hl7.style.color = "#18608B";
+  // hl7.style.fontSize="16px"
 
-  phl7.id = "pheadline7";
-  phl7.style.display = "block";
-  phl7.className = "headline";
-  phl7.style.margin = "0px";
-  phl7.style.color = "#18608B"
+  // phl7.id = "pheadline7";
+  // phl7.style.display = "block";
+  // phl7.className = "headline";
+  // phl7.style.margin = "0px";
+  // phl7.style.color = "#18608B"
 
   headlineTable.width="100%";
   headlineTable.style.lineHeight= "1.3";

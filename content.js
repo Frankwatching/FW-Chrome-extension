@@ -854,7 +854,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
       } else if (optionlabel === 'tip') {
         label_adv = '';
         label_themavdweek = '';
-        label_tip = `<span style="${styling};">TIP</span>`; 
+        label_tip = `<span style="${styling};">TIP 👉</span>`; 
       } else if (optionlabel === 'themavdweek') {
         label_adv = '';
         label_tip = '';

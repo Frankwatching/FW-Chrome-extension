@@ -69,8 +69,8 @@ var shl5b = document.createElement ( 'span' );
 var hl5 = document.createElement ( 'a' );
 var phl6 = document.createElement ( 'p' );
 var hl6 = document.createElement ( 'a' );
-var phl7 = document.createElement ( 'p' );
-var hl7 = document.createElement ( 'a' );
+// var phl7 = document.createElement ( 'p' );
+// var hl7 = document.createElement ( 'a' );
 
 var headlineTable = document.createElement( 'table' );
 var headlineTbody = document.createElement( 'tbody');
@@ -98,10 +98,10 @@ var headlineTr6 = document.createElement( 'tr');
 var headlines6Td1 = document.createElement( 'td' );
 var headlines6Td2 = document.createElement( 'td' );
 var headlines6Td3 = document.createElement( 'td' );
-var headlineTr7 = document.createElement( 'tr');
-var headlines7Td1 = document.createElement( 'td' );
-var headlines7Td2 = document.createElement( 'td' );
-var headlines7Td3 = document.createElement( 'td' );
+// var headlineTr7 = document.createElement( 'tr');
+// var headlines7Td1 = document.createElement( 'td' );
+// var headlines7Td2 = document.createElement( 'td' );
+// var headlines7Td3 = document.createElement( 'td' );
 
 var agendaOverlay = document.createElement ( "div" );
 

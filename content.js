@@ -851,10 +851,14 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         label_themavdweek = '';
         label_tip = '';
         label_adv = `<span style="${styling};">ADV</span>`; 
-      } else if (optionlabel === 'tip') {
+      } else if (typeweergave === 'campagnebalk' && optionlabel === 'tip') {
         label_adv = '';
         label_themavdweek = '';
         label_tip = `<span style="${styling};">TIP 👉</span>`; 
+      } else if (optionlabel === 'tip') {
+        label_adv = '';
+        label_themavdweek = '';
+        label_tip = `<span style="${styling};">TIP</span>`; 
       } else if (optionlabel === 'themavdweek') {
         label_adv = '';
         label_tip = '';

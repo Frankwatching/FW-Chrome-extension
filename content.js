@@ -457,7 +457,7 @@ async function productItem(item, index) {
 
   
   var item_img_klein = json["image_small"];
-  var item_img_groot = json["image_large"];
+  var item_img_groot = json["image_small"]; //instead of image_large
 
   //invoer
   var selectName = 'Agenda';

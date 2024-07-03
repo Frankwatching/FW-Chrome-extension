@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.3.6";
+let versionid = "3.3.7";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -453,11 +453,8 @@ async function productItem(item, index) {
     item_description = item_description;
   }
 
-
-
-  
   var item_img_klein = json["image_small"];
-  var item_img_groot = json["image_small"]; //instead of image_large
+  var item_img_groot = json["image_large"];
 
   //invoer
   var selectName = 'Agenda';

@@ -465,7 +465,7 @@ async function productItem(item, index) {
   item_categorie += '</div>';
   item_categorie += '<div style="background:white;">';
   //toon weergave pulldown
-  item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergaveProduct'+postid+'"><option value="">1.Kies weergave</option><option value="klein">Afb. links</option><option value="groot">Afb. boven</option><option value="grootcta">Afb. boven + CTA</option><option value="headline">Headline</option><option value="campagnebalk">Campagnebalk</option></select></span>';
+  item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergaveProduct'+postid+'"><option value="">1.Kies weergave</option><option value="klein">Afb. links</option><option value="kleinalt">Afb. links ALT</option><option value="groot">Afb. boven</option><option value="grootalt">Afb. boven ALT</option><option value="grootcta">Afb. boven + CTA</option><option value="headline">Headline</option><option value="campagnebalk">Campagnebalk</option></select></span>';
 
   item_categorie += '<span class="extraOptions"><select id="selectOptionProduct'+postid+'"><option value="adv">2.Kies utm content</option><optgroup label="Agenda"><option value="agenda">agenda</option></optgroup><optgroup label="Academy"><option value="adv">adv</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option></optgroup><optgroup label="Headline"><option value="headlineadv">headlineadv</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlineadvthema">headlineadvthema</option><option value="headlineonder">headlineonder</option></optgroup></select></span>';
   item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabelProduct'+postid+'"><option value="">3.Kies label</option><option value="themavdweek">Thema vd week</option><option value="adv">Adv</option><option value="tip">TIP</option></select></span>';
@@ -673,6 +673,55 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
           </tr>
         </tbody>
         </table>`;
+
+      } else if (optionlabel === 'kleinalt') {
+        selectElementLabel.selectedIndex = 0;
+        // Reset labels
+        label_adv = '';
+        label_tip = '';
+        label_themavdweek = '';
+        typeweergave = 'kleinalt';
+
+        
+        if (!altnewsletterImage) {
+          item_img_alternative = item_img_alternative;
+         } else {
+          item_img_alternative = altnewsletterImage;
+      
+         }
+
+        weergave = `<table class="table1a">
+        <tbody>
+          <tr>
+            <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_alternative}" /></a></td>
+          </tr>
+        </tbody>
+        </table>
+        <table>
+        <tbody>
+          <tr>
+            <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+              <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none;    background: #000000; height: 150px; width: 175px;" width="175" src="${item_img_alternative}" /></a></div>
+            </td>
+            <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+              <table class="tableC">
+                <tbody>
+                  <tr>
+                    <td class="artikelKleinTDcA">
+                    <span id="container_label_adv${postid}">${label_adv}</span>
+                    <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${altnewsletterTitle} <span id="container_label_tip${postid}">${label_tip}</span></a></td>
+                  </tr>
+                  <tr>
+                    <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${altnewsletterIntroTekst} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+        </table>`;
+
       } else if (optionlabel === 'campagnebalk') {
 
       
@@ -730,7 +779,52 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
           </table>
       `;      
 
+      }  else if (optionlabel === 'grootalt') {
+        selectElementLabel.selectedIndex = 0;
+        // Reset labels
+        label_adv = '';
+        label_tip = '';
+        label_themavdweek = '';
+        typeweergave = 'grootalt';
+
+        if (!altnewsletterImage) {
+          item_img_alternative = item_img_alternative;
+         } else {
+          item_img_alternative = altnewsletterImage;
       
+         }
+
+        weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
+          <tbody id="artikelGroot${postid}Tb">
+            <tr id="artikelGroot${postid}TrB">
+            <td id="artikelGroot${postid}TdB">
+                <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px;max-height: 229px; object-fit: contain; background: #000;" height="229" src="${item_img_alternative}" >
+                </a>
+              </td>
+            </tr>
+            <tr id="artikelGroot${postid}TrA">
+            <td id="artikelGroot${postid}TdA">
+            <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+              <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 0px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
+                ${altnewsletterTitle} <span id="container_label_adv${postid}">${label_adv}</span>  <span id="container_label_tip${postid}">${label_tip}</span>
+              </a>
+            </td>
+            </tr>
+            <tr id="artikelGroot${postid}TrC">
+            <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
+                <a id="grootArtikelDescription${postid}" class="grootArtikelDescription" href="${item_link}" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;text-decoration: none;">
+                  <span style="font-size: 16px; color: #333333;font-weight: 400;">
+                    ${alt}
+                  </span>
+               
+                <span id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;"> Lees meer ▸</span></a>
+              </td>
+            </tr>
+          </tbody>
+          </table>
+      `;
+    
       } else if (optionlabel === 'groot') {
         selectElementLabel.selectedIndex = 0;
         // Reset labels
@@ -2027,7 +2121,6 @@ if (attachmentId) {
 
 item_img_groot = imageUrl;
   
-  const promotion_view = item.acfpromotion_view;
   let promotion_description = item.acf.promotion_description;
   if (!promotion_description) {
     promotion_description = 'Missende omschrijving';
@@ -2036,36 +2129,7 @@ item_img_groot = imageUrl;
   const promotion_utmcampaign = item.acf.promotion_utmcampaignname;
   const utmcampaign = promotion_utmcampaign;
 
-  /* 
-  wnb_ak_adv : WNB aK advertorial
-  wnb_ag_cta : WNB aG met cta button
-  wnb_ag_tvdw : WNB aG thema vd week
-  wnk_ag_adv: WNB aG advertorial
-  wnb_headlines_tvdw : WNB headlines Thema vd week
-  wnb_meer_tvdw : WNB meer artikelen Thema vd week
-  wnb_agenda_events : WNB Agenda events
-  wnb_advertorial : WNB Advertorial
-  dnb_advertorial : DNB Advertorial
-  */
-  if (promotion_type === 'wnb_ak_adv') {    
-    option = 'adv  '; 
-  } else if (promotion_type === 'wnb_ag_cta') {    
-    option = 'adv';  
-  } else if (promotion_type === 'wnb_ag_tvdw') {    
-    option = 'advthema';    
-  } else if (promotion_type === 'wnk_ag_adv') {    
-    option = 'adv  ';  
-  } else if (promotion_type === 'wnb_meer_tvdw') {    
-    option = 'advthema';  
-  }  else if (promotion_type === 'wnb_agenda_events') {    
-    option = 'agenda';  
-  }  else if (promotion_type === 'wnb_advertorial') {    
-    option = 'adv';  
-  }  else if (promotion_type === 'dnb_advertorial') {    
-    option = 'adv';  
-  } else {
-    option = 'adv';  
-  }
+
    
   const utm_parameters = `?utm_source=${blogAlert}-${utmtaglowercase}-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${utmcampaign}&amp;utm_content=%7c${sendDate}%7c${option}%7c`;
 
@@ -2097,9 +2161,7 @@ item_img_groot = imageUrl;
     item_categorie += '<div style="background:white;">';
     //toon weergave pulldown
     item_categorie += '<span class="extraOptionsWeergave"><select id="selectOptionWeergave'+selectName+postid+'"><option value="">1.Kies weergave</option><option value="agenda">Agenda</option><option value="klein">Afb. links</option><option value="groot">Afb. boven</option><option value="grootcta">Afb. boven CTA</option><option value="campagnebalk">Campagnebalk</option><option value="headline">Headline</option></select></span>';
-
-    item_categorie += '<span class="extraOptions"><select id="selectOption'+selectName+postid+'"><option value="">nvt</option></select></span>';
-//    item_categorie += '<span class="extraOptions"><select id="selectOption'+selectName+postid+'"><option value="artikel">2.Kies utm content</option><optgroup label="Kennisbank"><option value="adv">adv</option><option value="advactueel">advactueel</option><option value="advthema">advthema</option></optgroup><optgroup label="Headline"><option value="headlineadv">headlineadv</option><option value="headlineadvactueel">headlineadvactueel</option><option value="headlineadvthema">headlineadvthema</option><option value="headlineonder">headlineonder</option></optgroup></select></span>';
+    item_categorie += '<span class="extraOptions"><select id="selectOption'+selectName+postid+'"><option value="artikel">2.Kies utm content</option><optgroup label="Headline"><option value="headlineadvactueel">Headline</option><option value="headlineadvthema">Headline + TvdW</option></optgroup><optgroup label="Afb en tekst"><option value="advactueel">Afb en tekst</option><option value="advthema">Afb en tekst + TvdW</option></optgroup><optgroup label="Campagnebalk"><option value="adv">Campagnebalk</option></optgroup><optgroup label="Agenda"><option value="agenda">Agenda</option></optgroup></select></span>';  
     item_categorie += '<span class="extraOptionsLabel"><select id="selectOptionLabel'+selectName+postid+'"><option value="">3.Kies label</option><option value="themavdweek">Thema vd week</option><option value="adv">Adv</option><option value="tip">TIP</option></select></span>';
     item_categorie += '</div>';
     item_categorie += '<div style="background: white;"><span class="postTitle">'+item_title+'</span><span class="w100"></span></div>';

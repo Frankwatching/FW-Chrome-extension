@@ -415,11 +415,11 @@ async function productItem(item, index) {
   var newsLetterUTMCampaignName = json["postmeta:newsLetterUTMCampaignName"]; 
   var newsletterIntroTekst = json["postmeta:newsletterIntroTekst"]; 
 
-  var useAlternatives = json["postmeta:useAlternatives"]; 
   var altnewsletterTitle = json["postmeta:altNewsletterTitle"]; 
   var altnewsLetterUTMCampaignName = json["postmeta:altNewsLetterUTMCampaignName"]; 
   var altnewsletterIntroTekst = json["postmeta:altNewsletterIntroTekst"]; 
   var altnewsletterImage = json["postmeta:altNewsLetterImage"]; 
+  var altnewsletterImageLarge = json["postmeta:altNewsLetterImageLarge"]; 
 
 
     // haal nieuwsbrief titel op
@@ -484,15 +484,6 @@ async function productItem(item, index) {
   div.className = 'dragrow ' + labelNameLowercase ;
   div.id = labelNameLowercase+postid;
   div.draggable = 'true';
-
-  //show alternative campagne data
-  if (useAlternatives == 'ja') {
-    item_title = altnewsletterTitle;
-    item_description = altnewsletterIntroTekst;
-    utmcampaign = altnewsLetterUTMCampaignName;
-    item_img_groot = altnewsletterImage;
-
-  }
 
   productItemKleinContainerContent.appendChild(divCat);
   productItemKleinContainerContent.appendChild(div);
@@ -690,10 +681,18 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
       
          }
 
+         
+        if (!altnewsletterImageLarge) {
+          item_img_alternative_large = item_img_alternative_large;
+         } else {
+          item_img_alternative_large = altnewsletterImage;
+      
+         }
+
         weergave = `<table class="table1a">
         <tbody>
           <tr>
-            <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_alternative}" /></a></td>
+            <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${altnewsletterImageLarge}" /></a></td>
           </tr>
         </tbody>
         </table>
@@ -794,12 +793,20 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
       
          }
 
+          
+        if (!altnewsletterImageLarge) {
+          item_img_alternative_large = item_img_alternative_large;
+         } else {
+          item_img_alternative_large = altnewsletterImage;
+      
+         }
+
         weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
           <tbody id="artikelGroot${postid}Tb">
             <tr id="artikelGroot${postid}TrB">
             <td id="artikelGroot${postid}TdB">
                 <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px;max-height: 229px; object-fit: contain; background: #000;" height="229" src="${item_img_alternative}" >
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px;max-height: 229px; object-fit: contain; background: #000;" height="229" src="${altnewsletterImageLarge}" >
                 </a>
               </td>
             </tr>

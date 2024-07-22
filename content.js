@@ -449,6 +449,7 @@ async function productItem(item, index) {
 
   var item_img_klein = json["image_small"];
   var item_img_alternative = json["image_product_overview"];
+  var item_img_alternative_large = json["altNewsLetterImageLarge"];
   var item_img_groot = json["image_large"];
 
   //invoer
@@ -644,7 +645,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         <tbody>
           <tr>
             <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-              <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none;    background: #000000; height: 150px; width: 175px;" width="175" src="${item_img_alternative}" /></a></div>
+              <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none;    background: #000000; height: 150px; width: 175px;" width="175" src="${item_img_alternative}" /></a></div>
             </td>
             <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
               <table class="tableC">
@@ -700,7 +701,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         <tbody>
           <tr>
             <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-              <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none;    background: #000000; height: 150px; width: 175px;" width="175" src="${item_img_alternative}" /></a></div>
+              <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none;    background: #000000; height: 150px; width: 175px;" width="175" src="${item_img_alternative}" /></a></div>
             </td>
             <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
               <table class="tableC">
@@ -756,7 +757,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
             <tr id="artikelGroot${postid}TrB">
             <td id="artikelGroot${postid}TdB">
                 <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; max-height: 229px;object-fit: contain; background: #000000;" height="229" src="${item_img_alternative}" >
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px; max-height: 229px;object-fit: cover; background: #000000;" height="229" src="${item_img_alternative}" >
                 </a>
               </td>
             </tr>
@@ -806,7 +807,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
             <tr id="artikelGroot${postid}TrB">
             <td id="artikelGroot${postid}TdB">
                 <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px;max-height: 229px; object-fit: contain; background: #000;" height="229" src="${altnewsletterImageLarge}" >
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px;max-height: 229px; object-fit: cover; background: #000;" height="229" src="${altnewsletterImageLarge}" >
                 </a>
               </td>
             </tr>
@@ -844,7 +845,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
             <tr id="artikelGroot${postid}TrB">
             <td id="artikelGroot${postid}TdB">
                 <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
-                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px;max-height: 229px; object-fit: contain; background: #000;" height="229" src="${item_img_alternative}" >
+                <img id="grootArtikelImg1" class="grootArtikelImg" style="border-radius: 4px;display: block; width: 100%;margin-bottom: 15px; height: auto; min-height: 192px;max-height: 229px; object-fit: cover; background: #000;" height="229" src="${item_img_alternative}" >
                 </a>
               </td>
             </tr>
@@ -2053,8 +2054,6 @@ async function functionCamsItems(item) {
   }
   // Promo image id  
   const promotion_image = item.acf.promotion_image;
-
-
   // Promo CTA tekst 
   let promotion_cta_text = item.acf.promotion_cta_text;
   if (!promotion_cta_text) {
@@ -2097,7 +2096,7 @@ async function functionCamsItems(item) {
   const wordpressUrl = 'https://wp.frankwatching.com';
 
 
-// Get the ID of the attachment
+// Get the ID of the attachment 1
 const attachmentId = item.acf.promotion_image;
 let imageUrl; // Declare imageUrl variable outside the block
 
@@ -2127,7 +2126,40 @@ if (attachmentId) {
     });
 
 item_img_groot = imageUrl;
-  
+
+
+
+// Get the ID of the attachment 2
+// const attachmentIdLarge = item.acf.promotion_image_large;
+// let imageUrlLarge; // Declare imageUrlLarge variable outside the block
+
+// let item_img_large = '';
+
+// // Check if attachmentId is null
+// if (attachmentIdLarge) {
+//   // Make a request to get the attachment details
+//   fetch(wordpressUrl+`/wp-json/wp/v2/media/${attachmentIdLarge}`)
+//     .then(response => response.json())
+//     .then(attachmentData => {
+//       if (attachmentData && attachmentData.source_url) {
+//         const imageUrlLarge = attachmentData.guid.rendered;
+//         item_img_large = imageUrlLarge;
+//         console.log('Image URL:', imageUrlLarge);
+//         // Do whatever you need to do with imageUrlLarge inside this block
+//       } else {
+//         item_img_large = 'https://placehold.co/600x400  ';
+
+//         console.log('No promotion image available');
+//         // Handle the case where the attachment doesn't have a source URL
+//       }
+//     })
+//     .catch(error => {
+//       console.error('Error fetching attachment data:', error);
+      
+//     });
+
+// item_img_large = imageUrlLarge;
+
   let promotion_description = item.acf.promotion_description;
   if (!promotion_description) {
     promotion_description = 'Missende omschrijving';
@@ -2347,7 +2379,7 @@ item_img_groot = imageUrl;
       <tbody>
         <tr>
           <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-            <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: 150px; width: 175px;background: #000;;min-height: 175px" width="175" src="${item_img_groot}" /></a></div>
+            <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: 150px; width: 175px;background: #000;;min-height: 150px" width="175" src="${item_img_groot}" /></a></div>
           </td>
           <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
             <table class="tableC" style="margin: 0 !important; width: 100%;">
@@ -2455,7 +2487,7 @@ item_img_groot = imageUrl;
           <td id="artikelGroot${postid}TdB">
               <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
                 <img id="grootArtikelImg1" class="grootArtikelImg" style="    border-radius: 4px;
-    object-fit: contain;    display: block;    width: 100%;    margin-bottom: 15px;    min-height: 195px; max-height: 229px;    background: #000000;" height="229" src="${item_img_alternative}" >
+    object-fit: cover;    display: block;    width: 100%;    margin-bottom: 15px;    min-height: 195px; max-height: 229px;    background: #000000;" height="229" src="${item_img_groot}" >
               </a>
             </td>
           </tr>
@@ -2490,7 +2522,7 @@ item_img_groot = imageUrl;
           <td id="artikelGroot${postid}TdB">
               <a style="padding: 0px;" id="imgPost${postid}Link" href="${item_link}">
                 <img id="grootArtikelImg1" class="grootArtikelImg"  style="    border-radius: 4px;
-    object-fit: cover;    display: block;    width: 100%;    margin-bottom: 15px;    min-height: 195px; max-height: 229px;    background: #000000;" height="229" src="${item_img_alternative}" >
+    object-fit: cover;    display: block;    width: 100%;    margin-bottom: 15px;    min-height: 195px; max-height: 229px;    background: #000000;" height="229" src="${item_img_groot}" >
               </a>
             </td>
           </tr>

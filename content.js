@@ -88,7 +88,7 @@ function handleButtonClick(container, buttonImg, overlay) {
 jobrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/vacature'; 
 agendarss = 'https://www.frankwatching.com/feed/academy/upcoming';
 //agendarestapi = 'https://www.frankwatching.com/wp-json/wp/v2/product'; // nog niet ingebruik
-marketingrestapi = 'https://wp.frankwatching.com/wp-json/wp/v2/promotion'; 
+marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion'; 
 bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts '; 
 kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download'; 
 videorestapi = 'https://www.frankwatching.com/wp-json/wp/v2/video'; 
@@ -105,7 +105,7 @@ if ( searchID ) {
   //newsrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/post/?include='+ searchID; // nog niet in gebruik 
   jobrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/vacature/?include='+ searchID; 
   agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?postid='+ searchID+'&timestamp=' + Date.now();
-  marketingrestapi = 'https://wp.frankwatching.com/wp-json/wp/v2/promotion/?include='+ searchID; 
+  marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion/?include='+ searchID; 
   bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts/?include='+ searchID; //
   kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download/?include='+ searchID; 
   videorestapi = 'https://www.frankwatching.com/wp-json/wp/v2/video/?include='+ searchID;
@@ -693,7 +693,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         weergave = `<table class="table1a">
         <tbody>
           <tr>
-            <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${altnewsletterImageLarge}" /></a></td>
+            <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_alternative_large}" /></a></td>
           </tr>
         </tbody>
         </table>
@@ -2093,7 +2093,7 @@ async function functionCamsItems(item) {
 
   //console.log('Dit is de output:'+promotion_koppeling_post);
 
-  const wordpressUrl = 'https://wp.frankwatching.com';
+  const wordpressUrl = 'https://cms.frankwatching.com';
 
 
 // Get the ID of the attachment 1

@@ -2130,35 +2130,36 @@ item_img_groot = imageUrl;
 
 
 // Get the ID of the attachment 2
-// const attachmentIdLarge = item.acf.promotion_image_large;
-// let imageUrlLarge; // Declare imageUrlLarge variable outside the block
+ const attachmentIdLarge = item.acf.promotion_image_large;
+ let imageUrlLarge; // Declare imageUrlLarge variable outside the block
 
-// let item_img_large = '';
+ let item_img_large = '';
 
 // // Check if attachmentId is null
-// if (attachmentIdLarge) {
+ if (attachmentIdLarge) {
 //   // Make a request to get the attachment details
-//   fetch(wordpressUrl+`/wp-json/wp/v2/media/${attachmentIdLarge}`)
-//     .then(response => response.json())
-//     .then(attachmentData => {
-//       if (attachmentData && attachmentData.source_url) {
-//         const imageUrlLarge = attachmentData.guid.rendered;
-//         item_img_large = imageUrlLarge;
-//         console.log('Image URL:', imageUrlLarge);
+   fetch(wordpressUrl+`/wp-json/wp/v2/media/${attachmentIdLarge}`)
+     .then(response => response.json())
+     .then(attachmentData => {
+       if (attachmentData && attachmentData.source_url) {
+         const imageUrlLarge = attachmentData.guid.rendered;
+         item_img_large = imageUrlLarge;
+         console.log('Image URL:', imageUrlLarge);
 //         // Do whatever you need to do with imageUrlLarge inside this block
-//       } else {
-//         item_img_large = 'https://placehold.co/600x400  ';
+       } else {
+         item_img_large = 'https://placehold.co/600x400  ';
 
-//         console.log('No promotion image available');
+         console.log('No promotion image available');
 //         // Handle the case where the attachment doesn't have a source URL
-//       }
-//     })
-//     .catch(error => {
-//       console.error('Error fetching attachment data:', error);
+       }
+     })
+     .catch(error => {
+       console.error('Error fetching attachment data:', error);
       
-//     });
+     });
 
-// item_img_large = imageUrlLarge;
+ item_img_large = imageUrlLarge;
+    }
 
   let promotion_description = item.acf.promotion_description;
   if (!promotion_description) {
@@ -2371,7 +2372,7 @@ item_img_groot = imageUrl;
       weergave = `<table class="table1a">
       <tbody>
         <tr>
-          <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #000;min-height: 175px" height="175" src="${item_img_groot}" /></a></td>
+          <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #000;min-height: 175px" height="175" src="${item_img_large}" /></a></td>
         </tr>
       </tbody>
       </table>

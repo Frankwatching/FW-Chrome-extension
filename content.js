@@ -2243,7 +2243,7 @@ item_img_groot = imageUrl;
     selectElement.addEventListener('change', function () {
       option = this.value; // Update the option variable with the selected value
       // Update item_link with the new option
-      item_link = item.link + `?utm_source=${blogAlert}-${utmtaglowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${utmcampaign}&utm_content=%7c${sendDate}%7c${option}%7c`;
+      item_link = {promotion_url} + `?utm_source=${blogAlert}-${utmtaglowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${utmcampaign}&utm_content=%7c${sendDate}%7c${option}%7c`;
       // Update the href attribute of the anchor tags with the new item_link
 
 

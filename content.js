@@ -2372,7 +2372,7 @@ item_img_groot = imageUrl;
       weergave = `<table class="table1a">
       <tbody>
         <tr>
-          <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #000;min-height: 175px" height="175" src="${item_img_large}" /></a></td>
+          <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #000;min-height: inherit"  src="${item_img_large}" /></a></td>
         </tr>
       </tbody>
       </table>

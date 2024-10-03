@@ -2174,7 +2174,7 @@ item_img_groot = imageUrl;
   const utm_parameters = `?utm_source=${blogAlert}-${utmtaglowercase}-${dagWeek}&amp;utm_medium=email&amp;utm_campaign=${utmcampaign}&amp;utm_content=%7c${sendDate}%7c${option}%7c`;
 
   var item_link = promotion_url+utm_parameters;
-
+  
   var maxCharacters = 160; // Define the maximum number of characters
 
    // item_description  
@@ -2228,7 +2228,7 @@ item_img_groot = imageUrl;
   divCat.innerHTML = item_categorie;
   const div = document.createElement('div');
   div.className = 'dragrow ' + labelNameLowercase ;
-  div.id = labelNameLowercase+postid;
+  div.id = labelNameLowercase+postid; 
   div.draggable = 'true';
 
   marketingContainerContent.appendChild(divCat);
@@ -2244,7 +2244,7 @@ item_img_groot = imageUrl;
     selectElement.addEventListener('change', function () {
       option = this.value; // Update the option variable with the selected value
       // Update item_link with the new option
-      item_link = {promotion_url} + `?utm_source=${blogAlert}-${utmtaglowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${utmcampaign}&utm_content=%7c${sendDate}%7c${option}%7c`;
+      item_link = promotion_url + `?utm_source=${blogAlert}-${utmtaglowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${utmcampaign}&utm_content=%7c${sendDate}%7c${option}%7c`;
       // Update the href attribute of the anchor tags with the new item_link
 
 
@@ -2380,7 +2380,7 @@ item_img_groot = imageUrl;
       <tbody>
         <tr>
           <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-            <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: 150px; width: 175px;background: #000;;min-height: 150px" width="175" src="${item_img_groot}" /></a></div>
+            <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 175px;background: #000;;min-height: 150px" width="175" src="${item_img_groot}" /></a></div>
           </td>
           <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
             <table class="tableC" style="margin: 0 !important; width: 100%;">
@@ -2495,7 +2495,7 @@ item_img_groot = imageUrl;
           <tr id="artikelGroot${postid}TrA">
           <td id="artikelGroot${postid}TdA">
           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-            <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 0px 0px; font-weight: 700;" href="${promotion_url}">
+            <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 0px 0px; font-weight: 700;" href="${item_link}">
               ${promotion_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span>
             </a>
           </td>
@@ -2530,7 +2530,7 @@ item_img_groot = imageUrl;
           <tr id="artikelGroot${postid}TrA">
           <td id="artikelGroot${postid}TdA">
           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-            <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 0px 0px; font-weight: 700;text-decoration: none;" href="${promotion_url}">
+            <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 0px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
               ${promotion_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span>
             </a>
           </td>

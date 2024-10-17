@@ -923,7 +923,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         } else if (typeweergave === 'headline' && optionlabel === 'adv') {
           styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
         } else if (typeweergave === 'headline' && optionlabel === 'tip') {
-          styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
+          styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
         } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
           styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
         } else if (typeweergave === 'agenda' && optionlabel === 'adv') {
@@ -1336,7 +1336,7 @@ async function blogItems(item, index) {
       } else if (typeweergave === 'headline' && optionlabel === 'adv') {
         styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
       } else if (typeweergave === 'headline' && optionlabel === 'tip') {
-        styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
+        styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
       } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
         styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
       } else {
@@ -1803,7 +1803,7 @@ async function functionJobItems(item) {
           } else if (typeweergave === 'headline' && optionlabel === 'adv') {
             styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'tip') {
-            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
+            styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
             styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
           } else {
@@ -2609,7 +2609,7 @@ item_img_groot = imageUrl;
   } else if (typeweergave === 'headline' && optionlabel === 'adv') {
     styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
   } else if (typeweergave === 'headline' && optionlabel === 'tip') {
-    styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
+    styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
   } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
     styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
   } else if (typeweergave === 'agenda' && optionlabel === 'adv') {
@@ -3018,7 +3018,7 @@ async function functionChannelItems(item) {
           } else if (typeweergave === 'headline' && optionlabel === 'adv') {
             styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'tip') {
-            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
+            styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
             styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
           } else {
@@ -3525,7 +3525,7 @@ async function functiondownloadItems(item) {
           } else if (typeweergave === 'headline' && optionlabel === 'adv') {
             styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'tip') {
-            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
+            styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
             styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
           } else if (typeweergave === 'grootcta' && optionlabel === 'adv') {

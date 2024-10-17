@@ -2067,7 +2067,14 @@ async function functionCamsItems(item) {
   ? item.acf.promotion_startdate.substring(4, 6)
   : null; // Or provide a default value if necessary
 
-  const promotion_startdateDay = item.acf.promotion_startdate.substring(6, 8); // Extract day (characters at index 6 and 7)
+  //const promotion_startdateDay = item.acf.promotion_startdate.substring(6, 8)
+  
+  const promotion_startdateDay = item.acf.promotion_startdate
+  ? item.acf.promotion_startdate.substring(4, 6)
+  : null; // Or provide a default value if necessary
+  
+  
+  ; // Extract day (characters at index 6 and 7)
  
    function getMonthAbbreviation(promotion_startdateMonth) {
          const months = {

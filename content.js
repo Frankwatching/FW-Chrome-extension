@@ -921,7 +921,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         } else if (typeweergave === 'groot' && optionlabel === 'tip') {
           styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
         } else if (typeweergave === 'headline' && optionlabel === 'adv') {
-          styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
+          styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
         } else if (typeweergave === 'headline' && optionlabel === 'tip') {
           styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
         } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
@@ -1334,7 +1334,7 @@ async function blogItems(item, index) {
       } else if (typeweergave === 'groot' && optionlabel === 'tip') {
         styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
       } else if (typeweergave === 'headline' && optionlabel === 'adv') {
-        styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
+        styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
       } else if (typeweergave === 'headline' && optionlabel === 'tip') {
         styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
       } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
@@ -1801,7 +1801,7 @@ async function functionJobItems(item) {
           } else if (typeweergave === 'groot' && optionlabel === 'tip') {
             styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'headline' && optionlabel === 'adv') {
-            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
+            styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'tip') {
             styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
@@ -2126,7 +2126,7 @@ if (attachmentId) {
       } else {
         item_img_groot = 'https://placehold.co/600x400  ';
 
-        console.log('No promotion image available');
+        console.log('No promotion image available');69929772
         // Handle the case where the attachment doesn't have a source URL
       }
     })
@@ -2609,7 +2609,7 @@ item_img_groot = imageUrl;
   } else if (typeweergave === 'groot' && optionlabel === 'tip') {
     styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
   } else if (typeweergave === 'headline' && optionlabel === 'adv') {
-    styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
+    styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
   } else if (typeweergave === 'headline' && optionlabel === 'tip') {
     styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
   } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
@@ -3018,7 +3018,7 @@ async function functionChannelItems(item) {
           } else if (typeweergave === 'groot' && optionlabel === 'tip') {
             styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'headline' && optionlabel === 'adv') {
-            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
+            styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'tip') {
             styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
@@ -3525,7 +3525,7 @@ async function functiondownloadItems(item) {
           } else if (typeweergave === 'groot' && optionlabel === 'tip') {
             styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'headline' && optionlabel === 'adv') {
-            styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
+            styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'tip') {
             styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {

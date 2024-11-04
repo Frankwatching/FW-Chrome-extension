@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.3.8";
+let versionid = "3.3.9";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -637,7 +637,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         weergave = `<table class="table1a">
         <tbody>
           <tr>
-            <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_alternative}" /></a></td>
+            <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_groot}" /></a></td>
           </tr>
         </tbody>
         </table>
@@ -1223,7 +1223,7 @@ async function blogItems(item, index) {
       weergave = `<table class="table1a">
       <tbody>
         <tr>
-          <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_groot}" /></a></td>
+          <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: 175px; width: 100%; display: block;" height="175" src="${item_img_groot}" /></a></td>
         </tr>
       </tbody>
       </table>

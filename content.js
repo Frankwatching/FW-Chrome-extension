@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.3.9";
+let versionid = "3.4.0";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -90,7 +90,7 @@ agendarss = 'https://www.frankwatching.com/feed/academy/upcoming';
 //agendarestapi = 'https://www.frankwatching.com/wp-json/wp/v2/product'; // nog niet ingebruik
 marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion'; 
 bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts '; 
-kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download'; 
+//kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download'; 
 videorestapi = 'https://www.frankwatching.com/wp-json/wp/v2/video'; 
 whitepaperrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/whitepaper'; 
 newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?poststatus=future-publish';
@@ -107,7 +107,7 @@ if ( searchID ) {
   agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?postid='+ searchID+'&timestamp=' + Date.now();
   marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion/?include='+ searchID; 
   bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts/?include='+ searchID; //
-  kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download/?include='+ searchID; 
+  //kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download/?include='+ searchID; 
   videorestapi = 'https://www.frankwatching.com/wp-json/wp/v2/video/?include='+ searchID;
   whitepaperrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/whitepaper/?include='+ searchID; 
 }
@@ -735,7 +735,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         <tbody id="artikelGroot${postid}Tb">
           <tr id="artikelGroot${postid}TrC">
           <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto', Arial;font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}"><span id="container_label_tip${postid}">${label_tip}</span> ${item_title} ▸</a>
+              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto', Arial;font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018a00; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018a00; display: block; "  href="${item_link}"><span id="container_label_tip${postid}">${label_tip}</span> ${item_title} ▸</a>
 
             </td>
           </tr>
@@ -909,17 +909,21 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
 
         // Update styling based on weergave and optionlabel
         if (typeweergave === 'klein' && optionlabel === 'adv') {
-          styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle';
+          styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle';
         } else if (typeweergave === 'klein' && optionlabel === 'themavdweek') {
-          styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+          styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
         } else if (typeweergave === 'klein' && optionlabel === 'tip') {
-          styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018000;'; 
+          styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018a00;'; 
+        } else if (typeweergave === 'kleinalt' && optionlabel === 'tip') {
+          styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018a00;'; 
         } else if (typeweergave === 'groot' && optionlabel === 'adv') {
-          styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+          styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
         } else if (typeweergave === 'groot' && optionlabel === 'themavdweek') {
-          styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+          styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
         } else if (typeweergave === 'groot' && optionlabel === 'tip') {
-          styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+          styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
+        } else if (typeweergave === 'grootalt' && optionlabel === 'tip') {
+          styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
         } else if (typeweergave === 'headline' && optionlabel === 'adv') {
           styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
         } else if (typeweergave === 'headline' && optionlabel === 'tip') {
@@ -931,13 +935,13 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         } else if (typeweergave === 'agenda' && optionlabel === 'themavdweek') {
           styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
         } else if (typeweergave === 'grootcta' && optionlabel === 'adv') {
-          styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+          styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
         } else if (typeweergave === 'grootcta' && optionlabel === 'themavdweek') {
-          styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+          styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
         } else if (typeweergave === 'campagnebalk' && optionlabel === 'tip') {
-          styling = 'color: #018000; font-size: 16px; display: inline; vertical-align: top;';
+          styling = 'color: #018a00; font-size: 16px; display: inline; vertical-align: top;';
         } else if (typeweergave === 'grootcta' && optionlabel === 'tip') {
-          styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+          styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
         } else {
           styling = ''; // Reset styling if none of the conditions match
         }
@@ -1322,17 +1326,17 @@ async function blogItems(item, index) {
 
       // Update styling based on weergave and optionlabel
       if (typeweergave === 'klein' && optionlabel === 'adv') {
-        styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle';
+        styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle';
       } else if (typeweergave === 'klein' && optionlabel === 'themavdweek') {
-        styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+        styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
       } else if (typeweergave === 'klein' && optionlabel === 'tip') {
-        styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018000;'; 
+        styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018a00;'; 
       } else if (typeweergave === 'groot' && optionlabel === 'adv') {
-        styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+        styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
       } else if (typeweergave === 'groot' && optionlabel === 'themavdweek') {
-        styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+        styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
       } else if (typeweergave === 'groot' && optionlabel === 'tip') {
-        styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+        styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
       } else if (typeweergave === 'headline' && optionlabel === 'adv') {
         styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
       } else if (typeweergave === 'headline' && optionlabel === 'tip') {
@@ -1789,17 +1793,17 @@ async function functionJobItems(item) {
 
           // Update styling based on weergave and optionlabel
           if (typeweergave === 'klein' && optionlabel === 'adv') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle';
           } else if (typeweergave === 'klein' && optionlabel === 'themavdweek') {
-            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
           } else if (typeweergave === 'klein' && optionlabel === 'tip') {
-            styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018000;'; 
+            styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018a00;'; 
           } else if (typeweergave === 'groot' && optionlabel === 'adv') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'groot' && optionlabel === 'themavdweek') {
-            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
           } else if (typeweergave === 'groot' && optionlabel === 'tip') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'headline' && optionlabel === 'adv') {
             styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'tip') {
@@ -2425,7 +2429,7 @@ item_img_groot = imageUrl;
         <tbody id="artikelGroot${postid}Tb">
           <tr id="artikelGroot${postid}TrC">
           <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto', Arial;font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block; "  href="${item_link}"><span id="container_label_tip${postid}">${label_tip}</span> ${promotion_title} ▸</a>
+              <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto', Arial;font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018a00; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018a00; display: block; "  href="${item_link}"><span id="container_label_tip${postid}">${label_tip}</span> ${promotion_title} ▸</a>
 
             </td>
           </tr>
@@ -2597,17 +2601,17 @@ item_img_groot = imageUrl;
 
   // Update styling based on weergave and optionlabel
   if (typeweergave === 'klein' && optionlabel === 'adv') {
-    styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle';
+    styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle';
   } else if (typeweergave === 'klein' && optionlabel === 'themavdweek') {
-    styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+    styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
   } else if (typeweergave === 'klein' && optionlabel === 'tip') {
-    styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018000;'; 
+    styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018a00;'; 
   } else if (typeweergave === 'groot' && optionlabel === 'adv') {
-    styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+    styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
   } else if (typeweergave === 'groot' && optionlabel === 'themavdweek') {
-    styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+    styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
   } else if (typeweergave === 'groot' && optionlabel === 'tip') {
-    styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+    styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
   } else if (typeweergave === 'headline' && optionlabel === 'adv') {
     styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
   } else if (typeweergave === 'headline' && optionlabel === 'tip') {
@@ -2619,13 +2623,13 @@ item_img_groot = imageUrl;
   } else if (typeweergave === 'agenda' && optionlabel === 'adv') {
     styling = 'display: inline; border: 1px solid #018a00; color: #018a00; padding: 1px 2px; font-size: 9px;';
   } else if (typeweergave === 'grootcta' && optionlabel === 'adv') {
-    styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+    styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
   } else if (typeweergave === 'grootcta' && optionlabel === 'themavdweek') {
-    styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+    styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
   } else if (typeweergave === 'grootcta' && optionlabel === 'tip') {
-    styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+    styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
   } else if (typeweergave === 'campagnebalk' && optionlabel === 'tip') {
-    styling = 'color: #018000; font-size: 16px; display: inline; vertical-align: top;';
+    styling = 'color: #018a00; font-size: 16px; display: inline; vertical-align: top;';
   } else {
     styling = ''; // Reset styling if none of the conditions match
   }
@@ -3006,17 +3010,17 @@ async function functionChannelItems(item) {
 
           // Update styling based on weergave and optionlabel
           if (typeweergave === 'klein' && optionlabel === 'adv') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle';
           } else if (typeweergave === 'klein' && optionlabel === 'themavdweek') {
-            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
           } else if (typeweergave === 'klein' && optionlabel === 'tip') {
-            styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018000;'; 
+            styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018a00;'; 
           } else if (typeweergave === 'groot' && optionlabel === 'adv') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'groot' && optionlabel === 'themavdweek') {
-            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
           } else if (typeweergave === 'groot' && optionlabel === 'tip') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'headline' && optionlabel === 'adv') {
             styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'tip') {
@@ -3089,7 +3093,6 @@ async function loadKennisbank() {
   try {
     // Fetch all data concurrently using Promise.all
     const responses = await Promise.all([
-      fetch(kennisbankrestapi),
       fetch(videorestapi),
       fetch(whitepaperrestapi)
     ]);
@@ -3394,7 +3397,7 @@ async function functiondownloadItems(item) {
                 <tbody id="artikelGroot${postid}Tb">
                   <tr id="artikelGroot${postid}TrC">
                   <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
-                      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto', Arial;font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018000; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018000; display: block;" href="${item_link}"><span id="container_label_tip${postid}">${label_tip}</span> ${item_title} ▸</a>
+                      <a id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="text-decoration: none;background: white;border-radius: 4px;font-family: 'Roboto', Arial;font-style: normal;font-weight: 700;font-size: 16px;line-height: 1.3;color: #018a00; padding: 7px 10px; margin: 0px 0;  border: 1px solid #018a00; display: block;" href="${item_link}"><span id="container_label_tip${postid}">${label_tip}</span> ${item_title} ▸</a>
 
                     </td>
                   </tr>
@@ -3513,17 +3516,17 @@ async function functiondownloadItems(item) {
 
           // Update styling based on weergave and optionlabel
           if (typeweergave === 'klein' && optionlabel === 'adv') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle';
           } else if (typeweergave === 'klein' && optionlabel === 'themavdweek') {
-            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
           } else if (typeweergave === 'klein' && optionlabel === 'tip') {
-            styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018000;'; 
+            styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018a00;'; 
           } else if (typeweergave === 'groot' && optionlabel === 'adv') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'groot' && optionlabel === 'themavdweek') {
-            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
           } else if (typeweergave === 'groot' && optionlabel === 'tip') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'headline' && optionlabel === 'adv') {
             styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
           } else if (typeweergave === 'headline' && optionlabel === 'tip') {
@@ -3531,13 +3534,13 @@ async function functiondownloadItems(item) {
           } else if (typeweergave === 'headline' && optionlabel === 'themavdweek') {
             styling = 'display: inline; border: 1px solid #018a00; color: #018a00; font-size: 11px; vertical-align: middle; padding: 2px 6px;';
           } else if (typeweergave === 'grootcta' && optionlabel === 'adv') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'grootcta' && optionlabel === 'themavdweek') {
-            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018000; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
+            styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
           } else if (typeweergave === 'grootcta' && optionlabel === 'tip') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018000; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018000; display: inline-block; vertical-align: middle;';
+            styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
           } else if (typeweergave === 'campagnebalk' && optionlabel === 'tip') {
-            styling = 'color: #018000; font-size: 16px; display: inline; vertical-align: top;';
+            styling = 'color: #018a00; font-size: 16px; display: inline; vertical-align: top;';
           } else {
             styling = ''; // Reset styling if none of the conditions match
           }

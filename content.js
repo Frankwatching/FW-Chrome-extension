@@ -418,9 +418,8 @@ async function productItem(item, index) {
   var altnewsletterTitle = json["postmeta:altNewsletterTitle"]; 
   var altnewsLetterUTMCampaignName = json["postmeta:altNewsLetterUTMCampaignName"]; 
   var altnewsletterIntroTekst = json["postmeta:altNewsletterIntroTekst"]; 
-  var altnewsletterImage = json["postmeta:altNewsLetterImage"]; 
-  var altnewsletterImageLarge = json["postmeta:altNewsLetterImageLarge"]; 
-
+  var item_img_alternative_small = json["postmeta:altNewsLetterImage"]; 
+  var item_img_alternative_large = json["postmeta:altNewsLetterImageLarge"]; 
 
     // haal nieuwsbrief titel op
     if (newsletterTitle !== undefined && newsletterTitle !== '') {
@@ -449,7 +448,6 @@ async function productItem(item, index) {
 
   var item_img_klein = json["image_small"];
   var item_img_alternative = json["image_product_overview"];
-  var item_img_alternative_large = json["altNewsLetterImageLarge"];
   var item_img_groot = json["image_large"];
 
   //invoer
@@ -675,20 +673,9 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         typeweergave = 'kleinalt';
 
         
-        if (!altnewsletterImage) {
-          item_img_alternative = item_img_alternative;
-         } else {
-          item_img_alternative = altnewsletterImage;
-      
-         }
+        
 
-         
-        if (!altnewsletterImageLarge) {
-          item_img_alternative_large = item_img_alternative_large;
-         } else {
-          item_img_alternative_large = altnewsletterImage;
-      
-         }
+        
 
         weergave = `<table class="table1a">
         <tbody>
@@ -701,7 +688,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         <tbody>
           <tr>
             <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-              <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none;    background: #000000; height: 150px; width: 175px;" width="175" src="${item_img_alternative}" /></a></div>
+              <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none;    background: #000000; height: 150px; width: 175px;" width="175" src="${item_img_alternative_small}" /></a></div>
             </td>
             <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
               <table class="tableC">
@@ -779,7 +766,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
           </table>
       `;      
 
-      }  else if (optionlabel === 'grootalt') {
+      } else if (optionlabel === 'grootalt') {
         selectElementLabel.selectedIndex = 0;
         // Reset labels
         label_adv = '';
@@ -787,22 +774,9 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
         label_themavdweek = '';
         typeweergave = 'grootalt';
 
-        if (!altnewsletterImage) {
-          item_img_alternative = item_img_alternative;
-         } else {
-          item_img_alternative = altnewsletterImage;
-      
-         }
+       
 
-          
-        if (!altnewsletterImageLarge) {
-          item_img_alternative_large = item_img_alternative_large;
-         } else {
-          item_img_alternative_large = altnewsletterImage;
-      
-         }
-
-        weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
+      weergave = `<table id="artikelGroot${postid}T" style=" display: block;">
           <tbody id="artikelGroot${postid}Tb">
             <tr id="artikelGroot${postid}TrB">
             <td id="artikelGroot${postid}TdB">
@@ -823,7 +797,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
             <td id="artikelGroot${postid}TdC" style="padding-bottom: 5px;">
                 <a id="grootArtikelDescription${postid}" class="grootArtikelDescription" href="${item_link}" style="color: #333333; font-size: 16px;line-height: 1.3; display: inline; padding: 0px 0px 0px 0px;font-weight: 400;text-decoration: none;">
                   <span style="font-size: 16px; color: #333333;font-weight: 400;">
-                    ${alt}
+                    ${altnewsletterIntroTekst}
                   </span>
                
                 <span id="GrootArtikelCTA${postid}" class="GrootArtikelCTA" style="display: inline; font-size: 16px; line-height: 1.3; text-decoration: none; color: #18608b;font-weight: 400;"> Lees meer ▸</span></a>
@@ -916,6 +890,10 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
           styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018a00;'; 
         } else if (typeweergave === 'kleinalt' && optionlabel === 'tip') {
           styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018a00;'; 
+        } else if (typeweergave === 'kleinalt' && optionlabel === 'adv') {
+          styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018a00;'; 
+        } else if (typeweergave === 'kleinalt' && optionlabel === 'themavdweek') {
+          styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
         } else if (typeweergave === 'groot' && optionlabel === 'adv') {
           styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
         } else if (typeweergave === 'groot' && optionlabel === 'themavdweek') {
@@ -924,6 +902,8 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
           styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
         } else if (typeweergave === 'grootalt' && optionlabel === 'tip') {
           styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle;';
+        } else if (typeweergave === 'grootalt' && optionlabel === 'themavdweek') {
+          styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
         } else if (typeweergave === 'headline' && optionlabel === 'adv') {
           styling = 'display: inline; border: 1px solid #757575; color: #757575; padding: 1px 2px; font-size: 9px;';
         } else if (typeweergave === 'headline' && optionlabel === 'tip') {

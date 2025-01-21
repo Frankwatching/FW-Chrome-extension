@@ -650,9 +650,8 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
                 <tbody>
                   <tr>
                     <td class="artikelKleinTDcA">
-                    <span id="container_label_adv${postid}">${label_adv}</span>
                     <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title} <span id="container_label_tip${postid}">${label_tip}</span></a></td>
+                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></a></td>
                   </tr>
                   <tr>
                     <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
@@ -695,9 +694,8 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
                 <tbody>
                   <tr>
                     <td class="artikelKleinTDcA">
-                    <span id="container_label_adv${postid}">${label_adv}</span>
                     <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${altnewsletterTitle} <span id="container_label_tip${postid}">${label_tip}</span></a></td>
+                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${altnewsletterTitle} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></a></td>
                   </tr>
                   <tr>
                     <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${altnewsletterIntroTekst} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
@@ -883,7 +881,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
 
         // Update styling based on weergave and optionlabel
         if (typeweergave === 'klein' && optionlabel === 'adv') {
-          styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle';
+          styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018a00;'; 
         } else if (typeweergave === 'klein' && optionlabel === 'themavdweek') {
           styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
         } else if (typeweergave === 'klein' && optionlabel === 'tip') {
@@ -1222,9 +1220,8 @@ async function blogItems(item, index) {
               <tbody>
                 <tr>
                   <td class="artikelKleinTDcA">
-                  <span id="container_label_adv${postid}">${label_adv}</span>
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title} <span id="container_label_tip${postid}">${label_tip}</span></a></td>
+                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></a></td>
                 </tr>
                 <tr>
                   <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
@@ -1306,7 +1303,7 @@ async function blogItems(item, index) {
 
       // Update styling based on weergave and optionlabel
       if (typeweergave === 'klein' && optionlabel === 'adv') {
-        styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle';
+        styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018a00;'; 
       } else if (typeweergave === 'klein' && optionlabel === 'themavdweek') {
         styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
       } else if (typeweergave === 'klein' && optionlabel === 'tip') {
@@ -1661,19 +1658,10 @@ async function functionJobItems(item) {
                                             </a>
                                         </td>
                                     </tr>
-                                    
                                       <tr>
                                           <td id="channelTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;">
-                                          
-                                          
-                                          <span id="container_label_adv${postid}">${label_adv}</span>
-                                          <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                          
-                                          
-        
-        
-        
-                                          <a id="kleinTitleLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 4px 0px 0px 0px;" href="${item_link}">${item_title}</a></td>
+                                          <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>        
+                                          <a id="kleinTitleLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 4px 0px 0px 0px;" href="${item_link}">${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></a></td>
                                       </tr>
                                       <tr>
                                           <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="channelTDbC"><a id="DescriptionKleinArtikel${postid}" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${item_link}">${item_description} <span style="color: #0E5C8C;    font-size: 16px; ">Bekijk vacature ▸</span></a></td>
@@ -1773,7 +1761,7 @@ async function functionJobItems(item) {
 
           // Update styling based on weergave and optionlabel
           if (typeweergave === 'klein' && optionlabel === 'adv') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle';
+            styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018a00;'; 
           } else if (typeweergave === 'klein' && optionlabel === 'themavdweek') {
             styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
           } else if (typeweergave === 'klein' && optionlabel === 'tip') {
@@ -2383,9 +2371,8 @@ item_img_groot = imageUrl;
               <tbody>
                 <tr>
                   <td class="artikelKleinTDcA">
-                  <span id="container_label_adv${postid}">${label_adv}</span>
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${promotion_title} <span id="container_label_tip${postid}">${label_tip}</span></a></td>
+                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${promotion_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></a></td>
                 </tr>
                 <tr>
                   <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> ${promotion_cta_text} ▸</span></a></td>
@@ -2581,7 +2568,7 @@ item_img_groot = imageUrl;
 
   // Update styling based on weergave and optionlabel
   if (typeweergave === 'klein' && optionlabel === 'adv') {
-    styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle';
+    styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018a00;'; 
   } else if (typeweergave === 'klein' && optionlabel === 'themavdweek') {
     styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
   } else if (typeweergave === 'klein' && optionlabel === 'tip') {
@@ -2901,9 +2888,8 @@ async function functionChannelItems(item) {
                       <tbody>
                         <tr>
                           <td class="artikelKleinTDcA">
-                          <span id="container_label_adv${postid}">${label_adv}</span>
                           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title} <span id="container_label_tip${postid}">${label_tip}</span></a></td>
+                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></a></td>
                         </tr>
                         <tr>
                           <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
@@ -2990,7 +2976,7 @@ async function functionChannelItems(item) {
 
           // Update styling based on weergave and optionlabel
           if (typeweergave === 'klein' && optionlabel === 'adv') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle';
+            styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018a00;'; 
           } else if (typeweergave === 'klein' && optionlabel === 'themavdweek') {
             styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
           } else if (typeweergave === 'klein' && optionlabel === 'tip') {
@@ -3350,9 +3336,8 @@ async function functiondownloadItems(item) {
                       <tbody>
                         <tr>
                           <td class="artikelKleinTDcA">
-                          <span id="container_label_adv${postid}">${label_adv}</span>
                           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title} <span id="container_label_tip${postid}">${label_tip}</span></a></td>
+                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></a></td>
                         </tr>
                         <tr>
                           <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" > Lees meer ▸</span></a></td>
@@ -3496,7 +3481,7 @@ async function functiondownloadItems(item) {
 
           // Update styling based on weergave and optionlabel
           if (typeweergave === 'klein' && optionlabel === 'adv') {
-            styling = ' padding: 1px 6px; background: #ffffff; color: #018a00; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover;border: 1px solid #018a00; display: inline-block; vertical-align: middle';
+            styling = 'display: inline; padding: 2px 5px; background: #ffffff; color: #018a00; font-size: 12px; line-height: 1.7;font-weight: bold; border-radius: 4px; vertical-align: text-top; border: 1px solid #018a00;'; 
           } else if (typeweergave === 'klein' && optionlabel === 'themavdweek') {
             styling = 'display: inline-block; margin-bottom: 10px; padding: 5px 10px; background: #018a00; color: white; font-size: 14px; line-height: 1.7; font-weight: bold; border-radius: 4px; object-fit: cover; vertical-align: top;';
           } else if (typeweergave === 'klein' && optionlabel === 'tip') {

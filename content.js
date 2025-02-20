@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.4.0";
+let versionid = "3.4.1";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -3160,13 +3160,20 @@ async function functiondownloadItems(item) {
     let mediaId = ''; // Initialize mediaId here
     const featuredMediaId = item.featured_media; 
     const boekcover = item.acf.boek_cover; 
+    const video_cover_overview = item.acf.video_cover_overview; 
+    const whitepaper_cover_overview = item.acf.whitepaper_cover_overview; 
     const wordpressUrl = 'https://www.frankwatching.com';
 
     if (boekcover !== undefined && boekcover !== '') {
       mediaId = boekcover;
+    } else if (video_cover_overview !== undefined && video_cover_overview !== '') {
+      mediaId = video_cover_overview;
+    } else if (whitepaper_cover_overview !== undefined && whitepaper_cover_overview !== '') {
+      mediaId = whitepaper_cover_overview;
     } else {
       mediaId = featuredMediaId;
     }
+    
     
     if (mediaId) {
     fetch(wordpressUrl+`/wp-json/wp/v2/media/${mediaId}`)

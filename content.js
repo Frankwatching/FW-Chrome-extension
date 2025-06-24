@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.4.1";
+let versionid = "3.4.2";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -51,6 +51,7 @@ window.onload = function () {
 }
 
 // console.log(dagWeek);
+
 
 function getAllContent(){
 
@@ -450,6 +451,21 @@ async function productItem(item, index) {
   var item_img_alternative = json["image_product_overview"];
   var item_img_groot = json["image_large"];
 
+    // Add copy functionality
+  const copyButton = document.getElementById('btnCopy' + postid);
+  if (copyButton) {
+    copyButton.addEventListener('click', function () {
+      const output = document.getElementById('product_weergave' + postid);
+      if (output) {
+        navigator.clipboard.writeText(output.innerHTML).then(() => {
+          alert('Weergave gekopieerd!');
+        }).catch(err => {
+          alert('Kopiëren mislukt: ' + err);
+        });
+      }
+    });
+  }
+
   //invoer
   var selectName = 'Agenda';
   var utmtaglowercase = 'blog';
@@ -457,7 +473,7 @@ async function productItem(item, index) {
   var option ='adv';
 
   /* add category */
-  var item_categorie = '<div style="background: white;border-top:2px solid green;"><span class="categoryClassDag">'+dagWeek[0]+'</span>';
+  var item_categorie = '<div style="background: white;border-top:2px solid green;"><span id="btnCopy' + postid + '">Copy</span><span class="categoryClassDag">'+dagWeek[0]+'</span>';
   item_categorie += '<span class="postPubDate">'+dateDay+'-'+dateMonth+'</span>';
   item_categorie += '<span class="postPostID">&#9783 '+postid+'</span>';
 
@@ -1032,6 +1048,20 @@ async function blogItems(item, index) {
   var poststatus = item.querySelector("poststatus").innerHTML;
   var popularityscore = item.querySelector("popularityscore").innerHTML;
 
+  // Add copy functionality
+  const copyButton = document.getElementById('btnCopy' + postid);
+  if (copyButton) {
+    copyButton.addEventListener('click', function () {
+      const output = document.getElementById('artikelGroot_weergave' + postid);
+      if (output) {
+        navigator.clipboard.writeText(output.innerHTML).then(() => {
+          alert('Weergave gekopieerd!');
+        }).catch(err => {
+          alert('Kopiëren mislukt: ' + err);
+        });
+      }
+    });
+  }
 
   //invoer
   var selectName = 'Blog';
@@ -1039,7 +1069,8 @@ async function blogItems(item, index) {
   var labelNameLowercase = 'blogitem';
   var option ='artikel';
   /* add category */
-  var item_categorie = '<div style="background: white;border-top:2px solid green;"><span class="categoryClassDag">'+dagWeek[0]+'</span>';
+//  var item_categorie = '<button id="btnCopy' + postid + '">Copy</button>';
+  var item_categorie = '<div style="background: white;border-top:2px solid green;"><span id="btnCopy' + postid + '">Copy</span><span class="categoryClassDag">'+dagWeek[0]+'</span>';
   var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
   var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
   var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
@@ -1449,7 +1480,7 @@ async function functionJobItems(item) {
    var item_link = item.link + `?utm_source=${blogAlert}-${newsletterType}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${newsletter_utm}&utm_content=%7c${sendDate}%7c${option}%7c`;
 
     /* add category */
-    var item_categorie = '<div style="background: white;border-top:2px solid green;"><span class="categoryClassDag">'+dagWeek[0]+'</span>';
+    var item_categorie = '<div style="background: white;border-top:2px solid green;"><span id="btnCopy' + postid + '">Copy</span><span class="categoryClassDag">'+dagWeek[0]+'</span>';
     var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
     var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
     var article_categories = item.categories;
@@ -1822,6 +1853,21 @@ async function functionJobItems(item) {
 
 
 
+          // Add copy functionality
+          const copyButton = document.getElementById('btnCopy' + postid);
+          if (copyButton) {
+            copyButton.addEventListener('click', function () {
+              const output = document.getElementById('jobitem_weergave' + postid);
+              if (output) {
+                navigator.clipboard.writeText(output.innerHTML).then(() => {
+                  alert('Weergave gekopieerd!');
+                }).catch(err => {
+                  alert('Kopiëren mislukt: ' + err);
+                });
+              }
+            });
+          }
+
            //hier
 
             document.getElementById(labelNameLowercase+postid).ondragstart = function (event) {
@@ -2172,7 +2218,7 @@ item_img_groot = imageUrl;
    }
 
     /* add category */
-    var item_categorie = '<div style="background: white;border-top:2px solid green;"><span class="categoryClassDag">'+dagWeek[0]+'</span>';
+    var item_categorie = '<div style="background: white;border-top:2px solid green;"><span id="btnCopy' + postid + '">Copy</span><span class="categoryClassDag">'+dagWeek[0]+'</span>';
     var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
     var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
     
@@ -2645,6 +2691,21 @@ item_img_groot = imageUrl;
   // Handle the case where attachmentId is null
 }
 
+
+  // Add copy functionality
+  const copyButton = document.getElementById('btnCopy' + postid);
+  if (copyButton) {
+    copyButton.addEventListener('click', function () {
+      const output = document.getElementById('camsitem_weergave' + postid);
+      if (output) {
+        navigator.clipboard.writeText(output.innerHTML).then(() => {
+          alert('Weergave CAMS gekopieerd!');
+        }).catch(err => {
+          alert('Kopiëren mislukt: ' + err);
+        });
+      }
+    });
+  }
    //hier
 
     document.getElementById(labelNameLowercase+postid).ondragstart = function (event) {
@@ -3131,7 +3192,7 @@ async function functiondownloadItems(item) {
    var item_description = item.excerpt?.rendered ? item.excerpt.rendered.replace('<p>', '').replace('</p>', '').substring(0, maxCharacters) + '...' : '';
 
    var pubdate = item.date;
-   
+         
    //invoer
    var selectName = 'Kennisbank';
    var utmtaglowercase = "blog"
@@ -3141,7 +3202,7 @@ async function functiondownloadItems(item) {
    var item_link = item.link + `?utm_source=${blogAlert}-${utmtaglowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${download_newsletter_utm}&utm_content=%7c${sendDate}%7c${option}%7c`;
 
     /* add category */
-    var item_categorie = '<div style="background: white;border-top:2px solid green;"><span class="categoryClassDag">'+dagWeek[0]+'</span>';
+    var item_categorie = '<div style="background: white;border-top:2px solid green;"><span id="btnCopy' + postid + '">Copy</span><span class="categoryClassDag">'+dagWeek[0]+'</span>';
     var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
     var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
     var article_categories = item.categories;
@@ -3470,6 +3531,7 @@ async function functiondownloadItems(item) {
             <div id="${labelNameLowercase}_weergave${postid}">${weergave}</div>
             `;
       
+                
             
 
 
@@ -3556,7 +3618,20 @@ async function functiondownloadItems(item) {
           });
 
 
-
+                 // Add copy functionality
+                const copyButton = document.getElementById('btnCopy' + postid);
+                if (copyButton) {
+                  copyButton.addEventListener('click', function () {
+                    const output = document.getElementById('downloaditem_weergave'+postid);
+                    if (output) {
+                      navigator.clipboard.writeText(output.innerHTML).then(() => {
+                        alert('Weergave gekopieerd!');
+                      }).catch(err => {
+                        alert('Kopiëren mislukt: ' + err);
+                      });
+                    }
+                  });
+                }
            //hier
 
             document.getElementById(labelNameLowercase+postid).ondragstart = function (event) {

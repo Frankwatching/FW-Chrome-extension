@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Frankwatching extension for Act-On v3.4.2",
+  "name": "Frankwatching Chrome Extension v3.4.2",
   "version": "9.3.4.2",
 
   "permissions": ["clipboardWrite", "scripting", "activeTab"],

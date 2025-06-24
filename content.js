@@ -166,71 +166,95 @@ function headlineFutureItems(item, index) {
   }
 }
 
-// ## LOAD HEADLINES
+// headlines start
+
 "use strict";
-fetch("https://www.frankwatching.com/feed-nieuwsbrief-v2/")
-.then(function(respons) {
-  return respons.text();
-})
-.then(function(data) {
-  let parser = new DOMParser(),
-    xmlDoc = parser.parseFromString(data, 'text/xml');
 
-    let allItems = xmlDoc.getElementsByTagName("item");
-    let allTitles = xmlDoc.getElementsByTagName("title");
-    let allLinks = xmlDoc.getElementsByTagName("link");
-    let headerline2adv = document.getElementById('sheadline2b');
-    headerline2adv.textContent="\xa0ADV\xa0";
-    let headerline5tip = document.getElementById('sheadline5b');
-    headerline5tip.textContent="\xa0TIP\xa0";
+function loadHeadlines() {
+  fetch("https://www.frankwatching.com/feed-nieuwsbrief-v2/")
+    .then(res => res.text())
+    .then(data => {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(data, "text/xml");
 
-    // let headerline1 = document.getElementById('headline1');
-    // headerline1.textContent = futureHeadlineText;
-    // headerline1.setAttribute("href", futureHeadlineLink + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
-    let headerline1 = document.getElementById('headline1');
-    headerline1.textContent = allTitles[1].firstChild.nodeValue;
-    headerline1.setAttribute("href", allLinks[1].textContent + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
-    let headerline2 = document.getElementById('headline2');
-    headerline2.textContent = 'Voorbeeld';
-    headerline2.setAttribute("href", 'https://voorbeeld.frankwatching.com/?' + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
-    let headerline3 = document.getElementById('headline3');
-    headerline3.textContent = allTitles[2].firstChild.nodeValue;
-    headerline3.setAttribute("href", allLinks[2].textContent + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
-    let headerline4 = document.getElementById('headline4');
-    headerline4.textContent = allTitles[3].firstChild.nodeValue;
-    headerline4.setAttribute("href", allLinks[3].textContent + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
-    let headerline5 = document.getElementById('headline5');
-    headerline5.textContent = 'Voorbeeld';
-    headerline5.setAttribute("href", 'https://voorbeeld.frankwatching.com/?' + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
-    let headerline6 = document.getElementById('headline6');
-    headerline6.textContent = allTitles[4].firstChild.nodeValue;
-    headerline6.setAttribute("href", allLinks[4].textContent + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=artikel&utm_content=%7c${sendDate}%7cheadline%7c`);//campagne);
-    // let headerline7 = document.getElementById('headline7');
-    // headerline7.textContent = allTitles[5].firstChild.nodeValue;
-    // headerline7.setAttribute("href", allLinks[5].textContent + `?utm_source=${blogAlert}-blog-${dagWeek}&utm_medium=email&utm_campaign=headline&utm_content=%7c${sendDate}%7cheadline%7c`);
+      const allTitles = xmlDoc.getElementsByTagName("title");
+      const allLinks = xmlDoc.getElementsByTagName("link");
 
-});
+      // Update labels
+      document.getElementById('sheadline2b').textContent = "\xa0ADV\xa0";
+      document.getElementById('sheadline5b').textContent = "\xa0TIP\xa0";
 
-//drag and drop
-var allHeadlines = document.getElementById("headlinesContainer");
+      // Update headlines
+      document.getElementById('headline1').textContent = allTitles[1].textContent;
+      document.getElementById('headline1').setAttribute("href", allLinks[1].textContent);
 
-  var selection = window.getSelection();
-  var range = document.createRange();
-  range.selectNodeContents(allHeadlines);
-  selection.removeAllRanges();
-  selection.addRange(range);
+      document.getElementById('headline2').textContent = "Voorbeeld";
+      document.getElementById('headline2').setAttribute("href", "https://voorbeeld.frankwatching.com/");
 
-document.getElementById('headline1').ondragstart = function(event){
-  event.preventDefault();
+      document.getElementById('headline3').textContent = allTitles[2].textContent;
+      document.getElementById('headline3').setAttribute("href", allLinks[2].textContent);
+
+      document.getElementById('headline4').textContent = allTitles[3].textContent;
+      document.getElementById('headline4').setAttribute("href", allLinks[3].textContent);
+
+      document.getElementById('headline5').textContent = "Voorbeeld";
+      document.getElementById('headline5').setAttribute("href", "https://voorbeeld.frankwatching.com/");
+
+      document.getElementById('headline6').textContent = allTitles[4].textContent;
+      document.getElementById('headline6').setAttribute("href", allLinks[4].textContent);
+
+      // WRAP headlinesContainer
+      const headlinesContainer = document.getElementById("headlinesContainer");
+
+      // Prevent duplicate wrapper or copy button
+      if (!document.getElementById("headlinesWrapper")) {
+        const wrapperDiv = document.createElement("div");
+        wrapperDiv.id = "headlinesWrapper";
+
+        const copyButton = document.createElement("span");
+        copyButton.id = "btnCopy123";
+        copyButton.textContent = "Copy";
+
+        const copyDiv = document.createElement("div");
+        copyDiv.appendChild(copyButton);
+
+        // Insert wrapper
+        headlinesContainer.parentNode.insertBefore(wrapperDiv, headlinesContainer);
+        wrapperDiv.appendChild(copyDiv);
+        wrapperDiv.appendChild(headlinesContainer);
+
+        // Copy button logic
+        copyButton.addEventListener("click", function () {
+          navigator.clipboard.writeText(headlinesContainer.innerHTML)
+            .then(() => alert("Weergave headlines gekopieerd!"))
+            .catch(err => alert("Kopiëren mislukt: " + err));
+        });
+      }
+    });
+
+    // Drag and drop (outside function)
+const selection = window.getSelection();
+const range = document.createRange();
+const allHeadlines = document.getElementById("headlinesContainer");
+range.selectNodeContents(allHeadlines);
+selection.removeAllRanges();
+selection.addRange(range);
+
+document.getElementById("headline1").ondragstart = function (e) {
+  e.preventDefault();
 };
 
-document.getElementById('headlinesContainer').ondragstart = function (event) {
-  event
-    .dataTransfer
-    .setData('text/html', headlinesContainer.innerHTML);
-    console.log('dragstart');
+document.getElementById("headlinesContainer").ondragstart = function (e) {
+  e.dataTransfer.setData("text/html", allHeadlines.innerHTML);
+  console.log("dragstart");
+};
 }
 
+// Call it once
+loadHeadlines();
+
+
+// headlines end
 
 
 
@@ -317,12 +341,28 @@ async function agendaItems(item, index) {
 
   var item_link = link + `?utm_source=${blogAlert}-${utmtaglowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${utmcampaign}&utm_content=%7c${sendDate}%7c${option}%7c`;
 
+  // Add copy functionality
+  const copyButton = document.getElementById('btnCopy' + postid+dateDay+dateMonth);
+  if (copyButton) {
+    copyButton.addEventListener('click', function () {
+      const output = document.getElementById('agendaitem' + postid+dateDay+dateMonth);
+      if (output) {
+        navigator.clipboard.writeText(output.innerHTML).then(() => {
+          alert('Weergave agenda gekopieerd!');
+        }).catch(err => {
+          alert('Kopiëren mislukt: ' + err);
+        });
+      }
+    });
+  }
+
   //var pubdate = item.querySelector("pubdate").innerHTML;
   //var poststatus = item.querySelector("poststatus").innerHTML;
   //var popularityscore = item.querySelector("popularityscore").innerHTML;
 
   /* add category */
-  var item_categorie = '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
+  var item_categorie = '<span id="btnCopy' +postid+dateDay+dateMonth+'" style="cursor: pointer">Copy</span>';
+  var item_categorie = item_categorie + '<span class="categoryClassDag">'+dagWeek[0]+'</span>';
   //var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
   var item_categorie = item_categorie + '<span class="postPubDate">'+dateDay+'-'+dateMonth+'</span>';
   var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
@@ -473,7 +513,7 @@ async function productItem(item, index) {
   var option ='adv';
 
   /* add category */
-  var item_categorie = '<div style="background: white;border-top:2px solid green;"><span id="btnCopy' + postid + '">Copy</span><span class="categoryClassDag">'+dagWeek[0]+'</span>';
+  var item_categorie = '<div style="background: white;border-top:2px solid green;"><span id="btnCopy' + postid + '" style="cursor: pointer">Copy</span><span class="categoryClassDag">'+dagWeek[0]+'</span>';
   item_categorie += '<span class="postPubDate">'+dateDay+'-'+dateMonth+'</span>';
   item_categorie += '<span class="postPostID">&#9783 '+postid+'</span>';
 
@@ -1480,7 +1520,7 @@ async function functionJobItems(item) {
    var item_link = item.link + `?utm_source=${blogAlert}-${newsletterType}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${newsletter_utm}&utm_content=%7c${sendDate}%7c${option}%7c`;
 
     /* add category */
-    var item_categorie = '<div style="background: white;border-top:2px solid green;"><span id="btnCopy' + postid + '">Copy</span><span class="categoryClassDag">'+dagWeek[0]+'</span>';
+    var item_categorie = '<div style="background: white;border-top:2px solid green;"><span id="btnCopy' + postid + '" style="cursor: pointer">Copy</span><span class="categoryClassDag">'+dagWeek[0]+'</span>';
     var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
     var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
     var article_categories = item.categories;
@@ -1919,64 +1959,93 @@ loadThemanieuwsbrievenContent();
 
 
 async function functionThemaItems(item) {
-    const ContainerContent = document.getElementById("themaContainerContent");
-    if (!ContainerContent) return;
+  const ContainerContent = document.getElementById("themaContainerContent");
+  if (!ContainerContent) return;
 
-    // Create a div to hold each item
-    const itemDiv = document.createElement("div");
- // Set ID for the div
-        itemDiv.id = `themaItem-${item.id}`;
+  // Outer wrapper for the item (including Copy button)
+  const itemDiv = document.createElement("div");
+  itemDiv.id = `themaItem-${item.id}`;
+  itemDiv.style.position = "relative";
 
-    // Construct the HTML structure for the item
-    const itemHTML = `    
+  // Create an inner div for the actual content (to be copied)
+  const contentDiv = document.createElement("div");
+  contentDiv.id = `contentToCopy-${item.id}`;
+
+  // Fill inner content HTML (only the visual block)
+  contentDiv.innerHTML = `
     <table width="100%" role="presentation" cellspacing="10px" cellpadding="0" border="0" style="width: 100%;">
-        <tbody>
-            <tr style="height: 22px;">
-                <td style="text-align: left; height: 22px;">
-                    <h3 style="font-family: Arial; font-size: 20px; margin: 0px; line-height: 22px;"><span style="color: #333333;">${item.title}</span></h3>
-                </td>
-            </tr>
-            
-        </tbody>
+      <tbody>
+        <tr style="height: 22px;">
+          <td style="text-align: left; height: 22px;">
+            <h3 style="font-family: Arial; font-size: 20px; margin: 0px; line-height: 22px;">
+              <span style="color: #333333;">${item.title}</span>
+            </h3>
+          </td>
+        </tr>
+      </tbody>
     </table>
 
-
-   <table>
+    <table>
       <tbody>
         <tr>
-          <td class="" height="auto" style="padding-bottom: 20px; width: 100px; display: block;">
-            <div class="tdDiv"><a id="imgKlein${item.id}Link" href="${item.buttonurl}"><img id="imgKleinArtikel${item.id}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover; height: 100px; width: 100px;" width="100" src="${item.logourl}" /></a></div>
+          <td style="padding-bottom: 20px; width: 100px; display: block;">
+            <div class="tdDiv">
+              <a href="${item.buttonurl}">
+                <img style="border-radius: 4px; object-fit: cover; height: 100px; width: 100px;" width="100" src="${item.logourl}" />
+              </a>
+            </div>
           </td>
-          <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
-            <table class="tableC">
+          <td style="vertical-align: top; padding-bottom: 20px;">
+            <table>
               <tbody>
                 <tr>
-                  <td><a id="DescriptionKleinArtikel${item.id}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item.buttonurl}">${item.content} </a></td>
+                  <td>
+                    <a style="color: #333333; font-size: 16px; line-height: 1.3; font-family: 'Roboto', Arial; text-decoration: none;" href="${item.buttonurl}">
+                      ${item.content}
+                    </a>
+                  </td>
                 </tr>
                 <tr>
-                <td><a id="DescriptionKleinArtikel${item.id}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item.buttonurl}"><span id="KleinArtikelCTA${item.id}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> ${item.buttontext} ▸</span></a></td>
-              </tr>
+                  <td>
+                    <a style="color: #18608b; font-size: 12pt; text-decoration: none;" href="${item.buttonurl}">
+                      <span>${item.buttontext} ▸</span>
+                    </a>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </td>
         </tr>
       </tbody>
-      </table>
-      
-    `;
+    </table>
+  `;
 
-    // Set innerHTML of itemDiv
-    itemDiv.innerHTML = itemHTML;
+  // Create the Copy button (placed above the content div)
+  const copyBtn = document.createElement("button");
+  copyBtn.textContent = "Copy";
+  copyBtn.style.cssText = "font-size: 12px; float: right; margin-bottom: 5px;";
 
-    // Append itemDiv to the ContainerContent
-    ContainerContent.appendChild(itemDiv);
+  // Add click event to copy only the content div
+  copyBtn.addEventListener("click", function () {
+    navigator.clipboard.writeText(contentDiv.innerHTML)
+      .then(() => alert(`Item "${item.title}" gekopieerd!`))
+      .catch(err => alert("Kopiëren mislukt: " + err));
+  });
 
-    // Add dragstart event listener
-    itemDiv.draggable = true;
-    itemDiv.addEventListener("dragstart", function(event) {
-        event.dataTransfer.setData('text/html', event.target.innerHTML);
-    });
+  // Assemble everything
+  itemDiv.appendChild(copyBtn);     // Add Copy button first
+  itemDiv.appendChild(contentDiv);  // Then the content
+
+  // Append to main container
+  ContainerContent.appendChild(itemDiv);
+
+  // Enable drag-and-drop of just the content
+  itemDiv.draggable = true;
+  itemDiv.addEventListener("dragstart", function (event) {
+    event.dataTransfer.setData("text/html", contentDiv.innerHTML);
+  });
 }
+
 
 
 // ## LOAD MARKETING
@@ -2218,7 +2287,7 @@ item_img_groot = imageUrl;
    }
 
     /* add category */
-    var item_categorie = '<div style="background: white;border-top:2px solid green;"><span id="btnCopy' + postid + '">Copy</span><span class="categoryClassDag">'+dagWeek[0]+'</span>';
+    var item_categorie = '<div style="background: white;border-top:2px solid green;"><span id="btnCopy' + postid + '" style="cursor: pointer">Copy</span><span class="categoryClassDag">'+dagWeek[0]+'</span>';
     var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
     var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
     
@@ -3202,7 +3271,7 @@ async function functiondownloadItems(item) {
    var item_link = item.link + `?utm_source=${blogAlert}-${utmtaglowercase}-${dagWeek}&utm_medium=email&utm_campaign=|${postid}|${download_newsletter_utm}&utm_content=%7c${sendDate}%7c${option}%7c`;
 
     /* add category */
-    var item_categorie = '<div style="background: white;border-top:2px solid green;"><span id="btnCopy' + postid + '">Copy</span><span class="categoryClassDag">'+dagWeek[0]+'</span>';
+    var item_categorie = '<div style="background: white;border-top:2px solid green;"><span id="btnCopy' + postid + '" style="cursor: pointer">Copy</span><span class="categoryClassDag">'+dagWeek[0]+'</span>';
     var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
     var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
     var article_categories = item.categories;

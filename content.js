@@ -348,7 +348,7 @@ async function agendaItems(item, index) {
       const output = document.getElementById('agendaitem' + postid+dateDay+dateMonth);
       if (output) {
         navigator.clipboard.writeText(output.innerHTML).then(() => {
-          alert('Weergave agenda gekopieerd!');
+          alert('HTML agenda gekopieerd!');
         }).catch(err => {
           alert('Kopiëren mislukt: ' + err);
         });
@@ -498,7 +498,7 @@ async function productItem(item, index) {
       const output = document.getElementById('product_weergave' + postid);
       if (output) {
         navigator.clipboard.writeText(output.innerHTML).then(() => {
-          alert('Weergave gekopieerd!');
+          alert('HTML Academy gekopieerd!');
         }).catch(err => {
           alert('Kopiëren mislukt: ' + err);
         });
@@ -1095,7 +1095,7 @@ async function blogItems(item, index) {
       const output = document.getElementById('artikelGroot_weergave' + postid);
       if (output) {
         navigator.clipboard.writeText(output.innerHTML).then(() => {
-          alert('Weergave gekopieerd!');
+          alert('HTML Blog gekopieerd!');
         }).catch(err => {
           alert('Kopiëren mislukt: ' + err);
         });
@@ -1900,7 +1900,7 @@ async function functionJobItems(item) {
               const output = document.getElementById('jobitem_weergave' + postid);
               if (output) {
                 navigator.clipboard.writeText(output.innerHTML).then(() => {
-                  alert('Weergave gekopieerd!');
+                  alert('HTML Job gekopieerd!');
                 }).catch(err => {
                   alert('Kopiëren mislukt: ' + err);
                 });
@@ -2768,7 +2768,7 @@ item_img_groot = imageUrl;
       const output = document.getElementById('camsitem_weergave' + postid);
       if (output) {
         navigator.clipboard.writeText(output.innerHTML).then(() => {
-          alert('Weergave CAMS gekopieerd!');
+          alert('HTML CAMS gekopieerd!');
         }).catch(err => {
           alert('Kopiëren mislukt: ' + err);
         });
@@ -3694,7 +3694,7 @@ async function functiondownloadItems(item) {
                     const output = document.getElementById('downloaditem_weergave'+postid);
                     if (output) {
                       navigator.clipboard.writeText(output.innerHTML).then(() => {
-                        alert('Weergave gekopieerd!');
+                        alert('HTML Kennisbank gekopieerd!');
                       }).catch(err => {
                         alert('Kopiëren mislukt: ' + err);
                       });

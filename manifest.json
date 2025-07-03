@@ -5,14 +5,12 @@
 
   "permissions": ["clipboardWrite", "scripting", "activeTab"],
   "host_permissions": [
-    "https://frankwatchingsandbox.activehosted.com/campaign/template*",
     "*://*.actonsoftware.com/*"
   ],
 
   "content_scripts": [
     {
       "matches": [
-        "https://frankwatchingsandbox.activehosted.com/campaign/template/*",
         "*://*.actonsoftware.com/app/classic/if/_compose/*",
         "*://*.actonsoftware.com/app/content/emails/*"
       ],

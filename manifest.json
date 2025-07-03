@@ -1,11 +1,18 @@
 {
   "manifest_version": 3,
-  "name": "Frankwatching extension for Act-On v3.4.1",
-  "version": "9.3.4.1",
+  "name": "Frankwatching Chrome Extension v3.4.2",
+  "version": "9.3.4.2",
+
+  "permissions": ["clipboardWrite", "scripting", "activeTab"],
+  "host_permissions": [
+    "https://frankwatchingsandbox.activehosted.com/campaign/template*",
+    "*://*.actonsoftware.com/*"
+  ],
 
   "content_scripts": [
     {
       "matches": [
+        "https://frankwatchingsandbox.activehosted.com/campaign/template/*",
         "*://*.actonsoftware.com/app/classic/if/_compose/*",
         "*://*.actonsoftware.com/app/content/emails/*"
       ],

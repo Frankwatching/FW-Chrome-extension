@@ -1040,40 +1040,41 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
 // ## LOAD ARTIKELEN
 "use strict";
 
-async function loadNews() {
-  try {
-    const response = await fetch(newsrss); // Fetch the RSS feed
-    if (!response.ok) {
-      throw new Error(`Failed to fetch the RSS feed. Status: ${response.status}`);
+  async function loadNews() {
+    try {
+      //const response = await fetch(newsrss); // Fetch the RSS feed
+      const response = await fetch(newsrss, { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error(`Failed to fetch the RSS feed. Status: ${response.status}`);
+      }
+
+      const xmlText = await response.text();
+      const parser = new DOMParser();
+      const data = parser.parseFromString(xmlText, "text/xml");
+
+      const items = data.querySelectorAll("item");
+
+      const artikelenGrootContainerContent = document.getElementById("artikelenGrootContainerContent");
+      if (artikelenGrootContainerContent) {
+        artikelenGrootContainerContent.innerHTML = "";
+      }
+
+      if (listSort === 'popularity') {
+        const div = document.createElement('div');
+        div.id = 'headingArtikelGroot';
+        div.innerHTML =  `Gesorteerd op populariteit`;
+        artikelenGrootContainerContent.appendChild(div);
+      }
+
+      await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
+
+      items.forEach(blogItems);
+    } catch (error) {
+      console.error("Error loading news articles:", error);
     }
-
-    const xmlText = await response.text();
-    const parser = new DOMParser();
-    const data = parser.parseFromString(xmlText, "text/xml");
-
-    const items = data.querySelectorAll("item");
-
-    const artikelenGrootContainerContent = document.getElementById("artikelenGrootContainerContent");
-    if (artikelenGrootContainerContent) {
-      artikelenGrootContainerContent.innerHTML = "";
-    }
-
-    if (listSort === 'popularity') {
-      const div = document.createElement('div');
-      div.id = 'headingArtikelGroot';
-      div.innerHTML =  `Gesorteerd op populariteit`;
-      artikelenGrootContainerContent.appendChild(div);
-    }
-
-    await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100ms
-
-    items.forEach(blogItems);
-  } catch (error) {
-    console.error("Error loading news articles:", error);
   }
-}
 
-loadNews();
+  loadNews();
 
 async function blogItems(item, index) {
   var weergave = ''; // Declare weergave variable at the beginning

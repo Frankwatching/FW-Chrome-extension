@@ -1,16 +1,20 @@
 {
   "manifest_version": 3,
-  "name": "Frankwatching Chrome Extension v3.4.2",
-  "version": "9.3.4.2",
+  "name": "Frankwatching Chrome Extension v3.4.3",
+  "version": "9.3.4.3",
 
   "permissions": ["clipboardWrite", "scripting", "activeTab"],
   "host_permissions": [
+    "https://frankwatching2.activehosted.com/campaign/template*",
+    "https://frankwatching2.activehosted.com/campaign/editor/*",
     "*://*.actonsoftware.com/*"
   ],
 
   "content_scripts": [
     {
       "matches": [
+        "https://frankwatching2.activehosted.com/campaign/template/*",
+        "https://frankwatching2.activehosted.com/campaign/editor/*",
         "*://*.actonsoftware.com/app/classic/if/_compose/*",
         "*://*.actonsoftware.com/app/content/emails/*"
       ],

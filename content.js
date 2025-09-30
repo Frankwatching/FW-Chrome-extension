@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.4.3";
+let versionid = "3.4.4";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -491,20 +491,32 @@ async function productItem(item, index) {
   var item_img_alternative = json["image_product_overview"];
   var item_img_groot = json["image_large"];
 
-    // Add copy functionality
+  // Add copy functionality
   const copyButton = document.getElementById('btnCopy' + postid);
-  if (copyButton) {
-    copyButton.addEventListener('click', function () {
-      const output = document.getElementById('product_weergave' + postid);
-      if (output) {
-        navigator.clipboard.writeText(output.innerHTML).then(() => {
+    if (copyButton) {
+      copyButton.addEventListener('click', async function () {
+        try {
+          const output = document.getElementById('product_weergave' + postid);
+          if (!output) {
+            alert('Academy output niet gevonden.');
+            return;
+          }
+
+          const textToCopy = output.innerHTML || '';
+          if (!textToCopy.trim()) {
+            alert('Niets om te kopiëren.');
+            return;
+          }
+
+          await navigator.clipboard.writeText(textToCopy);
           alert('HTML Academy gekopieerd!');
-        }).catch(err => {
-          alert('Kopiëren mislukt: ' + err);
-        });
-      }
-    });
-  }
+        } catch (err) {
+          console.error('Clipboard copy failed:', err);
+          alert('Kopiëren mislukt: ' + err.message || err);
+        }
+      });
+    }
+
 
   //invoer
   var selectName = 'Agenda';
@@ -707,7 +719,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
                   <tr>
                     <td class="artikelKleinTDcA">
                     <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></a></td>
+                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
                   </tr>
                   <tr>
                     <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
@@ -751,7 +763,7 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
                   <tr>
                     <td class="artikelKleinTDcA">
                     <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${altnewsletterTitle} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></a></td>
+                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;">${altnewsletterTitle} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
                   </tr>
                   <tr>
                     <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${altnewsletterIntroTekst} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
@@ -805,8 +817,8 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
             <tr id="artikelGroot${postid}TrA">
             <td id="artikelGroot${postid}TdA">
             <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-              <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
-                ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span>
+              <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none;" >
+                ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3>
               </a>
             </td>
             </tr>
@@ -842,8 +854,8 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
             <tr id="artikelGroot${postid}TrA">
             <td id="artikelGroot${postid}TdA">
             <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-              <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 0px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
-                ${altnewsletterTitle} <span id="container_label_adv${postid}">${label_adv}</span>  <span id="container_label_tip${postid}">${label_tip}</span>
+              <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none;" >
+                ${altnewsletterTitle} <span id="container_label_adv${postid}">${label_adv}</span>  <span id="container_label_tip${postid}">${label_tip}</span></h3>
               </a>
             </td>
             </tr>
@@ -880,8 +892,8 @@ var selectElementWeergave = document.getElementById('selectOptionWeergaveProduct
             <tr id="artikelGroot${postid}TrA">
             <td id="artikelGroot${postid}TdA">
             <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-              <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 0px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
-                ${item_title} <span id="container_label_adv${postid}">${label_adv}</span>  <span id="container_label_tip${postid}">${label_tip}</span>
+              <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none;" >
+                ${item_title} <span id="container_label_adv${postid}">${label_adv}</span>  <span id="container_label_tip${postid}">${label_tip}</span></h3>
               </a>
             </td>
             </tr>
@@ -1090,19 +1102,32 @@ async function blogItems(item, index) {
   var popularityscore = item.querySelector("popularityscore").innerHTML;
 
   // Add copy functionality
+
   const copyButton = document.getElementById('btnCopy' + postid);
   if (copyButton) {
-    copyButton.addEventListener('click', function () {
-      const output = document.getElementById('artikelGroot_weergave' + postid);
-      if (output) {
-        navigator.clipboard.writeText(output.innerHTML).then(() => {
-          alert('HTML Blog gekopieerd!');
-        }).catch(err => {
-          alert('Kopiëren mislukt: ' + err);
-        });
+    copyButton.addEventListener('click', async function () {
+      try {
+        const output = document.getElementById('artikelGroot_weergave' + postid);
+        if (!output) {
+          alert('Blog niet gevonden.');
+          return;
+        }
+
+        const textToCopy = output.innerHTML || '';
+        if (!textToCopy.trim()) {
+          alert('Niets om te kopiëren.');
+          return;
+        }
+
+        await navigator.clipboard.writeText(textToCopy);
+        alert('HTML Blog gekopieerd!');
+      } catch (err) {
+        console.error('Clipboard copy failed:', err);
+        alert('Kopiëren mislukt: ' + err.message || err);
       }
     });
   }
+
 
   //invoer
   var selectName = 'Blog';
@@ -1293,7 +1318,7 @@ async function blogItems(item, index) {
                 <tr>
                   <td class="artikelKleinTDcA">
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></a></td>
+                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
                 </tr>
                 <tr>
                   <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
@@ -1325,8 +1350,8 @@ async function blogItems(item, index) {
           <tr id="artikelGroot${postid}TrA">
           <td id="artikelGroot${postid}TdA">
           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-            <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 0px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
-              ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span>
+            <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none;" >
+              ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3>
             </a>
           </td>
           </tr>
@@ -1733,7 +1758,7 @@ async function functionJobItems(item) {
                                       <tr>
                                           <td id="channelTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 0px 0px 8px 0px;">
                                           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>        
-                                          <a id="kleinTitleLink${postid}title" class="titlechannel" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none; padding: 4px 0px 0px 0px;" href="${item_link}">${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></a></td>
+                                          <a id="kleinTitleLink${postid}title" class="titlechannel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;">${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3></a></td>
                                       </tr>
                                       <tr>
                                           <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 10x 0px 15px 0px;" class="channelTDbC"><a id="DescriptionKleinArtikel${postid}" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none; padding: 0x 0px 0px 0px;" href="${item_link}">${item_description} <span style="color: #0E5C8C;    font-size: 16px; ">Bekijk vacature ▸</span></a></td>
@@ -1776,8 +1801,8 @@ async function functionJobItems(item) {
               <tr id="artikelGroot${postid}TrA">
                 <td id="artikelGroot${postid}TdA">
                 <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                <a id="kleinTitleLink${postid}title" class="grootArtikelTitle" style="font-family: 'Roboto', Arial; color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 0px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
-                  ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span>
+                <a id="kleinTitleLink${postid}title" class="grootArtikelTitle" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;">
+                  ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3>
                 </a>
                 </td>
               </tr>
@@ -1897,17 +1922,29 @@ async function functionJobItems(item) {
           // Add copy functionality
           const copyButton = document.getElementById('btnCopy' + postid);
           if (copyButton) {
-            copyButton.addEventListener('click', function () {
-              const output = document.getElementById('jobitem_weergave' + postid);
-              if (output) {
-                navigator.clipboard.writeText(output.innerHTML).then(() => {
-                  alert('HTML Job gekopieerd!');
-                }).catch(err => {
-                  alert('Kopiëren mislukt: ' + err);
-                });
+            copyButton.addEventListener('click', async function () {
+              try {
+                const output = document.getElementById('jobitem_weergave' + postid);
+                if (!output) {
+                  alert('Job niet gevonden.');
+                  return;
+                }
+
+                const textToCopy = output.innerHTML || '';
+                if (!textToCopy.trim()) {
+                  alert('Niets om te kopiëren.');
+                  return;
+                }
+
+                await navigator.clipboard.writeText(textToCopy);
+                alert('HTML Job gekopieerd!');
+              } catch (err) {
+                console.error('Clipboard copy failed:', err);
+                alert('Kopiëren mislukt: ' + err.message || err);
               }
             });
           }
+
 
            //hier
 
@@ -2488,7 +2525,7 @@ item_img_groot = imageUrl;
                 <tr>
                   <td class="artikelKleinTDcA">
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${promotion_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></a></td>
+                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;">${promotion_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
                 </tr>
                 <tr>
                   <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> ${promotion_cta_text} ▸</span></a></td>
@@ -2594,8 +2631,8 @@ item_img_groot = imageUrl;
           <tr id="artikelGroot${postid}TrA">
           <td id="artikelGroot${postid}TdA">
           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-            <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 0px 0px; font-weight: 700;" href="${item_link}">
-              ${promotion_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span>
+            <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none;" >
+              ${promotion_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3>
             </a>
           </td>
           </tr>
@@ -2629,8 +2666,8 @@ item_img_groot = imageUrl;
           <tr id="artikelGroot${postid}TrA">
           <td id="artikelGroot${postid}TdA">
           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-            <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 0px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
-              ${promotion_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span>
+            <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none;" >
+              ${promotion_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3>
             </a>
           </td>
           </tr>
@@ -2765,17 +2802,31 @@ item_img_groot = imageUrl;
   // Add copy functionality
   const copyButton = document.getElementById('btnCopy' + postid);
   if (copyButton) {
-    copyButton.addEventListener('click', function () {
-      const output = document.getElementById('camsitem_weergave' + postid);
-      if (output) {
-        navigator.clipboard.writeText(output.innerHTML).then(() => {
-          alert('HTML CAMS gekopieerd!');
-        }).catch(err => {
-          alert('Kopiëren mislukt: ' + err);
-        });
+    copyButton.addEventListener('click', async function () {
+      try {
+        const output = document.getElementById('camsitem_weergave' + postid);
+        if (!output) {
+          alert('Cams niet gevonden.');
+          return;
+        }
+
+        const textToCopy = output.innerHTML || '';
+        if (!textToCopy.trim()) {
+          alert('Niets om te kopiëren.');
+          return;
+        }
+
+        await navigator.clipboard.writeText(textToCopy);
+        alert('HTML Cams gekopieerd!');
+      } catch (err) {
+        console.error('Clipboard copy failed:', err);
+        alert('Kopiëren mislukt: ' + err.message || err);
       }
     });
   }
+
+
+  
    //hier
 
     document.getElementById(labelNameLowercase+postid).ondragstart = function (event) {
@@ -3020,7 +3071,7 @@ async function functionChannelItems(item) {
                         <tr>
                           <td class="artikelKleinTDcA">
                           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></a></td>
+                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
                         </tr>
                         <tr>
                           <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
@@ -3052,8 +3103,8 @@ async function functionChannelItems(item) {
                   <tr id="artikelGroot${postid}TrA">
                   <td id="artikelGroot${postid}TdA">
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 0px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
-                      ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span>
+                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none;" >
+                      ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3>
                     </a>
                   </td>
                   </tr>
@@ -3475,7 +3526,7 @@ async function functiondownloadItems(item) {
                         <tr>
                           <td class="artikelKleinTDcA">
                           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" style="color: #1a1a1a; line-height: 1.3; margin-top: 0px; margin-bottom: 7px; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></a></td>
+                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none;">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
                         </tr>
                         <tr>
                           <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none; color: #18608b; font-size: 12pt;" > Lees meer ▸</span></a></td>
@@ -3529,8 +3580,8 @@ async function functiondownloadItems(item) {
                   <tr id="artikelGroot${postid}TrA">
                   <td id="artikelGroot${postid}TdA">
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 0px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
-                      ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span>
+                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none;" >
+                      ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3>
                     </a>
                   </td>
                   </tr>
@@ -3564,8 +3615,8 @@ async function functiondownloadItems(item) {
                   <tr id="artikelGroot${postid}TrA">
                   <td id="artikelGroot${postid}TdA">
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 0px 0px; font-weight: 700;text-decoration: none;" href="${item_link}">
-                      ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span>
+                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none;" >
+                      ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3>
                     </a>
                   </td>
                   </tr>
@@ -3688,20 +3739,31 @@ async function functiondownloadItems(item) {
           });
 
 
-                 // Add copy functionality
-                const copyButton = document.getElementById('btnCopy' + postid);
-                if (copyButton) {
-                  copyButton.addEventListener('click', function () {
-                    const output = document.getElementById('downloaditem_weergave'+postid);
-                    if (output) {
-                      navigator.clipboard.writeText(output.innerHTML).then(() => {
-                        alert('HTML Kennisbank gekopieerd!');
-                      }).catch(err => {
-                        alert('Kopiëren mislukt: ' + err);
-                      });
-                    }
-                  });
+          const copyButton = document.getElementById('btnCopy' + postid);
+          if (copyButton) {
+            copyButton.addEventListener('click', async function () {
+              try {
+                const output = document.getElementById('downloaditem_weergave' + postid);
+                if (!output) {
+                  alert('Kennisbank output niet gevonden.');
+                  return;
                 }
+
+                const textToCopy = output.innerHTML || '';
+                if (!textToCopy.trim()) {
+                  alert('Niets om te kopiëren.');
+                  return;
+                }
+
+                await navigator.clipboard.writeText(textToCopy);
+                alert('HTML Kennisbank gekopieerd!');
+              } catch (err) {
+                console.error('Clipboard copy failed:', err);
+                alert('Kopiëren mislukt: ' + err.message || err);
+              }
+            });
+          }
+
            //hier
 
             document.getElementById(labelNameLowercase+postid).ondragstart = function (event) {

@@ -1,4 +1,4 @@
-# Frankwatching Chrome Extension v3.4.4
+# Frankwatching Chrome Extension
 
 A Chrome Extension designed to enhance and automate the Frankwatching email editor experience within **ActiveCampaign** and **Act-On Software**.  
 It injects custom html and styles into the campaign editor pages to extend functionality, improve usability, and streamline content management.
@@ -86,6 +86,7 @@ The extension is active on the following domains:
 
 | Version | Changes |
 |----------|----------|
+| **v3.4.5** | fixes due to cors errors. |
 | **v3.4.4** | Stable release with improved clipboard handling and compatibility with ActiveCampaign/Act-On editors. |
 | **v3.4.3** | Added CORS handling and style refinements. |
 | **v3.4.2** | Code cleanup and performance improvements. |

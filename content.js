@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.4.4";
+let versionid = "3.4.5";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -92,7 +92,7 @@ agendarss = 'https://www.frankwatching.com/feed/academy/upcoming';
 marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion'; 
 bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts '; 
 //kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download'; 
-videorestapi = 'https://www.frankwatching.com/wp-json/wp/v2/video'; 
+videorestapi = 'https://www.frankwatching.com/wp-json/wp/v2/video-academy'; 
 whitepaperrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/whitepaper'; 
 newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?poststatus=future-publish';
 //newsrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/post'; // nog niet in gebruik 
@@ -109,7 +109,7 @@ if ( searchID ) {
   marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion/?include='+ searchID; 
   bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts/?include='+ searchID; //
   //kennisbankrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/download/?include='+ searchID; 
-  videorestapi = 'https://www.frankwatching.com/wp-json/wp/v2/video/?include='+ searchID;
+  videorestapi = 'https://www.frankwatching.com/wp-json/wp/v2/video-academy/?include='+ searchID;
   whitepaperrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/whitepaper/?include='+ searchID; 
 }
 
@@ -343,18 +343,29 @@ async function agendaItems(item, index) {
 
   // Add copy functionality
   const copyButton = document.getElementById('btnCopy' + postid+dateDay+dateMonth);
-  if (copyButton) {
-    copyButton.addEventListener('click', function () {
-      const output = document.getElementById('agendaitem' + postid+dateDay+dateMonth);
-      if (output) {
-        navigator.clipboard.writeText(output.innerHTML).then(() => {
-          alert('HTML agenda gekopieerd!');
-        }).catch(err => {
-          alert('Kopiëren mislukt: ' + err);
-        });
-      }
-    });
-  }
+    if (copyButton) {
+      copyButton.addEventListener('click', async function () {
+        try {
+          const output = document.getElementById('agendaitem' + postid+dateDay+dateMonth);
+          if (!output) {
+            alert('Agenda output niet gevonden.');
+            return;
+          }
+
+          const textToCopy = output.innerHTML || '';
+          if (!textToCopy.trim()) {
+            alert('Niets om te kopiëren.');
+            return;
+          }
+
+          await navigator.clipboard.writeText(textToCopy);
+          alert('HTML Academy gekopieerd!');
+        } catch (err) {
+          console.error('Clipboard copy failed:', err);
+          alert('Kopiëren mislukt: ' + err.message || err);
+        }
+      });
+    }
 
   //var pubdate = item.querySelector("pubdate").innerHTML;
   //var poststatus = item.querySelector("poststatus").innerHTML;
@@ -1108,8 +1119,10 @@ async function blogItems(item, index) {
     copyButton.addEventListener('click', async function () {
       try {
         const output = document.getElementById('artikelGroot_weergave' + postid);
+        console.log('click');
+        console.log(output);
         if (!output) {
-          alert('Blog niet gevonden.');
+          alert('Blog niet gevonden.'); 
           return;
         }
 
@@ -1136,7 +1149,7 @@ async function blogItems(item, index) {
   var option ='artikel';
   /* add category */
 //  var item_categorie = '<button id="btnCopy' + postid + '">Copy</button>';
-  var item_categorie = '<div style="background: white;border-top:2px solid green;"><span id="btnCopy' + postid + '">Copy</span><span class="categoryClassDag">'+dagWeek[0]+'</span>';
+  var item_categorie = '<div style="background: white;border-top:2px solid green;"><span id="btnCopy' + postid + '" style="cursor: pointer">Copy</span><span class="categoryClassDag">'+dagWeek[0]+'</span>';
   var item_categorie = item_categorie + '<span class="postStatus">'+poststatus[0]+'</span>';
   var item_categorie = item_categorie + '<span class="postPubDate">'+pubdate+'</span>';
   var item_categorie = item_categorie + '<span class="postPostID">&#9783 '+postid+'</span>';
@@ -3241,7 +3254,7 @@ async function loadKennisbank() {
   try {
     // Fetch all data concurrently using Promise.all
     const responses = await Promise.all([
-      fetch(videorestapi),
+      //fetch(videorestapi),
       fetch(whitepaperrestapi)
     ]);
 

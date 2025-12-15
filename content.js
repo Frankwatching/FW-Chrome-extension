@@ -1976,7 +1976,7 @@ function getAllContent() {
   // Function to generate dummy data
   function ThemanieuwsbrievenData() {
     return [
-      { id: 1, title: "Social", content: "Let’s connect! Duik in de dynamische wereld van social media (tweewekelijks)", logourl: "https://www.frankwatching.com/app/uploads/2025/12/img-social.png", buttontext: "Aanmelden", buttonurl: "https://www.frankwatching.com/themanieuwsbrieven" },
+      { id: 1, title: "Social", content: "Let\’s connect! Duik in de dynamische wereld van social media (tweewekelijks)", logourl: "https://www.frankwatching.com/app/uploads/2025/12/img-social.png", buttontext: "Aanmelden", buttonurl: "https://www.frankwatching.com/themanieuwsbrieven" },
       { id: 2, title: "Content en Communicatie", content: "Inhoud die raakt, gesprekken die verbinden. Creativiteit en inspiratie in je inbox (tweewekelijks)", logourl: "https://www.frankwatching.com/app/uploads/2025/12/img-cc.png", buttontext: "Aanmelden", buttonurl: "https://www.frankwatching.com/themanieuwsbrieven" },
       { id: 3, title: "Marketing", content: | "Ontdek de magie om behoeften te vervullen en verlangens tot leven te brengen (maandelijks)", logourl: "https://www.frankwatching.com/app/uploads/2025/12/img-mar.png", buttontext: "Aanmelden", buttonurl: "https://www.frankwatching.com/themanieuwsbrieven" },
       { id: 4, title: "Mens & Werk", content: "Blijf op de hoogte van HR, arbeidsmarktcommunicatie, recruitment en werkgeluk", logourl: "https://www.frankwatching.com/app/uploads/2025/12/img-mw.png", buttontext: "Aanmelden", buttonurl: "https://www.frankwatching.com/themanieuwsbrieven" },

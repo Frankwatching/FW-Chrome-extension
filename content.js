@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.4.7";
+let versionid = "3.4.8";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -713,35 +713,67 @@ function getAllContent() {
           label_themavdweek = '';
           typeweergave = 'klein';
           weergave = `<table class="table1a">
-        <tbody>
-          <tr>
-            <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_groot}" /></a></td>
-          </tr>
-        </tbody>
-        </table>
-        <table>
-        <tbody>
-          <tr>
-            <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-              <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none;    background: #000000; height: 150px; width: 175px;" width="175" src="${item_img_alternative}" /></a></div>
-            </td>
-            <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
-              <table class="tableC">
-                <tbody>
-                  <tr>
-                    <td class="artikelKleinTDcA">
-                    <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
-                  </tr>
-                  <tr>
-                    <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-        </table>`;
+            <tbody>
+              <tr>
+                <td class="tableDivider1a">
+                  <!--[if mso]>
+                    <a href="${item_link}">
+                      <img src="${item_img_groot}" width="175" height="175" style="display:block;" />
+                    </a>
+                  <![endif]-->
+                  <!--[if !mso]><!-- -->
+                    <a id="imgKleinArtikel${postid}Link" href="${item_link}">
+                      <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_groot}" />
+                    </a>
+                  <!--<![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table>
+            <tbody>
+              <tr>
+                <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+                  <div class="tdDiv">
+                    <!--[if mso]>
+                      <a href="${item_link}">
+                        <img src="${item_img_alternative}" width="175" height="150" style="display:block;" />
+                      </a>
+                    <![endif]-->
+                    <!--[if !mso]><!-- -->
+                      <a id="imgKlein${postid}Link" href="${item_link}">
+                        <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; background: #000000; height: 150px; width: 175px;" width="175" src="${item_img_alternative}" />
+                      </a>
+                    <!--<![endif]-->
+                  </div>
+                </td>
+                <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+                  <table class="tableC">
+                    <tbody>
+                      <tr>
+                        <td class="artikelKleinTDcA">
+                          <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}">
+                            <h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">
+                              ${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span>
+                            </h3>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">
+                            ${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;"> Lees meer ▸</span>
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>`;
+
 
         } else if (optionlabel === 'kleinalt') {
           selectElementLabel.selectedIndex = 0;
@@ -750,42 +782,68 @@ function getAllContent() {
           label_tip = '';
           label_themavdweek = '';
           typeweergave = 'kleinalt';
-
-
-
-
-
-
           weergave = `<table class="table1a">
-        <tbody>
-          <tr>
-            <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_alternative_large}" /></a></td>
-          </tr>
-        </tbody>
-        </table>
-        <table>
-        <tbody>
-          <tr>
-            <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-              <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none;    background: #000000; height: 150px; width: 175px;" width="175" src="${item_img_alternative_small}" /></a></div>
-            </td>
-            <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
-              <table class="tableC">
-                <tbody>
-                  <tr>
-                    <td class="artikelKleinTDcA">
-                    <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${altnewsletterTitle} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
-                  </tr>
-                  <tr>
-                    <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">${altnewsletterIntroTekst} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-        </table>`;
+              <tbody>
+                <tr>
+                  <td class="tableDivider1a">
+                    <!--[if mso]>
+                      <a href="${item_link}">
+                        <img src="${item_img_alternative_large}" width="175" height="175" style="display:block;" />
+                      </a>
+                    <![endif]-->
+                    <!--[if !mso]><!-- -->
+                      <a id="imgKleinArtikel${postid}Link" href="${item_link}">
+                        <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_alternative_large}" />
+                      </a>
+                    <!--<![endif]-->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <tbody>
+                <tr>
+                  <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+                    <div class="tdDiv">
+                      <!--[if mso]>
+                        <a href="${item_link}">
+                          <img src="${item_img_alternative_small}" width="175" height="150" style="display:block;" />
+                        </a>
+                      <![endif]-->
+                      <!--[if !mso]><!-- -->
+                        <a id="imgKlein${postid}Link" href="${item_link}">
+                          <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; background: #000000; height: 150px; width: 175px;" width="175" src="${item_img_alternative_small}" />
+                        </a>
+                      <!--<![endif]-->
+                    </div>
+                  </td>
+                  <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+                    <table class="tableC">
+                      <tbody>
+                        <tr>
+                          <td class="artikelKleinTDcA">
+                            <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+                            <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}">
+                              <h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">
+                                ${altnewsletterTitle} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span>
+                              </h3>
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">
+                              ${altnewsletterIntroTekst} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;"> Lees meer ▸</span>
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>`;
+
 
         } else if (optionlabel === 'campagnebalk') {
 
@@ -1313,35 +1371,67 @@ function getAllContent() {
         label_themavdweek = '';
         typeweergave = 'klein';
         weergave = `<table class="table1a">
-      <tbody>
-        <tr>
-          <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: 175px; width: 100%; display: block;" height="175" src="${item_img_groot}" /></a></td>
-        </tr>
-      </tbody>
-      </table>
-      <table>
-      <tbody>
-        <tr>
-          <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-            <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 175px;" width="175" src="${item_img_groot}" /></a></div>
-          </td>
-          <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
-            <table class="tableC">
-              <tbody>
-                <tr>
-                  <td class="artikelKleinTDcA">
-                  <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
-                </tr>
-                <tr>
-                  <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-      </table>`;
+          <tbody>
+            <tr>
+              <td class="tableDivider1a">
+                <!--[if mso]>
+                  <a href="${item_link}">
+                    <img src="${item_img_groot}" width="175" height="175" style="display:block;" />
+                  </a>
+                <![endif]-->
+                <!--[if !mso]><!-- -->
+                  <a id="imgKleinArtikel${postid}Link" href="${item_link}">
+                    <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: 175px; width: 100%; display: block;" height="175" src="${item_img_groot}" />
+                  </a>
+                <!--<![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table>
+          <tbody>
+            <tr>
+              <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+                <div class="tdDiv">
+                  <!--[if mso]>
+                    <a href="${item_link}">
+                      <img src="${item_img_groot}" width="175" height="150" style="display:block;" />
+                    </a>
+                  <![endif]-->
+                  <!--[if !mso]><!-- -->
+                    <a id="imgKlein${postid}Link" href="${item_link}">
+                      <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 175px;" width="175" src="${item_img_groot}" />
+                    </a>
+                  <!--<![endif]-->
+                </div>
+              </td>
+              <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+                <table class="tableC">
+                  <tbody>
+                    <tr>
+                      <td class="artikelKleinTDcA">
+                        <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+                        <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}">
+                          <h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">
+                            ${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span>
+                          </h3>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">
+                          ${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;"> Lees meer ▸</span>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>`;
+
 
 
       } else if (optionlabel === 'groot') {
@@ -1732,60 +1822,85 @@ function getAllContent() {
                 label_themavdweek = '';
                 typeweergave = 'klein';
                 weergave = `<table class="table1a">
-              <tbody>
-                <tr>
-                  <td class="tableDivider1a">
-                    <a id="imgKleinArtikel${postid}Link" href="${item_link}">
-                      <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #ffffff;    min-height: 155px; max-height: 155px;" height="155" src="${item_img_groot}" />
-                      </a>
-                    </td>
-                </tr>
-              </tbody>
-              </table>
-              <table>
-              <tbody>
-                <tr>
-                  <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-                    <div class="tdDiv">
-                      <a id="imgKlein${postid}Link" href="${item_link}">
-                        <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: auto; width: 155px;background: #ffffff;    min-height: 155px; max-height: 155px;" width="155" src="${item_img_groot}" />
-                      </a>
-                    </div>
-                  </td>
-                  <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
-                    <table class="tableC">
-                      <tbody>
-                        <tr>
-                          <td class="artikelKleinTDcA">
-                              <table>
+                  <tbody>
+                    <tr>
+                      <td class="tableDivider1a">
+                        <!--[if mso]>
+                          <a href="${item_link}">
+                            <img src="${item_img_groot}" width="155" height="155" style="display:block;" />
+                          </a>
+                        <![endif]-->
+                        <!--[if !mso]><!-- -->
+                          <a id="imgKleinArtikel${postid}Link" href="${item_link}">
+                            <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #ffffff; min-height: 155px; max-height: 155px;" height="155" src="${item_img_groot}" />
+                          </a>
+                        <!--<![endif]-->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+                        <div class="tdDiv">
+                          <!--[if mso]>
+                            <a href="${item_link}">
+                              <img src="${item_img_groot}" width="155" height="155" style="display:block;" />
+                            </a>
+                          <![endif]-->
+                          <!--[if !mso]><!-- -->
+                            <a id="imgKlein${postid}Link" href="${item_link}">
+                              <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: auto; width: 155px;background: #ffffff; min-height: 155px; max-height: 155px;" width="155" src="${item_img_groot}" />
+                            </a>
+                          <!--<![endif]-->
+                        </div>
+                      </td>
+                      <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+                        <table class="tableC">
+                          <tbody>
+                            <tr>
+                              <td class="artikelKleinTDcA">
+                                <table>
                                   <tbody>
-                                      ${daginzet}
-        
-                                      <tr>
-                                        <td id="vacatureTD${postid}bA" class="vacatureTDbA">
-                                            <a id="metaPost${postid}Link"  href="${item_link}" style="display: block; font-size: 14px; line-height: 1.2; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;text-decoration: none !important;" class="metaPost">
-                                            <span id="vacatureMeta${postid}a" class="metaPostCompany" style="font-size: 14px; font-weight: normal;  font-family: 'Roboto', Arial; line-height: 1.2; color: #018A00;">${vac_org_naam} in ${vac_standplaats}</span>
-                                            </a>
-                                        </td>
+                                    ${daginzet}
+                                    <tr>
+                                      <td id="vacatureTD${postid}bA" class="vacatureTDbA">
+                                        <a id="metaPost${postid}Link" href="${item_link}" style="display: block; font-size: 14px; line-height: 1.2; font-weight: bold; font-family: 'Roboto',Arial; color: #018A00;text-decoration: none !important;" class="metaPost">
+                                          <span id="vacatureMeta${postid}a" class="metaPostCompany" style="font-size: 14px; font-weight: normal;  font-family: 'Roboto', Arial; line-height: 1.2; color: #018A00;">
+                                            ${vac_org_naam} in ${vac_standplaats}
+                                          </span>
+                                        </a>
+                                      </td>
                                     </tr>
-                                      <tr>
-                                          <td id="channelTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none !important; padding: 0px 0px 8px 0px;">
-                                          <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>        
-                                          <a id="kleinTitleLink${postid}title" class="titlechannel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3></a></td>
-                                      </tr>
-                                      <tr>
-                                          <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none !important; padding: 10x 0px 15px 0px;" class="channelTDbC"><a id="DescriptionKleinArtikel${postid}" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none !important; padding: 0x 0px 0px 0px;" href="${item_link}">${item_description} <span style="color: #0E5C8C;    font-size: 16px; ">Bekijk vacature ▸</span></a></td>
-                                      </tr>
+                                    <tr>
+                                      <td id="channelTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none !important; padding: 0px 0px 8px 0px;">
+                                        <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+                                        <a id="kleinTitleLink${postid}title" class="titlechannel" href="${item_link}">
+                                          <h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">
+                                            ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span>
+                                          </h3>
+                                        </a>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none !important; padding: 10x 0px 15px 0px;" class="channelTDbC">
+                                        <a id="DescriptionKleinArtikel${postid}" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none !important; padding: 0x 0px 0px 0px;" href="${item_link}">
+                                          ${item_description} <span style="color: #0E5C8C; font-size: 16px;">Bekijk vacature ▸</span>
+                                        </a>
+                                      </td>
+                                    </tr>
                                   </tbody>
-                              </table>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                </tr>
-              </tbody>
-              </table>`;
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>`;
+
 
 
               } else if (optionlabel === 'groot') {
@@ -2517,35 +2632,67 @@ function getAllContent() {
             label_themavdweek = '';
             typeweergave = 'klein';
             weergave = `<table class="table1a">
-      <tbody>
-        <tr>
-          <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #000;min-height: inherit"  src="${item_img_large}" /></a></td>
-        </tr>
-      </tbody>
-      </table>
-      <table>
-      <tbody>
-        <tr>
-          <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-            <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 175px;background: #000;;min-height: 150px" width="175" src="${item_img_groot}" /></a></div>
-          </td>
-          <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
-            <table class="tableC" style="margin: 0 !important; width: 100%;">
-              <tbody>
-                <tr>
-                  <td class="artikelKleinTDcA">
-                  <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${promotion_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
-                </tr>
-                <tr>
-                  <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;"> ${promotion_cta_text} ▸</span></a></td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-      </table>`;
+            <tbody>
+              <tr>
+                <td class="tableDivider1a">
+                  <!--[if mso]>
+                    <a href="${item_link}">
+                      <img src="${item_img_large}" width="175" height="150" style="display:block;" />
+                    </a>
+                  <![endif]-->
+                  <!--[if !mso]><!-- -->
+                    <a id="imgKleinArtikel${postid}Link" href="${item_link}">
+                      <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #000;min-height: inherit" src="${item_img_large}" />
+                    </a>
+                  <!--<![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table>
+            <tbody>
+              <tr>
+                <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+                  <div class="tdDiv">
+                    <!--[if mso]>
+                      <a href="${item_link}">
+                        <img src="${item_img_groot}" width="175" height="150" style="display:block;" />
+                      </a>
+                    <![endif]-->
+                    <!--[if !mso]><!-- -->
+                      <a id="imgKlein${postid}Link" href="${item_link}">
+                        <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 175px;background: #000; min-height: 150px" width="175" src="${item_img_groot}" />
+                      </a>
+                    <!--<![endif]-->
+                  </div>
+                </td>
+                <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+                  <table class="tableC" style="margin: 0 !important; width: 100%;">
+                    <tbody>
+                      <tr>
+                        <td class="artikelKleinTDcA">
+                          <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}">
+                            <h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">
+                              ${promotion_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span>
+                            </h3>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">
+                            ${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;"> ${promotion_cta_text} ▸</span>
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>`;
+
 
           } else if (optionlabel === 'campagnebalk') {
 
@@ -3064,35 +3211,67 @@ function getAllContent() {
                 label_themavdweek = '';
                 typeweergave = 'klein';
                 weergave = `<table class="table1a">
-              <tbody>
-                <tr>
-                  <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_groot}" /></a></td>
-                </tr>
-              </tbody>
-              </table>
-              <table>
-              <tbody>
-                <tr>
-                  <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-                    <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 175px;" width="175" src="${item_img_groot}" /></a></div>
-                  </td>
-                  <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
-                    <table class="tableC">
                       <tbody>
                         <tr>
-                          <td class="artikelKleinTDcA">
-                          <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
-                        </tr>
-                        <tr>
-                          <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
+                          <td class="tableDivider1a">
+                            <!--[if mso]>
+                              <a href="${item_link}">
+                                <img src="${item_img_groot}" width="175" height="175" style="display:block;" />
+                              </a>
+                            <![endif]-->
+                            <!--[if !mso]><!-- -->
+                              <a id="imgKleinArtikel${postid}Link" href="${item_link}">
+                                <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_groot}" />
+                              </a>
+                            <!--<![endif]-->
+                          </td>
                         </tr>
                       </tbody>
                     </table>
-                  </td>
-                </tr>
-              </tbody>
-              </table>`;
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+                            <div class="tdDiv">
+                              <!--[if mso]>
+                                <a href="${item_link}">
+                                  <img src="${item_img_groot}" width="175" height="150" style="display:block;" />
+                                </a>
+                              <![endif]-->
+                              <!--[if !mso]><!-- -->
+                                <a id="imgKlein${postid}Link" href="${item_link}">
+                                  <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: cover;display: none; height: 150px; width: 175px;" width="175" src="${item_img_groot}" />
+                                </a>
+                              <!--<![endif]-->
+                            </div>
+                          </td>
+                          <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+                            <table class="tableC">
+                              <tbody>
+                                <tr>
+                                  <td class="artikelKleinTDcA">
+                                    <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+                                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}">
+                                      <h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">
+                                        ${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span>
+                                      </h3>
+                                    </a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">
+                                      ${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;"> Lees meer ▸</span>
+                                    </a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>`;
+
 
 
               } else if (optionlabel === 'groot') {
@@ -3519,35 +3698,67 @@ function getAllContent() {
                 label_themavdweek = '';
                 typeweergave = 'klein';
                 weergave = `<table class="table1a">
-              <tbody>
-                <tr>
-                  <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_groot}" /></a></td>
-                </tr>
-              </tbody>
+                <tbody>
+                  <tr>
+                    <td class="tableDivider1a">
+                      <!--[if mso]>
+                        <a href="${item_link}">
+                          <img src="${item_img_groot}" width="175" height="175" style="display:block;" />
+                        </a>
+                      <![endif]-->
+                      <!--[if !mso]><!-- -->
+                        <a id="imgKleinArtikel${postid}Link" href="${item_link}">
+                          <img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_groot}" />
+                        </a>
+                      <!--<![endif]-->
+                    </td>
+                  </tr>
+                </tbody>
               </table>
               <table>
-              <tbody>
-                <tr>
-                  <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
-                    <div class="tdDiv"><a id="imgKlein${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: 175px; width: 100%; max-width: 175px; background: #ffffff;" width="175" src="${item_img_groot}" /></a></div>
-                  </td>
-                  <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
-                    <table class="tableC">
-                      <tbody>
-                        <tr>
-                          <td class="artikelKleinTDcA">
-                          <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
-                        </tr>
-                        <tr>
-                          <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;" > Lees meer ▸</span></a></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                </tr>
-              </tbody>
+                <tbody>
+                  <tr>
+                    <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
+                      <div class="tdDiv">
+                        <!--[if mso]>
+                          <a href="${item_link}">
+                            <img src="${item_img_groot}" width="175" height="175" style="display:block;" />
+                          </a>
+                        <![endif]-->
+                        <!--[if !mso]><!-- -->
+                          <a id="imgKlein${postid}Link" href="${item_link}">
+                            <img id="imgKleinArtikel${postid}" class="imgKleinArtikel" style="border-radius: 4px;object-fit: contain;display: none; height: 175px; width: 100%; max-width: 175px; background: #ffffff;" width="175" src="${item_img_groot}" />
+                          </a>
+                        <!--<![endif]-->
+                      </div>
+                    </td>
+                    <td class="tableDivider2" height="auto" width="auto" style="vertical-align: top; padding-bottom: 20px;">
+                      <table class="tableC">
+                        <tbody>
+                          <tr>
+                            <td class="artikelKleinTDcA">
+                              <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
+                              <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}">
+                                <h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">
+                                  ${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span>
+                                </h3>
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">
+                                ${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;"> Lees meer ▸</span>
+                              </a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
               </table>`;
+
 
               } else if (optionlabel === 'campagnebalk') {
 

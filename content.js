@@ -731,7 +731,7 @@ function getAllContent() {
                   <tr>
                     <td class="artikelKleinTDcA">
                     <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
+                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}" style=" text-decoration: none !important"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
                   </tr>
                   <tr>
                     <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
@@ -769,7 +769,7 @@ function getAllContent() {
                   <tr>
                     <td class="artikelKleinTDcA">
                     <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${altnewsletterTitle} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
+                    <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}" style=" text-decoration: none !important"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${altnewsletterTitle} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
                   </tr>
                   <tr>
                     <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">${altnewsletterIntroTekst} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
@@ -823,7 +823,7 @@ function getAllContent() {
             <tr id="artikelGroot${postid}TrA">
             <td id="artikelGroot${postid}TdA">
             <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-              <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
+              <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}" style=" text-decoration: none !important"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
                 ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3>
               </a>
             </td>
@@ -860,7 +860,7 @@ function getAllContent() {
             <tr id="artikelGroot${postid}TrA">
             <td id="artikelGroot${postid}TdA">
             <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-              <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
+              <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}" style=" text-decoration: none !important"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
                 ${altnewsletterTitle} <span id="container_label_adv${postid}">${label_adv}</span>  <span id="container_label_tip${postid}">${label_tip}</span></h3>
               </a>
             </td>
@@ -898,7 +898,7 @@ function getAllContent() {
             <tr id="artikelGroot${postid}TrA">
             <td id="artikelGroot${postid}TdA">
             <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-              <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
+              <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}" style=" text-decoration: none !important"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
                 ${item_title} <span id="container_label_adv${postid}">${label_adv}</span>  <span id="container_label_tip${postid}">${label_tip}</span></h3>
               </a>
             </td>
@@ -1325,7 +1325,7 @@ function getAllContent() {
                 <tr>
                   <td class="artikelKleinTDcA">
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
+                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}" style=" text-decoration: none !important"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
                 </tr>
                 <tr>
                   <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
@@ -1357,7 +1357,7 @@ function getAllContent() {
           <tr id="artikelGroot${postid}TrA">
           <td id="artikelGroot${postid}TdA">
           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-            <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
+            <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}" style=" text-decoration: none !important"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
               ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3>
             </a>
           </td>
@@ -1765,7 +1765,7 @@ function getAllContent() {
                                       <tr>
                                           <td id="channelTD${postid}bB" style="top: 0px; display: block; font-size: 18px; font-weight: bold; font-family: 'Roboto', Arial; line-height: 1.3; color: #1a1a1a; text-decoration: none !important; padding: 0px 0px 8px 0px;">
                                           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>        
-                                          <a id="kleinTitleLink${postid}title" class="titlechannel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3></a></td>
+                                          <a id="kleinTitleLink${postid}title" class="titlechannel" href="${item_link}" style=" text-decoration: none !important"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3></a></td>
                                       </tr>
                                       <tr>
                                           <td id="channelTD${postid}bC" style="display: block; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none !important; padding: 10x 0px 15px 0px;" class="channelTDbC"><a id="DescriptionKleinArtikel${postid}" class="Descriptionchannel" style="display: block; font-size: 16px; font-weight: regular; font-family: 'Roboto', Arial; color: #666666; text-decoration: none !important; padding: 0x 0px 0px 0px;" href="${item_link}">${item_description} <span style="color: #0E5C8C;    font-size: 16px; ">Bekijk vacature ▸</span></a></td>
@@ -1808,7 +1808,7 @@ function getAllContent() {
               <tr id="artikelGroot${postid}TrA">
                 <td id="artikelGroot${postid}TdA">
                 <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                <a id="kleinTitleLink${postid}title" class="grootArtikelTitle" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">
+                <a id="kleinTitleLink${postid}title" class="grootArtikelTitle" href="${item_link}" style=" text-decoration: none !important"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">
                   ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3>
                 </a>
                 </td>
@@ -2529,7 +2529,7 @@ function getAllContent() {
                 <tr>
                   <td class="artikelKleinTDcA">
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${promotion_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
+                  <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}" style=" text-decoration: none !important"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${promotion_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
                 </tr>
                 <tr>
                   <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;"> ${promotion_cta_text} ▸</span></a></td>
@@ -2635,7 +2635,7 @@ function getAllContent() {
           <tr id="artikelGroot${postid}TrA">
           <td id="artikelGroot${postid}TdA">
           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-            <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
+            <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}" style=" text-decoration: none !important"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
               ${promotion_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3>
             </a>
           </td>
@@ -2670,7 +2670,7 @@ function getAllContent() {
           <tr id="artikelGroot${postid}TrA">
           <td id="artikelGroot${postid}TdA">
           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-            <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
+            <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}" style=" text-decoration: none !important"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
               ${promotion_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3>
             </a>
           </td>
@@ -3076,7 +3076,7 @@ function getAllContent() {
                         <tr>
                           <td class="artikelKleinTDcA">
                           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
+                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}" style=" text-decoration: none !important"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
                         </tr>
                         <tr>
                           <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;"> Lees meer ▸</span></a></td>
@@ -3108,7 +3108,7 @@ function getAllContent() {
                   <tr id="artikelGroot${postid}TrA">
                   <td id="artikelGroot${postid}TdA">
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
+                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}" style=" text-decoration: none !important"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
                       ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3>
                     </a>
                   </td>
@@ -3531,7 +3531,7 @@ function getAllContent() {
                         <tr>
                           <td class="artikelKleinTDcA">
                           <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
+                          <a id="kleinTitleLink${postid}" class="titleKleinArtikel" href="${item_link}" style=" text-decoration: none !important"><h3 style="margin-top: 7px; text-decoration: none !important;color: #1a1a1a; line-height: 1.3; margin-bottom: 7px !important; top: 0px; display: block; font-size: 14pt; font-weight: 700; font-family: 'Roboto', Arial;text-decoration: none !important;">${item_title} <span id="container_label_tip${postid}">${label_tip}</span><span id="container_label_adv${postid}">${label_adv}</span></h3></a></td>
                         </tr>
                         <tr>
                           <td><a id="DescriptionKleinArtikel${postid}" class="DescriptionKleinArtikel" style="color: #333333; font-size: 16px; line-height: 1.3; font-weight: regular; font-family: 'Roboto', Arial;text-decoration: none !important;" href="${item_link}">${item_description} <span id="KleinArtikelCTA${postid}" class="KleinArtikelCTA" style="text-decoration: none !important; color: #18608b; font-size: 12pt;" > Lees meer ▸</span></a></td>
@@ -3585,7 +3585,7 @@ function getAllContent() {
                   <tr id="artikelGroot${postid}TrA">
                   <td id="artikelGroot${postid}TdA">
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
+                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}" style=" text-decoration: none !important"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
                       ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3>
                     </a>
                   </td>
@@ -3620,7 +3620,7 @@ function getAllContent() {
                   <tr id="artikelGroot${postid}TrA">
                   <td id="artikelGroot${postid}TdA">
                   <span id="container_label_themavdweek${postid}">${label_themavdweek}</span>
-                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
+                    <a id="grootTitleLink${postid}" class="grootArtikelTitle" href="${item_link}" style=" text-decoration: none !important"><h3 style="color: #1a1a1a; display: block; line-height: 1.5; font-size: 18px; padding: 0px 0px 00px 0px; font-weight: 700;text-decoration: none !important;" >
                       ${item_title} <span id="container_label_adv${postid}">${label_adv}</span> <span id="container_label_tip${postid}">${label_tip}</span></h3>
                     </a>
                   </td>

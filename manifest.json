@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Frankwatching Chrome Extension v3.4.7",
-  "version": "9.3.4.7",
+  "name": "Frankwatching Chrome Extension v3.4.8",
+  "version": "9.3.4.8",
 
   "permissions": ["clipboardWrite", "scripting", "activeTab"],
   "host_permissions": [

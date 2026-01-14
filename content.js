@@ -712,13 +712,13 @@ function getAllContent() {
           label_tip = '';
           label_themavdweek = '';
           typeweergave = 'klein';
-          weergave = `<table class="table1a">
+          weergave = `<!--[if !mso]><!-- --><table class="table1a">
         <tbody>
           <tr>
             <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_groot}" /></a></td>
           </tr>
         </tbody>
-        </table>
+        </table><!--<![endif]-->
         <table>
         <tbody>
           <tr>
@@ -750,19 +750,13 @@ function getAllContent() {
           label_tip = '';
           label_themavdweek = '';
           typeweergave = 'kleinalt';
-
-
-
-
-
-
-          weergave = `<table class="table1a">
+          weergave = `<!--[if !mso]><!-- --><table class="table1a">
         <tbody>
           <tr>
             <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_alternative_large}" /></a></td>
           </tr>
         </tbody>
-        </table>
+        </table><!--<![endif]-->
         <table>
         <tbody>
           <tr>
@@ -1312,13 +1306,13 @@ function getAllContent() {
         label_tip = '';
         label_themavdweek = '';
         typeweergave = 'klein';
-        weergave = `<table class="table1a">
+        weergave = `<!--[if !mso]><!-- --><table class="table1a">
       <tbody>
         <tr>
           <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: 175px; width: 100%; display: block;" height="175" src="${item_img_groot}" /></a></td>
         </tr>
       </tbody>
-      </table>
+      </table><!--<![endif]-->
       <table>
       <tbody>
         <tr>
@@ -1731,7 +1725,7 @@ function getAllContent() {
                 label_tip = '';
                 label_themavdweek = '';
                 typeweergave = 'klein';
-                weergave = `<table class="table1a">
+                weergave = `<!--[if !mso]><!-- --><table class="table1a">
               <tbody>
                 <tr>
                   <td class="tableDivider1a">
@@ -1741,7 +1735,7 @@ function getAllContent() {
                     </td>
                 </tr>
               </tbody>
-              </table>
+              </table><!--<![endif]-->
               <table>
               <tbody>
                 <tr>
@@ -2516,14 +2510,14 @@ function getAllContent() {
             label_tip = '';
             label_themavdweek = '';
             typeweergave = 'klein';
-            weergave = `<table class="table1a">
+            weergave = `<!--[if !mso]><!-- --><table class="table1a">
       <tbody>
         <tr>
           <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: contain;height: auto; width: 100%; display: block;background: #000;min-height: inherit"  src="${item_img_large}" /></a></td>
         </tr>
       </tbody>
       </table>
-      <table>
+      <table><!--<![endif]-->
       <tbody>
         <tr>
           <td class="tableDivider1" width="0px" height="auto" style="padding-bottom: 20px;">
@@ -3063,13 +3057,13 @@ function getAllContent() {
                 label_tip = '';
                 label_themavdweek = '';
                 typeweergave = 'klein';
-                weergave = `<table class="table1a">
+                weergave = `<!--[if !mso]><!-- --><table class="table1a">
               <tbody>
                 <tr>
                   <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_groot}" /></a></td>
                 </tr>
               </tbody>
-              </table>
+              </table><!--<![endif]-->
               <table>
               <tbody>
                 <tr>
@@ -3518,13 +3512,13 @@ function getAllContent() {
                 label_tip = '';
                 label_themavdweek = '';
                 typeweergave = 'klein';
-                weergave = `<table class="table1a">
+                weergave = `<!--[if !mso]><!-- --><table class="table1a">
               <tbody>
                 <tr>
                   <td class="tableDivider1a"><a id="imgKleinArtikel${postid}Link" href="${item_link}"><img id="imgKleinArtikel${postid}a" class="imgKleinArtikela" style="border-radius: 4px;object-fit: cover;height: auto; width: 100%; display: block;" height="175" src="${item_img_groot}" /></a></td>
                 </tr>
               </tbody>
-              </table>
+              </table><!--<![endif]-->
               <table>
               <tbody>
                 <tr>

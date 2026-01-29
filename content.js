@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.4.8";
+let versionid = "3.4.9";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -3246,7 +3246,7 @@ function getAllContent() {
     try {
       // Fetch all data concurrently using Promise.all
       const responses = await Promise.all([
-        //fetch(videorestapi),
+        fetch(videorestapi),
         fetch(whitepaperrestapi)
       ]);
 

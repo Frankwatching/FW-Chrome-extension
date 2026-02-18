@@ -86,6 +86,7 @@ The extension is active on the following domains:
 
 | Version | Changes |
 |----------|----------|
+| **v3.4.9** | Bugfixes in output. |
 | **v3.4.8** | Office/Outlook handling. |
 | **v3.4.7** | Mailblue changes. |
 | **v3.4.6** | fix timing issues. |

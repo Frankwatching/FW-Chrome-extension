@@ -1818,9 +1818,7 @@ function getAllContent() {
                       ${item_description}
                     </span>
                   </a>
-                  <a id="KleinArtikelCTA${postid}" class="DescriptionVacature" style="display: inline; font-size: 14px; font-weight: regular; font-family: 'Roboto', Arial; color: #1a1a1a; text-decoration: none !important; padding: 0x 0px 0px 0px;" href="${item_link}">
-                                  Bekijk de vacature ▸
-                                </a>
+                  <a id="KleinArtikelCTA${postid}" class="DescriptionVacature" style="display: inline; font-size: 14px; font-weight: regular; font-family: 'Roboto', Arial; color: #1a1a1a; text-decoration: none !important; padding: 0x 0px 0px 0px;" href="${item_link}">Bekijk de vacature ▸</a>
                 </td>
               </tr>
               </tbody>

@@ -86,8 +86,9 @@ The extension is active on the following domains:
 
 | Version | Changes |
 |----------|----------|
-| **v3.4.8** | Office/Outlook handling. |
-| **v3.4.7** | Mailblue changes. |
+| **v3.4.9** | Darkmode changes |
+| **v3.4.8** | Office/Outlook handling |
+| **v3.4.7** | Mailblue changes |
 | **v3.4.6** | fix timing issues. |
 | **v3.4.5** | fixes due to cors errors. |
 | **v3.4.4** | Stable release with improved clipboard handling and compatibility with ActiveCampaign/Act-On editors. |

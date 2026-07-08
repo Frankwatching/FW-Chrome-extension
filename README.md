@@ -86,6 +86,7 @@ The extension is active on the following domains:
 
 | Version | Changes |
 |----------|----------|
+| **v3.5.0** | Jobs feed FW7 > FW6 |
 | **v3.4.9** | Darkmode changes |
 | **v3.4.8** | Office/Outlook handling |
 | **v3.4.7** | Mailblue changes |

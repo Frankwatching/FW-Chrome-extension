@@ -1,5 +1,5 @@
 // ##  Set local version
-let versionid = "3.4.9";
+let versionid = "3.5.0";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -86,7 +86,7 @@ function getAllContent() {
   }
 
   // DATA SOURCES FRANKWATCHING
-  jobrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/vacature';
+  jobrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/vacature';
   agendarss = 'https://www.frankwatching.com/feed/academy/upcoming';
   //agendarestapi = 'https://www.frankwatching.com/wp-json/wp/v2/product'; // nog niet ingebruik
   marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion';
@@ -104,7 +104,7 @@ function getAllContent() {
   if (searchID) {
     newsrss = 'https://www.frankwatching.com/feed-nieuwsbrief-v2/?postid=' + searchID + '&timestamp=' + Date.now();
     //newsrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/post/?include='+ searchID; // nog niet in gebruik 
-    jobrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/vacature/?include=' + searchID;
+    jobrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/vacature/?include=' + searchID;
     agendarss = 'https://www.frankwatching.com/feed/academy/upcoming/?postid=' + searchID + '&timestamp=' + Date.now();
     marketingrestapi = 'https://cms.frankwatching.com/wp-json/wp/v2/promotion/?include=' + searchID;
     bcrestapi = 'https://www.frankwatching.com/wp-json/wp/v2/posts/?include=' + searchID; //
@@ -1569,7 +1569,7 @@ function getAllContent() {
     let item_img_groot = ''; // Initialize item_img_groot here
     const featuredMediaId = item.featured_media;
 
-    const wordpressUrl = 'https://cms.frankwatching.com';
+    const wordpressUrl = 'https://www.frankwatching.com';
 
     if (featuredMediaId) {
       const featuredMediaUrl = wordpressUrl + `/wp-json/wp/v2/media/${featuredMediaId}`;
